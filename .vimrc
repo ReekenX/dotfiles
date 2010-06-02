@@ -70,7 +70,7 @@ map <F3> :BufExplorer<CR>
 " In insert mode make some common functions
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
-inoremap { {<CR>}<ESC>O    
+inoremap { {<CR>}<ESC>O
 
 " If already closed, check maybe it's already closed
 inoremap ) <c-r>=ClosePair(')')<CR>
