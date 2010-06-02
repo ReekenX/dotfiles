@@ -72,6 +72,8 @@ setlocal smartcase			" searches use smart case
 
 let use_space_colon=0
 
+set nolist
+
 " End User Preferences
 
 " VimOutliner Standard Settings {{{1
