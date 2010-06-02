@@ -64,13 +64,19 @@ set backupdir=~/.vim/backup
 " Save swap files to separate directory
 set directory=~/.vim/swap
 
+" Check for syntax errors in PHP
+set makeprg=clear;php\ -l\ %
+set errorformat=%m\ in\ %f\ on\ line\ %l
+
 " Mappings
 " <F2> - save current VIM session
 " <F3> - to enter currently editing files list
 " <F8> - restore VIM session
+" <F9> - checks PHP errors and jumps to error line
 map <F2> :mksession! ~/.vim/swap/session<CR>
 map <F3> :BufExplorer<CR>
 map <F8> :source ~/.vim/swap/session<CR>
+map <F9> :make<CR>
 
 " In insert mode make some common functions
 inoremap ( ()<ESC>i
