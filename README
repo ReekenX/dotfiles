@@ -1,0 +1,20 @@
+HOMECONF
+========
+My personal home folder configuration files. I am currently using Ubuntu Linux
+version 10.04, but oldest versions should support these configurations too.
+
+Currently there is:
+
+    * VIM editor configuration files.
+    * VIM Outliner configuration files
+
+If you have any comments or suggestions to improve this, please e-mail me:
+
+    remigijus (eta) jarmalavicius (dot) lt
+
+If you having Ubuntu configuration files also in repository (github, bitbucket,
+launchpad or etc.) please write me. I will be interested to look at then ;)
+
+
+---
+Copyright (c) 2010 Remigijus Jarmalavičius
