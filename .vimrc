@@ -65,7 +65,12 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 
 " Mappings
+" <F2> - save current VIM session
+" <F3> - to enter currently editing files list
+" <F8> - restore VIM session
+map <F2> :mksession! ~/.vim/swap/session<CR>
 map <F3> :BufExplorer<CR>
+map <F8> :source ~/.vim/swap/session<CR>
 
 " In insert mode make some common functions
 inoremap ( ()<ESC>i
