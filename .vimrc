@@ -12,7 +12,7 @@ set wrap
 
 " Don't make text auto-wrapping
 set textwidth=0
-
+"
 " Use spaces when inserting tabs
 set expandtab
 
@@ -71,12 +71,14 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 " Mappings
 " <F2> - save current VIM session
 " <F3> - to enter currently editing files list
+" <F4> - show functions list in current file
 " <F8> - restore VIM session
-" <F9> - checks PHP errors and jumps to error line
+" <F9> - checks PHP errors and jumps to error line (after manual ENTER press)
 map <F2> :mksession! ~/.vim/swap/session<CR>
 map <F3> :BufExplorer<CR>
+map <F4> :il function<CR>:
 map <F8> :source ~/.vim/swap/session<CR>
-map <F9> :make<CR>
+map <F9> :make<CR><CR>
 
 " In insert mode make some common functions
 inoremap ( ()<ESC>i
