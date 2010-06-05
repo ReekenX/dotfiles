@@ -34,8 +34,8 @@ set autoindent
 set history=1000
 
 " Remember folding options when using VimOutliner
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+autocmd BufWinLeave * mkview
+autocmd BufWinEnter * silent loadview
 
 " GUI settings
 set title
@@ -56,7 +56,7 @@ set incsearch
 set list
 
 " Show Tab as >···
-set listchars=tab:>·
+set listchars=tab:>-,trail:.
 
 " Save backups to separate directory
 set backupdir=~/.vim/backup
