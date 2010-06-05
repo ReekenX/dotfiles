@@ -19,18 +19,6 @@ set expandtab
 " Enable ctags support
 set tag=./tags,tags
 
-" Enable word-wrap
-set wrap
-
-" Don't make text auto-wrapping
-set textwidth=0
-
-" Use spaces when inserting tabs
-set expandtab
-
-" Enable ctags support
-set tag=./tags,tags
-
 " Set tab to 4 spaces
 set tabstop=4
 set softtabstop=4
@@ -38,23 +26,16 @@ set shiftwidth=4
 
 " If file is not modified in VIM but changed outside, reload it
 set autoread
-
-" Set tab to 4 spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
-" If file is not modified in VIM but changed outside, reload it
-set autoread
-
-" Mouse support
-set mouse=a clipboard=unnamed
 
 " For new lines automaticly indent by current line indent
 set autoindent
 
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
+
+" Remember folding options when using VimOutliner
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
 
 " GUI settings
 set title
@@ -75,7 +56,7 @@ set incsearch
 set list
 
 " Show Tab as >···
-set listchars=tab:>-,trail:.
+set listchars=tab:>-,trail:·
 
 " Save backups to separate directory
 set backupdir=~/.vim/backup
@@ -88,7 +69,8 @@ set makeprg=clear;php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " Mark lines if they are longer than 100 symbols
-match ErrorMsg '\%>100v.\+'
+call matchadd('ErrorMsg', '  \+$', -1)
+call matchadd('ErrorMsg', '\%>100v.\+', -1)
 
 " Mappings
 " <F2> - save current VIM session
