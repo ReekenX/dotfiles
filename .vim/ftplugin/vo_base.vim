@@ -74,6 +74,10 @@ let use_space_colon=0
 
 set nolist
 
+" Save and restore foldings
+mkview
+loadview
+
 " End User Preferences
 
 " VimOutliner Standard Settings {{{1
