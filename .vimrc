@@ -87,6 +87,9 @@ set directory=~/.vim/swap
 set makeprg=clear;php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
+" Mark lines if they are longer than 100 symbols
+match ErrorMsg '\%>100v.\+'
+
 " Mappings
 " <F2> - save current VIM session
 " <F3> - to enter currently editing files list
