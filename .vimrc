@@ -56,7 +56,7 @@ set incsearch
 set list
 
 " Show Tab as >···
-set listchars=tab:>·
+set listchars=tab:>-,trail:·
 
 " Save backups to separate directory
 set backupdir=~/.vim/backup
@@ -67,6 +67,10 @@ set directory=~/.vim/swap
 " Check for syntax errors in PHP
 set makeprg=clear;php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
+
+" Mark lines if they are longer than 100 symbols
+call matchadd('ErrorMsg', '  \+$', -1)
+call matchadd('ErrorMsg', '\%>100v.\+', -1)
 
 " Mappings
 " <F2> - save current VIM session

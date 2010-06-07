@@ -1,2 +1,2 @@
-# Ignore all files (only added with -f)
+# Ignore all files (except those added with 'git add file.ext -f')
 *
