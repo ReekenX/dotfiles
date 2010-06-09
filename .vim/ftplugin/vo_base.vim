@@ -74,6 +74,10 @@ let use_space_colon=0
 
 set nolist
 
+" Remember folding options
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
 " End User Preferences
 
 " VimOutliner Standard Settings {{{1

@@ -33,10 +33,6 @@ set autoindent
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
 
-" Remember folding options when using VimOutliner
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
-
 " GUI settings
 set title
 
@@ -87,15 +83,15 @@ map <F9> :make<CR><CR>
 " In insert mode make some common functions
 inoremap ( ()<ESC>i
 inoremap [ []<ESC>i
-inoremap { {<CR>}<ESC>O
+map { {<CR>}<ESC>O
 
 " If already closed, check maybe it's already closed
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
 
-" Don't write closing quote if it's followed by escape symbol '\'
-inoremap " <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
+" Uncomment lines to enable auto quotes closing
+" inoremap \" <c-r>=QuoteDelim('"')<CR>
+" inoremap ' <c-r>=QuoteDelim("'")<CR>
 
 function ClosePair(char)
   if getline('.')[col('.') - 1] == a:char
