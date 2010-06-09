@@ -52,7 +52,7 @@ set incsearch
 set list
 
 " Show Tab as >···
-set listchars=tab:>-,trail:·
+set listchars=tab:»»,trail:·
 
 " Save backups to separate directory
 set backupdir=~/.vim/backup
@@ -64,7 +64,7 @@ set directory=~/.vim/swap
 set makeprg=clear;php\ -l\ %
 set errorformat=%m\ in\ %f\ on\ line\ %l
 
-" Mark lines if they are longer than 100 symbols
+" Mark lines if they are longer than 100 symbols or having wite spaces
 call matchadd('ErrorMsg', '  \+$', -1)
 call matchadd('ErrorMsg', '\%>100v.\+', -1)
 
