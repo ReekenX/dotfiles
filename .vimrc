@@ -74,11 +74,13 @@ call matchadd('ErrorMsg', '\%>100v.\+', -1)
 " <F4> - show functions list in current file
 " <F8> - restore VIM session
 " <F9> - checks PHP errors and jumps to error line (after manual ENTER press)
+" <CTRL + t> - trim white spaces in file.
 map <F2> :mksession! ~/.vim/swap/session<CR>
 map <F3> :BufExplorer<CR>
 map <F4> :il function<CR>:
 map <F8> :source ~/.vim/swap/session<CR>
 map <F9> :make<CR><CR>
+map <c-t> :%s/  \+$//g<CR>
 
 " In insert mode make some common functions
 inoremap ( ()<ESC>i
