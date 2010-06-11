@@ -80,7 +80,7 @@ map <F3> :BufExplorer<CR>
 map <F4> :il function<CR>:
 map <F8> :source ~/.vim/swap/session<CR>
 map <F9> :make<CR><CR>
-map <c-t> :%s/  \+$//g<CR>
+map <s-t> :%s/  \+$//g<CR>
 
 " In insert mode make some common functions
 inoremap ( ()<ESC>i
