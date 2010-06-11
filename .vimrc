@@ -115,6 +115,5 @@ function QuoteDelim(char)
   endif
 endf
 
-" These required for VimOutliner
-"filetype plugin indent on
+filetype plugin on
 

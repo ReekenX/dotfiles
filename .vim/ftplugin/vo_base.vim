@@ -78,6 +78,9 @@ set nolist
 au BufWinLeave * mkview
 au BufWinEnter * silent loadview
 
+" These required for VimOutliner
+filetype plugin indent on
+
 " End User Preferences
 
 " VimOutliner Standard Settings {{{1
