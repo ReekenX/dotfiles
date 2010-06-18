@@ -51,7 +51,7 @@ set incsearch
 " Display inprintable characters
 set list
 
-" Show Tab as >···
+" Show Tab as »»»» and trailing spaces as · symbol
 set listchars=tab:»»,trail:·
 
 " Save backups to separate directory
