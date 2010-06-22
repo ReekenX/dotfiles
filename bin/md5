@@ -1,0 +1,12 @@
+#!/usr/bin/python
+#
+# Prints md5 values for command line arguments
+# Copyright (c) Remigijus Jarmalavičius <remigijus (eta) jarmalavicius (dot) lt>
+
+import sys
+import hashlib
+
+for text in sys.argv[1:]:
+    print '%s: %s' % (text, hashlib.md5(text).hexdigest())
+
+sys.exit(0)
