@@ -71,13 +71,11 @@ call matchadd('ErrorMsg', '\%>100v.\+', -1)
 " Mappings
 " <F2> - save current VIM session
 " <F3> - to enter currently editing files list
-" <F4> - show functions list in current file
 " <F8> - restore VIM session
 " <F9> - check PHP errors and jump to error line
 " <SHIFT + t> - trim white spaces in lines end
 map <F2> :mksession! ~/.vim/swap/session<CR>
 map <F3> :BufExplorer<CR>
-map <F4> :call ShowFunctionsList()<CR>
 map <F8> :source ~/.vim/swap/session<CR>
 map <F9> :make<CR><CR>
 map <s-t> :%s/  \+$//g<CR>
@@ -103,11 +101,6 @@ function ClosePair(char)
   endif
 endf
 
-function ShowFunctionsList()
-    filetype plugin off
-    :il function
-endf
-
 function QuoteDelim(char)
   let line = getline('.')
   let col = col('.')
@@ -120,5 +113,5 @@ function QuoteDelim(char)
   endif
 endf
 
-"filetype plugin on
+filetype plugin on
 
