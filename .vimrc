@@ -73,8 +73,8 @@ call matchadd('ErrorMsg', '\%>100v.\+', -1)
 " <F3> - to enter currently editing files list
 " <F4> - show functions list in current file
 " <F8> - restore VIM session
-" <F9> - checks PHP errors and jumps to error line (after manual ENTER press)
-" <SHIFT + t> - trim white spaces in file.
+" <F9> - check PHP errors and jump to error line
+" <SHIFT + t> - trim white spaces in lines end
 map <F2> :mksession! ~/.vim/swap/session<CR>
 map <F3> :BufExplorer<CR>
 map <F4> :il function<CR>:
