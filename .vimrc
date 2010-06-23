@@ -12,7 +12,7 @@ set wrap
 
 " Don't make text auto-wrapping
 set textwidth=0
-"
+
 " Use spaces when inserting tabs
 set expandtab
 
@@ -77,7 +77,7 @@ call matchadd('ErrorMsg', '\%>100v.\+', -1)
 " <SHIFT + t> - trim white spaces in lines end
 map <F2> :mksession! ~/.vim/swap/session<CR>
 map <F3> :BufExplorer<CR>
-map <F4> :il function<CR>:
+map <F4> :call ShowFunctionsList()<CR>
 map <F8> :source ~/.vim/swap/session<CR>
 map <F9> :make<CR><CR>
 map <s-t> :%s/  \+$//g<CR>
@@ -103,6 +103,11 @@ function ClosePair(char)
   endif
 endf
 
+function ShowFunctionsList()
+    filetype plugin off
+    :il function
+endf
+
 function QuoteDelim(char)
   let line = getline('.')
   let col = col('.')
@@ -115,5 +120,5 @@ function QuoteDelim(char)
   endif
 endf
 
-filetype plugin on
+"filetype plugin on
 
