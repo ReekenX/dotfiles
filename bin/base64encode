@@ -1,0 +1,11 @@
+#!/usr/bin/python
+#
+# Encode command line arguments with base64
+# Copyright (c) Remigijus Jarmalavicius <remigijus (eta) jarmalavicius (dot)>
+
+import sys
+import base64
+
+for text in sys.argv[1:]:
+    print '%s: %s' % (text, base64.b64encode(text))
+
