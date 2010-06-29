@@ -11,3 +11,7 @@ alias clean='sudo apt-get autoremove;sudo apt-get autoclean;'
 
 # Move files to trash instead completely removing them
 alias rm='trash'
+
+# Show `svn diff` with meld
+svn diff --diff-cmd svn-diff
+

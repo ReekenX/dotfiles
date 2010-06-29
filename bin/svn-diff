@@ -1,0 +1,6 @@
+#!/usr/bin/python
+#
+# Diff with meld support for SVN
+# Copyright (c) Remigijus Jarmalavicius <remigijus (eta) jarmalavicius (dot)>
+
+meld $6 $7
