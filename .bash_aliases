@@ -13,5 +13,5 @@ alias clean='sudo apt-get autoremove;sudo apt-get autoclean;'
 alias rm='trash'
 
 # Show `svn diff` with meld
-svn diff --diff-cmd svn-diff
+alias sd 'svn diff --diff-cmd svn-diff'
 
