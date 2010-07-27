@@ -11,3 +11,6 @@ alias clean='sudo apt-get autoremove;sudo apt-get autoclean;'
 
 # Move files to trash instead completely removing them
 alias rm='trash'
+
+# This useful for commands that takes time
+alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "Operation successfully completed."'
