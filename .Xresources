@@ -1,5 +1,5 @@
 #include ".xrdb/look-zenburn.xrdb"
 
-xterm*font: -*-fixed-medium-*-*-*-14-*-*-*-*-*-*-*
+xterm*font: -*-fixed-medium-*-*-*-14-*-*-*-*-*-iso10646-1
 xterm*maximized: true
 
