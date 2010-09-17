@@ -1,0 +1,14 @@
+from django.db import model
+from django.utils.translation import gettext as _
+
+
+class ModelName(model.Model):
+    field = model.CharField(_('Field name'), max_length=255, default='')
+
+    def __unicode__(self):
+        return self.field
+
+    class Meta:
+        verbose_name = 'ModelName'
+        verbose_name_plural = 'ModelNames'
+

@@ -115,8 +115,14 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-function! Test()
-python << EOF
-print "Test, is working!"
-EOF
+" Load template from .vim/templates/ directory
+function Template(name)
+    if (filereadable($HOME . '/.vim/templates/' . a:name))
+       %d
+       silent execute '0r ' . $HOME . '/.vim/templates/' . a:name
+    else
+        execute 'echo "There is no template with this name at ' $HOME . '/.vim/templates/' . a:name . '"'
+    endif
 endfunction
+
+command -nargs=1 Template call Template(<args>)
