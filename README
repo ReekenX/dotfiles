@@ -1,20 +1,22 @@
 HOMECONF
 ========
 My personal home folder configuration files. I am currently using Ubuntu Linux
-version 10.04, but oldest versions should support these configurations too.
+version 10.04, but there is no OS specific configurations, so you could use it in
+any system you like (Linux I mean).
 
 Currently there is:
 
-    * VIM editor configuration files.
-    * VIM Outliner configuration files
-
-If you have any comments or suggestions to improve this, please e-mail me:
-
-    remigijus (eta) jarmalavicius (dot) lt
+    * VIM editor configuration files with some plugins:
+        * SnipMate - for PHP, Python, HTML and many more useful snipets.
+        * Bufexplorer to show full list of opened files, sort them and etc.
+    * VIM Outliner configuration files. I am using it for GTD.
+    * Screen configuration file.
+    * Some useful shell aliases (bash).
+    * Xterm configuration files (my favorite terminal, with zenburn modified theme).
 
 If you having Ubuntu configuration files also in repository (github, bitbucket,
 launchpad or etc.) please write me. I will be interested to look at them ;)
 
 
 ---
-Copyright (c) 2010 Remigijus Jarmalavičius
+Remigijus Jarmalavičius <remigijus (eta) jarmalavicius (dot) lt>
