@@ -1,0 +1,9 @@
+# Turn off flashin on error
+vbell off
+
+# Don't leave last command output (for example VIM opened file output)
+altscreen on
+
+# Turn off splash screen
+startup_message off
+
