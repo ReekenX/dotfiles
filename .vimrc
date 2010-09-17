@@ -61,23 +61,17 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 
 " Check for syntax errors in PHP
-set makeprg=clear;php\ -l\ %
-set errorformat=%m\ in\ %f\ on\ line\ %l
+autocmd FileType php set makeprg=clear;php\ -l\ %
+autocmd FileType php set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " Mark lines if they are longer than 100 symbols or having wite spaces
-call matchadd('ErrorMsg', '  \+$', -1)
-call matchadd('ErrorMsg', '\%>100v.\+', -1)
+autocmd FileType python,php call matchadd('ErrorMsg', '  \+$', -1)
+autocmd FileType python,php call matchadd('ErrorMsg', '\%>100v.\+', -1)
 
-" Mappings
-" <F2> - save current VIM session
 " <F3> - to enter currently editing files list
-" <F8> - restore VIM session
-" <F9> - check PHP errors and jump to error line
-" <SHIFT + t> - trim white spaces in lines end
-map <F2> :mksession! ~/.vim/swap/session<CR>
 map <F3> :BufExplorer<CR>
-map <F8> :source ~/.vim/swap/session<CR>
-map <F9> :make<CR><CR>
+
+" <SHIFT + t> - trim white spaces in lines end
 map <s-t> :%s/  \+$//g<CR>
 
 " In insert mode make some common functions
@@ -90,8 +84,8 @@ inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
 
 " Uncomment lines to enable auto quotes closing
-" inoremap \" <c-r>=QuoteDelim('"')<CR>
-" inoremap ' <c-r>=QuoteDelim("'")<CR>
+inoremap \" <c-r>=QuoteDelim('"')<CR>
+inoremap ' <c-r>=QuoteDelim("'")<CR>
 
 function ClosePair(char)
   if getline('.')[col('.') - 1] == a:char
@@ -115,3 +109,14 @@ endf
 
 filetype plugin on
 
+" Omnicomplete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+function! Test()
+python << EOF
+print "Test, is working!"
+EOF
+endfunction
