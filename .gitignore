@@ -1,2 +1,14 @@
-# Ignore all files (except those added with 'git add file.ext -f')
-*
+# Ignore all hidden folders and files
+.*
+
+bin/*
+Desktop/*
+Books/*
+Documents/*
+Downloads/*
+Dropbox/*
+Music/*
+Personal mail/*
+Pictures/*
+Sources/*
+Videos/*

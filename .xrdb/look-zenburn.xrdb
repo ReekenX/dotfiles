@@ -119,6 +119,7 @@
 
 *VT100*color0: #3f3f3f
 *VT100*color1: #705050
+/**VT100*color1: #3f3f3f*/
 *VT100*color2: #60b48a
 *VT100*color3: #dfaf8f
 *VT100*color4: #506070

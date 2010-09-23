@@ -53,6 +53,7 @@ set list
 
 " Show Tab as »»»» and trailing spaces as · symbol
 set listchars=tab:»»,trail:·
+autocmd FileType otl set nolist
 
 " Save backups to separate directory
 set backupdir=~/.vim/backup
@@ -109,7 +110,11 @@ endf
 
 filetype on
 filetype plugin on
-filetype plugin indent on
+" filetype plugin indent on
+
+" For SnipMate
+autocmd FileType python set ft=python.django
+autocmd FileType html set ft=htmldjango.html
 
 " Omnicomplete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -128,4 +133,17 @@ function Template(name)
 endfunction
 
 command -nargs=1 Template call Template(<args>)
+
+" VimOutliner settings
+let otl_install_menu=0
+let otl_install_toobalr=0
+let no_otl_maps=0
+let no_otl_insert_maps=0
+
+let otl_bold_headers=0
+let otl_use_thlnk=1
+let otl_text_view=1
+
+" This fixes PyFlakes error: background color overlaps text color
+highlight SpellBad ctermfg=Gray
 
