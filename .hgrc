@@ -1,0 +1,12 @@
+[ui]
+username = Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>
+merge = kdiff3
+
+[extensions]
+hgext.extdiff =
+hgext.graphlog =
+hgext.convert =
+
+[extdiff]
+cmd.vdiff = meld
+cmd.vkdiff = kdiff3

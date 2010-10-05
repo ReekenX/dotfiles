@@ -1,0 +1,6 @@
+[alias]
+	st = status
+	ci = commit -a
+[user]
+	name = Remigijus Jarmalavičius
+	email = remigijus@jarmalavicius.lt
