@@ -10,6 +10,9 @@ set encoding=utf-8
 " Enable wrap mode to see long code lines
 set wrap
 
+" Enable mouse features
+set mouse=a
+
 " Don't make text auto-wrapping
 set textwidth=0
 
