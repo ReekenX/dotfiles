@@ -67,7 +67,8 @@ autocmd FileType php set errorformat=%m\ in\ %f\ on\ line\ %l
 
 " Mark lines if they are longer than 100 symbols or having wite spaces
 autocmd FileType python,php call matchadd('ErrorMsg', '  \+$', -1)
-autocmd FileType python,php call matchadd('ErrorMsg', '\%>100v.\+', -1)
+autocmd FileType python call matchadd('ErrorMsg', '\%>80v.\+', -1)
+autocmd FileType php call matchadd('ErrorMsg', '\%>100v.\+', -1)
 
 " <F3> - to enter currently editing files list
 map <F3> :BufExplorer<CR>
