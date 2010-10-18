@@ -59,6 +59,7 @@ set listchars=tab:»»,trail:·
 autocmd FileType otl set nolist
 
 " Save backups to separate directory
+set backup
 set backupdir=~/.vim/backup
 
 " Save swap files to separate directory
