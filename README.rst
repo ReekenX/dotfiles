@@ -2,12 +2,10 @@
 Ubuntu configuration files
 ==========================
 
-:author: Remigijus Jarmalavicius <remigijus(a)jarmalavicius.lt>
-:version: 1.0
+:Author: Remigijus Jarmalavicius <remigijus(a)jarmalavicius.lt>
 
 About
-=====
-
+-----
 My personal Ubuntu configuration files. There is no operating system specific
 configurations so you could use these in any Linux system.
 
@@ -29,6 +27,5 @@ If you having Ubuntu configuration files also in repository (github, bitbucket,
 launchpad or etc.) please write me. I will be interested to look at them ;)
 
 Authors
-=======
-
+-------
 Copyright (c) 2010 Remigijus Jarmalavicius <remigijus(a)jarmalavicius.lt>
