@@ -25,7 +25,3 @@ Currently there is:
 
 If you having Ubuntu configuration files also in repository (github, bitbucket,
 launchpad or etc.) please write me. I will be interested to look at them ;)
-
-Authors
--------
-Copyright (c) 2010 Remigijus Jarmalavicius <remigijus(a)jarmalavicius.lt>
