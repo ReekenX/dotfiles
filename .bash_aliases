@@ -14,7 +14,3 @@ alias rm='trash'
 
 # This useful for commands that takes time
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "Operation successfully completed."'
-
-# Show `svn diff` with meld
-alias sd='svn diff --diff-cmd svn-diff'
-
