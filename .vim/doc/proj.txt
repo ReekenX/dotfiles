@@ -1,0 +1,93 @@
+*proj.txt*  Proj: Simple project tool
+            For Vim version 7.x
+
+                               By Thomas Allen
+                             thomasmallen@gmail.com
+
+                                                   *proj* *proj-plugin* *Proj*
+
+Proj lets you save settings for your project in a simple file.
+
+                                                               *Proj-commands*
+Commands:
+                                                                     *ProjAdd*
+    :ProjAdd
+     Prompts to add a new project in the current directory.
+                                                                    *ProjFile*
+    :ProjFile
+     Open the project file in a split>
+                                                                    *ProjInfo*
+    :ProjInfo
+     Show all of the current project's settings in the status line.
+                                                                    *ProjMenu*
+    :ProjMenu
+     Open a menu with all of these commands.
+                                                                   *ProjNotes*
+    :ProjNotes
+     Open the project notes file in a split.
+                                                                    *ProjOpen*
+    :ProjOpen
+     Prompt to open a project.
+
+                                                                 *ProjOpenTab*
+    :ProjOpenTab
+     Prompt to open a project for the open tab. Projects opened this way will
+     only be active in the opened tab, so that each tab can contain a project.
+
+                                                                 *ProjRefresh*
+    :ProjRefresh
+     Reload the current project.
+                                                                  *ProjReload*
+    :ProjReload
+     Reload the project file.
+                                                                     *ProjVim*
+    :ProjVim
+     Open the project's vim settings file in a split.
+
+
+                                                                 *Proj-syntax*
+File Syntax:
+    DOS .ini
+
+                                                               *Proj-settings*
+Available Settings:
+    browser - A custom command for the filebrowser
+    notes - Path to a text file with project notes
+    path - Path to the project root directory
+    vim - Path to a file with vim commands
+    docksend - Upload all files in the project on save if the TransmitFtp
+      plugin is available
+
+                                                                 *Proj-sample*
+Sample Project File:
+    ; This is a comment
+    [project]
+    path = /path/to/project
+    vim = /path/to/settings_file.vim
+    docksend ; boolean option
+
+    [path-with-spaces]
+    path = /path/to/my\ project ; Escape spaces with \
+
+                                         *Proj-global-options* *Proj-mappings*
+Global Options:
+    * g:ProjDisableMappings (default: 0) - Set to 1 to turn off all
+        mappings defined by this plugin
+    * g:ProjFile (default: '~/.vimproj') - Path to the project file.
+    * g:ProjFileBrowser (default: 'NERDTree') - The filebrowser command.
+        Set to 'off' to not open a filebrowser.
+    * g:ProjMapLeader (default: '<Leader>p') - The prefix for default mappings
+    * g:ProjNoteFile (default: 'notes.txt') - Path to the project notes file
+    * g:ProjSplitMethod (default: 'vsp') - Command to use when opening a file
+        with a Proj command such as ProjFile.
+
+    Default maps: These are all prefixed with g:ProjMapLeader by default.
+        g:ProjAddMap (default: 'a') - Calls :ProjAdd
+        g:ProjFileMap (default: 'f') - Calls :ProjFile
+        g:ProjInfoMap (default: 'i') - Calls :ProjInfo
+        g:ProjMenuMap (default: 'm') - Calls :ProjMenu
+        g:ProjNotesMap (default: 'n') - Calls :ProjNotes
+        g:ProjOpenMap (default: 'o') - Calls :ProjOpen
+        g:ProjOpenTabMap (default: 't') - Calls :ProjOpenTab
+        g:ProjReloadMap (default: 'r') - Calls :ProjReload
+        g:ProjVim (default: 'v') - Calls :ProjVim

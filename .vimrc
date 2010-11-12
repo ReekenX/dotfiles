@@ -10,6 +10,9 @@ set encoding=utf-8
 " Enable wrap mode to see long code lines
 set wrap
 
+" Hide buffer
+set hidden
+
 " Enable mouse features
 set mouse=a
 
@@ -73,9 +76,6 @@ autocmd FileType php set errorformat=%m\ in\ %f\ on\ line\ %l
 autocmd FileType python,php call matchadd('ErrorMsg', '  \+$', -1)
 autocmd FileType python call matchadd('ErrorMsg', '\%>80v.\+', -1)
 autocmd FileType php call matchadd('ErrorMsg', '\%>100v.\+', -1)
-
-" <F3> - to enter currently editing files list
-map <F3> :BufExplorer<CR>
 
 " <SHIFT + t> - trim white spaces in lines end
 map <s-t> :%s/  \+$//g<CR>
