@@ -80,36 +80,17 @@ autocmd FileType php call matchadd('ErrorMsg', '\%>100v.\+', -1)
 " <SHIFT + t> - trim white spaces in lines end
 map <s-t> :%s/  \+$//g<CR>
 
-" In insert mode make some common functions
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-map { {<CR>}<ESC>O
-
-" If already closed, check maybe it's already closed
+" Check maybe it's already closed
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
-
-" Uncomment lines to enable auto quotes closing
-inoremap \" <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
+inoremap \" <c-r>=ClosePair('"')<CR>
+inoremap ' <c-r>=ClosePair("'")<CR>
 
 function ClosePair(char)
   if getline('.')[col('.') - 1] == a:char
     return "\<Right>"
   else
     return a:char
-  endif
-endf
-
-function QuoteDelim(char)
-  let line = getline('.')
-  let col = col('.')
-  if line[col - 2] == "\\"
-    return a:char
-  elseif line[col - 1] == a:char
-    return "\<Right>"
-  else
-    return a:char.a:char."\<ESC>i"
   endif
 endf
 
