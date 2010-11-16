@@ -89,7 +89,7 @@ inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap \" <c-r>=ClosePair('"')<CR>
 inoremap ' <c-r>=ClosePair("'")<CR>
 
-function ClosePair(char)
+function! ClosePair(char)
   if getline('.')[col('.') - 1] == a:char
     return "\<Right>"
   else
@@ -112,16 +112,16 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 " Load template from .vim/templates/ directory
-function Template(name)
+function! Template(name)
     if (filereadable($HOME . '/.vim/templates/' . a:name))
        %d
        silent execute '0r ' . $HOME . '/.vim/templates/' . a:name
     else
         execute 'echo "There is no template with this name at ' $HOME . '/.vim/templates/' . a:name . '"'
     endif
-endfunction
+endf
 
-command -nargs=1 Template call Template(<args>)
+command! -nargs=1 Template call Template(<args>)
 
 " VimOutliner settings
 let otl_install_menu=0
