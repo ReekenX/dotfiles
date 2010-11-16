@@ -68,6 +68,9 @@ set backupdir=~/.vim/backup
 " Save swap files to separate directory
 set directory=~/.vim/swap
 
+" <F3> - to enter currently editing files list
+map <F3> :BufExplorer<CR>
+
 " Check for syntax errors in PHP
 autocmd FileType php set makeprg=clear;php\ -l\ %
 autocmd FileType php set errorformat=%m\ in\ %f\ on\ line\ %l
