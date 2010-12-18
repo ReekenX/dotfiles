@@ -6,6 +6,7 @@ merge = kdiff3
 hgext.extdiff =
 hgext.graphlog =
 hgext.convert =
+hgext.purge =
 
 [extdiff]
 cmd.vdiff = meld
