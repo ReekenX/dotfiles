@@ -80,6 +80,9 @@ autocmd FileType python,php call matchadd('ErrorMsg', '  \+$', -1)
 autocmd FileType python call matchadd('ErrorMsg', '\%>80v.\+', -1)
 autocmd FileType php call matchadd('ErrorMsg', '\%>100v.\+', -1)
 
+" Enable PEP8 check for Python files
+autocmd FileType python map <F6> Pep8()<CR>
+
 " <SHIFT + t> - trim white spaces in lines end
 map <s-t> :%s/  \+$//g<CR>
 
