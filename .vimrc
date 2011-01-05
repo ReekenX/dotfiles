@@ -75,10 +75,11 @@ map <F3> :BufExplorer<CR>
 autocmd FileType php set makeprg=clear;php\ -l\ %
 autocmd FileType php set errorformat=%m\ in\ %f\ on\ line\ %l
 
-" Mark lines if they are longer than 100 symbols or having wite spaces
-autocmd FileType python,php call matchadd('ErrorMsg', '  \+$', -1)
-autocmd FileType python call matchadd('ErrorMsg', '\%>80v.\+', -1)
-autocmd FileType php call matchadd('ErrorMsg', '\%>100v.\+', -1)
+" Mark trailing spaces in source code and highlight long lines
+autocmd BufEnter * call clearmatches()
+autocmd BufEnter *.py,*.php,*.c,*.h,*.java call matchadd('ErrorMsg', '  \+$', -1)
+autocmd BufEnter *.py call matchadd('ErrorMsg', '\%>80v.\+', -1)
+autocmd BufEnter *.php call matchadd('ErrorMsg', '\%>100v.\+', -1)
 
 " Enable PEP8 check for Python files
 autocmd FileType python map <F6> :call Pep8()<CR>
