@@ -4,10 +4,21 @@ merge = kdiff3
 
 [extensions]
 hgext.extdiff =
-hgext.graphlog =
 hgext.convert =
-hgext.purge =
+hgext.fetch =
+hgext.rebase =
+hgext.churn =
+hgext.color =
+hgext.mq =
+hgext.graphlog =
+transplant =
+hgext.bookmarks =
+hgext.progress =
 
 [extdiff]
 cmd.vdiff = meld
 cmd.vkdiff = kdiff3
+
+[defaults]
+log = --limit 8
+glog = --limit 8
