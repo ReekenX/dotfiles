@@ -140,3 +140,7 @@ let otl_text_view=1
 " This fixes PyFlakes error: background color overlaps text color
 highlight SpellBad ctermfg=Gray
 
+" Gvim settings
+if has("gui_running")
+  set lines=999 columns=999
+endif
