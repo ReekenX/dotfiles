@@ -1,7 +1,7 @@
-" Nocompatible mode makes VIM more friendly than old VI
+" No compatible mode makes VIM more friendly than old VI
 set nocompatible
 
-" Enable syntax hightlighting
+" Enable syntax highlighting
 syntax on
 
 " Default files encoding UTF-8
@@ -33,7 +33,7 @@ set shiftwidth=4
 " If file is not modified in VIM but changed outside, reload it
 set autoread
 
-" For new lines automaticly indent by current line indent
+" For new lines automatically indent by current line indent
 set autoindent
 
 " Keep commands history longer (by default keeps only 20 commands)
@@ -54,8 +54,11 @@ set ignorecase
 " Found text will be highlighted and search will be repeated in file content
 set incsearch
 
-" Display inprintable characters
+" Display not printable characters
 set list
+
+" Keep x lines below and above cursor
+set scrolloff=3
 
 " Show Tab as »»»» and trailing spaces as · symbol
 set listchars=tab:»»,trail:·
@@ -70,6 +73,9 @@ set directory=~/.vim/swap
 
 " <F3> - to enter currently editing files list
 map <F3> :BufExplorer<CR>
+
+" Keep VIM history even file is closed
+set viminfo='20,<50,s10,h
 
 " Check for syntax errors in PHP
 autocmd FileType php set makeprg=clear;php\ -l\ %
