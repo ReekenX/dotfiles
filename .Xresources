@@ -3,3 +3,9 @@
 xterm*font: -*-fixed-medium-*-*-*-*-140-*-*-*-*-iso10646-1
 xterm*maximized: true
 
+/* This is to work Alt+* keys */
+xterm*eightBitInput: false
+
+XTerm.VT100.translations:             #override\n\
+        <Btn4Down>,<Btn4Up>: string(0x19)\n\
+        <Btn5Down>,<Btn5Up>: string(0x5)\n

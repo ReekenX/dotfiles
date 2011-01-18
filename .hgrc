@@ -14,6 +14,7 @@ hgext.graphlog =
 transplant =
 hgext.bookmarks =
 hgext.progress =
+hgext.purge =
 
 [extdiff]
 cmd.vdiff = meld

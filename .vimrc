@@ -55,13 +55,13 @@ set ignorecase
 set incsearch
 
 " Display not printable characters
-set list
+" set list
 
 " Keep x lines below and above cursor
 set scrolloff=3
 
 " Show Tab as »»»» and trailing spaces as · symbol
-set listchars=tab:»»,trail:·
+" set listchars=tab:»»,trail:·
 autocmd FileType otl set nolist
 
 " Save backups to separate directory
