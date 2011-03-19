@@ -1,6 +1,11 @@
 [ui]
 username = Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>
 merge = kdiff3
+ssh = ssh -C
+style = default
+logtemplate = '{desc}\n--------------------------------------------------------------------\nChangeset:  {rev}:{node|short}\nUser:       {author}\nDate:       {date|isodate}\nBranch:      {branches}                         Tag: {tags}\n\n\n\n'
+editor = vim
+fallbackencoding = utf-8
 
 [extensions]
 hgext.extdiff =
@@ -11,15 +16,16 @@ hgext.churn =
 hgext.color =
 hgext.mq =
 hgext.graphlog =
-transplant =
 hgext.bookmarks =
 hgext.progress =
 hgext.purge =
+hgext.pager =
+hgext.hgcodesmell = ~/.hg_extensions/hgcodesmell.py
+
+[pager]
+pager = LESS='FSRX' less
+attend = annotate, cat, diff, export, glog, log, qdiff
 
 [extdiff]
 cmd.vdiff = meld
 cmd.vkdiff = kdiff3
-
-[defaults]
-log = --limit 8
-glog = --limit 8
