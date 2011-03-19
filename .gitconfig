@@ -1,10 +1,35 @@
-[alias]
-	st = status
-	ci = commit -a
 [user]
-	name = Remigijus Jarmalavičius
-	email = remigijus@jarmalavicius.lt
+    name = Remigijus Jarmalavičius
+    email = remigijus@jarmalavicius.lt
+[alias]
+    br = branch
+    ci = commit -a
+    co = checkout
+    df = diff
+    g = grep -I
+    lg = log -p
+    pb = publish-branch
+    rb = rbranch
+    rc = rank-contributors
+    rv = review
+    sm = show-merges
+    st = status
 [color]
-	branch = auto
-	diff = auto
-	status = auto
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[merge]
+    log = true
+[branch]
+    autosetupmerge = true
