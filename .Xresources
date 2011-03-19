@@ -1,4 +1,21 @@
-#include ".xrdb/look-zenburn.xrdb"
+XTerm*background:  #0F0F0F
+XTerm*foreground:  #999999
+XTerm*color0:      #000000
+XTerm*color1:      #9e1828
+XTerm*color2:      #aece92
+XTerm*color3:      #968a38
+XTerm*color4:      #414171
+XTerm*color5:      #963c59
+XTerm*color6:      #418179
+XTerm*color7:      #bebebe
+XTerm*color8:      #666666
+XTerm*color9:      #cf6171
+XTerm*color10:     #c5f779
+XTerm*color11:     #fff796
+XTerm*color12:     #4186be
+XTerm*color13:     #cf9ebe
+XTerm*color14:     #71bebe
+XTerm*color15:     #ffffff
 
 xterm*font: -*-fixed-medium-*-*-*-*-140-*-*-*-*-iso10646-1
 xterm*maximized: true
@@ -6,6 +23,6 @@ xterm*maximized: true
 /* This is to work Alt+* keys */
 xterm*eightBitInput: false
 
-XTerm.VT100.translations:             #override\n\
+XTerm.VT100.translations: #override\n\
         <Btn4Down>,<Btn4Up>: string(0x19)\n\
         <Btn5Down>,<Btn5Up>: string(0x5)\n

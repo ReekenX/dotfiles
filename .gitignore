@@ -1,6 +1,7 @@
 # Ignore all hidden folders and files
 
 .*
+!.gitmodules
 
 !.vim
 .vim/backup/

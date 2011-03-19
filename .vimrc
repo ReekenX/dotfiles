@@ -1,40 +1,39 @@
 " No compatible mode makes VIM more friendly than old VI
 set nocompatible
 
-" Enable syntax highlighting
-syntax on
+" Load pathogen and plugins {{{
+filetype off
 
-" Default files encoding UTF-8
-set encoding=utf-8
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
-" Enable wrap mode to see long code lines
-set wrap
+filetype plugin indent on
+" }}}
+
+" VIM behaviour {{{
+" Always show what mode we're using
+set showmode
+
+" Don't update the display while executing macros
+set lazyredraw
+
+" Enable 256 colors for VIM
+set t_Co=256
+
+" This fixes PyFlakes error: background color overlaps text color
+highlight SpellBad ctermfg=Gray
+
+" Default theme
+colorscheme dark-ruby
 
 " Hide buffer
 set hidden
 
-" Enable mouse features
-set mouse=a
-
-" Don't make text auto-wrapping
-set textwidth=0
-
-" Use spaces when inserting tabs
-set expandtab
-
 " Enable ctags support
 set tag=./tags,tags
 
-" Set tab to 4 spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-
 " If file is not modified in VIM but changed outside, reload it
 set autoread
-
-" For new lines automatically indent by current line indent
-set autoindent
 
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
@@ -51,102 +50,133 @@ set number
 " Ignore case in search and replace
 set ignorecase
 
-" Found text will be highlighted and search will be repeated in file content
+" Found text will be highlighted and search will be repeated over file
 set incsearch
 
+" Smart search: if lowercase ignore case of matches, if not case-sensitive
+" search
+set smartcase
+
 " Display not printable characters
-" set list
+set list
+set listchars=tab:»»,trail:·,extends:#,nbsp:·
 
 " Keep x lines below and above cursor
 set scrolloff=3
 
-" Show Tab as »»»» and trailing spaces as · symbol
-" set listchars=tab:»»,trail:·
-autocmd FileType otl set nolist
+" Keep VIM history even file is closed
+set viminfo='20,<50,s10,h
+" }}}
 
-" Save backups to separate directory
+" Folding rules {{{
+set foldenable
+set foldcolumn=2
+set foldmethod=marker
+set foldlevelstart=0
+
+" For these commands open folding by default
+set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+
+" Change the color of folding to make it less annnoying
+highlight Folded ctermbg=black ctermfg=blue cterm=none
+" }}}
+
+" Edit behaviour {{{
+" Mapleader from \ to ,
+let mapleader=","
+
+" Enable syntax highlighting
+syntax on
+
+" Encoding
+set termencoding=utf-8
+set encoding=utf-8
+
+" More faster scrolling
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+
+" Just file formats
+set fileformat="unix,dos,mac"
+
+" Set tab to 4 spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+" Enable wrap mode to see long code lines
+set wrap
+set textwidth=0
+
+" Enable mouse features
+set mouse=a
+"
+" For new lines automatically indent by current line indent
+set autoindent
+set copyindent
+
+" No autoindent in paste mode
+set pastetoggle=<F2>
+
+" Show matching for symbols like () and etc.
+set showmatch
+
+" Allow cursor to go in to 'invalid' places
+set virtualedit=all
+
+" Allow backspace on everything in insert mode
+set backspace=indent,eol,start
+" }}}
+
+" Backups and swap {{{
 set backup
 set backupdir=~/.vim/backup
+set noswapfile
+" }}}
 
-" Save swap files to separate directory
-set directory=~/.vim/swap
+" Mappings {{{
+" Note that <F2> is reserved for toggle paste mode
+
+" Don't press the SHIFT in normal mode
+nnoremap ; :
 
 " <F3> - to enter currently editing files list
 map <F3> :BufExplorer<CR>
-
-" Keep VIM history even file is closed
-set viminfo='20,<50,s10,h
-
-" Check for syntax errors in PHP
-autocmd FileType php set makeprg=clear;php\ -l\ %
-autocmd FileType php set errorformat=%m\ in\ %f\ on\ line\ %l
-
-" Mark trailing spaces in source code and highlight long lines
-autocmd BufEnter * call clearmatches()
-autocmd BufEnter *.py,*.php,*.c,*.h,*.java call matchadd('ErrorMsg', '  \+$', -1)
-autocmd BufEnter *.py call matchadd('ErrorMsg', '\%>80v.\+', -1)
-autocmd BufEnter *.php call matchadd('ErrorMsg', '\%>100v.\+', -1)
-
-" Enable PEP8 check for Python files
-autocmd FileType python map <F6> :call Pep8()<CR>
-
+"
 " <SHIFT + t> - trim white spaces in lines end
 map <s-t> :%s/  \+$//g<CR>
 
-" Check maybe it's already closed
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap \" <c-r>=ClosePair('"')<CR>
-inoremap ' <c-r>=ClosePair("'")<CR>
+" Avoid <F1> when we want <ESC> to press
+nnoremap <F1> <Esc>
 
-function! ClosePair(char)
-  if getline('.')[col('.') - 1] == a:char
-    return "\<Right>"
-  else
-    return a:char
-  endif
-endf
+" By default, ' jumps to the marked line, ` jumps to the marked line and
+" column, so swap them
+nnoremap ' `
+nnoremap ` '
 
-filetype on
-filetype plugin on
-" filetype plugin indent on
+" Use the damn hjkl keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
-" For SnipMate
-autocmd FileType python set ft=python.django
-autocmd FileType html set ft=htmldjango.html
+" Quickly get out of insert mode without your fingers having to leave the
+" home row (either use 'jj' or 'jk')
+inoremap jj <Esc>
+inoremap jk <Esc>
+" }}}
 
-" Omnicomplete
+" File types options {{{
+" Ignore these file types on :e
+set wildmenu
+set wildmode=list:full
+set wildignore=*.swp,*.bak,*.pyc
+
+" Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-" Load template from .vim/templates/ directory
-function! Template(name)
-    if (filereadable($HOME . '/.vim/templates/' . a:name))
-       %d
-       silent execute '0r ' . $HOME . '/.vim/templates/' . a:name
-    else
-        execute 'echo "There is no template with this name at ' $HOME . '/.vim/templates/' . a:name . '"'
-    endif
-endf
-
-command! -nargs=1 Template call Template(<args>)
-
-" VimOutliner settings
-let otl_install_menu=0
-let otl_install_toobalr=0
-let no_otl_maps=0
-let no_otl_insert_maps=0
-
-let otl_bold_headers=0
-let otl_use_thlnk=1
-let otl_text_view=1
-
-" This fixes PyFlakes error: background color overlaps text color
-highlight SpellBad ctermfg=Gray
-
-" Gvim settings
-if has("gui_running")
-  set lines=999 columns=999
-endif
+" }}}
+" }}}
