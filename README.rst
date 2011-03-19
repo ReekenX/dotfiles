@@ -11,6 +11,6 @@ configurations so you could use these in any Linux system (I hope so).
 
 All my configurations comes under GPL, so use it free, modify as you like.
 
-More information you could find here:
+Currently there is VIM, Screen, Xterm, Mercurial, GIT, Dreampie settings.
 
-    https://github.com/ReekenX/ubuntu-home-configs/wiki
+If you have any suggestions how to improve this, please write me.
