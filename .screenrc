@@ -1,6 +1,6 @@
 # Show status bar
 hardstatus alwayslastline
-hardstatus string '%{= kG}[ Professional developer ReekenX ]%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g} [%{B} %Y-%m-%d %c %{g}]'
+hardstatus string '%{= kG}[ IDE for professionals ]%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g} [%{B} %Y-%m-%d %c %{g}]'
 
 # Turn off flashin on error
 vbell off
