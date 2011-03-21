@@ -1,6 +1,6 @@
 [general]
 # A comma-separated list of custom stylesheets. Example:
-stylesheets="dejavu"
+stylesheets="kerning"
 
 # Create a compressed PDF
 compressed=true

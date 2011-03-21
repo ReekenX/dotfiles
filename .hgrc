@@ -3,7 +3,7 @@ username = Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>
 merge = kdiff3
 ssh = ssh -C
 style = default
-logtemplate = '{desc}\n--------------------------------------------------------------------\nChangeset:  {rev}:{node|short}\nUser:       {author}\nDate:       {date|isodate}\nBranch:      {branches}                         Tag: {tags}\n\n\n\n'
+logtemplate = '{desc}\n--------------------------------------------------------------------\nChangeset:  {rev}:{node|short}   {branches|nonempty}\nUser:       {author}\nDate:       {date|isodate}\n\n'
 editor = vim
 fallbackencoding = utf-8
 
