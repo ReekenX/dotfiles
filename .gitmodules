@@ -22,6 +22,3 @@
 [submodule ".vim/bundle/TailMinusF"]
 	path = .vim/bundle/TailMinusF
 	url = https://github.com/vim-scripts/TailMinusF.git
-[submodule ".vim/bundle/vim-css-color"]
-	path = .vim/bundle/vim-css-color
-	url = https://github.com/skammer/vim-css-color.git
