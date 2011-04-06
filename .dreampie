@@ -1,6 +1,6 @@
 [DreamPie]
 show-getting-started = False
-font = Courier New 10
+font = Verdana 11
 current-theme = Dark
 pprint = True
 use-reshist = True
