@@ -18,7 +18,7 @@ XTerm*color14:     #71bebe
 XTerm*color15:     #ffffff
 
 xterm*font: -*-fixed-medium-*-*-*-*-140-*-*-*-*-iso10646-1
-xterm*maximized: true
+xterm*maximized: false
 
 /* This is to work Alt+* keys */
 xterm*eightBitInput: false
@@ -26,3 +26,13 @@ xterm*eightBitInput: false
 XTerm.VT100.translations: #override\n\
         <Btn4Down>,<Btn4Up>: string(0x19)\n\
         <Btn5Down>,<Btn5Up>: string(0x5)\n
+
+xterm*Title: xterm
+xterm*ToolBar: true
+xterm*BorderWidth: 5
+xterm*FreeBoldBox: true
+xterm*LoginShell: true
+xterm*ScrollBar: true
+xterm*RightScrollBar: true
+xterm*Thickness: 10
+xterm*SaveLines: 1000
