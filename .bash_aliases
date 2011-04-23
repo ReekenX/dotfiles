@@ -1,15 +1,11 @@
-# History file will be with date information
+# History file will be with date information on every entry (useful feature)
 export HISTTIMEFORMAT="%Y-%m-%d %T "
-
-# Common aliases to update OS software
-alias update='sudo apt-get update && sudo apt-get upgrade; sudo apt-get autoremove; sudo apt-get autoclean;'
-alias install='sudo apt-get install'
 
 # No colors for `ls` command
 alias ls='ls --color=never'
 
-# Move files to trash instead completely removing them
+# Move files to trash instead completely removing them with `rm`
 alias rm='trash'
 
-# This useful for commands that takes time
+# Alert me if program in command line finished his job
 alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "Operation successfully completed."'
