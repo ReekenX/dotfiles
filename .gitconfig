@@ -1,6 +1,7 @@
 [user]
     name = Remigijus Jarmalavičius
     email = remigijus@jarmalavicius.lt
+    ediitor = vim
 [alias]
     br = branch
     ci = commit -a
@@ -16,6 +17,7 @@
     st = status
 [color]
     ui = auto
+    interactive = auto
 [color "branch"]
     current = yellow reverse
     local = yellow
@@ -31,5 +33,8 @@
     untracked = cyan
 [merge]
     log = true
+[mergetool]
+    keepbackup = true
+    keeptemporaries = false
 [branch]
     autosetupmerge = true
