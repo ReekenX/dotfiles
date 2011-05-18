@@ -103,4 +103,4 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Enable ssh-agent to prevent password entering multiple times
-eval `ssh-agent`
+eval `ssh-agent` > /dev/null
