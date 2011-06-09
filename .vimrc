@@ -20,8 +20,9 @@ set lazyredraw
 " Enable 256 colors for VIM
 set t_Co=256
 
-" This fixes PyFlakes error: background color overlaps text color
+" Pyflake settings
 highlight SpellBad ctermfg=Gray
+let g:pyflakes_use_quickfix = 0
 
 " Default theme
 colorscheme dark-ruby
@@ -165,6 +166,8 @@ map <right> <nop>
 " home row (either use 'jj' or 'jk')
 inoremap jj <Esc>
 inoremap jk <Esc>
+
+nmap <F8> :python RunUnitTestsUnderCursor()<CR>
 " }}}
 
 " File types options {{{
@@ -172,6 +175,10 @@ inoremap jk <Esc>
 set wildmenu
 set wildmode=list:full
 set wildignore=*.swp,*.bak,*.pyc
+
+" If VIM founds project.vim file in project root, it will be loaded.
+" This is required if project has specific settings.
+silent! source project.vim
 
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
