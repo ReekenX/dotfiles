@@ -6,8 +6,6 @@ filetype off
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
-
-filetype plugin indent on
 " }}}
 
 " VIM behaviour {{{
@@ -146,7 +144,7 @@ nnoremap ; :
 map <F3> :BufExplorer<CR>
 "
 " <SHIFT + t> - trim white spaces in lines end
-map <s-t> :%s/  \+$//g<CR>
+map <s-t> :%s/ \+$//g<CR>
 
 " Avoid <F1> when we want <ESC> to press
 nnoremap <F1> <Esc>
@@ -187,5 +185,4 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 set completeopt=menuone,longest
-" }}}
 " }}}
