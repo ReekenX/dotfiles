@@ -1,7 +1,7 @@
 [user]
     name = Remigijus Jarmalavičius
     email = remigijus@jarmalavicius.lt
-    ediitor = vim
+    editor = vim
 [alias]
     br = branch
     ci = commit -a
@@ -38,3 +38,5 @@
     keeptemporaries = false
 [branch]
     autosetupmerge = true
+[core]
+	excludesfile = project.vim
