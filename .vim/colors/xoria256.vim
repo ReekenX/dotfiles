@@ -37,7 +37,7 @@ let g:colors_name = "xoria256"
 
 
 
-hi Normal   cterm=none  ctermfg=252 ctermbg=234 gui=none    guifg=#d0d0d0   guibg=#202020
+hi Normal   cterm=none  ctermfg=255 ctermbg=0 gui=none    guifg=#d0d0d0   guibg=#202020
 
 hi Cursor   cterm=none  ctermfg=bg  ctermbg=214 gui=none    guifg=bg    guibg=#ffaf00
 hi CursorColumn cterm=none          ctermbg=238 gui=none            guibg=#444444
