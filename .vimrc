@@ -69,6 +69,7 @@ set scrolloff=3
 set viminfo='20,<50,s10,h
 " }}}
 
+" NOTE: folding disabled for now. If it will be required, then I will enable it again.
 " Folding rules {{{
 " set foldenable
 " set foldcolumn=2
