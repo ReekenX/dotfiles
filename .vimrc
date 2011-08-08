@@ -25,7 +25,7 @@ highlight SpellBad ctermfg=Gray
 let g:pyflakes_use_quickfix = 0
 
 " Default theme
-colorscheme dark-ruby
+colorscheme wombat256
 
 " Hide buffer
 set hidden
@@ -70,10 +70,10 @@ set viminfo='20,<50,s10,h
 " }}}
 
 " Folding rules {{{
-set foldenable
-set foldcolumn=2
-set foldmethod=marker
-set foldlevelstart=0
+" set foldenable
+" set foldcolumn=2
+" set foldmethod=marker
+" set foldlevelstart=0
 
 " For these commands open folding by default
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo

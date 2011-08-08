@@ -15,6 +15,7 @@
     rv = review
     sm = show-merges
     st = status
+    vdiff = !sh /home/remigijus/Kodas/atviro-kodo-projektai/git-diffall/git-diffall
 [color]
     ui = auto
     interactive = auto
@@ -33,10 +34,12 @@
     untracked = cyan
 [merge]
     log = true
+[diff]
+    tool = meld
 [mergetool]
     keepbackup = true
     keeptemporaries = false
 [branch]
     autosetupmerge = true
 [core]
-	excludesfile = project.vim
+    excludesfile = project.vim

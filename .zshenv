@@ -24,6 +24,7 @@ alias O=xdg-open
 
 # No glob search when using special symbols
 alias find="noglob find"
+alias dpkg="noglob dpkg"
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
