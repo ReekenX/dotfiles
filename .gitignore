@@ -1,20 +1,6 @@
 # Ignore all hidden folders and files
 
-.*
-!.gitmodules
-
 !.vim
 .vim/backup/
 .vim/view/
 .vim/swap/
-
-bin/
-Desktop/
-Books/
-Documents/
-Downloads/
-Dropbox/
-Music/
-Pictures/
-Sources/
-Videos/
