@@ -62,9 +62,6 @@ set smartcase
 set list
 set listchars=tab:»»,trail:·,extends:#,nbsp:·
 
-" Keep x lines below and above cursor
-set scrolloff=3
-
 " Keep VIM history even file is closed
 set viminfo='20,<50,s10,h
 " }}}
