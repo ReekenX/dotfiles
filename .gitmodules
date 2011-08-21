@@ -10,8 +10,8 @@
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule ".vim/bundle/snipmate"]
-	path = .vim/bundle/snipmate
+[submodule ".vim/bundle/snipmate.vim"]
+	path = .vim/bundle/snipmate.vim
 	url = https://github.com/ReekenX/snipmate.vim.git
 [submodule ".vim/bundle/surround"]
 	path = .vim/bundle/surround
