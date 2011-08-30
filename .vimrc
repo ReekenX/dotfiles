@@ -8,6 +8,10 @@ filetype plugin indent off
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+
+filetype on
+filetype plugin on
+filetype plugin indent on
 " }}}
 
 " VIM behaviour {{{
@@ -68,10 +72,10 @@ set viminfo='20,<50,s10,h
 
 " NOTE: folding disabled for now. If it will be required, then I will enable it again.
 " Folding rules {{{
-" set foldenable
-" set foldcolumn=2
-" set foldmethod=marker
-" set foldlevelstart=0
+set foldenable
+set foldcolumn=2
+set foldmethod=marker
+set foldlevelstart=0
 
 " For these commands open folding by default
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
