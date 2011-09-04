@@ -11,7 +11,7 @@ call pathogen#helptags()
 
 filetype on
 filetype plugin on
-filetype plugin indent on
+filetype plugin indent off
 " }}}
 
 " VIM behaviour {{{
@@ -70,7 +70,6 @@ set listchars=tab:»»,trail:·,extends:#,nbsp:·
 set viminfo='20,<50,s10,h
 " }}}
 
-" NOTE: folding disabled for now. If it will be required, then I will enable it again.
 " Folding rules {{{
 set foldenable
 set foldcolumn=2
@@ -189,4 +188,10 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 set completeopt=menuone,longest
+" }}}
+"
+" VIM Outliner {{{
+autocmd! BufRead,BufNewFile *.otl setfiletype vo_base
+autocmd BufRead,BufNewFile *.otl colorscheme vo_dark
+autocmd BufRead,BufNewFile *.otl set nolist
 " }}}
