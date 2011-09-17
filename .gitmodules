@@ -15,7 +15,7 @@
 	url = https://github.com/ReekenX/snipmate.vim.git
 [submodule ".vim/bundle/surround"]
 	path = .vim/bundle/surround
-	url = https://github.com/tpope/vim-surround.git
+	url = https://github.com/ReekenX/vim-surround.git
 [submodule ".vim/bundle/TailMinusF"]
 	path = .vim/bundle/TailMinusF
 	url = https://github.com/vim-scripts/TailMinusF.git

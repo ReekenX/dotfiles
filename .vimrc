@@ -11,7 +11,6 @@ call pathogen#helptags()
 
 filetype on
 filetype plugin on
-filetype plugin indent off
 " }}}
 
 " VIM behaviour {{{
@@ -193,5 +192,6 @@ set completeopt=menuone,longest
 " VIM Outliner {{{
 autocmd! BufRead,BufNewFile *.otl setfiletype vo_base
 autocmd BufRead,BufNewFile *.otl colorscheme vo_dark
+autocmd BufRead,BufNewFile *.otl filetype plugin indent on
 autocmd BufRead,BufNewFile *.otl set nolist
 " }}}

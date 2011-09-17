@@ -8,7 +8,7 @@
     co = checkout
     df = diff
     g = grep -I
-    lg = log -p
+    lg = log --oneline --decorate
     pb = publish-branch
     rb = rbranch
     rc = rank-contributors
