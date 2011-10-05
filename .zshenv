@@ -21,6 +21,7 @@ alias -g L='| less'
 alias -g C='| wc -l'
 alias -g X='| xargs'
 alias O=xdg-open
+alias rm=trash
 
 # No glob search when using special symbols
 alias find="noglob find"
