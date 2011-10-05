@@ -11,5 +11,9 @@ altscreen on
 # Turn off splash screen
 startup_message off
 
+# 256 colors support
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# Shell configuration
 shell /bin/zsh
+shelltitle 'zsh'
