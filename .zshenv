@@ -1,4 +1,4 @@
-# Special key bindings
+# Special key bindings to allow shift+left/right
 bindkey -e
 bindkey "5C" forward-word
 bindkey "5D" backward-word
@@ -30,7 +30,7 @@ alias myr='sudo service mysql restart'
 
 # No glob search when using special symbols
 alias find="noglob find"
-alias dpkg="noglob dpkg"
+alias dpkg="noglob dpkg" # Why this doesn't work???
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
