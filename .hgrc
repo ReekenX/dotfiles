@@ -20,7 +20,6 @@ hgext.bookmarks =
 hgext.progress =
 hgext.purge =
 hgext.pager =
-hgext.hgcodesmell = ~/.hg_extensions/hgcodesmell.py
 
 [pager]
 pager = LESS='FSRX' less

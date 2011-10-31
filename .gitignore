@@ -4,3 +4,4 @@
 .vim/backup/
 .vim/view/
 .vim/swap/
+*.pyc

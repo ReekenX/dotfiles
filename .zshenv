@@ -20,8 +20,13 @@ alias -g G='| grep -i'
 alias -g L='| less'
 alias -g C='| wc -l'
 alias -g X='| xargs'
-alias O=xdg-open
-alias rm=trash
+alias o='xdg-open'
+alias rm='trash'
+alias ins='sudo apt-get install'
+alias pur='sudo apt-get purge'
+alias ser='sudo apt-cache search'
+alias apr='sudo service apache2 restart'
+alias myr='sudo service mysql restart'
 
 # No glob search when using special symbols
 alias find="noglob find"
