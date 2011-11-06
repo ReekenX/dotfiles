@@ -21,12 +21,9 @@ alias -g L='| less'
 alias -g C='| wc -l'
 alias -g X='| xargs'
 alias o='xdg-open'
-alias rm='trash'
 alias ins='sudo apt-get install'
 alias pur='sudo apt-get purge'
 alias ser='sudo apt-cache search'
-alias apr='sudo service apache2 restart'
-alias myr='sudo service mysql restart'
 
 # No glob search when using special symbols
 alias find="noglob find"
@@ -40,3 +37,11 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:(all-|)files' ignored-patterns '*.pyc'
 zstyle ':completion:*:(all-|)files' ignored-patterns '*.mo'
 zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
+
+# Make simple backup with single command
+function backup () {
+    newname=$1.`date +%Y%m%d.%H%M.bak`;
+    mv $1 $newname;
+    echo "Backed up $1 to $newname.";
+    cp -p $newname $1;
+}

@@ -7,15 +7,11 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 export ZSH_THEME="reekenx"
 
-# (Un?)limited history
-HISTSIZE=999999999
-SAVEHIST=999999999
-
 # Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
+export DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # export DISABLE_LS_COLORS="true"
