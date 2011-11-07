@@ -27,3 +27,6 @@
 [submodule ".vim/bundle/vimoutliner"]
 	path = .vim/bundle/vimoutliner
 	url = git://github.com/Raimondi/vimoutliner.git
+[submodule ".vim/bundle/matchit"]
+	path = .vim/bundle/matchit
+	url = https://github.com/edsono/vim-matchit.git
