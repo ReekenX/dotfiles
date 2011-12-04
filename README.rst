@@ -1,6 +1,6 @@
-=================================
-Linux Desktop configuration files
-=================================
+=========================
+Linux configuration files
+=========================
 
 :Author: Remigijus Jarmalavicius <remigijus(a)jarmalavicius(dot)lt>
 
