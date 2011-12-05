@@ -128,6 +128,9 @@ set virtualedit=all
 
 " Allow backspace on everything in insert mode
 set backspace=indent,eol,start
+
+" Support for Lithuanian quotes (VIM SURROUND plugin)
+let g:surround_{char2nr('„')} = "„\r“"
 " }}}
 
 " Backups and swap {{{
