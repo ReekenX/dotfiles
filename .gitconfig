@@ -43,3 +43,4 @@
     autosetupmerge = true
 [core]
     excludesfile = project.vim
+    filemode = false
