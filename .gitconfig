@@ -4,7 +4,7 @@
     editor = vim
 [alias]
     br = branch
-    ci = commit -a
+    ci = commit -a -v
     co = checkout
     df = diff
     g = grep -I
