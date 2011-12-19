@@ -10,9 +10,9 @@
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule ".vim/bundle/snipmate.vim"]
-	path = .vim/bundle/snipmate.vim
-	url = git@github.com:ReekenX/snipmate.vim.git
+[submodule ".vim/bundle/vim-snipmate"]
+	path = .vim/bundle/vim-snipmate
+	url = git@github.com:ReekenX/vim-snipmate.git
 	branch = master
 [submodule ".vim/bundle/TailMinusF"]
 	path = .vim/bundle/TailMinusF
