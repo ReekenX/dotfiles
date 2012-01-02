@@ -147,7 +147,7 @@ nnoremap ; :
 
 " <F3> - to enter currently editing files list
 map <F3> :BufExplorer<CR>
-"
+
 " <SHIFT + t> - trim white spaces in lines end
 map <s-t> :%s/ \+$//g<CR>
 
@@ -210,10 +210,17 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 set completeopt=menuone,longest
 " }}}
-"
+
 " VIM Outliner {{{
 autocmd! BufRead,BufNewFile *.otl setfiletype vo_base
 autocmd BufRead,BufNewFile *.otl colorscheme vo_dark
 autocmd BufRead,BufNewFile *.otl filetype plugin indent on
 autocmd BufRead,BufNewFile *.otl set nolist
+" }}}
+" }}}
+
+" GVIM settings {{{
+if has("gui_running")
+    set lines=999 columns=999
+endif
 " }}}
