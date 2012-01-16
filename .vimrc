@@ -103,6 +103,9 @@ set fileformat="unix,dos,mac"
 " I love VIM 
 xnoremap p pgvy
 
+" Mark line where my cursor are
+set cursorline
+
 " Set tab to 4 spaces
 set tabstop=4
 set softtabstop=4
