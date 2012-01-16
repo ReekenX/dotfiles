@@ -100,6 +100,9 @@ nnoremap <C-y> 2<C-y>
 " Just file formats
 set fileformat="unix,dos,mac"
 
+" I love VIM 
+xnoremap p pgvy
+
 " Set tab to 4 spaces
 set tabstop=4
 set softtabstop=4

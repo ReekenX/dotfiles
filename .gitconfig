@@ -6,7 +6,7 @@
     br = branch
     ci = commit -a -v
     co = checkout
-    df = diff
+    df = diff --word-diff
     g = grep -I
     lg = log --decorate --graph --all
     pb = publish-branch
