@@ -14,7 +14,7 @@
     rc = rank-contributors
     rv = review
     sm = show-merges
-    st = status --ignore-submodules
+    st = status --ignore-submodules -sb
     vdiff = !sh /home/remigijus/Kodas/atviro-kodo-projektai/git-diffall/git-diffall
 [color]
     ui = auto
