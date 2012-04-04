@@ -9,12 +9,8 @@
     df = diff --word-diff
     g = grep -I
     lg = log --decorate --graph --all
-    pb = publish-branch
-    rb = rbranch
-    rc = rank-contributors
-    rv = review
-    sm = show-merges
     st = status --ignore-submodules -sb
+    mg = merge --no-commit
     vdiff = !sh /home/remigijus/Kodas/atviro-kodo-projektai/git-diffall/git-diffall
 [color]
     ui = auto
