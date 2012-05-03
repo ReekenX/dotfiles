@@ -208,6 +208,10 @@ if !exists("my_auto_commands_loaded")
     augroup END
   endif
 
+autocmd BufEnter *.php set colorcolumn=100
+autocmd BufEnter *.js set colorcolumn=100
+autocmd BufEnter *.py set colorcolumn=80
+
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS

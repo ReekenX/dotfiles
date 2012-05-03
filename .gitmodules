@@ -12,7 +12,7 @@
 	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule ".vim/bundle/vim-snipmate"]
 	path = .vim/bundle/vim-snipmate
-	url = git@github.com:ReekenX/vim-snipmate.git
+	url = https://github.com/ReekenX/vim-snipmate.git
 	branch = master
 [submodule ".vim/bundle/TailMinusF"]
 	path = .vim/bundle/TailMinusF
