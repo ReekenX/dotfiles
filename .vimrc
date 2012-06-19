@@ -154,6 +154,12 @@ nnoremap ; :
 " <F3> - to enter currently editing files list
 map <F3> :BufExplorer<CR>
 
+" <F5> - to enter `Ex`
+map <F5> :Explore<CR>
+
+" <F3> - to enter currently editing files list
+map <F3> :BufExplorer<CR>
+
 " <SHIFT + t> - trim white spaces in lines end
 map <s-t> :%s/ \+$//g<CR>
 
