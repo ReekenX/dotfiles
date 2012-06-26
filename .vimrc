@@ -217,6 +217,7 @@ if !exists("my_auto_commands_loaded")
 autocmd BufEnter *.php match ErrorMsg '\%>100v.\+'
 autocmd BufEnter *.js match ErrorMsg '\%>100v.\+' 
 autocmd BufEnter *.py match ErrorMsg '\%>80v.\+' 
+autocmd BufEnter *.otl set foldlevel=2
 
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
