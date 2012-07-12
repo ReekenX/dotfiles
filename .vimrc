@@ -166,6 +166,10 @@ map <s-t> :%s/ \+$//g<CR>
 " Avoid <F1> when we want <ESC> to press
 nnoremap <F1> <Esc>
 
+" After using :grep navigate throught found lines with CTRL+N/P
+nmap <silent> <C-N> :cn<CR>zv
+nmap <silent> <C-P> :cp<CR>zv
+
 " By default, ' jumps to the marked line, ` jumps to the marked line and
 " column, so swap them
 nnoremap ' `
