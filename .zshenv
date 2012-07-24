@@ -24,6 +24,7 @@ alias o='xdg-open'
 alias ins='sudo apt-get install'
 alias pur='sudo apt-get purge'
 alias ser='sudo apt-cache search'
+alias ll='ls -Flh --group-directories-first'
 
 # No glob search when using special symbols
 alias find="noglob find"

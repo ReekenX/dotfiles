@@ -14,3 +14,6 @@ alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png
 
 # Terminal command prompt improvement
 PS1='\[\e[1;31m\]\u@\H on \D{%Y-%m-%d} \t in \w \n$ \[\e[0m\]'
+
+# List files in "smart" way
+alias ll='ls -Flh --group-directories-first'
