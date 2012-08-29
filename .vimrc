@@ -36,9 +36,6 @@ set hidden
 " Enable ctags support
 set tag=./tags,tags
 
-" If file is not modified in VIM but changed outside, reload it
-set autoread
-
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
 
@@ -218,10 +215,12 @@ if !exists("my_auto_commands_loaded")
     augroup END
   endif
 
-autocmd BufEnter *.php match ErrorMsg '\%>100v.\+'
-autocmd BufEnter *.js match ErrorMsg '\%>100v.\+' 
-autocmd BufEnter *.py match ErrorMsg '\%>80v.\+' 
 autocmd BufEnter *.otl set foldlevel=2
+
+autocmd FileType python set textwidth=100
+autocmd FileType javascript,css,php set textwidth=100
+autocmd FileType php match ErrorMsg '\%>100v.\+'
+autocmd FileType python match ErrorMsg '\%>80v.\+' 
 
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
