@@ -97,7 +97,7 @@ nnoremap <C-y> 2<C-y>
 " Just file formats
 set fileformat="unix,dos,mac"
 
-" I love VIM 
+" I love VIM
 xnoremap p pgvy
 
 " Mark line where my cursor are
@@ -217,10 +217,10 @@ if !exists("my_auto_commands_loaded")
 
 autocmd BufEnter *.otl set foldlevel=2
 
-autocmd FileType python set textwidth=100
-autocmd FileType javascript,css,php set textwidth=100
-autocmd FileType php match ErrorMsg '\%>100v.\+'
-autocmd FileType python match ErrorMsg '\%>80v.\+' 
+autocmd FileType python set textwidth=120
+autocmd FileType javascript,css,php set textwidth=150
+" autocmd FileType javascript,css,php match ErrorMsg '\%>120v.\+'
+" autocmd FileType python match ErrorMsg '\%>80v.\+'
 
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
