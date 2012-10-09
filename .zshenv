@@ -46,3 +46,12 @@ function backup () {
     echo "Backed up $1 to $newname.";
     cp -p $newname $1;
 }
+
+# Create screen session using directory name presented
+function work () {
+    if [ -e '.screenrc' ]; then
+        screen -S $(basename `pwd`) -c .screenrc
+    else
+        screen -S $(basename `pwd`)
+    fi;
+}
