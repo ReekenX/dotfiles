@@ -30,6 +30,8 @@ alias ll='ls -Flh --group-directories-first'
 alias find="noglob find"
 alias dpkg="noglob dpkg" # Why this doesn't work???
 
+alias tmux="/usr/bin/tmux -2"
+
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
