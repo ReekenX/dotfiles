@@ -1,3 +1,27 @@
+####################### KEYSTTROKES #####################################################
+# C-a 0      select 0    Switch to window 0                                             #
+# C-a 9      select 9    Switch to window 9                                             #
+# C-a C-a    other       Toggle to the window displayed previously.                     #
+# C-a a      meta        Send the command character (C-a) to window. See escape command.#
+# C-a A      title       Allow the user to enter a name for the current window.         #
+# C-a c      screen      Create a new window with a shell and switch to that window.    #
+# C-a C-c    screen      Create a new window with a shell and switch to that window.    #
+# C-a C      clear       Clear the screen.                                              #
+# C-a d      detach      Detach screen from this terminal.                              #
+# C-a C-d    detach      Detach screen from this terminal.                              #
+# C-a D D    pow_detach  Detach and logout.                                             #
+# C-a k      kill        Destroy current window.                                        #
+# C-a C-k    kill        Destroy current window.                                        #
+# C-a space  next        Switch to the next window.                                     #
+# C-a n      next        Switch to the next window.                                     #
+# C-a C-n    next        Switch to the next window.                                     #
+# C-a x      lockscreen  Lock this terminal.                                            #
+# C-a C-x    lockscreen  Lock this terminal.                                            #
+# C-a w      windows     Show a list of window.                                         #
+# C-a C-w    windows     Show a list of window.                                         #
+# C-a ?      help        Show key bindings.                                             #
+#########################################################################################
+
 # Show status bar
 hardstatus alwayslastline
 hardstatus string '%{= kG}[ IDE for professionals ]%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g} [%{B} %Y-%m-%d %c %{g}]'
