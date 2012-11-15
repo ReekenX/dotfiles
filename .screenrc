@@ -1,4 +1,4 @@
-####################### KEYSTTROKES #####################################################
+######################## KEYSTTROKES ####################################################
 # C-a 0      select 0    Switch to window 0                                             #
 # C-a 9      select 9    Switch to window 9                                             #
 # C-a C-a    other       Toggle to the window displayed previously.                     #
