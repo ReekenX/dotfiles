@@ -21,10 +21,7 @@ alias -g L='| less'
 alias -g C='| wc -l'
 alias -g X='| xargs'
 alias o='xdg-open'
-alias ins='sudo apt-get install'
-alias pur='sudo apt-get purge'
-alias ser='sudo apt-cache search'
-alias ll='ls -Flh --group-directories-first'
+alias ll='ls -aFlh --group-directories-first'
 
 # No glob search when using special symbols
 alias find="noglob find"
