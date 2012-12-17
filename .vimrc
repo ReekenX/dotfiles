@@ -134,6 +134,12 @@ set backspace=indent,eol,start
 
 " Support for Lithuanian quotes (VIM SURROUND plugin)
 let g:surround_{char2nr('„')} = "„\r“"
+
+" Easily resize windows with +/-
+if bufwinnr(1)
+    map + <C-W>+
+    map - <C-W>-
+endif
 " }}}
 
 " Backups and swap {{{

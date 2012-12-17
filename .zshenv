@@ -22,12 +22,9 @@ alias -g C='| wc -l'
 alias -g X='| xargs'
 alias o='xdg-open'
 alias ll='ls -aFlh --group-directories-first'
-
-# No glob search when using special symbols
-alias find="noglob find"
-alias dpkg="noglob dpkg" # Why this doesn't work???
-
 alias tmux="/usr/bin/tmux -2"
+alias cp="/bin/cp -R"
+alias scp="/usr/bin/scp -r"
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
