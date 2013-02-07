@@ -8,7 +8,7 @@
     co = checkout
     df = diff --word-diff
     g = grep -I
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+    lg = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short
     st = status --ignore-submodules -sb
     mg = merge --no-commit
     vdiff = !sh /home/remigijus/Kodas/atviro-kodo-projektai/git-diffall/git-diffall
