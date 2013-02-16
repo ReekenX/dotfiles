@@ -11,7 +11,7 @@
     lg = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short
     st = status --ignore-submodules -sb
     mg = merge --no-commit
-    vdiff = !sh /home/remigijus/Kodas/atviro-kodo-projektai/git-diffall/git-diffall
+    vdiff = !sh /home/remigijus/Kodas/atviri/git-diffall/git-diffall
 [color]
     ui = auto
     interactive = auto
