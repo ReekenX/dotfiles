@@ -42,3 +42,7 @@ function backup () {
     echo "Backed up $1 to $newname.";
     cp -p $newname $1;
 }
+
+function snippets() {
+    cd ~/Kodas/asmeniniai/jCodeCollector/ && ./launch_jcc.sh
+}
