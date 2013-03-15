@@ -80,6 +80,10 @@ cpuwidget.width = 49
 cpuwidget.align = "center"
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1% cpu", 2)
 
+-- Battery
+batwidget = widget({ type = "textbox", name = "batwidget" })
+vicious.register(batwidget, vicious.widgets.bat, "$2% battery", 60, "BAT0")
+
 -- HDD temp widget
 hddtempwidget = widget({ type = "textbox" })
 vicious.register(hddtempwidget, vicious.widgets.hddtemp, "${/dev/sda}°C temp", 2)
@@ -184,6 +188,8 @@ for s = 1, screen.count() do
         s == main_screen and cpuwidget or nil,
         s == main_screen and separator or nil,
         s == main_screen and hddtempwidget or nil,
+        s == main_screen and separator or nil,
+        s == main_screen and batwidget or nil,
         s == main_screen and separator or nil,
         s == main_screen and uptimewidget or nil,
         s == main_screen and separator or nil,
@@ -380,4 +386,23 @@ end)
 
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+--
+-- -- {{{ Run programs on startup
+function run_once(cmd)
+  findme = cmd
+  firstspace = cmd:find(" ")
+  if firstspace then
+    findme = cmd:sub(0, firstspace-1)
+  end
+  awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
+end
+
+run_once("skype")
+run_once("parcellite")
+run_once("dropbox start")
+run_once("bash /home/remigijus/Kodas/skriptai/tmux_sessions.sh")
+run_once("bash .xinitrc")
+run_once("numlockx")
+run_once("nm-applet")
 -- }}}
