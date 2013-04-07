@@ -43,6 +43,12 @@ function backup () {
     cp -p $newname $1;
 }
 
+# Launch code snippets database
 function snippets() {
     cd ~/Kodas/asmeniniai/jCodeCollector/ && ./launch_jcc.sh
+}
+
+# Beep for successful action
+function success() {
+    beep -f 1000 -n -f 2000 -n -f 1500
 }
