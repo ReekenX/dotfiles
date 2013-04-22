@@ -39,7 +39,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ " 1|work-station ", " 2|browser ", " 3|terminal ", " 4|social ", " 5|time ", " 6|todo ", " 7|files ", " 8|stuff ", ""}, s, layouts[1])
+    tags[s] = awful.tag({ " ➊ work ", " ➋ net ", " ➌ term ", " ➍ soc ", " ➎ time ", " ➏ todo ", " ➐ files ", " ➑ other ", ""}, s, layouts[1])
 end
 -- }}}
 
@@ -65,7 +65,7 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = widget({ type = "textbox" })
-vicious.register(mytextclock, vicious.widgets.date, "%Y-%m-%d %T | %A ", 1)
+vicious.register(mytextclock, vicious.widgets.date, "%Y-%m-%d %H:%M %A ", 1)
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -97,7 +97,7 @@ vicious.register(netwidget, vicious.widgets.net, "${wlan0 down_kb}kb/s / ${wlan0
 
 -- Separator widget
 separator = widget({ type = "textbox" })
-separator.text = " |  "
+separator.text = " · "
 
 -- Space widget
 spacewidget = widget({ type = "textbox" })
@@ -173,7 +173,7 @@ for s = 1, screen.count() do
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
-            mylauncher,
+            -- mylauncher,
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
@@ -263,7 +263,24 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+    -- ALT+TAB fix
+    awful.key({ "Mod1", }, "Tab",
+        function ()
+            awful.client.focus.history.previous()
+            if client.focus then
+                client.focus:raise()
+            end
+        end),
+
+awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)
+                                             naughty.notify({ title = 'Master', text = tostring(awful.tag.getnmaster()), timeout = 1 }) end),
+awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)
+                                             naughty.notify({ title = 'Master', text = tostring(awful.tag.getnmaster()), timeout = 1 }) end),
+awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)
+                                             naughty.notify({ title = 'Columns', text = tostring(awful.tag.getncol()), timeout = 1 }) end),
+awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)
+                                             naughty.notify({ title = 'Columns', text = tostring(awful.tag.getncol()), timeout = 1 }) end)
 )
 
 clientkeys = awful.util.table.join(
