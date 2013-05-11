@@ -39,7 +39,8 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ " ➊ work ", " ➋ net ", " ➌ term ", " ➍ soc ", " ➎ time ", " ➏ todo ", " ➐ files ", " ➑ other ", ""}, s, layouts[1])
+    --, " ➐  ", " ➑  ", ""
+    tags[s] = awful.tag({ " ➊ visual ", " ➋ term ", " ➌ todo ", " ➍ files ", " ➎  ", " ➏  "}, s, layouts[1])
 end
 -- }}}
 
@@ -65,7 +66,7 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = widget({ type = "textbox" })
-vicious.register(mytextclock, vicious.widgets.date, "%Y-%m-%d %H:%M %A ", 1)
+vicious.register(mytextclock, vicious.widgets.date, "%b %d %A, %H:%M", 1)
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -97,7 +98,7 @@ vicious.register(netwidget, vicious.widgets.net, "${wlan0 down_kb}kb/s / ${wlan0
 
 -- Separator widget
 separator = widget({ type = "textbox" })
-separator.text = " · "
+separator.text = " | "
 
 -- Space widget
 spacewidget = widget({ type = "textbox" })
@@ -182,18 +183,18 @@ for s = 1, screen.count() do
         s == main_screen and mysystray or nil,
         spacewidget,
         s == main_screen and mytextclock or nil,
-        s == main_screen and separator or nil,
-        s == main_screen and memwidget or nil,
-        s == main_screen and separator or nil,
-        s == main_screen and cpuwidget or nil,
-        s == main_screen and separator or nil,
-        s == main_screen and hddtempwidget or nil,
-        s == main_screen and separator or nil,
-        s == main_screen and batwidget or nil,
-        s == main_screen and separator or nil,
-        s == main_screen and uptimewidget or nil,
-        s == main_screen and separator or nil,
-        s == main_screen and netwidget or nil,
+        -- s == main_screen and separator or nil,
+        -- s == main_screen and memwidget or nil,
+        -- s == main_screen and separator or nil,
+        -- s == main_screen and cpuwidget or nil,
+        -- s == main_screen and separator or nil,
+        -- s == main_screen and hddtempwidget or nil,
+        -- s == main_screen and separator or nil,
+        -- s == main_screen and batwidget or nil,
+        -- s == main_screen and separator or nil,
+        -- s == main_screen and uptimewidget or nil,
+        -- s == main_screen and separator or nil,
+        -- s == main_screen and netwidget or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -418,8 +419,8 @@ end
 run_once("skype")
 run_once("parcellite")
 run_once("dropbox start")
-run_once("bash /home/remigijus/Kodas/skriptai/tmux_sessions.sh")
-run_once("bash .xinitrc")
 run_once("numlockx")
 run_once("nm-applet")
+run_once("deluged")
+run_once("gnome-terminal")
 -- }}}
