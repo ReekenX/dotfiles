@@ -8,6 +8,7 @@ setopt MENU_COMPLETE
 
 export AUTHOR="Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>"
 export EDITOR=vim
+export PATH=$PATH:$HOME/Kodas/skriptai
 
 # My aliases
 alias '..'='cd ..'
@@ -46,4 +47,9 @@ function backup () {
 # Beep for successful action
 function success() {
     beep -f 100 -n -f 150
+}
+
+# "Smart" mplayer
+function smplayer() {
+    mplayer -fs $1 && rm $1;
 }
