@@ -258,30 +258,23 @@ globalkeys = awful.util.table.join(
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
-                  awful.util.eval, nil,
-                  awful.util.getdir("cache") .. "/history_eval")
-              end),
-    -- ALT+TAB fix
-    awful.key({ "Mod1", }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
+    -- awful.key({ modkey }, "x",
+    --           function ()
+    --               awful.prompt.run({ prompt = "Run Lua code: " },
+    --               mypromptbox[mouse.screen].widget,
+    --               awful.util.eval, nil,
+    --               awful.util.getdir("cache") .. "/history_eval")
+    --           end),
 
-awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)
-                                             naughty.notify({ title = 'Master', text = tostring(awful.tag.getnmaster()), timeout = 1 }) end),
-awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)
-                                             naughty.notify({ title = 'Master', text = tostring(awful.tag.getnmaster()), timeout = 1 }) end),
-awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)
-                                             naughty.notify({ title = 'Columns', text = tostring(awful.tag.getncol()), timeout = 1 }) end),
-awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)
-                                             naughty.notify({ title = 'Columns', text = tostring(awful.tag.getncol()), timeout = 1 }) end)
+    -- Control music with media keys
+    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)
+                                                 naughty.notify({ title = 'Master', text = tostring(awful.tag.getnmaster()), timeout = 1 }) end),
+    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)
+                                                 naughty.notify({ title = 'Master', text = tostring(awful.tag.getnmaster()), timeout = 1 }) end),
+    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)
+                                                 naughty.notify({ title = 'Columns', text = tostring(awful.tag.getncol()), timeout = 1 }) end),
+    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)
+                                                 naughty.notify({ title = 'Columns', text = tostring(awful.tag.getncol()), timeout = 1 }) end)
 )
 
 clientkeys = awful.util.table.join(
@@ -300,10 +293,10 @@ clientkeys = awful.util.table.join(
         end),
     awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 2%-") end),
     awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 2%+") end),
-    awful.key({}, "XF86AudioNext",        function () awful.util.spawn("mpc next" ) end),
-    awful.key({}, "XF86AudioPrev",        function () awful.util.spawn("mpc prev" ) end),
+    awful.key({}, "XF86AudioNext",        function () awful.util.spawn("cmus-remote -n" ) end),
+    awful.key({}, "XF86AudioPrev",        function () awful.util.spawn("cmus-remote -r" ) end),
     awful.key({}, "XF86AudioMute",        function () awful.util.spawn("bash /home/remigijus/Kodas/skriptai/mute-unmute-alsa-mixer.sh") end),
-    awful.key({}, "XF86AudioPlay",        function () awful.util.spawn("mpc toggle") end)
+    awful.key({}, "XF86AudioPlay",        function () awful.util.spawn("cmus-remote -u") end)
 )
 
 -- Compute the maximum number of digit we need, limited to 9
