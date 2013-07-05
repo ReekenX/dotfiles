@@ -414,4 +414,8 @@ run_once("numlockx")
 run_once("nm-applet")
 run_once("deluged")
 run_once("gnome-terminal")
+
+awful.hooks.timer.register(300, function ()
+    os.execute("awsetbg -r '/home/remigijus/Paveikslėliai/Ekranas'")
+end)
 -- }}}
