@@ -418,4 +418,6 @@ run_once("gnome-terminal")
 awful.hooks.timer.register(300, function ()
     os.execute("awsetbg -r '/home/remigijus/Paveikslėliai/Ekranas'")
 end)
+
+os.execute("xset r rate 220 60")
 -- }}}
