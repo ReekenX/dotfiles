@@ -38,22 +38,45 @@ zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
 
 # Make simple backup with single command
 function backup () {
-    newname=$1.`date +%Y%m%d.%H%M.bak`;
-    mv $1 $newname;
-    echo "Backed up $1 to $newname.";
-    cp -p $newname $1;
+    newname=$1.`date +%Y%m%d.%H%M.bak`
+    mv $1 $newname
+    echo "Backed up $1 to $newname."
+    cp -p $newname $1
 }
 
-# Beep for successful action
+# Beeps
 function success() {
-    beep -f 100 -n -f 150
+    beep -f 2800
+    sleep 0.2
+    beep -f 2800
+}
+
+function notification() {
+    beep -f 2800
+    sleep 0.2
+    beep -f 2800
+    sleep 0.2
+    beep -f 2800
+    sleep 0.2
+    beep -f 2800
+    sleep 0.2
+    beep -f 2800
+}
+
+function error() {
+    beep -f 900
+    sleep 0.2
+    beep -f 900
+    sleep 0.2
+    beep -f 900
 }
 
 # "Smart" mplayer
 function smplayer() {
-    mplayer -fs $1 && rm $1;
+    mplayer -fs $1 && rm $1
 }
 
+# Source SSH settings, if applicable
 SSH_ENV=$HOME/.ssh/environment
 
 function start_agent {
@@ -64,8 +87,6 @@ function start_agent {
      . ${SSH_ENV} > /dev/null
      /usr/bin/ssh-add;
 }
-
-# Source SSH settings, if applicable
 
 if [ -f "${SSH_ENV}" ]; then
      . ${SSH_ENV} > /dev/null
