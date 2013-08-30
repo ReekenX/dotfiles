@@ -26,6 +26,8 @@ alias ll='ls -aFlh --group-directories-first'
 alias tmux="/usr/bin/tmux -2"
 alias cp="/bin/cp -R"
 alias scp="/usr/bin/scp -r"
+alias :e="vim"
+alias :q="exit"
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
