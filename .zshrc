@@ -23,4 +23,7 @@ export DISABLE_AUTO_TITLE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(ssh-agent)
 
+# We will share same history file under bash and zsh
+HISTFILE=~/.shell_history
+
 source $ZSH/oh-my-zsh.sh

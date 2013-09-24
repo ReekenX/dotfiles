@@ -36,10 +36,16 @@ layouts =
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
+-- Can be useful later:
+--    " ➊ ", " ➋ ", " ➌ ", " ➍ ", " ➎  ", " ➏  ", " ➐  ", " ➑  "
 tags = {}
-for s = 1, screen.count() do
-    tags[s] = awful.tag({ " ➊ ", " ➋ ", " ➌ ", " ➍ ", " ➎  ", " ➏  ", " ➐  ", " ➑  "}, s, layouts[1])
+s = 1
+if screen.count() == 2 then
+    tags[1] = awful.tag({ " hacking ", " mail ", " calendar ", " sms ", " music  ", " ➊ ", " ➋ ", " ➌ "}, 1, layouts[1])
+    s = 2
 end
+tags[s] = awful.tag({ " hacking ", " browse ", " ➊ ", " ➋ ", " ➌ "}, s, layouts[1])
+
 -- }}}
 
 -- {{{ Menu

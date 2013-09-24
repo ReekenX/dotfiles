@@ -1,19 +1,25 @@
 # History file will be with date information on every entry (useful feature)
 export HISTTIMEFORMAT="%Y-%m-%d %T "
-export HISTFILE=~/.bash_history
-export HISTSIZE=10000
-export HISTFILESIZE=999999
+export HISTFILE=~/.shell_history
+export HISTSIZE=100000000
+export HISTFILESIZE=999999999
 export HISTIGNORE=""
 export HISTCONTROL=""
 
 # No colors for `ls` command
 alias ls='ls --color=never'
 
-# Alert me if program in command line finished his job
-alias alert='notify-send -i /usr/share/icons/gnome/32x32/apps/gnome-terminal.png "Operation successfully completed."'
-
-# Terminal command prompt improvement
-PS1='\[\e[1;31m\]\u@\H on \D{%Y-%m-%d} \t in \w \n$ \[\e[0m\]'
-
 # List files in "smart" way
-alias ll='ls -Flh --group-directories-first'
+alias ll='ls -Flh --color=never --group-directories-first'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+alias i="sudo apt-get install -y"
+alias s="sudo apt-cache search"
+alias u="sudo apt-get update"
+
+alias mr="/etc/init.d/mysql restart"
+alias pr="/etc/init.d/postgresql restart"
+alias ar="/etc/init.d/apache2 restart"
