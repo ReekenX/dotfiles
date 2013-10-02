@@ -1,5 +1,7 @@
 " No compatible mode makes VIM more friendly than old VI
 set nocompatible
+scriptencoding utf-8
+set encoding=utf-8
 
 " Load pathogen and plugins {{{
 filetype off
