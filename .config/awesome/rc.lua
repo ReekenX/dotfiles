@@ -41,10 +41,10 @@ layouts =
 tags = {}
 s = 1
 if screen.count() == 2 then
-    tags[1] = awful.tag({ " hacking ", " mail ", " calendar ", " sms ", " music  ", " ➊ ", " ➋ ", " ➌ "}, 1, layouts[1])
+    tags[1] = awful.tag({ " hacking ", " mail ", " calendar ", " trade ", " ➊ ", " ➋ ", " ➌ "}, 1, layouts[1])
     s = 2
 end
-tags[s] = awful.tag({ " hacking ", " browse ", " ➊ ", " ➋ ", " ➌ "}, s, layouts[1])
+tags[s] = awful.tag({ " hacking ", " files ", " ➊ ", " ➋ ", " ➌ "}, s, layouts[1])
 
 -- }}}
 
