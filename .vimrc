@@ -223,7 +223,8 @@ if !exists("my_auto_commands_loaded")
     augroup END
   endif
 
-autocmd BufEnter *.otl set foldlevel=2
+autocmd BufEnter *.otl set foldlevel=0
+autocmd BufEnter *.otl set textwidth=20
 
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
