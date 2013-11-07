@@ -225,6 +225,7 @@ if !exists("my_auto_commands_loaded")
 
 autocmd BufEnter *.otl set foldlevel=0
 autocmd BufEnter *.otl set textwidth=20
+autocmd Bufenter *.shpaml set syntax=shpaml
 
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete

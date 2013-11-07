@@ -4,7 +4,7 @@
 " Filenames:	*.haml
 " Last Change:	2010 Aug 09
 
-unlet b:current_syntax
+" unlet b:current_syntax
 
 if exists("b:current_syntax")
   finish
