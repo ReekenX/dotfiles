@@ -40,3 +40,5 @@
 [core]
     excludesfile = project.vim
     filemode = false
+[push]
+	default = matching
