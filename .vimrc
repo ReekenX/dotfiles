@@ -224,7 +224,8 @@ if !exists("my_auto_commands_loaded")
   endif
 
 autocmd BufEnter *.otl set foldlevel=0
-autocmd BufEnter *.otl set textwidth=20
+autocmd BufEnter *.otl set textwidth=80
+autocmd BufEnter *.otl set wrap
 autocmd Bufenter *.shpaml set syntax=shpaml
 
 " Omnicomplete {{{
