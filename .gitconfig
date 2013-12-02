@@ -6,7 +6,7 @@
     br = branch
     ci = commit -a -v
     co = checkout
-    df = diff --word-diff
+    df = diff --word-diff --ignore-submodules
     g = grep -I
     lg = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short
     st = status --ignore-submodules -sb
