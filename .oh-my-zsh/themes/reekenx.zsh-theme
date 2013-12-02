@@ -1,4 +1,4 @@
-PROMPT="%{$terminfo[bold]$fg[red]%}%n@%m on 20%D %* in %~
+PROMPT="%{$terminfo[bold]$fg[red]%}20%D %* in %~
 $%{$reset_color%} "
 RPS1="${return_code}"
 
