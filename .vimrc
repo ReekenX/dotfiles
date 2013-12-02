@@ -65,7 +65,8 @@ set list
 set listchars=tab:»»,trail:·,extends:#,nbsp:·
 
 " Keep VIM history even file is closed
-set viminfo='20,<50,s10,h
+set viminfo='100,:100,<100,/100,%100
+set viminfo+=n~/.vim/viminfo
 " }}}
 
 " Folding rules {{{
