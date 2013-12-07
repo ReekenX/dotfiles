@@ -97,10 +97,6 @@ vicious.register(cpuwidget, vicious.widgets.cpu, "$1% cpu", 2)
 batwidget = widget({ type = "textbox", name = "batwidget" })
 vicious.register(batwidget, vicious.widgets.bat, "$2% battery", 60, "BAT0")
 
--- HDD temp widget
-hddtempwidget = widget({ type = "textbox" })
-vicious.register(hddtempwidget, vicious.widgets.hddtemp, "${/dev/sda}°C temp", 2)
-
 -- Uptime widget
 uptimewidget = widget({ type = "textbox" })
 vicious.register(uptimewidget, vicious.widgets.uptime, "$6 load", 1)
@@ -199,8 +195,6 @@ for s = 1, screen.count() do
         s == main_screen and memwidget or nil,
         s == main_screen and separator or nil,
         s == main_screen and cpuwidget or nil,
-        s == main_screen and separator or nil,
-        s == main_screen and hddtempwidget or nil,
         s == main_screen and separator or nil,
         s == main_screen and batwidget or nil,
         s == main_screen and separator or nil,
@@ -303,6 +297,8 @@ clientkeys = awful.util.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical
         end),
+
+    -- Custom
     awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 2%-") end),
     awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 2%+") end),
     awful.key({}, "XF86AudioNext",        function () awful.util.spawn("cmus-remote -n" ) end),
