@@ -3,7 +3,6 @@ require("awful.autofocus")
 require("awful.rules")
 require("beautiful")
 require("naughty")
-require("debian.menu")
 
 vicious = require("vicious")
 
@@ -28,9 +27,17 @@ modkey = "Mod4"
 layouts =
 {
     awful.layout.suit.tile,
+    awful.layout.suit.tile.left,
+    awful.layout.suit.tile.bottom,
+    awful.layout.suit.tile.top,
+    awful.layout.suit.fair,
+    awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
+    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen
+    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier,
+    awful.layout.suit.floating
 }
 -- }}}
 
@@ -39,12 +46,14 @@ layouts =
 -- Can be useful later:
 --    " ➊ ", " ➋ ", " ➌ ", " ➍ ", " ➎  ", " ➏  ", " ➐  ", " ➑  "
 tags = {}
-s = 1
 if screen.count() == 2 then
-    tags[1] = awful.tag({ " hacking ", " mail ", " calendar ", " trade ", " ➊ ", " ➋ ", " ➌ "}, 1, layouts[1])
+    tags[1] = awful.tag({ " net ", " trade ", "music", " ➊ ", " ➋ ", " ➌ "}, 1, layouts[1])
+    tags[2] = awful.tag({ " hacking ", " ➊ ", " ➋ ", " ➌ "}, s, layouts[1])
     s = 2
 end
-tags[s] = awful.tag({ " hacking ", " files ", " ➊ ", " ➋ ", " ➌ "}, s, layouts[1])
+if screen.count() == 1 then
+    tags[1] = awful.tag({ " net ", " hacking ", " ➊ ", " ➋ ", " ➌ "}, s, layouts[1])
+end
 
 -- }}}
 
@@ -58,7 +67,6 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
                                     { "Terminal", terminal }
                                   }
                         })
@@ -187,18 +195,18 @@ for s = 1, screen.count() do
         s == main_screen and mysystray or nil,
         spacewidget,
         s == main_screen and mytextclock or nil,
-        -- s == main_screen and separator or nil,
-        -- s == main_screen and memwidget or nil,
-        -- s == main_screen and separator or nil,
-        -- s == main_screen and cpuwidget or nil,
-        -- s == main_screen and separator or nil,
-        -- s == main_screen and hddtempwidget or nil,
-        -- s == main_screen and separator or nil,
-        -- s == main_screen and batwidget or nil,
-        -- s == main_screen and separator or nil,
-        -- s == main_screen and uptimewidget or nil,
-        -- s == main_screen and separator or nil,
-        -- s == main_screen and netwidget or nil,
+        s == main_screen and separator or nil,
+        s == main_screen and memwidget or nil,
+        s == main_screen and separator or nil,
+        s == main_screen and cpuwidget or nil,
+        s == main_screen and separator or nil,
+        s == main_screen and hddtempwidget or nil,
+        s == main_screen and separator or nil,
+        s == main_screen and batwidget or nil,
+        s == main_screen and separator or nil,
+        s == main_screen and uptimewidget or nil,
+        s == main_screen and separator or nil,
+        s == main_screen and netwidget or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -362,13 +370,6 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
 }
 -- }}}
 
@@ -415,11 +416,7 @@ end
 
 run_once("skype")
 run_once("parcellite")
-run_once("dropbox start")
-run_once("numlockx")
-run_once("nm-applet")
-run_once("deluged")
-run_once("gnome-terminal")
+run_once("xterm")
 
 awful.hooks.timer.register(300, function ()
     os.execute("awsetbg -r '/home/remigijus/Paveikslėliai/Ekranas'")
