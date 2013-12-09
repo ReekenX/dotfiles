@@ -228,6 +228,7 @@ autocmd BufEnter *.otl set foldlevel=0
 autocmd BufEnter *.otl set textwidth=80
 autocmd BufEnter *.otl set wrap
 autocmd Bufenter *.shpaml set syntax=shpaml
+autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
 
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete

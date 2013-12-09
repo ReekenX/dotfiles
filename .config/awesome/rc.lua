@@ -48,11 +48,10 @@ layouts =
 tags = {}
 if screen.count() == 2 then
     tags[1] = awful.tag({ " net ", " trade ", "music", " ➊ ", " ➋ ", " ➌ "}, 1, layouts[1])
-    tags[2] = awful.tag({ " hacking ", " ➊ ", " ➋ ", " ➌ "}, s, layouts[1])
-    s = 2
+    tags[2] = awful.tag({ " hacking ", " ➊ ", " ➋ ", " ➌ "}, 2, layouts[1])
 end
 if screen.count() == 1 then
-    tags[1] = awful.tag({ " net ", " hacking ", " ➊ ", " ➋ ", " ➌ "}, s, layouts[1])
+    tags[1] = awful.tag({ " net ", " hacking ", " ➊ ", " ➋ ", " ➌ "}, 1, layouts[1])
 end
 
 -- }}}
