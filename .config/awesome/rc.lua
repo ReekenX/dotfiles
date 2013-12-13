@@ -198,8 +198,6 @@ for s = 1, screen.count() do
         s == main_screen and batwidget or nil,
         s == main_screen and separator or nil,
         s == main_screen and uptimewidget or nil,
-        s == main_screen and separator or nil,
-        s == main_screen and netwidget or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
