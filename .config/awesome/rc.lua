@@ -151,11 +151,7 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
-if screen.count() > 1 then
-    main_screen = 2
-else
-    main_screen = 1
-end
+main_screen = 1
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
@@ -181,14 +177,13 @@ for s = 1, screen.count() do
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
-            -- mylauncher,
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
         },
-        spacewidget,
+        mylayoutbox[s],
         s == main_screen and mysystray or nil,
-        spacewidget,
+        s == main_screen and spacewidget,
         s == main_screen and mytextclock or nil,
         s == main_screen and separator or nil,
         s == main_screen and memwidget or nil,
