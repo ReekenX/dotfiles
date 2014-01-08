@@ -64,9 +64,6 @@ set smartcase
 set list
 set listchars=tab:»»,trail:·,extends:#,nbsp:·
 
-" Keep VIM history even file is closed
-set viminfo='100,:100,<100,/100,%100
-set viminfo+=n~/.vim/viminfo
 " }}}
 
 " Folding rules {{{
@@ -143,6 +140,9 @@ if bufwinnr(1)
     map + <C-W>+
     map - <C-W>-
 endif
+
+" No annoying beeping
+set noeb vb t_vb=
 " }}}
 
 " Backups and swap {{{
