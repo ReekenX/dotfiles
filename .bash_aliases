@@ -10,7 +10,7 @@ export HISTCONTROL=""
 alias ls='ls --color=never'
 
 # List files in "smart" way
-alias ll='ls -Flh --color=never --group-directories-first'
+alias ll='ls -Flh --color=auto --group-directories-first'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
