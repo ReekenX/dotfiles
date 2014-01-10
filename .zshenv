@@ -22,7 +22,7 @@ alias -g L='| less'
 alias -g C='| wc -l'
 alias -g X='| xargs'
 alias o='xdg-open'
-alias ll='ls -aFlh --group-directories-first'
+alias ll='ls -Flh --group-directories-first --color=auto'
 alias tmux="/usr/bin/tmux -2"
 alias cp="/bin/cp -R"
 alias scp="/usr/bin/scp -r"
