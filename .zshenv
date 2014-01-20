@@ -79,24 +79,26 @@ function smplayer() {
     mplayer -fs $1 && rm $1
 }
 
-# Source SSH settings, if applicable
+# Fix ssh-add for multiple sessions
 SSH_ENV=$HOME/.ssh/environment
 
 function start_agent {
-     echo "Initialising new SSH agent..."
-     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
-     echo succeeded
+     /usr/bin/ssh-agent -a /tmp/.current-ssh-agent | sed 's/^echo/#echo/' > ${SSH_ENV}
+     export SSH_AUTH_SOCK=/tmp/.current-ssh-agent
      chmod 600 ${SSH_ENV}
      . ${SSH_ENV} > /dev/null
      /usr/bin/ssh-add;
 }
 
+# Source SSH settings, if applicable
 if [ -f "${SSH_ENV}" ]; then
-     . ${SSH_ENV} > /dev/null
-     #ps ${SSH_AGENT_PID} doesn't work under cywgin
+     echo "Sourcing ssh-agent settings..."
+     . ${SSH_ENV}
      ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+         echo "Starting new ssh-agent..."
          start_agent;
      }
 else
+     echo "Starting new ssh-agent..."
      start_agent;
 fi
