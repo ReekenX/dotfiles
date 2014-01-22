@@ -29,6 +29,10 @@ alias scp="/usr/bin/scp -r"
 alias :e="vim"
 alias :q="exit"
 alias bzr="LC_ALL=C /usr/bin/bzr"
+alias todo="~/Kodas/asmeniniai/todo.txt/todo.sh -d ~/Kodas/asmeniniai/todo.txt/todo.cfg"
+
+# Enable sorting of TODO's easily
+export TODOTXT_DEFAULT_ACTION=ls
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
@@ -92,13 +96,10 @@ function start_agent {
 
 # Source SSH settings, if applicable
 if [ -f "${SSH_ENV}" ]; then
-     echo "Sourcing ssh-agent settings..."
      . ${SSH_ENV}
      ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-         echo "Starting new ssh-agent..."
          start_agent;
      }
 else
-     echo "Starting new ssh-agent..."
      start_agent;
 fi
