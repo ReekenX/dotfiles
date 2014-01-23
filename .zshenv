@@ -32,7 +32,7 @@ alias bzr="LC_ALL=C /usr/bin/bzr"
 alias todo="~/Kodas/asmeniniai/todo.txt/todo.sh -d ~/Kodas/asmeniniai/todo.txt/todo.cfg"
 
 # Enable sorting of TODO's easily
-export TODOTXT_DEFAULT_ACTION=ls
+export TODOTXT_DEFAULT_ACTION=projectview
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
