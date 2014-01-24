@@ -36,7 +36,7 @@ colorscheme wombat256
 set hidden
 
 " Enable ctags support
-set tag=./tags,tags
+set tag=./.ctags,.ctags
 
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
