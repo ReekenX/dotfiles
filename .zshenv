@@ -9,6 +9,9 @@ setopt MENU_COMPLETE
 export AUTHOR="Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>"
 export EDITOR=vim
 
+# Set default view for `todo.txt`
+export TODOTXT_DEFAULT_ACTION=projectview
+
 # My aliases
 alias '..'='cd ..'
 alias -g ...='../..'
@@ -30,8 +33,6 @@ alias :q="exit"
 alias bzr="LC_ALL=C /usr/bin/bzr"
 alias todo="~/Kodas/asmeniniai/todo.txt/todo.sh -d ~/Kodas/asmeniniai/todo.txt/todo.cfg"
 
-# Enable sorting of TODO's easily
-export TODOTXT_DEFAULT_ACTION=projectview
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
@@ -41,46 +42,6 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:(all-|)files' ignored-patterns '*.pyc'
 zstyle ':completion:*:(all-|)files' ignored-patterns '*.mo'
 zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
-
-# Make simple backup with single command
-function backup () {
-    newname=$1.`date +%Y%m%d.%H%M.bak`
-    mv $1 $newname
-    echo "Backed up $1 to $newname."
-    cp -p $newname $1
-}
-
-# Beeps
-function success() {
-    beep -f 2800
-    sleep 0.2
-    beep -f 2800
-}
-
-function notification() {
-    beep -f 2800
-    sleep 0.2
-    beep -f 2800
-    sleep 0.2
-    beep -f 2800
-    sleep 0.2
-    beep -f 2800
-    sleep 0.2
-    beep -f 2800
-}
-
-function error() {
-    beep -f 900
-    sleep 0.2
-    beep -f 900
-    sleep 0.2
-    beep -f 900
-}
-
-# "Smart" mplayer
-function smplayer() {
-    mplayer -fs $1 && rm $1
-}
 
 # Fix ssh-add for multiple sessions
 SSH_ENV=$HOME/.ssh/environment
