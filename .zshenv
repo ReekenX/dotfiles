@@ -8,7 +8,6 @@ setopt MENU_COMPLETE
 
 export AUTHOR="Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>"
 export EDITOR=vim
-export PATH=$PATH:$HOME/Kodas/skriptai
 
 # My aliases
 alias '..'='cd ..'
