@@ -22,7 +22,6 @@ alias -g .......='../../../../../..'
 alias -g G='| grep -i'
 alias -g L='| less'
 alias -g C='| wc -l'
-alias -g X='| xargs'
 alias o='xdg-open'
 alias ll='ls -Flh --group-directories-first --color=auto'
 alias tmux="/usr/bin/tmux -2"
@@ -31,8 +30,7 @@ alias scp="/usr/bin/scp -r"
 alias :e="vim"
 alias :q="exit"
 alias bzr="LC_ALL=C /usr/bin/bzr"
-alias todo="~/Kodas/asmeniniai/todo.txt/todo.sh -d ~/Kodas/asmeniniai/todo.txt/todo.cfg"
-
+alias todo="~/Kodas/asmeniniai/todo.txt/todo.sh -c -f -d ~/Kodas/asmeniniai/todo.txt/todo.cfg"
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
