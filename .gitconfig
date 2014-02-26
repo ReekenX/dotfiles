@@ -38,7 +38,7 @@
 [branch]
     autosetupmerge = true
 [core]
-    excludesfile = project.vim
+    excludesfile = ~/.gitignore_global
     filemode = false
 [push]
 	default = matching
