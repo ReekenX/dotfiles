@@ -9,9 +9,6 @@ setopt MENU_COMPLETE
 export AUTHOR="Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>"
 export EDITOR=vim
 
-# Set default view for `todo.txt`
-export TODOTXT_DEFAULT_ACTION=projectview
-
 # My aliases
 alias '..'='cd ..'
 alias -g ...='../..'
@@ -30,7 +27,6 @@ alias scp="/usr/bin/scp -r"
 alias :e="vim"
 alias :q="exit"
 alias bzr="LC_ALL=C /usr/bin/bzr"
-alias todo="~/Kodas/asmeniniai/todo.txt/todo.sh -c -f -d ~/Kodas/asmeniniai/todo.txt/todo.cfg"
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
