@@ -1,7 +1,9 @@
-Linux configuration files
-=========================
+Dotfiles for Linux software
+===========================
 
 Linux software configuration files for geeks who are using (could be any of them): vim, git, hg, screen, tmux, buildout, oh-my-zsh, rst. Home edition.
+
+Already tested on Gentoo, Ubuntu and Debian servers. Works out of the box.
 
 For server dotfiles see other repository called dotfiles-server.
 
