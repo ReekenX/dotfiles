@@ -25,6 +25,13 @@ For g33ks this should sound better::
     git submodule init
     git submodule update
 
+Hardcoded stuff
+---------------
+
+Because `buildout` is buggy, and '~' doesn't expand to home directory, .buildout folder contains my hardcoded path. Make sure you change it if you are going to use it.
+
+GIT configuration (.gitconfig) has my name, surname and e-mail information. Be sure to change it. Same with Mercurial (.hgrc).
+
 Bugs
 ----
 

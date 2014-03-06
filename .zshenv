@@ -6,7 +6,6 @@ bindkey "5D" backward-word
 # Autocomplete like in VIM
 setopt MENU_COMPLETE
 
-export AUTHOR="Remigijus Jarmalavičius <remigijus@jarmalavicius.lt>"
 export EDITOR=vim
 
 # My aliases
