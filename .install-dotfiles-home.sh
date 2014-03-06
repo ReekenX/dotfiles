@@ -16,9 +16,8 @@ git clone --quiet --bare https://github.com/ReekenX/dotfiles-home ~/.git
 echo "Performing required configuration for GIT..."
 git config core.bare false
 echo "Applying files to your home dir..."
-git checkout -f master
+git checkout --quiet -f master
 echo "Downloading VIM plugins..."
 git submodule --quiet init
 git submodule --quiet update
-cd -
 echo "Done."

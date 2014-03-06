@@ -25,6 +25,15 @@ For g33ks this should sound better::
     git submodule init
     git submodule update
 
+Automatic installer
+-------------------
+
+Run only, if you trust me::
+
+    curl -s -L https://raw.github.com/ReekenX/dotfiles-home/master/.install-dotfiles-home.sh | bash
+
+It has the same commands I wrote above in `Install` section.
+
 Hardcoded stuff
 ---------------
 
