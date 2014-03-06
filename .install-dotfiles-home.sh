@@ -18,7 +18,7 @@ git config core.bare false
 echo "Applying files to your home dir..."
 git checkout -f master
 echo "Downloading VIM plugins..."
-git submodule --quie init
-git submodule --quie update
+git submodule --quiet init
+git submodule --quiet update
 cd -
 echo "Done."
