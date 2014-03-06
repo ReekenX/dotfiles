@@ -15,7 +15,7 @@ Install
 
 Open your home directory, extract to .git folder, update source code and update GIT submodules. They are used to receive latest VIM plugins.
 
-For g33ks this should sound better:
+For g33ks this should sound better::
 
     git clone --bare https://github.com/ReekenX/dotfiles-home ~/.git
     git config core.bare false
