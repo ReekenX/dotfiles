@@ -1,0 +1,8 @@
+[general]
+hist_file = ~/.bpython_history
+hist_length = 9999999999
+tab_length = 4
+color_scheme = default
+arg_spec = True
+syntax = True
+auto_display_list = True
