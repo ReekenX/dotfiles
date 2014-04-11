@@ -26,4 +26,12 @@ plugins=(ssh-agent)
 # We will share same history file under bash and zsh
 HISTFILE=~/.shell_history
 
+# COMPLETION SETTINGS
+# # add custom completion scripts
+fpath=(~/.zsh/completion $fpath) 
+#  
+# compsys initialization
+autoload -U compinit
+compinit
+
 source $ZSH/oh-my-zsh.sh

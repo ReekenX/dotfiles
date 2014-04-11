@@ -6,7 +6,7 @@
     br = branch
     ci = commit -a -v
     co = checkout
-    df = diff --word-diff --ignore-submodules
+    df = !git --no-pager diff --word-diff --ignore-submodules --ignore-all-space --ignore-blank-lines
     g = grep -I
     lg = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short --all
     st = status --ignore-submodules -sb
@@ -25,13 +25,11 @@
     old = red bold
     new = green bold
 [color "status"]
-    added = yellow
-    changed = green
+    added = green
+    changed = yellow
     untracked = cyan
 [merge]
     log = true
-[diff]
-    tool = meld
 [mergetool]
     keepbackup = true
     keeptemporaries = false
@@ -40,5 +38,8 @@
 [core]
     excludesfile = ~/.gitignore_global
     filemode = false
+    commentchar = $
 [push]
-	default = matching
+    default = matching
+[gui]
+    editor = /usr/local/bin/editor.bash
