@@ -1,12 +1,10 @@
 " No compatible mode makes VIM more friendly than old VI
 set nocompatible
-scriptencoding utf-8
-set encoding=utf-8
 
 " Load pathogen and plugins {{{
 filetype off
 filetype plugin on
-filetype plugin indent off
+filetype plugin indent on
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
@@ -32,7 +30,7 @@ let g:pyflakes_use_quickfix = 0
 " Default theme
 colorscheme wombat256
 
-" Hide buffer
+" Don't force to write when switching to other file
 set hidden
 
 " Enable ctags support
@@ -55,6 +53,7 @@ set ignorecase
 
 " Found text will be highlighted and search will be repeated over file
 set incsearch
+set hlsearch
 
 " Smart search: if lowercase ignore case of matches, if not case-sensitive
 " search
@@ -83,6 +82,10 @@ highlight Folded ctermbg=black ctermfg=blue cterm=none
 " Mapleader from \ to ,
 let mapleader=","
 
+" Only UTF-8!
+scriptencoding utf-8
+set encoding=utf-8
+
 " Enable syntax highlighting
 syntax on
 
@@ -90,15 +93,14 @@ syntax on
 set termencoding=utf-8
 set encoding=utf-8
 
-" More faster scrolling
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 " Just file formats
 set fileformat="unix,dos,mac"
-
-" I love VIM
-xnoremap p pgvy
 
 " Mark line where my cursor are
 set cursorline
@@ -108,9 +110,10 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+set smarttab
 
-" Enable wrap mode to see long code lines
-set wrap
+" Don't wrap text (it's like punishment for bad code)
+set nowrap
 set textwidth=0
 
 " Enable mouse features
@@ -154,8 +157,21 @@ set noswapfile
 " Mappings {{{
 " Note that <F2> is reserved for toggle paste mode
 
+" Fixed copying. The number one annoying feature of VIM!
+xnoremap p pgvy
+
 " Don't press the SHIFT in normal mode
 nnoremap ; :
+
+" move to beginning/end of line
+nnoremap B ^
+nnoremap E $
+
+nmap <silent> ,/ :nohlsearch<CR>
+
+" Tab navigation
+nmap ,p :bp<CR>
+nmap ,n :bn<CR>
 
 " <F3> - to enter currently editing files list
 map <F3> :BufExplorer<CR>
@@ -199,7 +215,7 @@ nmap <F8> :python RunUnitTestsUnderCursor()<CR>
 " Ignore these file types on :e
 set wildmenu
 set wildmode=list:full
-set wildignore=*.swp,*.bak,*.pyc
+set wildignore=*.swp,*.bak,*.pyc,*.pyo
 
 " If VIM founds project.vim file in project root, it will be loaded.
 " This is required if project has specific settings.
@@ -245,10 +261,4 @@ autocmd BufRead,BufNewFile *.otl colorscheme vo_dark
 autocmd BufRead,BufNewFile *.otl filetype plugin indent on
 autocmd BufRead,BufNewFile *.otl set nolist
 " }}}
-" }}}
-
-" GVIM settings {{{
-if has("gui_running")
-    set lines=999 columns=999
-endif
 " }}}
