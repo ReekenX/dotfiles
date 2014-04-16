@@ -146,6 +146,9 @@ endif
 
 " No annoying beeping
 set noeb vb t_vb=
+
+let g:AutoClosePairs = "() {} \" '"
+let g:AutoClosePairs_add = "<> | ' \""
 " }}}
 
 " Backups and swap {{{
