@@ -214,12 +214,15 @@ inoremap jk <Esc>
 nmap <F8> :python RunUnitTestsUnderCursor()<CR>
 " }}}
 
-" File types options {{{
-" Ignore these file types on :e
+"{{{ Ignore file types and directories
 set wildmenu
+set wildchar=<tab>
 set wildmode=list:full
-set wildignore=*.swp,*.bak,*.pyc,*.pyo
+set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~
+set wildignore+=virtual/,.virtualenv/,eggs/
+" }}}
 
+" File types options {{{
 " If VIM founds project.vim file in project root, it will be loaded.
 " This is required if project has specific settings.
 silent! source project.vim
