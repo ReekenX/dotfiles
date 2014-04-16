@@ -1,9 +1,6 @@
 [submodule ".vim/bundle/bufexplorer"]
 	path = .vim/bundle/bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
-[submodule ".vim/bundle/delimitMate"]
-	path = .vim/bundle/delimitMate
-	url = https://github.com/vim-scripts/delimitMate.vim.git
 [submodule ".vim/bundle/IndexedSearch"]
 	path = .vim/bundle/IndexedSearch
 	url = https://github.com/vim-scripts/IndexedSearch.git
@@ -61,3 +58,9 @@
 [submodule ".vim/bundle/powerline"]
 	path = .vim/bundle/powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
+[submodule ".vim/bundle/ctrlp"]
+	path = .vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/autoclose"]
+	path = .vim/bundle/autoclose
+	url = https://github.com/Townk/vim-autoclose.git

@@ -26,6 +26,7 @@ alias scp="/usr/bin/scp -r"
 alias :e="vim"
 alias :q="exit"
 alias bzr="LC_ALL=C /usr/bin/bzr"
+alias rm="/bin/rm -rvf"
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
