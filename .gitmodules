@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/autoclose"]
 	path = .vim/bundle/autoclose
 	url = https://github.com/Townk/vim-autoclose.git
+[submodule ".vim/bundle/vim-rename2"]
+	path = .vim/bundle/rename2
+    url = https://github.com/ReekenX/vim-rename2.git
