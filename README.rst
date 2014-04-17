@@ -5,8 +5,6 @@ Linux software configuration files for geeks who are using (could be any of them
 
 Already tested on Gentoo, Ubuntu and Debian servers. Works out of the box.
 
-For server dotfiles see other repository called dotfiles-server.
-
 License
 -------
 
@@ -36,8 +34,6 @@ It has the same commands I wrote above in `Install` section.
 
 Hardcoded stuff
 ---------------
-
-Because `buildout` is buggy, and '~' doesn't expand to home directory, .buildout folder contains my hardcoded path. Make sure you change it if you are going to use it.
 
 GIT configuration (.gitconfig) has my name, surname and e-mail information. Be sure to change it. Same with Mercurial (.hgrc).
 
