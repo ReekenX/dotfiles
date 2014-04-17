@@ -8,26 +8,6 @@ setopt MENU_COMPLETE
 
 export EDITOR=vim
 
-# My aliases
-alias '..'='cd ..'
-alias -g ...='../..'
-alias -g ....='../../..'
-alias -g .....='../../../..'
-alias -g ......='../../../../..'
-alias -g .......='../../../../../..'
-alias -g G='| grep -i'
-alias -g L='| less'
-alias -g C='| wc -l'
-alias o='xdg-open'
-alias ll='ls -Flh --group-directories-first --color=auto'
-alias tmux="/usr/bin/tmux -2"
-alias cp="/bin/cp -R"
-alias scp="/usr/bin/scp -r"
-alias :e="vim"
-alias :q="exit"
-alias bzr="LC_ALL=C /usr/bin/bzr"
-alias rm="/bin/rm -rvf"
-
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
@@ -57,3 +37,5 @@ if [ -f "${SSH_ENV}" ]; then
 else
      start_agent;
 fi
+
+source ~/.zsh_aliases

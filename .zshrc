@@ -28,8 +28,8 @@ HISTFILE=~/.shell_history
 
 # COMPLETION SETTINGS
 # # add custom completion scripts
-fpath=(~/.zsh/completion $fpath) 
-#  
+fpath=(~/.zsh/completion $fpath)
+
 # compsys initialization
 autoload -U compinit
 compinit
