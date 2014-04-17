@@ -1,6 +1,7 @@
 #!/bin/bash
 
-cd
+# Go home!
+cd ~
 
 # These "just for fun"
 echo "Checking operating system..."
@@ -11,6 +12,8 @@ echo "Checking connected hardware..."
 sleep 0.4
 echo "Checking memory and disk space..."
 sleep 0.2
+
+# Real work here
 echo "Downloading repository and required files..."
 git clone --quiet --bare https://github.com/ReekenX/dotfiles-home ~/.git
 echo "Performing required configuration for GIT..."
