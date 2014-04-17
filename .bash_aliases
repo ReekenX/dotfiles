@@ -3,7 +3,7 @@ export HISTTIMEFORMAT="%Y-%m-%d %T "
 export HISTFILE=~/.shell_history
 export HISTSIZE=100000000
 export HISTFILESIZE=999999999
-export HISTIGNORE=""
+export HISTIGNORE="mysqldump:mysql"
 export HISTCONTROL=""
 
 # No colors for `ls` command
