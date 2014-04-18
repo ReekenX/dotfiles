@@ -6,6 +6,7 @@ bindkey "5D" backward-word
 # Autocomplete like in VIM
 setopt MENU_COMPLETE
 
+# Development stuff
 export EDITOR=vim
 
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
