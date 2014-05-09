@@ -255,6 +255,10 @@ autocmd BufEnter *.otl set wrap
 autocmd Bufenter *.shpaml set syntax=shpaml
 autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
 
+" Automatically load common libraries
+set path+=website/**
+set path+=src/**
+
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
