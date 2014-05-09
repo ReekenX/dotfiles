@@ -163,6 +163,12 @@ set noswapfile
 " Fixed copying. The number one annoying feature of VIM!
 xnoremap p pgvy
 
+" VIM moving based on screen works better for long text files
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+
 " Don't press the SHIFT in normal mode
 nnoremap ; :
 
