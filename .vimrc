@@ -160,14 +160,14 @@ set noswapfile
 " Mappings {{{
 " Note that <F2> is reserved for toggle paste mode
 
-" Fixed copying. The number one annoying feature of VIM!
-xnoremap p pgvy
-
 " VIM moving based on screen works better for long text files
 nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
+
+" Fixing "broken" VIM regexp
+nnoremap / /\v
 
 " Don't press the SHIFT in normal mode
 nnoremap ; :
