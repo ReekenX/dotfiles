@@ -168,6 +168,7 @@ nnoremap gj j
 
 " Fixing "broken" VIM regexp
 nnoremap / /\v
+cnoremap %s/ %s/\v
 
 " Don't press the SHIFT in normal mode
 nnoremap ; :
