@@ -166,6 +166,9 @@ xnoremap p pgvy
 " Don't press the SHIFT in normal mode
 nnoremap ; :
 
+" Expand %% to full file directory (without filename!)
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " move to beginning/end of line
 nnoremap B ^
 nnoremap E $
