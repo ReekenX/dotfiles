@@ -39,6 +39,8 @@ set tag=./.ctags,.ctags
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
 
+set viminfo='50,:50,<50,s10,h,n/tmp/.viminfo
+
 " GUI settings
 set title
 

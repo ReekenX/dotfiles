@@ -58,3 +58,6 @@
 [submodule ".vim/bundle/vim-rename2"]
 	path = .vim/bundle/vim-rename2
 	url = https://github.com/ReekenX/vim-rename2.git
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
