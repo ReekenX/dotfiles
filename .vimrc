@@ -120,7 +120,7 @@ set textwidth=0
 
 " Enable mouse features
 set mouse=a
-"
+
 " For new lines automatically indent by current line indent
 set autoindent
 set copyindent
@@ -149,8 +149,7 @@ endif
 " No annoying beeping
 set noeb vb t_vb=
 
-let g:AutoClosePairs = "() {} \" '"
-let g:AutoClosePairs_add = "<> | ' \""
+let g:AutoClosePairs_add = "<> | ' \" \[\]"
 " }}}
 
 " Backups and swap {{{
@@ -197,8 +196,9 @@ map <F5> :Explore<CR>
 " <F3> - to enter currently editing files list
 map <F3> :BufExplorer<CR>
 
-" <SHIFT + t> - trim white spaces in lines end
-map <s-t> :%s/ \+$//g<CR>
+" MUST HAVE EVERYONE!
+" <SHIFT + t> - trim whitespace and restore to original cursor position
+map <s-t> :mark a<CR>:%s/ +$//g<CR>'a'
 
 " Avoid <F1> when we want <ESC> to press
 nnoremap <F1> <Esc>
