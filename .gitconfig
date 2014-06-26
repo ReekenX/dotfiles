@@ -3,13 +3,11 @@
     email = remigijus@jarmalavicius.lt
     editor = vim
 [alias]
-    br = branch
     ci = commit -a -v
-    co = checkout
     df = !git --no-pager diff --word-diff --ignore-submodules --ignore-all-space --ignore-blank-lines
-    g = grep -I
-    lg = log --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short --all
+    lg = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     st = status --ignore-submodules -sb
+    fl = log -u
     mg = merge --no-commit
     vdiff = !sh /home/remigijus/Kodas/atviri/git-diffall/git-diffall
 [color]
