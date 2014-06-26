@@ -150,6 +150,14 @@ endif
 set noeb vb t_vb=
 
 let g:AutoClosePairs_add = "<> | ' \" \[\]"
+
+" Fix for YouCompleteMe and UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 " }}}
 
 " Backups and swap {{{

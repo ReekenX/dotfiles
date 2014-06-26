@@ -19,12 +19,6 @@
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule ".vim/bundle/vim-snippets"]
-	path = .vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets.git
-[submodule ".vim/bundle/vim-snipmate"]
-	path = .vim/bundle/vim-snipmate
-	url = https://github.com/garbas/vim-snipmate.git
 [submodule ".vim/bundle/tlib_vim"]
 	path = .vim/bundle/tlib_vim
 	url = https://github.com/tomtom/tlib_vim.git
@@ -61,3 +55,9 @@
 [submodule ".vim/bundle/fugitive"]
 	path = .vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/bundle/YouCompleteMe"]
+	path = .vim/bundle/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule ".vim/bundle/ultisnips"]
+	path = .vim/bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
