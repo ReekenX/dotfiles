@@ -104,3 +104,5 @@ fi
 
 # Terminal command prompt improvement
 PS1='\[\e[1;31m\]\D{%Y-%m-%d} \t in \w \n$ \[\e[0m\]'
+
+source ~/.bash_prompt
