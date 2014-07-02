@@ -149,7 +149,7 @@ endif
 " No annoying beeping
 set noeb vb t_vb=
 
-let g:AutoClosePairs_add = "<> | ' \" \[\]"
+let g:AutoClosePairs_add = "' \" \[\]"
 
 " Fix for YouCompleteMe and UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
