@@ -17,6 +17,10 @@ filetype plugin on
 " Always show what mode we're using
 set showmode
 
+" Only UTF-8!
+scriptencoding utf-8
+set encoding=utf-8
+
 " Don't update the display while executing macros
 set lazyredraw
 
@@ -84,10 +88,6 @@ highlight Folded ctermbg=black ctermfg=blue cterm=none
 " Mapleader from \ to ,
 let mapleader=","
 
-" Only UTF-8!
-scriptencoding utf-8
-set encoding=utf-8
-
 " Enable syntax highlighting
 syntax on
 
@@ -151,13 +151,6 @@ set noeb vb t_vb=
 
 let g:AutoClosePairs_add = "' \" \[\]"
 
-" Fix for YouCompleteMe and UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsEditSplit="vertical"
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
 " }}}
 
 " Backups and swap {{{
@@ -201,9 +194,6 @@ map <F3> :BufExplorer<CR>
 " <F5> - to enter `Ex`
 map <F5> :Explore<CR>
 
-" <F3> - to enter currently editing files list
-map <F3> :BufExplorer<CR>
-
 " MUST HAVE EVERYONE!
 " <SHIFT + t> - trim whitespace and restore to original cursor position
 map <s-t> :mark a<CR>:%s/ +$//g<CR>'a'
@@ -231,7 +221,9 @@ map <right> <nop>
 inoremap jj <Esc>
 inoremap jk <Esc>
 
-nmap <F8> :python RunUnitTestsUnderCursor()<CR>
+" Quick refactoring
+nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
+nnoremap gR gD:%s/<C-R>///gc<left><left><left>}]
 " }}}
 
 "{{{ Ignore file types and directories
@@ -247,9 +239,6 @@ set wildignore+=virtual/,.virtualenv/,eggs/
 " This is required if project has specific settings.
 silent! source project.vim
 
-autocmd BufEnter *.otl set foldlevel=0
-autocmd BufEnter *.otl set textwidth=80
-autocmd BufEnter *.otl set wrap
 autocmd Bufenter *.shpaml set syntax=shpaml
 autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
 
@@ -257,6 +246,9 @@ autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
 set path+=website/**
 set path+=src/**
 
+" }}}
+
+" Plugins {{{
 " Omnicomplete {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -267,9 +259,22 @@ set completeopt=menuone,longest
 " }}}
 
 " VIM Outliner {{{
+autocmd BufEnter *.otl set foldlevel=0
+autocmd BufEnter *.otl set textwidth=80
+autocmd BufEnter *.otl set wrap
+
 autocmd! BufRead,BufNewFile *.otl setfiletype vo_base
 autocmd BufRead,BufNewFile *.otl colorscheme vo_dark
 autocmd BufRead,BufNewFile *.otl filetype plugin indent on
 autocmd BufRead,BufNewFile *.otl set nolist
+" }}}
+"
+" VIM UltiSnips {{{
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 " }}}
 " }}}
