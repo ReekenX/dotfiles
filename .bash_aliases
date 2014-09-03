@@ -7,7 +7,7 @@ export HISTIGNORE="mysqldump:mysql"
 export HISTCONTROL=""
 
 # No colors for `ls` command
-alias ls='ls --color=never'
+alias ls='ls --color=auto'
 
 # List files in "smart" way
 alias ll='ls -Flh --color=auto --group-directories-first'
