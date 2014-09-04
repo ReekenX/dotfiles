@@ -32,7 +32,7 @@ highlight SpellBad ctermfg=Gray
 let g:pyflakes_use_quickfix = 0
 
 " Default theme
-colorscheme herald
+colorscheme desert_modified
 
 " Don't force to write when switching to other file
 set hidden
