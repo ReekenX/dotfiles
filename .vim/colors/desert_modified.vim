@@ -99,7 +99,7 @@ hi DiffText	cterm=bold ctermbg=1
 hi Comment	ctermfg=8
 hi Constant	ctermfg=brown
 hi Special	ctermfg=5 term=none
-hi Identifier	ctermfg=6
+hi Identifier	ctermfg=6 cterm=none
 hi Statement	ctermfg=5
 hi PreProc	ctermfg=5
 hi Type		ctermfg=2

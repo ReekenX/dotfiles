@@ -27,6 +27,9 @@ set lazyredraw
 " Enable 256 colors for VIM
 set t_Co=256
 
+" Always show status line
+set laststatus=2
+
 " Pyflake settings
 highlight SpellBad ctermfg=Gray
 let g:pyflakes_use_quickfix = 0
