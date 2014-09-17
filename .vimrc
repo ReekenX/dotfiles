@@ -27,12 +27,15 @@ set lazyredraw
 " Enable 256 colors for VIM
 set t_Co=256
 
+" Always show status line
+set laststatus=2
+
 " Pyflake settings
 highlight SpellBad ctermfg=Gray
 let g:pyflakes_use_quickfix = 0
 
 " Default theme
-colorscheme wombat256
+colorscheme desert_modified
 
 " Don't force to write when switching to other file
 set hidden
@@ -73,7 +76,7 @@ set listchars=tab:»»,trail:·,extends:#,nbsp:·
 
 " Folding rules {{{
 set foldenable
-set foldcolumn=2
+set foldcolumn=0
 set foldmethod=marker
 set foldlevelstart=0
 
