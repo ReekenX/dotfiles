@@ -191,9 +191,6 @@ nmap ,n :bn<CR>
 " <F3> - to enter currently editing files list
 map <F3> :BufExplorer<CR>
 
-" <F5> - to enter `Ex`
-map <F5> :Explore<CR>
-
 " MUST HAVE EVERYONE!
 " <SHIFT + t> - trim whitespace and restore to original cursor position
 map <s-t> :mark a<CR>:%s/ +$//g<CR>'a'
