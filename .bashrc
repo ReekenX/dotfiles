@@ -91,18 +91,13 @@ function start_agent {
 
 # Source SSH settings, if applicable
 if [ -f "${SSH_ENV}" ]; then
-     echo "Sourcing ssh-agent settings..."
      . ${SSH_ENV}
-     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-         echo "Starting new ssh-agent..."
-         start_agent;
-     }
-else
-     echo "Starting new ssh-agent..."
-     start_agent;
 fi
 
 # Terminal command prompt improvement
 PS1='\[\e[1;31m\]\D{%Y-%m-%d} \t in \w \n$ \[\e[0m\]'
+
+export EDITOR="vim"
+export LC_LANG="en_US.utf8"
 
 source ~/.bash_prompt
