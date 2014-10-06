@@ -6,3 +6,5 @@
 .vim/swap/
 .todo/Storage
 *.pyc
+node_modules/
+.ctags
