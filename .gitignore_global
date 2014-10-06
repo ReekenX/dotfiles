@@ -1,13 +1,10 @@
 # Byte-compiled / optimized / DLL files
 *.py[cod]
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Translations
 *.mo
 
-# Virtuals
+pip-log.txt
+pip-delete-this-directory.txt
 .virtualenv/
 virtual/
+node_modules/
+.ctags
