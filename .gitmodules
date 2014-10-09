@@ -67,3 +67,6 @@
 [submodule ".vim/bundle/auto-save"]
 	path = .vim/bundle/auto-save
 	url = https://github.com/vim-scripts/vim-auto-save.git
+[submodule ".vim/bundle/move"]
+	path = .vim/bundle/move
+	url = https://github.com/matze/vim-move.git

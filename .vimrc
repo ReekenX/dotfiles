@@ -290,4 +290,8 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 let g:auto_save = 1
 " }}}
 
+" VIM Move {{{
+let g:move_key_modifier = 'C'
+" }}}
+
 " }}}
