@@ -240,6 +240,7 @@ set wildignore+=virtual/,.virtualenv/,eggs/
 silent! source project.vim
 
 autocmd Bufenter *.shpaml set syntax=shpaml
+autocmd Bufenter *.coffee set syntax=coffee
 autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
 
 " Automatically load common libraries
@@ -283,6 +284,10 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+" }}}
+
+" VIM Autosave {{{
+let g:auto_save = 1
 " }}}
 
 " }}}
