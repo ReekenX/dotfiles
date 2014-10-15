@@ -98,12 +98,6 @@ syntax on
 set termencoding=utf-8
 set encoding=utf-8
 
-" CtrlP settings
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-
 " Just file formats
 set fileformat="unix,dos,mac"
 
@@ -242,6 +236,7 @@ silent! source project.vim
 autocmd Bufenter *.shpaml set syntax=shpaml
 autocmd Bufenter *.coffee set syntax=coffee
 autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
+autocmd FileType gitcommit syn match gitcommitComment   "^\*.*"
 
 " Automatically load common libraries
 set path+=website/**
@@ -292,6 +287,15 @@ let g:auto_save = 1
 
 " VIM Move {{{
 let g:move_key_modifier = 'C'
+" }}}
+
+" VIM CtrlP {{{
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 " }}}
 
 " }}}

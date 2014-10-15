@@ -4,8 +4,8 @@
     editor = vim
 [alias]
     co = checkout -f
-    ci = commit -a -v
-    df = !git --no-pager diff --word-diff --ignore-submodules --ignore-all-space --ignore-blank-lines
+    ci = commit -a -q
+    df = !git diff --word-diff --ignore-submodules --ignore-all-space --ignore-blank-lines
     lg = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     last = log @{1}.. --decorate --reverse --stat -C --no-merges
     st = status --ignore-submodules -sb
