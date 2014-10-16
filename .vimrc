@@ -165,6 +165,9 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
+" Fixed copying. The number one annoying feature of VIM!
+xnoremap p pgvy "
+
 " Fixing "broken" VIM regexp
 nnoremap / /\v
 cnoremap %s/ %s/\v
