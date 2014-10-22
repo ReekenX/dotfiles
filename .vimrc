@@ -75,7 +75,7 @@ set listchars=tab:»»,trail:·,extends:#,nbsp:·
 " }}}
 
 " Folding rules {{{
-set foldenable
+set nofoldenable
 set foldcolumn=0
 set foldmethod=marker
 set foldlevelstart=0
@@ -261,6 +261,7 @@ set completeopt=menuone,longest
 autocmd BufEnter *.otl set foldlevel=0
 autocmd BufEnter *.otl set textwidth=80
 autocmd BufEnter *.otl set wrap
+autocmd BufEnter *.otl set foldenable
 
 autocmd! BufRead,BufNewFile *.otl setfiletype vo_base
 autocmd BufRead,BufNewFile *.otl colorscheme vo_dark
