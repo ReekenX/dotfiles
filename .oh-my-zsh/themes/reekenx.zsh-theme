@@ -35,13 +35,8 @@ local return_code="%(?..%{$PR_RED%}%? ↵%{$PR_NO_COLOR%})"
 
 local user_host='${PR_USER}${PR_CYAN}@${PR_HOST}'
 local current_dir='%{$PR_BOLD$PR_BLUE%}${PWD##*/}%{$PR_NO_COLOR%}'
-local git_branch='$(git_prompt_info)%{$PR_NO_COLOR%}'
 local time='${PR_CYAN}[%D{%H:%M:%S}]'
 
-#PROMPT="${user_host} ${current_dir} ${rvm_ruby} ${git_branch}$PR_PROMPT "
-PROMPT="╭─${time} ${current_dir} ${git_branch}
+PROMPT="╭─${time} ${current_dir}
 ╰─$PR_PROMPT "
 RPS1="${return_code}"
-
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$PR_YELLOW%}("
-ZSH_THEME_GIT_PROMPT_SUFFIX=") %{$PR_NO_COLOR%}"
