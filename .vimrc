@@ -75,7 +75,7 @@ set listchars=tab:»»,trail:·,extends:#,nbsp:·
 " }}}
 
 " Folding rules {{{
-set nofoldenable
+set foldenable
 set foldcolumn=0
 set foldmethod=marker
 set foldlevelstart=0
@@ -189,7 +189,7 @@ nmap ,p :bp<CR>
 nmap ,n :bn<CR>
 
 " <F3> - to enter currently editing files list
-map <F3> :BufExplorer<CR>
+map <leader>b :BufExplorer<CR>
 
 " MUST HAVE EVERYONE!
 " <SHIFT + t> - trim whitespace and restore to original cursor position
