@@ -233,9 +233,9 @@ set wildignore+=virtual/,.virtualenv/,eggs/
 " }}}
 
 " File types options {{{
-" If VIM founds project.vim file in project root, it will be loaded.
+" If VIM founds .git/settings.vim file in project root, it will be loaded.
 " This is required if project has specific settings.
-silent! source project.vim
+silent! source .git/settings.vim
 
 autocmd Bufenter *.shpaml set syntax=shpaml
 autocmd Bufenter *.coffee set syntax=coffee
