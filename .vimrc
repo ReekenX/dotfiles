@@ -41,7 +41,7 @@ colorscheme desert_modified
 set hidden
 
 " Enable ctags support
-set tag=./.ctags,.ctags
+set tag=./.git/tags
 
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
@@ -190,6 +190,7 @@ nmap ,n :bn<CR>
 
 " <F3> - to enter currently editing files list
 map <leader>b :BufExplorer<CR>
+map <leader>e :Ex<CR>
 
 " MUST HAVE EVERYONE!
 " <SHIFT + t> - trim whitespace and restore to original cursor position
