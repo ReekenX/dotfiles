@@ -284,12 +284,8 @@ function! UpdatePHPTags()
   let tagfilename = CtagsGetGITFilePath()
   if filereadable(tagfilename . "/tags")
     let cmd = 'ctags -a -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" ' . '"' . f . '"'
-    echom "generating append ctags"
-    echom cmd
   else
     let cmd = 'ctags -R -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" '
-    echom "generating recursive ctags"
-    echom cmd
   endif
   call CtagsDelTagOfFile(f)
   let resp = system(cmd)

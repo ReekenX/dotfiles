@@ -6,7 +6,7 @@
     co = checkout -f
     ci = commit -a -q
     df = !git diff --word-diff --ignore-submodules --ignore-all-space --ignore-blank-lines --ignore-space-change --ignore-space-at-eol
-    lg = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lg = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --graph
     last = log @{1}.. --decorate --reverse --stat -C --no-merges
     st = status --ignore-submodules -sb
     fl = log -u
