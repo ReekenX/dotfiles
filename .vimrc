@@ -41,7 +41,7 @@ colorscheme desert_modified
 set hidden
 
 " Enable ctags support
-set tag=./.git/tags
+set tag=./.git/tags;$HOME
 
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
@@ -168,6 +168,9 @@ nnoremap gj j
 " Fixed copying. The number one annoying feature of VIM!
 xnoremap p pgvy "
 
+" Quick search from visual text
+vnorem // y/<c-r>"<cr>
+
 " Fixing "broken" VIM regexp
 nnoremap / /\v
 cnoremap %s/ %s/\v
@@ -245,7 +248,64 @@ autocmd FileType gitcommit syn match gitcommitComment   "^\*.*"
 " Automatically load common libraries
 set path+=website/**
 set path+=src/**
+" }}}
 
+" Automatic Ctags {{{
+" Automatic ctags (yes, I tried autotags plugin - doesn't work for my configuration)
+function! CtagsGetGITFilePath()
+  let cwd = getcwd()
+  if isdirectory(cwd . "/.git/")
+      return cwd . "/.git/"
+  endif
+  if isdirectory(cwd . "/../.git/")
+      return cwd . "/../.git/"
+  endif
+  if isdirectory(cwd . "/../../.git/")
+      return cwd . "/../../.git/"
+  endif
+  if isdirectory(cwd . "/../../.git/")
+      return cwd . "/../../.git/"
+  endif
+endfunction
+
+function! CtagsDelTagOfFile(file)
+  let fullpath = a:file
+  let cwd = getcwd()
+  let tagfilename = CtagsGetGITFilePath()
+  let f = substitute(fullpath, cwd . "/", "", "")
+  let f = escape(f, './')
+  let cmd = 'sed -i "/' . f . '/d" "' . tagfilename . '"'
+  let resp = system(cmd)
+endfunction
+
+function! UpdatePHPTags()
+  let f = expand("%:p")
+  let cwd = getcwd()
+  let tagfilename = CtagsGetGITFilePath()
+  if filereadable(tagfilename . "/tags")
+    let cmd = 'ctags -a -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" ' . '"' . f . '"'
+    echom "generating append ctags"
+    echom cmd
+  else
+    let cmd = 'ctags -R -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" '
+    echom "generating recursive ctags"
+    echom cmd
+  endif
+  call CtagsDelTagOfFile(f)
+  let resp = system(cmd)
+endfunction
+
+function! UpdatePythonTags()
+  let f = expand("%:p")
+  let cwd = getcwd()
+  let tagfilename = CtagsGetGITFilePath()
+  let cmd = 'ctags -a -f ' . tagfilename . ' --languages=Python --exclude=".svn" --exclude=".git" --exclude=".virtual" --exclude="virtual" --totals=yes --tag-relative=yes ' . '"' . f . '"'
+  call CtagsDelTagOfFile(f)
+  let resp = system(cmd)
+endfunction
+
+autocmd BufWritePost *.php,*.inc call UpdatePHPTags()
+autocmd BufWritePost *.py call UpdatePythonTags()
 " }}}
 
 " Plugins {{{
@@ -284,6 +344,7 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+set scrolloff=10
 " }}}
 
 " VIM Autosave {{{
