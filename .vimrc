@@ -253,7 +253,8 @@ set path+=src/**
 " Automatic Ctags {{{
 " Automatic ctags (yes, I tried autotags plugin - doesn't work for me)
 function! CtagsGetGITFilePath()
-  return system('git rev-parse --show-toplevel') . "/.git/"
+  let result = system('git rev-parse --show-toplevel') . "/.git/"
+  return substitute(result, "\n", "", "")
 endfunction
 
 function! CtagsDelTagOfFile(file)
@@ -274,7 +275,6 @@ function! UpdatePHPTags()
     let cmd = 'ctags -a -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" ' . '"' . f . '"'
   else
     let cmd = 'ctags -R -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" '
-    echom cmd
   endif
   call CtagsDelTagOfFile(f)
   let resp = system(cmd)
