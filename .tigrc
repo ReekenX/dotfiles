@@ -1,0 +1,6 @@
+set show-date = relative
+set ignore-space = yes
+set show-changes = yes
+set diff-context = 10
+set ignore-case = yes
+set refresh-interval = 10
