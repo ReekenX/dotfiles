@@ -13,9 +13,6 @@
 [submodule ".vim/bundle/matchit"]
 	path = .vim/bundle/matchit
 	url = https://github.com/edsono/vim-matchit.git
-[submodule ".vim/bundle/vim-cute"]
-	path = .vim/bundle/vim-cute
-	url = https://github.com/ehamberg/vim-cute-python.git
 [submodule ".vim/bundle/vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
@@ -43,9 +40,6 @@
 [submodule ".vim/bundle/vim-rename2"]
 	path = .vim/bundle/vim-rename2
 	url = https://github.com/ReekenX/vim-rename2.git
-[submodule ".vim/bundle/fugitive"]
-	path = .vim/bundle/fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule ".vim/bundle/YouCompleteMe"]
 	path = .vim/bundle/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
@@ -64,9 +58,6 @@
 [submodule ".vim/bundle/coffee-script"]
 	path = .vim/bundle/coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule ".vim/bundle/auto-save"]
-	path = .vim/bundle/auto-save
-	url = https://github.com/vim-scripts/vim-auto-save.git
 [submodule ".vim/bundle/move"]
 	path = .vim/bundle/move
 	url = https://github.com/matze/vim-move.git
