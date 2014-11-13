@@ -35,7 +35,7 @@ highlight SpellBad ctermfg=Gray
 let g:pyflakes_use_quickfix = 0
 
 " Default theme
-colorscheme desert_modified
+colorscheme wombat256mod
 
 " Don't force to write when switching to other file
 set hidden
@@ -276,6 +276,7 @@ function! UpdatePHPTags()
   else
     let cmd = 'ctags -R -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" '
   endif
+  let &tag = tagfilename . '/tags'
   call CtagsDelTagOfFile(f)
   let resp = system(cmd)
 endfunction
