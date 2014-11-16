@@ -40,9 +40,6 @@ colorscheme wombat256mod
 " Don't force to write when switching to other file
 set hidden
 
-" Enable ctags support
-set tag=./.git/tags;$HOME
-
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
 
@@ -276,7 +273,6 @@ function! UpdatePHPTags()
   else
     let cmd = 'ctags -R -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" '
   endif
-  let &tag = tagfilename . '/tags'
   call CtagsDelTagOfFile(f)
   let resp = system(cmd)
 endfunction
@@ -289,6 +285,8 @@ function! UpdatePythonTags()
   call CtagsDelTagOfFile(f)
   let resp = system(cmd)
 endfunction
+
+let &tag = CtagsGetGITFilePath() . 'tags'
 
 autocmd BufWritePost *.php,*.inc call UpdatePHPTags()
 autocmd BufWritePost *.py call UpdatePythonTags()
