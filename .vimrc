@@ -13,6 +13,12 @@ filetype on
 filetype plugin on
 " }}}
 
+" Theme {{{
+set t_Co=256
+set t_md=
+colorscheme desert_modified
+" }}}
+
 " VIM behaviour {{{
 " Always show what mode we're using
 set showmode
@@ -24,18 +30,12 @@ set encoding=utf-8
 " Don't update the display while executing macros
 set lazyredraw
 
-" Enable 256 colors for VIM
-set t_Co=256
-
 " Always show status line
 set laststatus=2
 
 " Pyflake settings
 highlight SpellBad ctermfg=Gray
 let g:pyflakes_use_quickfix = 0
-
-" Default theme
-colorscheme wombat256mod
 
 " Don't force to write when switching to other file
 set hidden
