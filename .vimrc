@@ -14,6 +14,7 @@ filetype plugin on
 " }}}
 
 " Theme {{{
+syntax on
 set t_Co=256
 set t_md=
 colorscheme desert_modified
@@ -87,9 +88,6 @@ highlight Folded ctermbg=black ctermfg=blue cterm=none
 " Edit behaviour {{{
 " Mapleader from \ to ,
 let mapleader=","
-
-" Enable syntax highlighting
-syntax on
 
 " Encoding
 set termencoding=utf-8
