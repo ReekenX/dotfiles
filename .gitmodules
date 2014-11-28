@@ -64,6 +64,9 @@
 [submodule ".vim/bundle/vdebug"]
 	path = .vim/bundle/vdebug
 	url = https://github.com/joonty/vdebug.git
-[submodule "/home/remigijus/.vim/bundle/multiple-cursors"]
-	path = /home/remigijus/.vim/bundle/multiple-cursors
+[submodule ".vim/bundle/multiple-cursors"]
+	path = .vim/bundle/multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
+[submodule ".tmux-plugins/tmux-resurrect"]
+	path = .tmux-plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
