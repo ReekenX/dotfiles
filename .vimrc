@@ -110,8 +110,8 @@ set smarttab
 set nowrap
 set textwidth=0
 
-" Enable mouse features
-set mouse=a
+" Enable mouse features for normal mode only, to prevent paste from explosion
+set mouse=n
 
 " For new lines automatically indent by current line indent
 set autoindent
