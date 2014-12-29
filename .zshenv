@@ -4,7 +4,7 @@ bindkey "5C" forward-word
 bindkey "5D" backward-word
 
 # Autocomplete like in VIM
-setopt MENU_COMPLETE
+setopt menu_complete
 
 export LC_ALL="en_US.UTF-8"
 
