@@ -60,7 +60,6 @@ set ignorecase
 
 " Found text will be highlighted and search will be repeated over file
 set incsearch
-set hlsearch
 
 " Smart search: if lowercase ignore case of matches, if not case-sensitive
 " search
