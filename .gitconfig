@@ -33,9 +33,6 @@
 [mergetool]
     keepbackup = true
     keeptemporaries = false
-[branch]
-    autosetupmerge = always
-    autosetuprebase = always
 [core]
     excludesfile = ~/.gitignore_global
     filemode = false
