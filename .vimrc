@@ -336,4 +336,8 @@ let g:auto_save = 1
 let g:move_key_modifier = 'C'
 " }}}
 
+" Syntastic {{{
+let g:syntastic_php_checkers = ['php', 'phpmd']
+" }}}
+
 " }}}
