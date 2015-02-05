@@ -15,3 +15,7 @@ alias scp="/usr/bin/scp -r"
 alias :e="vim"
 alias :q="exit"
 alias rm="/bin/rm -rvf"
+
+function search() {
+    ag --color $* | less -R
+}
