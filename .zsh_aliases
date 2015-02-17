@@ -17,5 +17,5 @@ alias :q="exit"
 alias rm="/bin/rm -rvf"
 
 function search() {
-    ag --color $* | less -R
+    ag --color $* --ignore="*.min.js" --ignore="*.css" --ignore="*.po" | less -R
 }
