@@ -284,6 +284,9 @@ exec "silent! source" CtagsGetGITFilePath() . "project.vim"
 
 autocmd Bufenter *.shpaml set syntax=shpaml
 autocmd Bufenter *.coffee set syntax=coffee
+autocmd Bufenter *.mqh set syntax=mql4
+autocmd Bufenter *.mq4 set syntax=mql4
+autocmd Bufenter *.coffee set syntax=coffee
 autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
 
 " Automatically load common libraries
