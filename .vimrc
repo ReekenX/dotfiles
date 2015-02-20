@@ -288,6 +288,8 @@ autocmd Bufenter *.mqh set syntax=mql4
 autocmd Bufenter *.mq4 set syntax=mql4
 autocmd Bufenter *.coffee set syntax=coffee
 autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, strlen(getline(1))+1, 0])
+au FileType gitcommit au BufEnter COMMIT_EDITMSG startinsert!
 
 " Automatically load common libraries
 set path+=website/**
