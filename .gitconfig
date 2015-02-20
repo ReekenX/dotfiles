@@ -40,3 +40,5 @@
     editor = /usr/local/bin/editor.bash
 [git-up "fetch"]
     all = true
+[commit]
+	template = /tmp/git.template
