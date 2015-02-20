@@ -232,21 +232,6 @@ set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~
 set wildignore+=virtual/,.virtualenv/,eggs/
 " }}}
 
-" File types options {{{
-" If VIM founds .git/settings.vim file in project root, it will be loaded.
-" This is required if project has specific settings.
-silent! source .git/settings.vim
-
-autocmd Bufenter *.shpaml set syntax=shpaml
-autocmd Bufenter *.coffee set syntax=coffee
-autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
-autocmd FileType gitcommit syn match gitcommitComment   "^\*.*"
-
-" Automatically load common libraries
-set path+=website/**
-set path+=src/**
-" }}}
-
 " Automatic Ctags {{{
 " Automatic ctags (yes, I tried autotags plugin - doesn't work for me)
 function! CtagsGetGITFilePath()
@@ -290,6 +275,20 @@ let &tag = CtagsGetGITFilePath() . 'tags'
 
 autocmd BufWritePost *.php,*.inc call UpdatePHPTags()
 autocmd BufWritePost *.py call UpdatePythonTags()
+" }}}
+
+" File types options {{{
+" If VIM founds .git/settings.vim file in project root, it will be loaded.
+" This is required if project has specific settings.
+exec "silent! source" CtagsGetGITFilePath() . "project.vim"
+
+autocmd Bufenter *.shpaml set syntax=shpaml
+autocmd Bufenter *.coffee set syntax=coffee
+autocmd Bufenter *.py match ErrorMsg '\%>80v.\+'
+
+" Automatically load common libraries
+set path+=website/**
+set path+=src/**
 " }}}
 
 " Plugins {{{
