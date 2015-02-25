@@ -5,8 +5,9 @@
 [alias]
     co = checkout -f
     ci = commit -a -q
-    df = !git diff HEAD --word-diff --ignore-submodules --ignore-all-space --ignore-blank-lines --ignore-space-change --ignore-space-at-eol
+    df = diff HEAD --word-diff --ignore-submodules --ignore-all-space --ignore-blank-lines --ignore-space-change --ignore-space-at-eol
     lg = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --graph
+    last = log -1
     st = status --ignore-submodules -sb
     standup = !"git log --reverse --branches --since='$(if [[ "Mon" == "$(date +%a)" ]]; then echo "last friday"; else echo "yesterday"; fi)' --author=$(git config --get user.email) --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
 [color]
