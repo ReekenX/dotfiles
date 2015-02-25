@@ -49,3 +49,5 @@
     template = /tmp/git.template
 [rebase]
     autosquash = true
+[help]
+    autocorrect = 10
