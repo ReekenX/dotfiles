@@ -8,3 +8,7 @@ pip-delete-this-directory.txt
 virtual/
 node_modules/
 .ctags
+.tags
+.tags_sorted_by_file
+*.sublime-project
+*.sublime-workspace
