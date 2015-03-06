@@ -4,7 +4,7 @@
     path = ~/.gitconfig.d/colors.ini
     path = ~/.gitconfig.d/merge.ini
     path = ~/.gitconfig.d/rebase.ini
-    pate = ~/.gitconfig.d/pull.ini
+    path = ~/.gitconfig.d/pull.ini
 
 [user]
     name = Remigijus Jarmalavičius
