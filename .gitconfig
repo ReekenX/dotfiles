@@ -6,14 +6,13 @@
     co = checkout -f
     ci = commit -a -q
     df = diff HEAD --word-diff --ignore-submodules --ignore-all-space --ignore-blank-lines --ignore-space-change --ignore-space-at-eol
-    lg = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --graph
+    lg = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset%C(yellow)%d%Creset %s %Cblue[%cn]%Creset'
     last = log -1
     st = status --ignore-submodules -sb
     standup = !"git log --reverse --branches --since='$(if [[ "Mon" == "$(date +%a)" ]]; then echo "last friday"; else echo "yesterday"; fi)' --author=$(git config --get user.email) --format=format:'%C(cyan) %ad %C(yellow)%h %Creset %s %Cgreen%d' --date=local"
-    fixup = !sh -c 'git commit --fixup $1 && \
-                            git stash && \
-                            git rebase -i $1~1 && \
-                            git stash pop' -
+    assume = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 [color]
     ui = auto
     interactive = auto
@@ -51,3 +50,8 @@
     autosquash = true
 [help]
     autocorrect = 10
+[branch]
+    autosetupmerge = true
+    autosetuprebase = always
+[diff]
+    algorithm = patience

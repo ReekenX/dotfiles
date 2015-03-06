@@ -6,3 +6,5 @@
 .vim/swap/
 .todo/Storage
 *.pyc
+.tags
+.tags_sorted_by_file
