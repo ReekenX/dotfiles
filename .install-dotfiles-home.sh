@@ -15,7 +15,7 @@ sleep 0.2
 
 # Real work here
 echo "Downloading repository and required files..."
-git clone --quiet --bare https://github.com/ReekenX/dotfiles-home ~/.git
+git clone --depth 1 --quiet --bare https://github.com/ReekenX/dotfiles-home ~/.git
 echo "Performing required configuration for GIT..."
 git config core.bare false
 echo "Applying files to your home dir..."
