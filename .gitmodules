@@ -52,9 +52,6 @@
 [submodule ".vim/bundle/vim-smooth-scroll"]
 	path = .vim/bundle/vim-smooth-scroll
 	url = https://github.com/terryma/vim-smooth-scroll
-[submodule ".vim/bundle/syntastic"]
-	path = .vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
 [submodule ".vim/bundle/coffee-script"]
 	path = .vim/bundle/coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
