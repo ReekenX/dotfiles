@@ -5,6 +5,7 @@
     path = ~/.gitconfig.d/merge.ini
     path = ~/.gitconfig.d/rebase.ini
     path = ~/.gitconfig.d/pull.ini
+    path = ~/.gitconfig.d/verbosity.ini
 
 [user]
     name = Remigijus Jarmalavičius
