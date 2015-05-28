@@ -46,9 +46,6 @@
 [submodule ".vim/bundle/netrw"]
 	path = .vim/bundle/netrw
 	url = https://github.com/vim-scripts/netrw.vim
-[submodule ".vim/bundle/vim-brightest"]
-	path = .vim/bundle/vim-brightest
-	url = https://github.com/osyo-manga/vim-brightest.git
 [submodule ".vim/bundle/mql4"]
 	path = .vim/bundle/mql4
 	url = https://github.com/vobornik/vim-mql4.git
