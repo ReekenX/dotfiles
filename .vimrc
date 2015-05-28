@@ -34,10 +34,6 @@ set lazyredraw
 " Always show status line
 set laststatus=2
 
-" Pyflake settings
-highlight SpellBad ctermfg=Gray
-let g:pyflakes_use_quickfix = 0
-
 " Don't force to write when switching to other file
 set hidden
 
@@ -142,9 +138,6 @@ endif
 
 " No annoying beeping
 set noeb vb t_vb=
-
-let g:AutoClosePairs_add = "' \" \[\]"
-
 " }}}
 
 " Backups and swap {{{
@@ -161,6 +154,12 @@ nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
+
+" Use the damn hjkl keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 " Fixed copying. The number one annoying feature of VIM!
 xnoremap p pgvy "
@@ -207,12 +206,6 @@ nmap <silent> <C-P> :cp<CR>zv
 " column, so swap them
 nnoremap ' `
 nnoremap ` '
-
-" Use the damn hjkl keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
 
 " Quickly get out of insert mode without your fingers having to leave the
 " home row (either use 'jj' or 'jk')
@@ -339,10 +332,6 @@ let g:auto_save = 1
 
 " VIM Move {{{
 let g:move_key_modifier = 'C'
-" }}}
-
-" Syntastic {{{
-let g:syntastic_php_checkers = ['php', 'phpmd']
 " }}}
 
 " }}}
