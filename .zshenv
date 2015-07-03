@@ -6,8 +6,6 @@ bindkey "5D" backward-word
 # Autocomplete like in VIM
 setopt menu_complete
 
-export LC_ALL="en_US.UTF-8"
-
 # Development stuff
 export EDITOR=vim
 

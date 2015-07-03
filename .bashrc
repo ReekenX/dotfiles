@@ -98,7 +98,6 @@ fi
 PS1='\[\e[1;31m\]\D{%Y-%m-%d} \t in \w \n$ \[\e[0m\]'
 
 export EDITOR="vim"
-export LC_LANG="en_US.utf8"
 export WORKON_HOME=~/.virtualenvs
 
 source ~/.bash_prompt
