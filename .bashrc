@@ -78,6 +78,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Custom things below
+
+# Fix languages support on all servers
+unset LANG
+export LC_ALL=POSIX
+
 # Fix ssh-add for multiple sessions
 SSH_ENV=$HOME/.ssh/environment
 
@@ -99,5 +105,8 @@ PS1='\[\e[1;31m\]\D{%Y-%m-%d} \t in \w \n$ \[\e[0m\]'
 
 export EDITOR="vim"
 export WORKON_HOME=~/.virtualenvs
+
+# Don't accidently overwrite files with > operator
+set -o noclobber
 
 source ~/.bash_prompt
