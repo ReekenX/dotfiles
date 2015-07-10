@@ -80,10 +80,6 @@ fi
 
 # Custom things below
 
-# Fix languages support on all servers
-unset LANG
-export LC_ALL=POSIX
-
 # Fix ssh-add for multiple sessions
 SSH_ENV=$HOME/.ssh/environment
 
