@@ -27,16 +27,16 @@ fi
 # Check if we are on SSH or not
 if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then 
   eval PR_HOST='${PR_YELLOW}%M${PR_NO_COLOR}' #SSH
+  local user_host='(ssh %n@%M)'
 else
-  eval PR_HOST='${PR_GREEN}%M${PR_NO_COLOR}' # no SSH
+  local user_host=''
 fi
 
 local return_code="%(?..%{$PR_RED%}%? ↵%{$PR_NO_COLOR%})"
 
-local user_host='${PR_USER}${PR_CYAN}@${PR_HOST}'
-local current_dir='%{$PR_BOLD$PR_BLUE%}${PWD##*/}%{$PR_NO_COLOR%}'
+local current_dir='%{$PR_BOLD$PR_BLUE%}${PWD}%{$PR_NO_COLOR%}'
 local time='${PR_CYAN}[%D{%H:%M:%S}]'
 
-PROMPT="╭─${time} ${current_dir}
+PROMPT="╭─${time} ${user_host}${current_dir}
 ╰─$PR_PROMPT "
 RPS1="${return_code}"
