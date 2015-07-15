@@ -49,9 +49,9 @@
 [submodule ".vim/bundle/mql4"]
 	path = .vim/bundle/mql4
 	url = https://github.com/vobornik/vim-mql4.git
-[submodule ".tmux-plugins/tmux-resurrect"]
-	path = .tmux-plugins/tmux-resurrect
-	url = https://github.com/tmux-plugins/tmux-resurrect.git
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/autosave"]
+	path = .vim/bundle/autosave
+	url = https://github.com/vim-scripts/vim-auto-save.git
