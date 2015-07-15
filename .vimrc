@@ -142,7 +142,7 @@ set noeb vb t_vb=
 
 " Backups and swap {{{
 set backup
-silent execute '!mkdir /tmp/.vim-backup'
+silent execute '!mkdir -p /tmp/.vim-backup'
 set backupdir=/tmp/.vim-backup
 set noswapfile
 " }}}
