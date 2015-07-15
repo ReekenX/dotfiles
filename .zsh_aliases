@@ -17,5 +17,13 @@ alias :q="exit"
 alias rm="/bin/rm -rvf"
 
 function search() {
-    ag --color $* --ignore="*.min.js" --ignore="*.css" --ignore="*.po" | less -R
+    ag --color "$*" --ignore="*.min.js" --ignore="*.css" --ignore="*.po" | less -R
+}
+
+function ramify() {
+    sudo mount -t tmpfs -o size=512M tmpfs "$(pwd)/$1" && git checkout -f
+}
+
+function unramify() {
+    sudo umount "$(pwd)/$1" && git checkout develop -f
 }
