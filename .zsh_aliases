@@ -17,7 +17,13 @@ alias :q="exit"
 alias rm="/bin/rm -rvf"
 
 function search() {
-    ag --color "$*" --ignore="*.min.js" --ignore="*.css" --ignore="*.po" | less -R
+    output=$(ag --nocolor -i "$1" --ignore="*.min.js" --ignore="*.min.css" --ignore="*.po" | cut -c 1-$(tput cols) | GREP_COLOR='01;36' egrep -i --color=always '^[^:]*:|$' | GREP_COLOR='01;31' egrep -i --color=always "$1"'|$')
+    if [ $(tput lines) -lt $(echo $output | wc -l) ]
+    then
+        echo $output | less -R
+    else
+        echo $output
+    fi
 }
 
 function ramify() {
