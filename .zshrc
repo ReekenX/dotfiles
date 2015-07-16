@@ -36,6 +36,6 @@ compinit
 
 source $ZSH/oh-my-zsh.sh
 
-export REPORTTIME=10
-
 export WORKON_HOME=~/.virtualenvs
+
+export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
