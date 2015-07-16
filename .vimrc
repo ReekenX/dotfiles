@@ -335,4 +335,16 @@ let g:auto_save = 1
 let g:move_key_modifier = 'C'
 " }}}
 
+" CTRL-P {{{
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'cra'
+" }}}
+
+" Syntastic {{{
+let g:syntastic_check_on_open = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_php_phpcs_args='--ignore=template/'
+" }}}
+
 " }}}
