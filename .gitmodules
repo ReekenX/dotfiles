@@ -55,3 +55,9 @@
 [submodule ".vim/bundle/autosave"]
 	path = .vim/bundle/autosave
 	url = https://github.com/vim-scripts/vim-auto-save.git
+[submodule ".vim/bundle/ctrlp"]
+	path = .vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule ".vim/bundle/brightest"]
+	path = .vim/bundle/brightest
+	url = https://github.com/osyo-manga/vim-brightest.git
