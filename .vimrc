@@ -329,6 +329,8 @@ set scrolloff=10
 
 " VIM Autosave {{{
 let g:auto_save = 1
+let g:auto_save_in_insert_mode = 0
+let g:auto_save_silent = 1
 " }}}
 
 " VIM Move {{{
@@ -338,7 +340,16 @@ let g:move_key_modifier = 'C'
 " CTRL-P {{{
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'cra'
+let g:ctrlp_working_path_mode = 'a'
+let g:ctrlp_lazy_update = 100
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_max_files = 0
+
+" if executable("ag")
+"     set grepprg=ag\ --nogroup\ --nocolor
+"     let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.pyc'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
+" endif
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " }}}
 
 " Syntastic {{{
@@ -346,5 +357,21 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_php_phpcs_args='--ignore=template/'
 " }}}
+
+
+set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+
+
+
+let g:airline#extensions#tabline#enabled = 1
+
+" let g:airline#extensions#tomato#enabled = 1
+
+let g:airline_powerline_fonts = 1
+
+
+
+autocmd VimEnter * AirlineToggleWhitespace
+
 
 " }}}
