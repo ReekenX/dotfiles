@@ -61,3 +61,6 @@
 [submodule ".vim/bundle/brightest"]
 	path = .vim/bundle/brightest
 	url = https://github.com/osyo-manga/vim-brightest.git
+[submodule ".vim/bundle/airline"]
+	path = .vim/bundle/airline
+	url = https://github.com/bling/vim-airline.git
