@@ -107,5 +107,3 @@ export WORKON_HOME=~/.virtualenvs
 
 # Don't accidently overwrite files with > operator
 set -o noclobber
-
-source ~/.bash_prompt
