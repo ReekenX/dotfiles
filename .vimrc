@@ -356,22 +356,14 @@ let g:ctrlp_max_files = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_php_phpcs_args='--ignore=template/'
+let g:syntastic_php_checkers = ['php', 'phpcs']
 " }}}
 
-
+" Airline {{{
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-
-
-
 let g:airline#extensions#tabline#enabled = 1
-
-" let g:airline#extensions#tomato#enabled = 1
-
 let g:airline_powerline_fonts = 1
-
-
-
 autocmd VimEnter * AirlineToggleWhitespace
-
+" }}}
 
 " }}}
