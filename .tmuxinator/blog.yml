@@ -1,8 +1,12 @@
-name: ytec
+name: blog
 root: <%= ENV["PWD"] %>
 
 windows:
   - server:
+    layout: 9d1b,144x38,0,0[144x29,0,0,0,144x8,0,30,5]
+    panes:
+      - cd output && python -m SimpleHTTPServer
+      -
   - editor:
     layout: 9d1b,144x38,0,0[144x29,0,0,0,144x8,0,30,5]
     panes:
