@@ -99,10 +99,10 @@ fi
 # Terminal command prompt improvement
 PS1='\[\e[1;31m\]\D{%Y-%m-%d} \t in \w \n$ \[\e[0m\]'
 
+# Setting editor. There are not editors except `vim`, right?
 export EDITOR="vim"
 
-# Build automatic python virtualenenv
-. /usr/local/bin/virtualenvwrapper.sh
+# Path for `mkvirtualenv`
 export WORKON_HOME=~/.virtualenvs
 
 # Don't accidently overwrite files with > operator
