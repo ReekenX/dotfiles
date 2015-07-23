@@ -365,4 +365,8 @@ let g:airline_powerline_fonts = 1
 autocmd VimEnter * AirlineToggleWhitespace
 " }}}
 
+" Nerd commenter {{{
+let NERDSpaceDelims=1
+" }}}
+
 " }}}
