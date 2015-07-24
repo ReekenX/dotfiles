@@ -1,4 +1,4 @@
-name: ytec
+name: django
 root: <%= ENV["PWD"] %>
 
 windows:
