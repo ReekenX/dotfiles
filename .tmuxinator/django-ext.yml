@@ -1,7 +1,11 @@
-name: php
+name: django-ext
 root: <%= ENV["PWD"] %>
 
 windows:
+  - server:
+      - bash
+      - . ../.custom-env/empower.sh
+      - fab serve
   - editor:
       layout: 9d1b,144x38,0,0[144x29,0,0,0,144x8,0,30,5]
       panes:
@@ -9,4 +13,3 @@ windows:
         -
   - zsh:
   - git: tig
-  - logs: sudo tailf /var/log/apache2/error.log
