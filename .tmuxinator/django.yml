@@ -4,9 +4,9 @@ root: <%= ENV["PWD"] %>
 windows:
   - server:
   - editor:
-    layout: 9d1b,144x38,0,0[144x29,0,0,0,144x8,0,30,5]
-    panes:
-      - vim
-      -
+      layout: 9d1b,144x38,0,0[144x29,0,0,0,144x8,0,30,5]
+      panes:
+        - vim
+        -
   - zsh:
   - git: tig
