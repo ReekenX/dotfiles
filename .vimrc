@@ -222,8 +222,8 @@ nnoremap gR gD:%s/<C-R>///gc<left><left><left>}]
 set wildmenu
 set wildchar=<tab>
 set wildmode=list:full
-set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~
-set wildignore+=virtual/,.virtualenv/,eggs/
+set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~,*.zip,*.gz
+set wildignore+=virtual/,.virtualenv/,eggs/,upload/,uploads
 " }}}
 
 " Automatic Ctags {{{
