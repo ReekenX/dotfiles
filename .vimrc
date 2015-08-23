@@ -253,16 +253,22 @@ function! UpdatePHPTags()
     let cmd = 'ctags -R -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" '
   endif
   call CtagsDelTagOfFile(f)
-  let resp = system(cmd)
+  echo cmd
+  let result = system(cmd)
 endfunction
 
 function! UpdatePythonTags()
   let f = expand("%:p")
   let cwd = getcwd()
   let tagfilename = CtagsGetGITFilePath()
-  let cmd = 'ctags -a -f ' . tagfilename . ' --languages=Python --exclude=".svn" --exclude=".git" --exclude=".virtual" --exclude="virtual" --totals=yes --tag-relative=yes ' . '"' . f . '"'
+  if filereadable(tagfilename . "/tags")
+    let cmd = 'ctags -a -f "' . tagfilename . 'tags" --tag-relative --languages=Python --exclude=".git" --exclude=".virtual" ' . '"' . f . '"'
+  else
+    let cmd = 'ctags -R -f "' . tagfilename . 'tags" --tag-relative --languages=Python --exclude=".git" --exclude=".virtual"'
+  endif
   call CtagsDelTagOfFile(f)
-  let resp = system(cmd)
+  echo cmd
+  let result = system(cmd)
 endfunction
 
 let &tag = CtagsGetGITFilePath() . 'tags'
