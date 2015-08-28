@@ -351,11 +351,9 @@ let g:ctrlp_lazy_update = 100
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_files = 0
 
-" if executable("ag")
-"     set grepprg=ag\ --nogroup\ --nocolor
-"     let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.pyc'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
-" endif
-" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+" Fixing "broken" VIM regexp
+nnoremap / :CtrlPLine<cr>
+cnoremap %s/ %s/\v
 " }}}
 
 " Syntastic {{{
