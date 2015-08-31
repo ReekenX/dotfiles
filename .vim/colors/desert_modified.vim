@@ -11,8 +11,8 @@ let g:colors_name="desert_modified"
 hi NonText      gui=none cterm=none term=none ctermfg=darkblue
 hi Directory    gui=none cterm=none term=none ctermfg=darkcyan
 hi ErrorMsg     gui=none cterm=none term=none ctermfg=black ctermbg=1
-hi IncSearch    gui=none cterm=none term=none ctermfg=yellow ctermbg=green
-hi Search       gui=none cterm=none term=none ctermfg=black ctermbg=243
+hi IncSearch    gui=none cterm=none term=none ctermfg=white ctermbg=yellow
+hi Search       gui=none cterm=none term=none ctermfg=white ctermbg=yellow
 hi MoreMsg      gui=none cterm=none term=none ctermfg=darkgreen
 hi ModeMsg      gui=none cterm=none term=none ctermfg=brown
 hi LineNr       gui=none cterm=none term=none ctermfg=3
