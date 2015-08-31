@@ -6,6 +6,6 @@ windows:
       - bash
       - . ../.custom-env/empower.sh
       - fab serve
-  - editor: vim
+  - editor: nvim
   - zsh:
   - git: tig

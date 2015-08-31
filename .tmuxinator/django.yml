@@ -3,6 +3,6 @@ root: <%= ENV["PWD"] %>
 
 windows:
   - server:
-  - editor: vim
+  - editor: nvim
   - zsh:
   - git: tig

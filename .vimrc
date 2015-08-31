@@ -233,48 +233,26 @@ function! CtagsGetGITFilePath()
   return substitute(result, "\n", "", "")
 endfunction
 
-function! CtagsDelTagOfFile(file)
-  let fullpath = a:file
-  let cwd = getcwd()
-  let tagfilename = CtagsGetGITFilePath()
-  let f = substitute(fullpath, cwd . "/", "", "")
-  let f = escape(f, './')
-  let cmd = 'sed -i "/' . f . '/d" "' . tagfilename . '"'
-  let resp = system(cmd)
-endfunction
+let tagfilename = CtagsGetGITFilePath()
+let &tag = tagfilename . 'tags'
 
-function! UpdatePHPTags()
-  let f = expand("%:p")
-  let cwd = getcwd()
-  let tagfilename = CtagsGetGITFilePath()
-  if filereadable(tagfilename . "/tags")
-    let cmd = 'ctags -a -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" ' . '"' . f . '"'
-  else
-    let cmd = 'ctags -R -f "' . tagfilename . 'tags" --tag-relative --languages=PHP --langmap=PHP:+.inc --exclude=".git" '
-  endif
-  call CtagsDelTagOfFile(f)
-  echo cmd
-  let result = system(cmd)
-endfunction
+let g:neomake_ctagspy_maker = {
+      \ 'exe': 'ctags',
+      \ 'args': [
+        \ '-a',
+        \ '-f ' . tagfilename . 'new_tags',
+        \ '--tag-relative',
+        \ '--exclude=.git',
+        \ '--exclude=tmp',
+        \ '--exclude=coverage',
+        \ '--exclude=virtual',
+        \ '--exclude=.virtual',
+        \ '--languages=-Python',
+        \ '%p']
+  \ }
 
-function! UpdatePythonTags()
-  let f = expand("%:p")
-  let cwd = getcwd()
-  let tagfilename = CtagsGetGITFilePath()
-  if filereadable(tagfilename . "/tags")
-    let cmd = 'ctags -a -f "' . tagfilename . 'tags" --tag-relative --languages=Python --exclude=".git" --exclude=".virtual" ' . '"' . f . '"'
-  else
-    let cmd = 'ctags -R -f "' . tagfilename . 'tags" --tag-relative --languages=Python --exclude=".git" --exclude=".virtual"'
-  endif
-  call CtagsDelTagOfFile(f)
-  echo cmd
-  let result = system(cmd)
-endfunction
-
-let &tag = CtagsGetGITFilePath() . 'tags'
-
-autocmd BufWritePost *.php,*.inc call UpdatePHPTags()
-autocmd BufWritePost *.py call UpdatePythonTags()
+autocmd BufWritePost *.php,*.inc Neomake! ctags_php
+autocmd BufWritePost *.py Neomake! ctagspy
 " }}}
 
 " File types options {{{
@@ -352,7 +330,7 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_files = 0
 
 " Fixing "broken" VIM regexp
-nnoremap / :CtrlPLine<cr>
+nnoremap // :CtrlPLine<cr>
 cnoremap %s/ %s/\v
 " }}}
 

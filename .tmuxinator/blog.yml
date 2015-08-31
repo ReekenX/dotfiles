@@ -10,6 +10,6 @@ windows:
     - source /usr/local/bin/virtualenvwrapper.sh
     - workon jarmalavicius.lt
     - pelican content
-  - editor: vim
+  - editor: nvim
   - zsh:
   - git: tig
