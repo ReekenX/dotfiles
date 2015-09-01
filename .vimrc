@@ -158,6 +158,8 @@ endif
 
 " No annoying beeping
 set noeb vb t_vb=
+
+set clipboard+=unnamedplus
 " }}}
 
 " Backups and swap {{{
@@ -350,7 +352,7 @@ let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_max_files = 0
 
 " Fixing "broken" VIM regexp
-nnoremap // :CtrlPLine<cr>
+nnoremap // :CtrlPLine %<cr>
 cnoremap %s/ %s/\v
 " }}}
 
