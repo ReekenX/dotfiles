@@ -285,6 +285,7 @@ let g:neomake_ctags_php_maker = {
         \ '%p']
   \ }
 
+autocmd! BufWritePost * Neomake
 autocmd BufWritePost *.php,*.inc Neomake! ctags_php
 autocmd BufWritePost *.py Neomake! ctags_py
 " }}}
