@@ -1,16 +1,36 @@
 " No compatible mode makes VIM more friendly than old VI
 set nocompatible
 
-" Load pathogen and plugins {{{
-filetype off
-filetype plugin on
-filetype plugin indent on
+" Load plugins {{{
+call plug#begin('~/.vim/plugged')
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+Plug 'jlanzarotta/bufexplorer'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Raimondi/vimoutliner'
+Plug 'edsono/vim-matchit'
+Plug 'tpope/vim-surround'
+Plug 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'ReekenX/vim-rename2'
+Plug 'SirVer/ultisnips'
+Plug 'othree/html5.vim'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
+Plug 'matze/vim-move'
+Plug 'joonty/vdebug'
+Plug 'vim-scripts/netrw.vim'
+Plug 'vobornik/vim-mql4'
+Plug 'scrooloose/syntastic'
+Plug 'vim-scripts/vim-auto-save'
+Plug 'kien/ctrlp.vim'
+Plug 'osyo-manga/vim-brightest'
+Plug 'bling/vim-airline'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'vobornik/vim-mql4'
 
-filetype on
-filetype plugin on
+call plug#end()
 " }}}
 
 " Theme {{{
@@ -147,7 +167,7 @@ set backupdir=/tmp/.vim-backup
 set noswapfile
 " }}}
 
-" Mappings {{{
+" Keyboard mappings {{{
 " Note that <F2> is reserved for toggle paste mode
 
 " VIM moving based on screen works better for long text files
@@ -218,7 +238,7 @@ nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
 nnoremap gR gD:%s/<C-R>///gc<left><left><left>}]
 " }}}
 
-"{{{ Ignore file types and directories
+"{{{ Ignore rules
 set wildmenu
 set wildchar=<tab>
 set wildmode=list:full

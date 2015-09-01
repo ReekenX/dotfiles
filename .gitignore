@@ -2,8 +2,8 @@
 
 !.vim
 .vim/backup/
-.vim/view/
 .vim/swap/
+.vim/plugged/
 .todo/Storage
 *.pyc
 .tags
