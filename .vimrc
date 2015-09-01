@@ -21,7 +21,6 @@ Plug 'matze/vim-move'
 Plug 'joonty/vdebug'
 Plug 'vim-scripts/netrw.vim'
 Plug 'vobornik/vim-mql4'
-Plug 'scrooloose/syntastic'
 Plug 'vim-scripts/vim-auto-save'
 Plug 'kien/ctrlp.vim'
 Plug 'osyo-manga/vim-brightest'
@@ -29,6 +28,7 @@ Plug 'bling/vim-airline'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'vobornik/vim-mql4'
+Plug 'benekastah/neomake'
 
 call plug#end()
 " }}}
@@ -258,11 +258,11 @@ endfunction
 let tagfilename = CtagsGetGITFilePath()
 let &tag = tagfilename . 'tags'
 
-let g:neomake_ctagspy_maker = {
+let g:neomake_ctags_py_maker = {
       \ 'exe': 'ctags',
       \ 'args': [
         \ '-a',
-        \ '-f ' . tagfilename . 'new_tags',
+        \ '-f ' . tagfilename . 'tags',
         \ '--tag-relative',
         \ '--exclude=.git',
         \ '--exclude=tmp',
@@ -272,9 +272,21 @@ let g:neomake_ctagspy_maker = {
         \ '--languages=-Python',
         \ '%p']
   \ }
+let g:neomake_ctags_php_maker = {
+      \ 'exe': 'ctags',
+      \ 'args': [
+        \ '-a',
+        \ '-f ' . tagfilename . 'tags',
+        \ '--tag-relative',
+        \ '--exclude=.git',
+        \ '--exclude=tmp',
+        \ '--languages=-PHP',
+        \ '--langmap=PHP:+.inc',
+        \ '%p']
+  \ }
 
 autocmd BufWritePost *.php,*.inc Neomake! ctags_php
-autocmd BufWritePost *.py Neomake! ctagspy
+autocmd BufWritePost *.py Neomake! ctags_py
 " }}}
 
 " File types options {{{
@@ -354,15 +366,6 @@ let g:ctrlp_max_files = 0
 " Fixing "broken" VIM regexp
 nnoremap // :CtrlPLine %<cr>
 cnoremap %s/ %s/\v
-" }}}
-
-" Syntastic {{{
-let g:syntastic_check_on_open = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "✗"
-let g:syntastic_style_error_symbol = "✗"
-let g:syntastic_style_warning_symbol = "✗"
-let g:syntastic_php_checkers = ['php', 'phpcs']
 " }}}
 
 " Airline {{{
