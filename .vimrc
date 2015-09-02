@@ -245,7 +245,7 @@ set wildmenu
 set wildchar=<tab>
 set wildmode=list:full
 set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~,*.zip,*.gz
-set wildignore+=virtual/,.virtualenv/,eggs/,upload/,uploads
+set wildignore+=virtual/,.virtualenv/,eggs/,upload/,uploads,node_modules
 " }}}
 
 " Automatic Ctags {{{
@@ -269,6 +269,7 @@ let g:neomake_ctags_py_maker = {
         \ '--exclude=coverage',
         \ '--exclude=virtual',
         \ '--exclude=.virtual',
+        \ '--exclude=node_modules',
         \ '--languages=-Python',
         \ '%p']
   \ }
@@ -280,6 +281,7 @@ let g:neomake_ctags_php_maker = {
         \ '--tag-relative',
         \ '--exclude=.git',
         \ '--exclude=tmp',
+        \ '--exclude=node_modules',
         \ '--languages=-PHP',
         \ '--langmap=PHP:+.inc',
         \ '%p']
