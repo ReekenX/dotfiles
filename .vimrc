@@ -21,7 +21,6 @@ Plug 'matze/vim-move'
 Plug 'joonty/vdebug'
 Plug 'vim-scripts/netrw.vim'
 Plug 'vobornik/vim-mql4'
-Plug 'vim-scripts/vim-auto-save'
 Plug 'kien/ctrlp.vim'
 Plug 'osyo-manga/vim-brightest'
 Plug 'bling/vim-airline'
@@ -29,6 +28,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'vobornik/vim-mql4'
 Plug 'benekastah/neomake'
+Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
 " }}}
@@ -346,12 +346,6 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 set scrolloff=10
-" }}}
-
-" VIM Autosave {{{
-let g:auto_save = 1
-let g:auto_save_in_insert_mode = 0
-let g:auto_save_silent = 1
 " }}}
 
 " VIM Move {{{
