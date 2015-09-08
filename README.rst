@@ -1,44 +1,61 @@
-Dotfiles for Linux software
-===========================
+Personal dotfiles
+=================
 
-Linux software configuration files for geeks who are using (could be any of them): vim, git, hg, screen, tmux, buildout, oh-my-zsh, rst. Home edition.
+Reusable configuration files for geeks like me.
 
-Already tested on Gentoo, Ubuntu and Debian servers. Works out of the box.
+Already tested on Gentoo, Ubuntu and Debian servers. Works out of the box or inside the box.
 
-License
--------
-
-You are free to `fork`, modify and do amazing stuff. Please keep me in touch me with your improvements, I am always interested to see how this can be improved. Thanks.
+Does not have dependencies!
 
 Install
 -------
 
-Open your home directory, extract to .git folder, update source code and update GIT submodules. They are used to receive latest VIM plugins.
+Put all files to your home directory.
 
 For g33ks this should sound better::
 
     git clone --bare https://github.com/ReekenX/dotfiles-home ~/.git
     git config core.bare false
     git checkout -f master
-    git submodule update --init
 
-Automatic installer
--------------------
+What you can find here
+----------------------
 
-Run only, if you trust me::
+Fixed history for `bpython`.
 
-    curl -s -L https://raw.github.com/ReekenX/dotfiles-home/master/.install-dotfiles-home.sh | bash
+Properly structured `git` configs without any fancy 3rdparty tools.
 
-It has the same commands I wrote above in `Install` section.
+Python `pip` tool will cache stuff so repeated installs will go much faster.
+
+Some very basic `rst2pdf` config with improved readability.
+
+Automatic envs creating templates with `tmuxinator` for various projects.
+
+Tons of configuration for `vim` including themes, plugins and etc. Be sure to install plugins with `:PlugInstall`.
+
+Shared history between `bash` and `zsh`.
+
+Nice theme for `dreampie`.
+
+Support for `nvim` with symlinks. Yes, `nvim` is very nice!
+
+Simple `tmux` configuration with nice theme.
+
+GIT tool called `tig` for nice browsing of repos in terminal.
 
 Hardcoded stuff
 ---------------
 
-GIT configuration (.gitconfig) has my name, surname and e-mail information. Be sure to change it. Same with Mercurial (.hgrc).
+I was unable to make bootstrap from this, but it will be easy enough to fix it. Just check two files `.gitconfig` for name and e-mail and the same for `.hgrc`.
+
+License
+-------
+
+You are free to `fork`, modify and do amazing stuff. Please keep me in touch me with your improvements, I am always interested to see how this can be improved. Thanks.
 
 Bugs
 ----
 
-This project has no bugs. But you can fill feature requests, discuss some configuration or use it for learning purposes.
+This project has no bugs. But you can file requests or to discuss something.
 
 You can leave a comment in: https://github.com/ReekenX/dotfiles-home/issues/new
