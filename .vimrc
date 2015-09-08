@@ -169,6 +169,11 @@ set backupdir=/tmp/.vim-backup
 set noswapfile
 " }}}
 
+" Autosave {{{
+set updatetime=1000
+autocmd CursorHold,CursorHoldI <buffer> silent update
+" }}}
+
 " Keyboard mappings {{{
 " Note that <F2> is reserved for toggle paste mode
 
@@ -309,8 +314,7 @@ set path+=website/**
 set path+=src/**
 " }}}
 
-" Plugins {{{
-" Omnicomplete {{{
+" Omnicomplete plugin settings {{{
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -319,7 +323,7 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 set completeopt=menuone,longest
 " }}}
 
-" VIM Outliner {{{
+" VIM Outliner plugin settings {{{
 autocmd BufEnter *.otl set foldlevel=0
 autocmd BufEnter *.otl set textwidth=80
 autocmd BufEnter *.otl set wrap
@@ -331,7 +335,7 @@ autocmd BufRead,BufNewFile *.otl filetype plugin indent on
 autocmd BufRead,BufNewFile *.otl set nolist
 " }}}
 "
-" VIM UltiSnips {{{
+" VIM UltiSnips plugin settings {{{
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
@@ -340,7 +344,7 @@ let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
 " }}}
 
-" VIM Smooth Scroll {{{
+" VIM Smooth Scroll plugin settings {{{
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
@@ -348,11 +352,11 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 set scrolloff=10
 " }}}
 
-" VIM Move {{{
+" VIM Move plugin settings {{{
 let g:move_key_modifier = 'C'
 " }}}
 
-" CTRL-P {{{
+" CTRL-P plugin settings {{{
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'a'
@@ -365,15 +369,13 @@ nnoremap // :CtrlPLine %<cr>
 cnoremap %s/ %s/\v
 " }}}
 
-" Airline {{{
+" Airline plugin settings {{{
 set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 autocmd VimEnter * AirlineToggleWhitespace
 " }}}
 
-" Nerd commenter {{{
+" Nerd commenter plugin settings {{{
 let NERDSpaceDelims=1
-" }}}
-
 " }}}
