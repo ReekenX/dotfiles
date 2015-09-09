@@ -171,7 +171,7 @@ set noswapfile
 
 " Autosave {{{
 set updatetime=1000
-autocmd CursorHold,CursorHoldI <buffer> silent update
+autocmd CursorHold,CursorHoldI * silent update
 " }}}
 
 " Keyboard mappings {{{
