@@ -370,10 +370,9 @@ cnoremap %s/ %s/\v
 " }}}
 
 " Airline plugin settings {{{
-set laststatus=2 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-let g:airline#extensions#tabline#enabled = 1
+set laststatus=1 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+let g:airline#extensions#tabline#enabled = 0
 let g:airline_powerline_fonts = 1
-autocmd VimEnter * AirlineToggleWhitespace
 " }}}
 
 " Nerd commenter plugin settings {{{
