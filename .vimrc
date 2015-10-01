@@ -292,7 +292,7 @@ let g:neomake_ctags_php_maker = {
         \ '%p']
   \ }
 
-if !has('nvim')
+if has('nvim')
     autocmd! BufWritePost * Neomake
     autocmd BufWritePost *.php,*.inc Neomake! ctags_php
     autocmd BufWritePost *.py Neomake! ctags_py
