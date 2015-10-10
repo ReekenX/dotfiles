@@ -29,6 +29,7 @@ Plug 'honza/vim-snippets'
 Plug 'vobornik/vim-mql4'
 Plug 'benekastah/neomake'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'cakebaker/scss-syntax.vim'
 
 call plug#end()
 " }}}
