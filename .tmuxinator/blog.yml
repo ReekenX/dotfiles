@@ -9,7 +9,7 @@ windows:
     - bash
     - source /usr/local/bin/virtualenvwrapper.sh
     - workon jarmalavicius.lt
-    - pelican content
+    - ls content/* | entr pelican content
   - editor: nvim
   - zsh:
   - git: tig
