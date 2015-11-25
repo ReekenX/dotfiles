@@ -36,6 +36,8 @@ compinit
 
 source $ZSH/oh-my-zsh.sh
 
-export WORKON_HOME=~/.virtualenvs
-
+# For partially muonted repositories to RAM
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
+
+# Hook for desk activation
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
