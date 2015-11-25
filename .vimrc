@@ -19,7 +19,6 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'kchmck/vim-coffee-script'
 Plug 'matze/vim-move'
 Plug 'joonty/vdebug'
-Plug 'vim-scripts/netrw.vim'
 Plug 'vobornik/vim-mql4'
 Plug 'kien/ctrlp.vim'
 Plug 'osyo-manga/vim-brightest'
@@ -45,9 +44,9 @@ colorscheme desert_modified
 " Always show what mode we're using
 set showmode
 
-" Only UTF-8!
+" Encoding
 scriptencoding utf-8
-set encoding=utf-8
+set termencoding=utf-8
 
 " Don't update the display while executing macros
 set lazyredraw
@@ -61,7 +60,7 @@ set hidden
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
 
-set viminfo='50,:50,<50,s10,h,n/tmp/.viminfo
+" set viminfo='50,:50,<50,s10,h,n/tmp/.viminfo
 
 " GUI settings
 set title
@@ -107,10 +106,6 @@ hi link htmlLink NONE
 " Edit behaviour {{{
 " Mapleader from \ to ,
 let mapleader=","
-
-" Encoding
-set termencoding=utf-8
-set encoding=utf-8
 
 " Just file formats
 set fileformat="unix,dos,mac"
