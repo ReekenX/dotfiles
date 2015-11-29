@@ -39,5 +39,5 @@ source $ZSH/oh-my-zsh.sh
 # For partially muonted repositories to RAM
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
 
-# Hook for desk activation
-[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+# Activate project specific helpers
+[ -f "$HOME/.desk/$(basename $(pwd)).bash" ] && . "$HOME/.desk/$(basename $(pwd)).bash"

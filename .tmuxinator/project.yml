@@ -1,10 +1,9 @@
-name: please-change-me
+name: php
 root: <%= ENV["PWD"] %>
+startup_window: zsh
 
 windows:
-  - editor:
-      - [ -f ~/
-    - nvim
+  - editor: nvim
   - zsh:
   - git: tig
   - logs: sudo tailf /var/log/apache2/error.log
