@@ -2,9 +2,7 @@ name: please-change-me
 root: <%= ENV["PWD"] %>
 
 windows:
-  - editor:
-      - [ -f ~/
-    - nvim
+  - editor: nvim
   - zsh:
   - git: tig
   - logs: sudo tailf /var/log/apache2/error.log

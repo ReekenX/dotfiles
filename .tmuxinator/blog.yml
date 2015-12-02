@@ -1,5 +1,5 @@
 name: blog
-root: <%= ENV["PWD"] %>
+root: ~/Work/github/www.jarmalavicius.lt
 
 windows:
   - server:
