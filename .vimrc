@@ -29,6 +29,7 @@ Plug 'vobornik/vim-mql4'
 Plug 'benekastah/neomake'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 " }}}
@@ -258,40 +259,8 @@ endfunction
 
 let tagfilename = CtagsGetGITFilePath()
 let &tag = tagfilename . 'tags'
-
-let g:neomake_ctags_py_maker = {
-      \ 'exe': 'ctags',
-      \ 'args': [
-        \ '-a',
-        \ '-f ' . tagfilename . 'tags',
-        \ '--tag-relative',
-        \ '--exclude=.git',
-        \ '--exclude=tmp',
-        \ '--exclude=coverage',
-        \ '--exclude=virtual',
-        \ '--exclude=.virtual',
-        \ '--exclude=node_modules',
-        \ '--languages=-Python',
-        \ '%p']
-  \ }
-let g:neomake_ctags_php_maker = {
-      \ 'exe': 'ctags',
-      \ 'args': [
-        \ '-a',
-        \ '-f ' . tagfilename . 'tags',
-        \ '--tag-relative',
-        \ '--exclude=.git',
-        \ '--exclude=tmp',
-        \ '--exclude=node_modules',
-        \ '--languages=-PHP',
-        \ '--langmap=PHP:+.inc',
-        \ '%p']
-  \ }
-
-if has('nvim')
-    autocmd! BufWritePost * Neomake
-    autocmd BufWritePost *.php,*.inc Neomake! ctags_php
-    autocmd BufWritePost *.py Neomake! ctags_py
+if filereadable(&tag)
+    call tagbar#OpenWindow()
 endif
 " }}}
 
@@ -347,7 +316,7 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-set scrolloff=10
+set scrolloff=3
 " }}}
 
 " VIM Move plugin settings {{{
@@ -375,4 +344,16 @@ let g:airline_powerline_fonts = 1
 
 " Nerd commenter plugin settings {{{
 let NERDSpaceDelims=1
+" }}}
+
+" Tagbar plugin settings {{{
+let g:tagbar_type_php = {
+    \ 'kinds' : [
+        \ 'i:interfaces',
+        \ 'c:classes',
+        \ 'd:constant definitions:0:0',
+        \ 'f:functions',
+        \ 'j:javascript functions',
+    \ ],
+\ }
 " }}}
