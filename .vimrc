@@ -22,7 +22,6 @@ Plug 'joonty/vdebug'
 Plug 'vobornik/vim-mql4'
 Plug 'kien/ctrlp.vim'
 Plug 'osyo-manga/vim-brightest'
-Plug 'bling/vim-airline'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'vobornik/vim-mql4'
@@ -52,8 +51,8 @@ set termencoding=utf-8
 " Don't update the display while executing macros
 set lazyredraw
 
-" Always show status line
-set laststatus=2
+" No status line with useless info
+set laststatus=0
 
 " Don't force to write when switching to other file
 set hidden
@@ -66,8 +65,8 @@ set history=1000
 " GUI settings
 set title
 
-" Shows information on VIM bottom
-set ruler
+" No ruler line with column/line - useless info
+set noruler
 
 " Show line numbers in editor
 set number
@@ -346,12 +345,6 @@ let g:ctrlp_max_files = 0
 " Fixing "broken" VIM regexp
 nnoremap // :CtrlPLine %<cr>
 cnoremap %s/ %s/\v
-" }}}
-
-" Airline plugin settings {{{
-set laststatus=1 statusline=%02n:%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
-let g:airline#extensions#tabline#enabled = 0
-let g:airline_powerline_fonts = 1
 " }}}
 
 " Nerd commenter plugin settings {{{
