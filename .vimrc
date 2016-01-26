@@ -274,9 +274,6 @@ endfunction
 
 let tagfilename = CtagsGetGITFilePath()
 let &tag = tagfilename . 'tags'
-if filereadable(&tag)
-    call tagbar#OpenWindow()
-endif
 " }}}
 
 " File types options {{{
