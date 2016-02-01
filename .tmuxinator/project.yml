@@ -5,5 +5,7 @@ startup_window: zsh
 windows:
   - editor: nvim
   - zsh:
+    - git status
+    -
   - git: tig
   - logs: sudo tailf /var/log/apache2/error.log
