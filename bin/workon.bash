@@ -52,7 +52,7 @@ cmd_current() {
 
 cmd_init() {
     local project_folder=$(find "$SCAN_FOLDER" -maxdepth $SCAN_DEPTH -type d -iname "$1" 2> /dev/null)
-    local project_name=$(basename "$project_folder")
+    local project_name=$(basename "$project_folder" | sed -e 's/www//' -e 's/[^a-zA-Z0-9]/-/g' -e 's/^[^a-zA-Z]//')
 
     if [ -z "$project_folder" ]
     then
