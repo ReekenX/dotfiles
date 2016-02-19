@@ -1,5 +1,0 @@
-name: pomodoro
-root: ~/Work/asmeniniai/pomodoro-toggl-cli/
-
-windows:
-  - pomodoro: . .virtualenv/bin/activate
