@@ -170,6 +170,10 @@ set updatetime=1000
 autocmd CursorHold,CursorHoldI * silent update
 " }}}
 
+" Auto validate code {{{
+autocmd! BufWritePost * Neomake
+" }}}
+
 " Auto create directories on save {{{
 function s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
@@ -219,8 +223,6 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " move to beginning/end of line
 nnoremap B ^
 nnoremap E $
-
-nmap <silent> ,/ :nohlsearch<CR>
 
 " Tab navigation
 nmap ,p :bp<CR>
@@ -273,6 +275,13 @@ endfunction
 
 let tagfilename = CtagsGetGITFilePath()
 let &tag = tagfilename . 'tags'
+" }}}
+
+" Automatic hl timeout {{{
+function! SearchHlClear()
+    nohl
+endfunction
+autocmd CursorHold,CursorHoldI * call SearchHlClear()
 " }}}
 
 " File types options {{{
