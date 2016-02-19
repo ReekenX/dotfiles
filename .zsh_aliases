@@ -15,6 +15,7 @@ alias scp="/usr/bin/scp -r"
 alias :e="vim"
 alias :q="exit"
 alias rm="/bin/rm -rvf"
+alias vim="/usr/bin/nvim"
 
 function search() {
     output=$(ag --nocolor -i "$1" --ignore="*.min.js" --ignore="*.min.css" --ignore="*.po" | cut -c 1-$(tput cols) | GREP_COLOR='01;36' egrep -i --color=always '^[^:]*:|$' | GREP_COLOR='01;31' egrep -i --color=always "$1"'|$')
