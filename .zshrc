@@ -43,4 +43,4 @@ export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
 [ -f "$HOME/.desk/$(basename $(pwd)).bash" ] && . "$HOME/.desk/$(basename $(pwd)).bash"
 
 # Start tmux on local computer when zsh turned on
-[ "$(hostname)" = "angelina" ] && [ -z "$TMUX" ] && (tmux attach -t base 2> /dev/null || (tmux new-session -d -s base && tmux a))
+[ "$(hostname)" = "angelina" ] && [ -z "$TMUX" ] && (tmux attach -t base 2> /dev/null || tmuxinator start base)
