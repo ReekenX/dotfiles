@@ -60,7 +60,7 @@ cmd_init() {
         exit 1
     else
         cd "$project_folder"
-        tmuxinator start project "$project_name"
+        tmuxinator start project -n "$project_name"
     fi
 }
 
