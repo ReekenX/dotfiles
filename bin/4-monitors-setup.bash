@@ -1,3 +1,5 @@
+#!/bin/bash
+#
 # Turn off monitors to prevent floating point errors
 xrandr --output HDMI-1 --off
 xrandr --output VGA-1 --off
