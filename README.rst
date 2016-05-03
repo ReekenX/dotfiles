@@ -25,6 +25,19 @@ For g33ks this should sound better::
 
 Pay attention to `cd` program - it's not a program which burns folder to CD/DVD.
 
+Uninstall
+---------
+
+Just run (one of them or all of them)::
+
+    stow -D bin
+    stow -D zsh
+    stow -D vcs
+    stow -D tools
+    stow -D bash
+    stow -D tmux
+
+
 What you can find here
 ----------------------
 
