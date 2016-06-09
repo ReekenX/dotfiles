@@ -18,6 +18,23 @@ For g33ks this should sound better::
     git config core.bare false
     git checkout -f master
 
+Uninstall
+---------
+
+Poor man solution::
+
+    git ls-files | xargs rm -i
+    rm -rf .git
+
+Why I do not use GNU STOW
+-------------------------
+
+I was. You can checkout `cbe687c898d0ed02a18cb95eea6b1b2ad44550b9` and see how nice it works and how cool GNU STOW is.
+
+Unfortunatelly, installing extra dependency in all the servers seems to be a bit too much. Specially, when you are not allowed to do this. Git is more common thing. Even if `git` (command) does not work you still can have dotfiles - from Github zipped file. With GNU STOW that would be impossible.
+
+So that's why I reverted back my dotfiles to the version you can find here.
+
 What you can find here
 ----------------------
 
