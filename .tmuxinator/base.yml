@@ -1,8 +1,0 @@
-name: base
-root: ~
-
-windows:
-  - pomodoro:
-    - cd ~/Work/asmeniniai/pomodoro-toggl-cli/
-    - . .virtualenv/bin/activate
-  - zsh:
