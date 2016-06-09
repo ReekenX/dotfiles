@@ -1,6 +1,6 @@
 #!/bin/bash
-
 SCAN_FOLDER="$HOME/Work"
+
 PROJECTS_FOLDER="$HOME/.desk"
 SCAN_DEPTH=2
 
@@ -51,7 +51,7 @@ cmd_current() {
 }
 
 cmd_init() {
-    local project_folder=$(find "$SCAN_FOLDER" -maxdepth $SCAN_DEPTH -type d -iname "$1" 2> /dev/null)
+    local project_folder=$(find "$SCAN_FOLDER" -maxdepth $SCAN_DEPTH \( -type d -or -type l \) -iname "$1" 2> /dev/null)
     local project_name=$(basename "$project_folder" | sed -e 's/www//' -e 's/[^a-zA-Z0-9]/-/g' -e 's/^[^a-zA-Z]//')
 
     if [ -z "$project_folder" ]
@@ -60,7 +60,7 @@ cmd_init() {
         exit 1
     else
         cd "$project_folder"
-        tmuxinator start project -n "$project_name"
+        tmuxinator start php -n "$project_name"
     fi
 }
 
