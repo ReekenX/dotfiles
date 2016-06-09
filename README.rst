@@ -3,9 +3,9 @@ Personal dotfiles
 
 Reusable configuration files for geeks like me.
 
-Already tested on Gentoo, Ubuntu, Centos and Debian servers. Works out of the box (or inside the box).
+Already tested on Gentoo, Ubuntu and Debian servers. Works out of the box or inside the box.
 
-Previous versions from changeset `8732f16` did not have any dependencies. This uses GNU STOW now, because I think it's good idea to have reusable, easy to install and manage configurations.
+Does not have dependencies!
 
 Install
 -------
@@ -14,29 +14,9 @@ Put all files to your home directory.
 
 For g33ks this should sound better::
 
-    git clone https://github.com/ReekenX/dotfiles-home reekenx-dotfiles
-    cd reekenx-dotfiles
-    stow bin     # some my custom scripts I wrote
-    stow zsh     # oh-my-zsh configs
-    stow vcs     # git and mercurial (hg) configs
-    stow tools   # random packages fo rst2pdf and etc
-    stow bash
-    stow tmux
-
-Pay attention to `cd` program - it's not a program which burns folder to CD/DVD.
-
-Uninstall
----------
-
-Just run (one of them or all of them)::
-
-    stow -D bin
-    stow -D zsh
-    stow -D vcs
-    stow -D tools
-    stow -D bash
-    stow -D tmux
-
+    git clone --bare https://github.com/ReekenX/dotfiles-home ~/.git
+    git config core.bare false
+    git checkout -f master
 
 What you can find here
 ----------------------
@@ -66,7 +46,7 @@ GIT tool called `tig` for nice browsing of repos in terminal.
 Hardcoded stuff
 ---------------
 
-I was unable to make bootstrap from this, but it will be easy enough to fix it. Just check TWO FILES `.gitconfig` for name and e-mail and the same for `.hgrc`.
+I was unable to make bootstrap from this, but it will be easy enough to fix it. Just check two files `.gitconfig` for name and e-mail and the same for `.hgrc`.
 
 License
 -------
@@ -78,4 +58,4 @@ Bugs
 
 This project has no bugs. But you can file requests or to discuss something.
 
-You can leave a comment in: https://github.com/ReekenX/dotfiles/issues/new
+You can leave a comment in: https://github.com/ReekenX/dotfiles-home/issues/new
