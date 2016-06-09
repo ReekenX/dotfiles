@@ -3,7 +3,7 @@ Personal dotfiles
 
 Reusable configuration files for geeks like me.
 
-Already tested on Gentoo, Ubuntu and Debian servers. Works out of the box or inside the box.
+Already tested on Gentoo, Ubuntu and Debian servers. Works out of the box. Or inside the box.
 
 Does not have dependencies!
 
@@ -75,4 +75,4 @@ Bugs
 
 This project has no bugs. But you can file requests or to discuss something.
 
-You can leave a comment in: https://github.com/ReekenX/dotfiles-home/issues/new
+You can leave a comment in: https://github.com/ReekenX/dotfiles/issues/new
