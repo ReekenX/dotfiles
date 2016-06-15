@@ -43,4 +43,4 @@ export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
 [ -f "$HOME/.desk/$(basename $(pwd)).bash" ] && . "$HOME/.desk/$(basename $(pwd)).bash"
 
 # Start tmux on local computer when zsh turned on
-[ -f "$HOME/.zsh-autolaunch-tmux" ] && [ -z "$TMUX" ] && (tmux attach -t base 2> /dev/null || tmuxinator start time-tracker)
+[ -f "$HOME/.zsh-autolaunch-tmux" ] && [ -z "$TMUX" ] && (tmux attach -t base 2> /dev/null || tmuxinator start base)
