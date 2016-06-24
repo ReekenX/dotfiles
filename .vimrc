@@ -29,6 +29,7 @@ Plug 'benekastah/neomake'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'majutsushi/tagbar'
+Plug 'ervandew/supertab'
 
 call plug#end()
 " }}}
