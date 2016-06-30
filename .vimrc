@@ -292,9 +292,28 @@ autocmd Bufenter *.mq4 set syntax=mql4
 autocmd Bufenter *.coffee set syntax=coffee
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, strlen(getline(1))+1, 0])
 
+" In PHP code allow HTML code snippets (yeah, that's the way professionals code)
+au BufRead *.php set ft=php.html
+au BufNewFile *.php set ft=php.html
+
 " Automatically load common libraries
 set path+=website/**
 set path+=src/**
+" }}}
+
+" Make ENTER key smarter when coding HTML {{{
+function EnterOrIndentTag()
+  let line = getline(".")
+  let col = getpos(".")[2]
+  let before = line[col-2]
+  let after = line[col-1]
+
+  if before == ">" && after == "<"
+    return "\<Enter>\<C-o>O\<Tab>"
+  endif
+   return "\<Enter>"
+endfunction
+inoremap <expr> <Enter> EnterOrIndentTag()
 " }}}
 
 " Omnicomplete plugin settings {{{
