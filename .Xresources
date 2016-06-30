@@ -32,8 +32,8 @@ XTerm.VT100.translations: #override\n\
 
 xterm*Title: Terminal
 xterm*ToolBar: false
-xterm*BorderWidth: 5
-xterm*FreeBoldBox: true
+xterm*BorderWidth: 0
+xterm*FreeBoldBox: false
 xterm*LoginShell: true
 xterm*ScrollBar: false
 xterm*RightScrollBar: false
