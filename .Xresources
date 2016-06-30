@@ -1,5 +1,4 @@
-XTerm*background:  #0F0F0F
-XTerm*foreground:  #999999
+/* Default color scheme */
 XTerm*color0:      #000000
 XTerm*color1:      #9e1828
 XTerm*color2:      #aece92
@@ -16,23 +15,27 @@ XTerm*color12:     #4186be
 XTerm*color13:     #cf9ebe
 XTerm*color14:     #71bebe
 XTerm*color15:     #ffffff
+XTerm*foreground:  #dcdccc
+XTerm*background:  #1f1f1f
+XTerm*cursorColor: #8faf9f
 
-xterm*font: -*-fixed-medium-*-*-*-*-140-*-*-*-*-iso10646-1
-xterm*maximized: false
+/* Progarmming font */
+xterm*faceName: Monospace
+xterm*faceSize: 11
 
-/* This is to work Alt+* keys */
+/* This is to work Alt+* keys (f.e. for `irssi`) */
 xterm*eightBitInput: false
 
 XTerm.VT100.translations: #override\n\
         <Btn4Down>,<Btn4Up>: string(0x19)\n\
         <Btn5Down>,<Btn5Up>: string(0x5)\n
 
-xterm*Title: xterm
-xterm*ToolBar: true
+xterm*Title: Terminal
+xterm*ToolBar: false
 xterm*BorderWidth: 5
 xterm*FreeBoldBox: true
 xterm*LoginShell: true
-xterm*ScrollBar: true
-xterm*RightScrollBar: true
+xterm*ScrollBar: false
+xterm*RightScrollBar: false
 xterm*Thickness: 10
-xterm*SaveLines: 1000
+xterm*SaveLines: 10000000
