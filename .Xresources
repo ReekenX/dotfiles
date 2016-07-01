@@ -20,8 +20,8 @@ XTerm*background:  #1f1f1f
 XTerm*cursorColor: #8faf9f
 
 /* Progarmming font */
-xterm*faceName: Monospace
-xterm*faceSize: 11
+xterm*faceName: DejaVu Sans Mono
+xterm*faceSize: 10
 
 /* This is to work Alt+* keys (f.e. for `irssi`) */
 xterm*eightBitInput: false
