@@ -1,10 +1,11 @@
-name: please-change-me
+name: please-rename-me
 root: <%= ENV["PWD"] %>
 startup_window: zsh
 
 windows:
   - editor: nvim
   - zsh:
-    - git status
+    - git up
     -
   - git: tig
+  - livereload:

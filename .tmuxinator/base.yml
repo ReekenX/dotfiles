@@ -2,7 +2,7 @@ name: base
 root: ~
 
 windows:
-  - pomodoro:
-    - cd ~/Work/asmeniniai/pomodoro-toggl-cli/
-    - . .virtualenv/bin/activate
+  - docker:
+    - cd ~/Work/docker
+    - docker-compose down
   - zsh:
