@@ -21,7 +21,7 @@ XTerm*cursorColor: #8faf9f
 
 /* Progarmming font */
 xterm*faceName: DejaVu Sans Mono
-xterm*faceSize: 10
+xterm*faceSize: 11
 
 /* This is to work Alt+* keys (f.e. for `irssi`) */
 xterm*eightBitInput: false
