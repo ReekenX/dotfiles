@@ -290,6 +290,9 @@ autocmd Bufenter *.coffee set syntax=coffee
 autocmd Bufenter *.mqh set syntax=mql4
 autocmd Bufenter *.mq4 set syntax=mql4
 autocmd Bufenter *.coffee set syntax=coffee
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+
+" When in git commit message - set cursor to the first line
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, strlen(getline(1))+1, 0])
 
 " In PHP code allow HTML code snippets (yeah, that's the way professionals code)
