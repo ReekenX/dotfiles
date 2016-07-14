@@ -1,1 +1,0 @@
-../Work/github/dotfiles/bin/bin/camera-setup.bash

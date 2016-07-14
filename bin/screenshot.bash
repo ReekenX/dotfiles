@@ -1,4 +1,5 @@
 #!/bin/bash
+# Make screenshot, upload to Dropbox and to clipboard get public URL for sharing
 # Copied from: https://tante.cc/2013/03/15/quickly-sharing-a-screenshot-from-linux/
 
 # The file needs to be below the "Public" Dropbox folder

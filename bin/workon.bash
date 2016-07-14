@@ -1,4 +1,9 @@
 #!/bin/bash
+# The most amazing script for developer!
+# Say workon.bash load www.example.org and you are ready to code
+# It will scan for ~/Work/***/www.example.org and will launch tmux for that
+
+
 SCAN_FOLDER="$HOME/Work"
 
 PROJECTS_FOLDER="$HOME/.desk"

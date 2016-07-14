@@ -1,4 +1,6 @@
 #!/bin/bash
+# Toggle mic on-off with single command
+# Notify user with GUI message about it
 
 amixer set Capture toggle && amixer get Capture | \
     grep '\[off\]' && \
