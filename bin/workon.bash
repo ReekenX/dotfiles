@@ -65,7 +65,12 @@ cmd_init() {
         exit 1
     else
         cd "$project_folder"
-        tmuxinator start php -n "$project_name"
+        if find -maxdepth 3 -iname 'rails' | grep '.*'
+        then
+            tmuxinator start rails -n "$project_name"
+        else
+            tmuxinator start php -n "$project_name"
+        fi
     fi
 }
 
