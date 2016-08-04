@@ -102,8 +102,8 @@ PS1='\[\e[1;31m\]\D{%Y-%m-%d} \t in \w \n$ \[\e[0m\]'
 # Setting editor. There are not editors except `vim`, right?
 export EDITOR="vim"
 
-# Path for `mkvirtualenv`
-export WORKON_HOME=~/.virtualenvs
-
 # Don't accidently overwrite files with > operator
 set -o noclobber
+
+# Do host auth with Postgres instead of unix socket (so it will work with Docker too)
+export PGHOST="localhost"
