@@ -1,0 +1,22 @@
+name: please-rename-me
+root: <%= ENV["PWD"] %>
+startup_window: zsh
+
+windows:
+  - editor: nvim
+  - zsh: git up
+  - db:
+    - cd website
+    - bin/rails db
+  - server:
+      layout: main-vertical
+      panes:
+        - runserver:
+          - cd website
+          - sleep 2 && bundle install
+          - rake db:migrate
+          - bin/rails server
+        - livereload:
+          - cd website
+          - guard
+  - git: tig
