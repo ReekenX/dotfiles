@@ -2,10 +2,14 @@ name: django-ext
 root: <%= ENV["PWD"] %>
 
 windows:
+  - editor: nvim -c 'CtrlPClearCache'
+  - zsh:
+  - git: tig
+  - db:
+      - bash
+      - . ../.custom-env/empower.sh
+      - fab dbshell
   - server:
       - bash
       - . ../.custom-env/empower.sh
       - fab serve
-  - editor: nvim
-  - zsh:
-  - git: tig

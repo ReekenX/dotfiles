@@ -3,9 +3,7 @@ root: <%= ENV["PWD"] %>
 startup_window: zsh
 
 windows:
-  - editor: nvim
-  - zsh:
-    - git up
-    -
+  - editor: nvim -c 'CtrlPClearCache'
+  - zsh: git up
+  - livereload: livereload
   - git: tig
-  - livereload:

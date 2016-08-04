@@ -2,7 +2,12 @@ name: django
 root: <%= ENV["PWD"] %>
 
 windows:
-  - server:
-  - editor: nvim
+  - editor: nvim -c 'CtrlPClearCache'
   - zsh:
   - git: tig
+  - db:
+    - source .virtualenv/bin/activate
+    - python src/manage.py dbshell
+  - server:
+    - source .virtualenv/bin/activate
+    - python src/manage.py runserver

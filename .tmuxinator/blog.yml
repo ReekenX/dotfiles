@@ -2,14 +2,13 @@ name: blog
 root: ~/Work/github/www.jarmalavicius.lt
 
 windows:
+  - editor: nvim -c 'CtrlPClearCache'
+  - zsh: git up
+  - git: tig
   - server:
     - cd output
     - python -m SimpleHTTPServer
   - pelican:
     - bash
-    - source /usr/local/bin/virtualenvwrapper.sh
-    - workon jarmalavicius.lt
+    - source .virtualenv/bin/activate
     - ls content/* | entr pelican content
-  - editor: nvim
-  - zsh:
-  - git: tig
