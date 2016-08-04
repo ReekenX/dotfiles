@@ -1,4 +1,3 @@
-set show-date = relative
 set ignore-space = yes
 set show-changes = yes
 set diff-context = 10
