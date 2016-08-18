@@ -163,6 +163,13 @@ set noswapfile
 
 " Autosave {{{
 set updatetime=1000
+
+function AutoSave()
+    if expand('%:p') != ''
+      silent update
+    endif
+endfunction
+autocmd CursorHold,CursorHoldI * call AutoSave()
 " }}}
 
 " Auto validate code {{{
@@ -272,16 +279,6 @@ endfunction
 
 let tagfilename = CtagsGetGITFilePath()
 let &tag = tagfilename . 'tags'
-" }}}
-
-" Automatic hl timeout {{{
-function AutoSave()
-    nohlsearch
-    if expand('%:p') != ''
-      silent update
-    endif
-endfunction
-autocmd CursorHold,CursorHoldI * call AutoSave()
 " }}}
 
 " File types options {{{
