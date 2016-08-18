@@ -167,7 +167,9 @@ autocmd CursorHold,CursorHoldI * silent update
 " }}}
 
 " Auto validate code {{{
-autocmd! BufWritePost * Neomake
+if has('nvim')
+    autocmd! BufWritePost * Neomake
+endif
 " }}}
 
 " Auto create directories on save {{{
