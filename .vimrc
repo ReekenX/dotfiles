@@ -163,7 +163,6 @@ set noswapfile
 
 " Autosave {{{
 set updatetime=1000
-autocmd CursorHold,CursorHoldI * silent update
 " }}}
 
 " Auto validate code {{{
@@ -276,10 +275,13 @@ let &tag = tagfilename . 'tags'
 " }}}
 
 " Automatic hl timeout {{{
-function! SearchHlClear()
-    nohl
+function AutoSave()
+    nohlsearch
+    if expand('%:p') != ''
+      silent update
+    endif
 endfunction
-autocmd CursorHold,CursorHoldI * call SearchHlClear()
+autocmd CursorHold,CursorHoldI * call AutoSave()
 " }}}
 
 " File types options {{{
