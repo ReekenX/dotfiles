@@ -8,7 +8,7 @@ FILENAME=~/Dropbox/Public/Screenshot_`date +%Y%m%d%H%M`.png
 # Select an area and save the screenshot
 gnome-screenshot -a -f $FILENAME 
 
-URL=`dropbox puburl $FILENAME`
+URL=`python ~/bin/dropbox.py sharelink $FILENAME`
 
 echo $URL | xclip
 
