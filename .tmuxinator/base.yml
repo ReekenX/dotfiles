@@ -5,4 +5,7 @@ windows:
   - docker:
     - cd ~/Work/docker
     - docker-compose down
+    - clear
   - zsh:
+    - git pull
+    - clear
