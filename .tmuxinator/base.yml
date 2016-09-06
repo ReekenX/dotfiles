@@ -2,10 +2,10 @@ name: base
 root: ~
 
 windows:
-  - docker:
+  - zsh:
     - cd ~/Work/docker
     - docker-compose down
-    - clear
-  - zsh:
+    - docker-compose up -d
+    - cd
     - git pull
     - clear
