@@ -4,8 +4,7 @@ root: ~
 windows:
   - zsh:
     - cd ~/Work/docker
-    - docker-compose down
-    - docker-compose up -d
+    - docker-compose down && docker-compose up -d
     - cd
     - git pull
     - clear
