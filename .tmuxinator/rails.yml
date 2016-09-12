@@ -18,5 +18,5 @@ windows:
           - bin/rails server
         - livereload:
           - cd website
-          - browser-sync start --proxy localhost:3000 --files "app/assets/stylesheets/*.scss, app/views/*.html.erb"
+          - browser-sync start --proxy localhost:3000 --files "app/assets/stylesheets/*.scss, app/views/*.html.erb" --config bs-config.js
   - git: tig
