@@ -4,7 +4,7 @@ startup_window: zsh
 
 windows:
   - editor: nvim -c 'CtrlPClearAllCaches'
-  - zsh: git up
+  - zsh:
   - db:
     - cd website
     - bin/rails db
@@ -12,11 +12,12 @@ windows:
       layout: main-vertical
       panes:
         - runserver:
+          - git up
           - cd website
-          - sleep 2 && bundle install
+          - bundle install
           - rake db:migrate
           - bin/rails server
         - livereload:
           - cd website
-          - browser-sync start --proxy localhost:3000 --files "app/assets/stylesheets/*.scss, app/views/*.html.erb" --config bs-config.js
+          - sleep 5 && browser-sync start --proxy localhost:3000 --files "app/assets/stylesheets/*.scss, app/views/*.html.erb" --config bs-config.js
   - git: tig
