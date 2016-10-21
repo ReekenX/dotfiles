@@ -33,7 +33,7 @@ cmd_init() {
         exit 1
     else
         cd "$project_folder"
-        if find -maxdepth 3 -iname 'rails' | grep '.*'
+        if find -maxdepth 2 -iname 'rails' | grep '.*'
         then
             tmuxinator start rails -n "$project_name"
         else
