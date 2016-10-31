@@ -7,7 +7,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Raimondi/vimoutliner'
-Plug 'edsono/vim-matchit'
+Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
