@@ -24,6 +24,7 @@ Plug 'honza/vim-snippets'
 Plug 'benekastah/neomake'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 " }}}
