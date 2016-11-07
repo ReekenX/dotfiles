@@ -1,7 +1,8 @@
 #!/bin/bash
-# The most amazing script for developer!
-# Say workon.bash www.example.org and you are ready to code
-# It will scan for ~/Work/***/www.example.org and will launch tmux for that
+# The most amazing script for developers! Seriously.
+#
+# Say `workon.bash www.example.org` and it will launch your projects
+# development environment using tmux. See my tmux scripts in the same repo.
 
 PROGRAM=$(basename "$0")
 SCAN_FOLDER="$HOME/Work"
@@ -36,6 +37,12 @@ cmd_init() {
         if find -maxdepth 2 -iname 'rails' | grep '.*'
         then
             tmuxinator start rails -n "$project_name"
+        elif find -maxdepth 2 -iname '.virtualenv' -type d | grep '.*'
+        then
+            tmuxinator start django -n "$project_name"
+        elif find -maxdepth 2 -iname 'virtual' -type d | grep '.*'
+        then
+            tmuxinator start django-ext -n "$project_name"
         else
             tmuxinator start php -n "$project_name"
         fi
