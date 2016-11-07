@@ -43,6 +43,9 @@ cmd_init() {
         elif find -maxdepth 2 -iname 'virtual' -type d | grep '.*'
         then
             tmuxinator start django-ext -n "$project_name"
+        elif find -maxdepth 2 -iname 'idcard' -type d | grep '.*'
+        then
+            tmuxinator start php-ext -n "$project_name"
         else
             tmuxinator start php -n "$project_name"
         fi

@@ -1,0 +1,12 @@
+name: please-rename-me
+root: <%= ENV["PWD"] %>
+startup_window: zsh
+
+windows:
+  - editor: nvim -c 'CtrlPClearAllCaches'
+  - zsh: git up
+  - livereload: livereload
+  - grunt:
+    - cd ../dev_scripts
+    - grunt watch
+  - git: tig
