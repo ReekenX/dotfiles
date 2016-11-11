@@ -34,16 +34,16 @@ cmd_init() {
         exit 1
     else
         cd "$project_folder"
-        if find -maxdepth 2 -iname 'rails' | grep '.*'
+        if find -maxdepth 2 -iname 'rails' | grep -q '.*'
         then
             tmuxinator start rails -n "$project_name"
-        elif find -maxdepth 2 -iname '.virtualenv' -type d | grep '.*'
+        elif find -maxdepth 2 -iname '.virtualenv' -type d | grep -q '.*'
         then
             tmuxinator start django -n "$project_name"
-        elif find -maxdepth 2 -iname 'virtual' -type d | grep '.*'
+        elif find -maxdepth 2 -iname 'virtual' -type d | grep -q '.*'
         then
             tmuxinator start django-ext -n "$project_name"
-        elif find -maxdepth 2 -iname 'idcard' -type d | grep '.*'
+        elif find -maxdepth 2 -iname 'idcard' -type d | grep -q '.*'
         then
             tmuxinator start php-ext -n "$project_name"
         else
