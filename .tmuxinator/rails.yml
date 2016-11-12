@@ -11,12 +11,10 @@ windows:
       layout: main-vertical
       panes:
         - server:
-          - rm -f .git/.browser-sync-can-start
           - git up
           - bundle install
           - rake db:migrate
-          - touch .git/.browser-sync-can-start
           - bin/rails server
         - livereload:
-          - while [ ! -f ../.git/.browser-sync-can-start ]; do sleep 1; done; sleep 2; browser-sync start --proxy localhost:3000 --files "app/assets/stylesheets/*.scss, app/views/*.html.erb" --config bs-config.js
+          - guard
   - git: tig
