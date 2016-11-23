@@ -109,6 +109,9 @@ set fileformat="unix,dos,mac"
 " Mark line where my cursor are
 set cursorline
 
+" Do not thread underscore as the same word
+set iskeyword-=_
+
 " Set tab to 4 spaces
 set tabstop=4
 set softtabstop=4
