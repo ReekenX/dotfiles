@@ -16,5 +16,5 @@ windows:
           - rake db:migrate
           - bin/rails server
         - livereload:
-          - guard
+          - bundle exec guard
   - git: tig
