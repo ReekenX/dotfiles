@@ -1,5 +1,5 @@
 #!/bin/bash
-# 
+#
 # Setup 4 monitors (two on top, two on bottom)
 #
 
