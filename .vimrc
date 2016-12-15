@@ -26,6 +26,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 " }}}
