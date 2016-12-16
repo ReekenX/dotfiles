@@ -27,6 +27,7 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
+Plug 'luochen1990/indent-detector.vim'
 
 call plug#end()
 " }}}
