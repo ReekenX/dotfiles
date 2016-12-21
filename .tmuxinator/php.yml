@@ -4,6 +4,8 @@ startup_window: zsh
 
 windows:
   - editor: nvim -c 'CtrlPClearAllCaches'
-  - zsh: git up
+  - zsh:
+    - git up
+    - ctags-for-php-project.zsh
   - livereload: livereload
   - git: tig

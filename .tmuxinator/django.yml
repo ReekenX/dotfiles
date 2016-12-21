@@ -9,5 +9,7 @@ windows:
     - source .virtualenv/bin/activate
     - python src/manage.py dbshell
   - server:
+    - git up
+    - ctags-for-python-project.zsh
     - source .virtualenv/bin/activate
     - python src/manage.py runserver

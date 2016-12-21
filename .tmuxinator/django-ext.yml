@@ -6,10 +6,12 @@ windows:
   - zsh:
   - git: tig
   - db:
-      - bash
-      - . ../.custom-env/empower.sh
-      - fab dbshell
+    - bash
+    - . ../.custom-env/empower.sh
+    - fab dbshell
   - server:
-      - bash
-      - . ../.custom-env/empower.sh
-      - fab serve
+    - git up
+    - ctags-for-python-project.zsh
+    - bash
+    - . ../.custom-env/empower.sh
+    - fab serve

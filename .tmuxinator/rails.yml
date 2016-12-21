@@ -8,13 +8,13 @@ windows:
   - db:
     - bin/rails db
   - server:
-      layout: main-vertical
-      panes:
-        - server:
-          - git up
-          - bundle install
-          - rake db:migrate
-          - bin/rails server
-        - livereload:
-          - bundle exec guard
+    layout: main-vertical
+    panes:
+      - server:
+        - git up
+        - bundle install
+        - rake db:migrate
+        - bin/rails server
+      - livereload:
+        - bundle exec guard
   - git: tig
