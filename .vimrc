@@ -28,6 +28,7 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
 Plug 'luochen1990/indent-detector.vim'
+Plug 'craigemery/vim-autotag'
 
 call plug#end()
 " }}}
@@ -273,21 +274,22 @@ set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~,*.zip,*.gz
 set wildignore+=virtual/,.virtualenv/,eggs/,upload/,uploads,node_modules
 " }}}
 
-" Automatic Ctags {{{
-" Automatic ctags (yes, I tried autotags plugin - doesn't work for me)
-function! CtagsGetGITFilePath()
-  let result = system('git rev-parse --show-toplevel') . "/.git/"
-  return substitute(result, "\n", "", "")
+"  Automatic Ctags {{{
+" Force to look for ctags file in your project .git/tags
+function! GetProjectFolderPath()
+ let result = system('git rev-parse --show-toplevel')
+ return substitute(result, "\n", "", "")
 endfunction
 
-let tagfilename = CtagsGetGITFilePath()
-let &tag = tagfilename . 'tags'
+let ctagsfolderpath = GetProjectFolderPath()
+let &tag = GetProjectFolderPath() . '/.git/tags'
+let g:autotagTagsFile = &tag
 " }}}
 
 " File types options {{{
 " If VIM founds .git/settings.vim file in project root, it will be loaded.
 " This is required if project has specific settings.
-exec "silent! source" CtagsGetGITFilePath() . "project.vim"
+exec "silent! source" GetProjectFolderPath() . "project.vim"
 
 autocmd Bufenter *.shpaml set syntax=shpaml
 autocmd Bufenter *.coffee set syntax=coffee
