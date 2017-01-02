@@ -98,6 +98,7 @@ set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 
 " Change the color of folding to make it less annnoying
 highlight Folded ctermbg=black ctermfg=blue cterm=none
+highlight Search ctermbg=gray ctermfg=black cterm=none
 
 " Disable poor HTML underline feature
 hi link htmlLink NONE
