@@ -29,6 +29,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
 Plug 'luochen1990/indent-detector.vim'
 Plug 'craigemery/vim-autotag'
+Plug 'terryma/vim-expand-region'
 
 call plug#end()
 " }}}
