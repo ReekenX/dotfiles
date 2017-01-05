@@ -27,9 +27,11 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
-Plug 'luochen1990/indent-detector.vim'
+Plug 'Khouba/indent-detector.vim'
 Plug 'craigemery/vim-autotag'
+Plug 'Valloric/YouCompleteMe'
 Plug 'terryma/vim-expand-region'
+Plug 'godlygeek/tabular'
 
 call plug#end()
 " }}}
@@ -380,6 +382,19 @@ let g:ctrlp_max_files = 0
 " Fixing "broken" VIM regexp
 nnoremap // :CtrlPLine %<cr>
 cnoremap %s/ %s/\v
+
+" Speed up files completion
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+  let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
+    \ }
+endif
 " }}}
 
 " Nerd commenter plugin settings {{{
@@ -403,14 +418,3 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
-let g:ctrlp_use_caching = 0
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-else
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-  let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-    \ }
-endif
