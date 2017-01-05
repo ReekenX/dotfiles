@@ -418,3 +418,7 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
+" VIM indent plugin {{{
+let g:indent_detector_echolevel_enter=0
+let g:indent_detector_echolevel_write=0
+" }}}
