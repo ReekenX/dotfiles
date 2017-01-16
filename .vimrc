@@ -31,6 +31,7 @@ Plug 'Khouba/indent-detector.vim'
 Plug 'craigemery/vim-autotag'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
+Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()
 " }}}
@@ -410,11 +411,6 @@ let g:tagbar_type_php = {
         \ 'j:javascript functions',
     \ ],
 \ }
-" }}}
-
-" VIM auto expand region {{{
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 " }}}
 
 " VIM indent plugin {{{
