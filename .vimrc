@@ -32,6 +32,8 @@ Plug 'craigemery/vim-autotag'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 " }}}
@@ -54,8 +56,8 @@ set termencoding=utf-8
 " Don't update the display while executing macros
 set lazyredraw
 
-" No status line with useless info
-set laststatus=0
+" Always visible status line
+set laststatus=2
 
 " Don't force to write when switching to other file
 set hidden
@@ -413,7 +415,12 @@ let g:tagbar_type_php = {
 \ }
 " }}}
 
-" VIM indent plugin {{{
+" VIM indent plugin settings {{{
 let g:indent_detector_echolevel_enter=0
 let g:indent_detector_echolevel_write=0
 " }}}
+
+" VIM airline plugin settings {{{
+let g:airline_powerline_fonts = 1
+" }}}
+
