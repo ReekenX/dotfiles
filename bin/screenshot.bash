@@ -10,7 +10,7 @@ gnome-screenshot -a -f $FILENAME
 
 URL=`python ~/bin/dropbox.py sharelink $FILENAME`
 
-echo $URL | xclip
+echo $URL | xclip -selection c
 
 # Pop up a small notification
 notify-send "Copied $URL to clipboard"
