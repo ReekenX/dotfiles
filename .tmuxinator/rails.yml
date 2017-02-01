@@ -3,18 +3,17 @@ root: <%= ENV["PWD"] %>
 startup_window: zsh
 
 windows:
-  - editor: nvim -c 'CtrlPClearAllCaches'
+  - editor: 
+      layout: main-vertical
+      panes:
+        - editor: nvim -c 'CtrlPClearAllCaches'
+        - tests: sleep 10 && guard
   - zsh:
   - db:
     - bin/rails db
   - server:
-      layout: main-vertical
-      panes:
-        - server:
-          - git up
-          - bundle install
-          - rake db:migrate
-          - bin/rails server
-        - livereload:
-          - bundle exec guard
+    - git up
+    - bundle install
+    - rake db:migrate
+    - bin/rails server
   - git: tig
