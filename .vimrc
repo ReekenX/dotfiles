@@ -32,8 +32,6 @@ Plug 'craigemery/vim-autotag'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 " }}}
