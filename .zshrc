@@ -42,8 +42,5 @@ export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
 # Make really geeky default prompt
 PS1=$'\e[0;31m$ \e[0m'
 
-# Activate project specific helpers
-[ -f "$HOME/.desk/$(basename $(pwd)).bash" ] && . "$HOME/.desk/$(basename $(pwd)).bash"
-
 # Start tmux on local computer when zsh turned on
 [ -f "$HOME/.zsh-autolaunch-tmux" ] && [ -z "$TMUX" ] && (tmux attach -t base 2> /dev/null || tmuxinator start base)
