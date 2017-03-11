@@ -39,6 +39,9 @@ source $ZSH/oh-my-zsh.sh
 # For partially muonted repositories to RAM
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
 
+# Make really geeky default prompt
+PS1=$'\e[0;31m$ \e[0m'
+
 # Activate project specific helpers
 [ -f "$HOME/.desk/$(basename $(pwd)).bash" ] && . "$HOME/.desk/$(basename $(pwd)).bash"
 
