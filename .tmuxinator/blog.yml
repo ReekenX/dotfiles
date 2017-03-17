@@ -2,7 +2,7 @@ name: blog
 root: ~/Work/github/www.jarmalavicius.lt
 
 windows:
-  - editor: nvim -c 'CtrlPClearAllCaches'
+  - editor: vim
   - zsh: git up
   - git: tig
   - server:

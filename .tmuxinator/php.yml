@@ -3,7 +3,7 @@ root: <%= ENV["PWD"] %>
 startup_window: zsh
 
 windows:
-  - editor: nvim -c 'CtrlPClearAllCaches'
+  - editor: vim
   - zsh:
     - git up
     - ctags-for-php-project.zsh

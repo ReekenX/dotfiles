@@ -2,7 +2,7 @@ name: django-ext
 root: <%= ENV["PWD"] %>
 
 windows:
-  - editor: nvim -c 'CtrlPClearAllCaches'
+  - editor: vim
   - zsh:
   - git: tig
   - db:
