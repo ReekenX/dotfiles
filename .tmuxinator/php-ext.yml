@@ -1,0 +1,14 @@
+name: please-rename-me
+root: <%= ENV["PWD"] %>
+startup_window: zsh
+
+windows:
+  - editor: vim
+  - zsh:
+    - git up
+    - ctags-for-php-project.zsh
+  - livereload: livereload
+  - grunt:
+    - cd ../dev_scripts
+    - grunt watch
+  - git: tig

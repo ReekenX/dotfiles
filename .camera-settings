@@ -1,5 +1,5 @@
 #V4L2/CTRL/0.0.2
-APP{"guvcview 2.0.2"}
+APP{"guvcview 2.0.4"}
 # control data
 #Brightness
 ID{0x00980900};CHK{0:255:1:128}=VAL{128}
@@ -10,7 +10,7 @@ ID{0x00980902};CHK{0:255:1:128}=VAL{128}
 #White Balance Temperature, Auto
 ID{0x0098090c};CHK{0:1:1:1}=VAL{1}
 #Gain
-ID{0x00980913};CHK{0:255:1:0}=VAL{40}
+ID{0x00980913};CHK{0:255:1:0}=VAL{0}
 #Power Line Frequency
 ID{0x00980918};CHK{0:2:1:2}=VAL{1}
 #Sharpness
@@ -28,4 +28,4 @@ ID{0x009a0909};CHK{-36000:36000:3600:0}=VAL{0}
 #Focus, Auto
 ID{0x009a090c};CHK{0:1:1:1}=VAL{1}
 #Zoom, Absolute
-ID{0x009a090d};CHK{100:500:1:100}=VAL{143}
+ID{0x009a090d};CHK{100:500:1:100}=VAL{163}
