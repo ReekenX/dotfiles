@@ -16,6 +16,7 @@ alias :e="vim"
 alias :q="exit"
 alias rm="/bin/rm -rvf"
 alias gc="git add -p && git df --cached && git commit"
+alias gp="git push || git pull"
 
 function search() {
     output=$(ag --nocolor -i "$1" --ignore="*.min.js" --ignore="*.min.css" --ignore="*.po" | cut -c 1-$(tput cols) | GREP_COLOR='01;36' egrep -i --color=always '^[^:]*:|$' | GREP_COLOR='01;31' egrep -i --color=always "$1"'|$')
