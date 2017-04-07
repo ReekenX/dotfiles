@@ -1,23 +1,25 @@
 #!/bin/bash
-# Poor man screensharing
+# Poor man screenshotting
 #
-# - Make screenshot
-# - Upload to server
-# - Send link to clipboard
-# - Share with friends (well, this is manual step)
+# Here is what it does:
+#
+# - Makes screenshot (with mouse selected goemetry)
+# - Uploads to server
+# - Sends public link to clipboard, console output and notify-send alert
 
-# The file needs to be below the "Public" Dropbox folder
 FILENAME=Screenshot_`date +%Y%m%d%H%M`.png
-PATHNAME=~/Dropbox/Public/Screenshot_`date +%Y%m%d%H%M`.png
+CRYPTNAME=$(echo -n $FILENAME | md5sum |  cut -c 1-6).png
+PATHNAME=~/Dropbox/Public/Screenshot_`date +%Y%m%d%H%M%S`.png
 SERVER=jarmalavicius.lt:jarmalavicius.lt/tmp
 URL=https://www.jarmalavicius.lt/tmp
 
-# Select an area and save the screenshot
+# Select screen area and save the screenshot to given filename
 gnome-screenshot -a -f $PATHNAME
 
-scp -q $PATHNAME "$SERVER/$FILENAME"
-echo "$URL/$FILENAME" | xclip -selection c
-echo "Public link: $URL/$FILENAME"
+# Upload screenshot to the server
+scp -q $PATHNAME "$SERVER/$CRYPTNAME"
 
-# Pop up a small notification
-notify-send "Copied $URL/$FILENAME to clipboard"
+# Expose public link to clipboard, console and `notify-send` alert
+echo "$URL/$CRYPTNAME" | xclip -selection c
+echo "Public link: $URL/$CRYPTNAME"
+notify-send "Copied $URL/$CRYPTNAME to clipboard"
