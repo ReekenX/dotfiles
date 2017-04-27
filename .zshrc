@@ -27,8 +27,12 @@ plugins=(ssh-agent)
 HISTFILE=~/.shell_history
 
 # COMPLETION SETTINGS
-# # add custom completion scripts
+# add custom completion scripts
 fpath=(~/.zsh/completion $fpath)
+
+# Make ~/bin executables called within zsh
+path+=("$HOME/bin")
+export PATH
 
 # compsys initialization
 autoload -U compinit
