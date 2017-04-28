@@ -1,14 +1,12 @@
 name: blog
-root: ~/Work/github/www.jarmalavicius.lt
+root: ~/Work/asmeniniai/www.jarmalavicius.lt/
 
 windows:
   - editor: vim
   - zsh: git up
   - git: tig
+  - livereload:
+    - cd _site
+    - livereload
   - server:
-    - cd output
-    - python -m SimpleHTTPServer
-  - pelican:
-    - bash
-    - source .virtualenv/bin/activate
-    - ls content/* | entr pelican content
+    - bundle exec jekyll server --watch --limit_posts 1
