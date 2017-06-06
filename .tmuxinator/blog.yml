@@ -3,10 +3,15 @@ root: ~/Work/asmeniniai/www.jarmalavicius.lt/
 
 windows:
   - editor: vim
-  - zsh: git up
-  - git: tig
-  - livereload:
-    - cd _site
-    - livereload
+  - zsh:
+  - db:
+    - bash ~/bin/import-jarmalavicius-db.bash
+    - sleep 3
+    - mysql jarmalavicius_lt
   - server:
-    - bundle exec jekyll server --watch --limit_posts 1
+    - sleep 5
+    - git up
+    - bundle install
+    - rake db:migrate
+    - bin/rails server
+  - git: tig
