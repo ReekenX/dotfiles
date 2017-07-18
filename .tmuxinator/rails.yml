@@ -3,17 +3,13 @@ root: <%= ENV["PWD"] %>
 startup_window: zsh
 
 windows:
-  - editor: 
-      layout: main-vertical
-      panes:
-        - editor: vim
-        - tests: sleep 10 && guard
+  - editor: vim
   - zsh:
-  - db:
-    - bin/rails db
   - server:
     - git up
     - bundle install
-    - rake db:migrate
-    - bin/rails server
+    - bundle exec rake db:migrate
+    - foreman start
+  - db:
+    - bundle exec rails db
   - git: tig
