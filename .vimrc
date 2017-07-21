@@ -21,7 +21,6 @@ Plug 'vobornik/vim-mql4'
 Plug 'kien/ctrlp.vim'
 Plug 'osyo-manga/vim-brightest'
 Plug 'honza/vim-snippets'
-Plug 'benekastah/neomake'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'mattn/emmet-vim'
@@ -32,6 +31,7 @@ Plug 'craigemery/vim-autotag'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 " }}}
@@ -179,11 +179,6 @@ function AutoSave()
 endfunction
 autocmd CursorHold,CursorHoldI * call AutoSave()
 " }}}
-
-" Auto validate code {{{
-if has('nvim')
-    autocmd! BufWritePost * Neomake
-endif
 " }}}
 
 " Auto create directories on save {{{
@@ -422,3 +417,15 @@ let g:indent_detector_echolevel_write=0
 let g:airline_powerline_fonts = 1
 " }}}
 
+" Syntastic plugin settings {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" }}}
