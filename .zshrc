@@ -18,18 +18,13 @@ HISTFILE=~/.shell_history
 # add custom completion scripts
 fpath=(~/.zsh/completion $fpath)
 
-# Make ~/bin executables called within zsh
-path+=("$HOME/bin")
-export PATH
-
 # compsys initialization
 autoload -U compinit
 compinit
 
+# Oh my zsh configuration
 source $ZSH/oh-my-zsh.sh
 
-# For partially muonted repositories to RAM
-export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
-
-# Start tmux on local computer when zsh turned on
-[ -f "$HOME/.zsh-autolaunch-tmux" ] && [ -z "$TMUX" ] && (tmux attach -t base 2> /dev/null || tmuxinator start base)
+# Setup custom software if launched first time after reboot
+[ ! -f "/tmp/.zsh_autostart" ] && [ -f "$HOME/.zsh_autostart" ] && "$HOME/.zsh_autostart"
+touch "/tmp/.zsh_autostart"
