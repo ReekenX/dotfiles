@@ -9,6 +9,25 @@ setopt menu_complete
 # Development stuff
 export EDITOR=vim
 
+# Set to this to use case-sensitive completion
+# export CASE_SENSITIVE="true"
+
+# Disable weekly auto-update checks
+export DISABLE_AUTO_UPDATE="true"
+
+# Disable colors in ls
+export DISABLE_LS_COLORS="true"
+
+# Disable autosetting terminal title.
+export DISABLE_AUTO_TITLE="true"
+
+# For partially mounted repositories to RAM
+export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
+
+# Make ~/bin executables called within zsh
+path+=("$HOME/bin")
+export PATH
+
 # Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
