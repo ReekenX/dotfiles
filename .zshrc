@@ -27,4 +27,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Setup custom software if launched first time after reboot
 AUTOSTART_PID="/tmp/.$(date '+%F')-$USER"
-[ ! -f ".$AUTOSTART_PID" ] && [ -f "$HOME/.zsh_autostart" ] && "$HOME/.zsh_autostart" && touch "$AUTOSTART_PID"
+[ ! -f "$AUTOSTART_PID" ] && [ -f "$HOME/.zsh_autostart" ] && "$HOME/.zsh_autostart" && touch "$AUTOSTART_PID"
