@@ -26,5 +26,5 @@ compinit
 source $ZSH/oh-my-zsh.sh
 
 # Setup custom software if launched first time after reboot
-[ ! -f "/tmp/.zsh_autostart" ] && [ -f "$HOME/.zsh_autostart" ] && "$HOME/.zsh_autostart"
-touch "/tmp/.zsh_autostart"
+AUTOSTART_PID="/tmp/.$(date '+%F')-$USER"
+[ ! -f ".$AUTOSTART_PID" ] && [ -f "$HOME/.zsh_autostart" ] && "$HOME/.zsh_autostart" && touch "$AUTOSTART_PID"
