@@ -164,8 +164,8 @@ set clipboard+=unnamedplus
 
 " Backups and swap {{{
 set backup
-silent execute '!mkdir -p /tmp/.vim-backup'
-set backupdir=/tmp/.vim-backup
+silent execute '!mkdir -p /tmp/.vim-backup-$USER'
+set backupdir=/tmp/.vim-backup-$USER
 set noswapfile
 " }}}
 
