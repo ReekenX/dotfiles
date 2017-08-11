@@ -9,7 +9,7 @@ export ZSH_THEME="reekenx"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent)
+plugins=(ssh-agent-multiuser)
 
 # We will share same history file under bash and zsh
 HISTFILE=~/.shell_history
@@ -21,6 +21,17 @@ fpath=(~/.zsh/completion $fpath)
 # compsys initialization
 autoload -U compinit
 compinit
+
+# Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+
+# Ignore some files in ZSH autocompletion
+zstyle ':completion:*:(all-|)files' ignored-patterns '*.pyc'
+zstyle ':completion:*:(all-|)files' ignored-patterns '*.mo'
+zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
+
+# SSH agent settings
 
 # Oh my zsh configuration
 source $ZSH/oh-my-zsh.sh

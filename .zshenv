@@ -28,16 +28,4 @@ export GIT_DISCOVERY_ACROSS_FILESYSTEM=YES
 path+=("$HOME/bin")
 export PATH
 
-# Enable completion cache. Advantages of this can be seen using `apt` or `dpkg` commands
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-
-# Ignore some files in ZSH autocompletion
-zstyle ':completion:*:(all-|)files' ignored-patterns '*.pyc'
-zstyle ':completion:*:(all-|)files' ignored-patterns '*.mo'
-zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
-
-# Fix ssh-add for multiple sessions
-SSH_ENV=$HOME/.ssh/environment
-
 source ~/.zsh_aliases
