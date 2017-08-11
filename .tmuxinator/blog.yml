@@ -2,8 +2,7 @@ name: blog
 root: ~/Work/asmeniniai/www.jarmalavicius.lt/
 
 windows:
-  - editor: vim
-  - zsh:
+  - zsh: subl .
   - db:
     - bash ~/bin/import-jarmalavicius-db.bash
     - sleep 3

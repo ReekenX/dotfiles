@@ -2,8 +2,7 @@ name: django
 root: <%= ENV["PWD"] %>
 
 windows:
-  - editor: vim
-  - zsh:
+  - zsh: subl .
   - git: tig
   - db:
     - source .virtualenv/bin/activate

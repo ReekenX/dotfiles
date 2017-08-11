@@ -3,9 +3,8 @@ root: <%= ENV["PWD"] %>
 startup_window: zsh
 
 windows:
-  - editor: vim
   - zsh:
     - git up
-    - ctags-for-php-project.zsh
+    - subl .
   - livereload: livereload
   - git: tig
