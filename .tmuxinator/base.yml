@@ -3,6 +3,3 @@ root: ~
 
 windows:
   - zsh:
-    - cd
-    - git pull
-    - clear
