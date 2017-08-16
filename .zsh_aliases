@@ -18,6 +18,7 @@ alias rm="/bin/rm -rvf"
 alias gc="git add -p && git df --cached && git commit"
 alias gp="git push || git pull"
 
+# Super fancy and quick search
 function search() {
     output=$(ag --nocolor -i "$1" --ignore="*.min.js" --ignore="*.min.css" --ignore="*.po" | cut -c 1-$(tput cols) | GREP_COLOR='01;36' egrep -i --color=always '^[^:]*:|$' | GREP_COLOR='01;31' egrep -i --color=always "$1"'|$')
     if [ $(tput lines) -lt $(echo $output | wc -l) ]
@@ -28,10 +29,7 @@ function search() {
     fi
 }
 
-function ramify() {
-    sudo mount -t tmpfs -o size=512M tmpfs "$(pwd)/$1" && git checkout -f
-}
-
-function unramify() {
-    sudo umount "$(pwd)/$1" && git checkout develop -f
+# Start tmux session for current folder with custom configuration
+function workon() {
+    tmuxinator start $(basename $(pwd))
 }
