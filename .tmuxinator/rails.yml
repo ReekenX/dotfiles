@@ -3,12 +3,14 @@ root: <%= ENV["PWD"] %>
 startup_window: zsh
 
 windows:
-  - zsh: subl .
+  - zsh:
+    - killall sublime_text
+    - subl .
   - server:
     - git up
     - bundle install
     - bundle exec rake db:migrate
-    - foreman start
+    - bundle exec rails server -b 127.0.0.1
   - db:
     - bundle exec rails db
   - git: tig
