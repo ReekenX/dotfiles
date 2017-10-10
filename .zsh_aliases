@@ -15,8 +15,8 @@ alias scp="/usr/bin/scp -r"
 alias :e="vim"
 alias :q="exit"
 alias rm="/bin/rm -rvf"
-alias gc="git add -p && git df --cached && git commit"
 alias gp="git push || git pull"
+alias gm="git merge --squash"
 
 # Super fancy and quick search
 function search() {
