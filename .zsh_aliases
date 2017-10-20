@@ -20,7 +20,7 @@ alias rm="/bin/rm -rvf"
 alias gp="git push || git pull"
 alias gm="git merge --squash"
 alias gr="git reset HEAD~1"
-alias gc="git branch --merged master | grep -v '^[ * ]*master$' | xargs git branch -d"
+alias gc="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 
 # Super fancy and quick search
 function search() {
