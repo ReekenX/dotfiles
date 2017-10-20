@@ -15,8 +15,12 @@ alias scp="/usr/bin/scp -r"
 alias :e="vim"
 alias :q="exit"
 alias rm="/bin/rm -rvf"
+
+# Git time savers
 alias gp="git push || git pull"
 alias gm="git merge --squash"
+alias gr="git reset HEAD~1"
+alias gc="git branch --merged master | grep -v '^[ * ]*master$' | xargs git branch -d"
 
 # Super fancy and quick search
 function search() {
