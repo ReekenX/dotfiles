@@ -17,6 +17,8 @@ alias :q="exit"
 alias rm="/bin/rm -rvf"
 
 # Git time savers
+alias ga="git add . -N"
+alias gb="git branch -a"
 alias gp="git push || git pull"
 alias gm="git merge --squash"
 alias gr="git reset HEAD~1"
