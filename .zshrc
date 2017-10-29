@@ -36,6 +36,5 @@ zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
 # Oh my zsh configuration
 source $ZSH/oh-my-zsh.sh
 
-# Setup custom software if launched first time after reboot
-AUTOSTART_PID="/tmp/.$(date '+%F')-$USER"
-[ ! -f "$AUTOSTART_PID" ] && [ -f "$HOME/.zsh_autostart" ] && "$HOME/.zsh_autostart" && touch "$AUTOSTART_PID"
+# Always
+[ -z "$TMUX" ] && { tmux attach || tmuxinator start base; exit }
