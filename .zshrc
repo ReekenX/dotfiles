@@ -36,5 +36,5 @@ zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
 # Oh my zsh configuration
 source $ZSH/oh-my-zsh.sh
 
-# Always
+# Always start work session with tmux so that no work is lost when closing apps
 [ -z "$TMUX" ] && { tmux attach || tmuxinator start base; exit }
