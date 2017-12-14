@@ -427,3 +427,10 @@ let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " }}}
+
+" BufExplorer plugin settings {{{
+let g:bufExplorerShowRelativePath=1
+let g:bufExplorerShowUnlisted=1
+let g:bufExplorerShowDirectories=0
+let g:bufExplorerSortBy='mru'
+" }}}
