@@ -31,7 +31,6 @@ Plug 'craigemery/vim-autotag'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'scrooloose/syntastic'
 
 call plug#end()
 " }}}
@@ -415,17 +414,6 @@ let g:indent_detector_echolevel_write=0
 
 " VIM airline plugin settings {{{
 let g:airline_powerline_fonts = 1
-" }}}
-
-" Syntastic plugin settings {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 " }}}
 
 " BufExplorer plugin settings {{{
