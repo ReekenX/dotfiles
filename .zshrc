@@ -31,8 +31,6 @@ zstyle ':completion:*:(all-|)files' ignored-patterns '*.pyc'
 zstyle ':completion:*:(all-|)files' ignored-patterns '*.mo'
 zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
 
-# SSH agent settings
-
 # Oh my zsh configuration
 source $ZSH/oh-my-zsh.sh
 
