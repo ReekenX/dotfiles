@@ -12,7 +12,6 @@ Plug 'tpope/vim-surround'
 Plug 'tomtom/tlib_vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'ReekenX/vim-rename2'
-Plug 'SirVer/ultisnips'
 Plug 'othree/html5.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'kchmck/vim-coffee-script'
@@ -20,7 +19,6 @@ Plug 'matze/vim-move'
 Plug 'vobornik/vim-mql4'
 Plug 'kien/ctrlp.vim'
 Plug 'osyo-manga/vim-brightest'
-Plug 'honza/vim-snippets'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'mattn/emmet-vim'
@@ -30,7 +28,6 @@ Plug 'Khouba/indent-detector.vim'
 Plug 'craigemery/vim-autotag'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
-Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()
 " }}}
@@ -114,7 +111,7 @@ let mapleader=","
 set fileformat="unix,dos,mac"
 
 " Mark line where my cursor are
-set cursorline
+set nocursorline
 
 " Set tab to 4 spaces
 set tabstop=4
