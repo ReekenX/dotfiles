@@ -32,11 +32,8 @@ else
   local user_host=''
 fi
 
-local return_code="%(?..%{$PR_RED%}%? ↵%{$PR_NO_COLOR%})"
-
 local current_dir='%{$PR_BOLD$PR_BLUE%}${PWD}%{$PR_NO_COLOR%}'
 local time='${PR_CYAN}[%D{%H:%M:%S}]'
 
-PROMPT="╭─${time} ${user_host}${current_dir}
-╰─$PR_PROMPT "
-RPS1="${return_code}"
+PROMPT="${time} ${user_host}${current_dir}
+\$$PR_PROMPT "
