@@ -36,3 +36,10 @@ source $ZSH/oh-my-zsh.sh
 
 # Always start work session with tmux so that no work is lost when closing apps
 [ -z "$TMUX" ] && { tmux attach || tmuxinator start base }
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+if [ -d $HOME/.rvm/bin ]
+then
+    export PATH="$PATH:$HOME/.rvm/bin"
+    source $HOME/.rvm/scripts/rvm
+fi
