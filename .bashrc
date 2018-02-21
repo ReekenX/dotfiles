@@ -108,5 +108,9 @@ set -o noclobber
 # Do host auth with Postgres instead of unix socket (so it will work with Docker too)
 export PGHOST="localhost"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# Add RVM to PATH for scripting
+if [ -d $HOME/.rvm/bin ]
+then
+    export PATH="$PATH:$HOME/.rvm/bin"
+    source $HOME/.rvm/scripts/rvm
+fi
