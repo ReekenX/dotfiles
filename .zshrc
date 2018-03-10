@@ -43,3 +43,7 @@ fi
 
 # Always start work session with tmux so that no work is lost when closing apps
 [ -z "$TMUX" ] && { tmux attach || tmuxinator start base }
+
+# Force UTF8 (a must for MacOS)
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8

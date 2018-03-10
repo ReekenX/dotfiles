@@ -114,3 +114,7 @@ then
     export PATH="$PATH:$HOME/.rvm/bin"
     source $HOME/.rvm/scripts/rvm
 fi
+
+# Force UTF8 (a must for MacOS)
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
