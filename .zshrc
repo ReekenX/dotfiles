@@ -34,5 +34,12 @@ zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
 # Oh my zsh configuration
 source $ZSH/oh-my-zsh.sh
 
+# Add RVM to PATH for scripting
+if [ -d $HOME/.rvm/bin ]
+then
+    export PATH="$PATH:$HOME/.rvm/bin"
+    source $HOME/.rvm/scripts/rvm
+fi
+
 # Always start work session with tmux so that no work is lost when closing apps
 [ -z "$TMUX" ] && { tmux attach || tmuxinator start base }
