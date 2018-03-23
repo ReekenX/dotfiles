@@ -155,7 +155,7 @@ endif
 " No annoying beeping
 set noeb vb t_vb=
 
-set clipboard+=unnamedplus
+set clipboard+=unnamed
 " }}}
 
 " Backups and swap {{{
