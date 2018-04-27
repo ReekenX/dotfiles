@@ -25,7 +25,6 @@ Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
 Plug 'Khouba/indent-detector.vim'
-Plug 'craigemery/vim-autotag'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
 
