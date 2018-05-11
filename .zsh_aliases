@@ -24,7 +24,7 @@ alias gbs="git branch -a | grep"
 alias gf='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff'
 alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
 alias gp="git push || git pull"
-alias gm="git merge --squash && git reset -N"
+alias gm="git merge --squash && git reset"
 alias gr="git reset HEAD~1"
 alias gc="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias gs="git status --ignore-submodules -sb"
