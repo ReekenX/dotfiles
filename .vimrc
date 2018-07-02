@@ -1,10 +1,9 @@
-" No compatible mode makes VIM more friendly than old VI
 set nocompatible
 
 " Load plugins {{{
 call plug#begin('~/.vim/plugged')
 
-Plug 'jlanzarotta/bufexplorer'
+"Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Raimondi/vimoutliner'
 Plug 'tmhedberg/matchit'
@@ -58,13 +57,11 @@ set hidden
 " Keep commands history longer (by default keeps only 20 commands)
 set history=1000
 
-" set viminfo='50,:50,<50,s10,h,n/tmp/.viminfo
-
 " GUI settings
 set title
 
-" No ruler line with column/line - useless info
-set noruler
+" Show column/line
+set ruler
 
 " Show line numbers in editor
 set number
@@ -75,14 +72,12 @@ set ignorecase
 " Found text will be highlighted and search will be repeated over file
 set incsearch
 
-" Smart search: if lowercase ignore case of matches, if not case-sensitive
-" search
+" Smart search: if lowercase ignore case of matches, if not case-sensitive search
 set smartcase
 
 " Display not printable characters
 set list
 set listchars=tab:»»,trail:·,extends:#,nbsp:·
-
 " }}}
 
 " Folding rules {{{
@@ -93,10 +88,6 @@ set foldlevelstart=0
 
 " For these commands open folding by default
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-
-" Change the color of folding to make it less annnoying
-highlight Folded ctermbg=black ctermfg=blue cterm=none
-highlight Search ctermbg=gray ctermfg=black cterm=none
 
 " Disable poor HTML underline feature
 hi link htmlLink NONE
@@ -110,7 +101,7 @@ let mapleader=","
 set fileformat="unix,dos,mac"
 
 " Mark line where my cursor are
-set nocursorline
+set cursorline
 
 " Set tab to 4 spaces
 set tabstop=4
@@ -142,9 +133,6 @@ set virtualedit=all
 " Allow backspace on everything in insert mode
 set backspace=indent,eol,start
 
-" Support for Lithuanian quotes (VIM SURROUND plugin)
-let g:surround_{char2nr('„')} = "„\r“"
-
 " Easily resize windows with +/-
 if bufwinnr(1)
     map + <C-W>+
@@ -154,6 +142,7 @@ endif
 " No annoying beeping
 set noeb vb t_vb=
 
+" Share keyboard with OS
 set clipboard+=unnamed
 " }}}
 
@@ -173,7 +162,6 @@ function AutoSave()
     endif
 endfunction
 autocmd CursorHold,CursorHoldI * call AutoSave()
-" }}}
 " }}}
 
 " Auto create directories on save {{{
@@ -230,8 +218,8 @@ nnoremap E $
 nmap ,p :bp<CR>
 nmap ,n :bn<CR>
 
-" <F3> - to enter currently editing files list
-map <leader>b :BufExplorer<CR>
+"  to enter currently editing files list
+map <leader>b :CtrlPBuffer<CR>
 map <leader>e :Ex<CR>
 
 " MUST HAVE EVERYONE!
@@ -250,22 +238,16 @@ nmap <silent> <C-P> :cp<CR>zv
 nnoremap ' `
 nnoremap ` '
 
-" Quickly get out of insert mode without your fingers having to leave the
-" home row (either use 'jj' or 'jk')
+" Quickly get out of insert mode without your fingers having to leave the home row
 inoremap jj <Esc>
-inoremap jk <Esc>
-
-" Quick refactoring
-nnoremap gr gd[{V%::s/<C-R>///gc<left><left><left>
-nnoremap gR gD:%s/<C-R>///gc<left><left><left>}]
 " }}}
 
 "{{{ Ignore rules
 set wildmenu
 set wildchar=<tab>
 set wildmode=list:full
-set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~,*.zip,*.gz
-set wildignore+=virtual/,.virtualenv/,eggs/,upload/,uploads,node_modules
+set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~,*.zip,*.gz,*.tar
+set wildignore+=virtual/,.virtualenv/,upload/,uploads/,node_modules/
 " }}}
 
 "  Automatic Ctags {{{
@@ -281,16 +263,21 @@ let g:autotagTagsFile = &tag
 " }}}
 
 " File types options {{{
-" If VIM founds .git/settings.vim file in project root, it will be loaded.
-" This is required if project has specific settings.
+" Project specific settings VIM tries to load from .git/project.vim
 exec "silent! source" GetProjectFolderPath() . "project.vim"
 
+" Recognize some extensions as file types
 autocmd Bufenter *.shpaml set syntax=shpaml
 autocmd Bufenter *.coffee set syntax=coffee
 autocmd Bufenter *.mqh set syntax=mql4
 autocmd Bufenter *.mq4 set syntax=mql4
 autocmd Bufenter *.coffee set syntax=coffee
+
+" Defaults for languages
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype scss setlocal ts=2 sts=2 sw=2
+autocmd Filetype sass setlocal ts=2 sts=2 sw=2
+autocmd Filetype coffee setlocal ts=2 sts=2 sw=2
 
 " When in git commit message - set cursor to the first line
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, strlen(getline(1))+1, 0])
@@ -298,28 +285,10 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, strlen
 " In PHP code allow HTML code snippets (yeah, that's the way professionals code)
 au BufRead *.php set ft=php.html
 au BufNewFile *.php set ft=php.html
-
-" Automatically load common libraries
-set path+=website/**
-set path+=src/**
-" }}}
-
-" Make ENTER key smarter when coding HTML {{{
-function EnterOrIndentTag()
-  let line = getline(".")
-  let col = getpos(".")[2]
-  let before = line[col-2]
-  let after = line[col-1]
-
-  if before == ">" && after == "<"
-    return "\<Enter>\<C-o>O\<Tab>"
-  endif
-   return "\<Enter>"
-endfunction
-inoremap <expr> <Enter> EnterOrIndentTag()
 " }}}
 
 " Omnicomplete plugin settings {{{
+autocmd FileType ruby set omnifunc=rubycomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
@@ -338,15 +307,6 @@ autocmd! BufRead,BufNewFile *.otl setfiletype vo_base
 autocmd BufRead,BufNewFile *.otl colorscheme vo_dark
 autocmd BufRead,BufNewFile *.otl filetype plugin indent on
 autocmd BufRead,BufNewFile *.otl set nolist
-" }}}
-"
-" VIM UltiSnips plugin settings {{{
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsEditSplit="vertical"
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
 " }}}
 
 " VIM Smooth Scroll plugin settings {{{
@@ -391,18 +351,6 @@ endif
 let NERDSpaceDelims=1
 " }}}
 
-" Tagbar plugin settings {{{
-let g:tagbar_type_php = {
-    \ 'kinds' : [
-        \ 'i:interfaces',
-        \ 'c:classes',
-        \ 'd:constant definitions:0:0',
-        \ 'f:functions',
-        \ 'j:javascript functions',
-    \ ],
-\ }
-" }}}
-
 " VIM indent plugin settings {{{
 let g:indent_detector_echolevel_enter=0
 let g:indent_detector_echolevel_write=0
@@ -417,4 +365,8 @@ let g:bufExplorerShowRelativePath=1
 let g:bufExplorerShowUnlisted=1
 let g:bufExplorerShowDirectories=0
 let g:bufExplorerSortBy='mru'
+" }}}
+
+" VIM Surround plugin settings {{{
+let g:surround_{char2nr('„')} = "„\r“"
 " }}}
