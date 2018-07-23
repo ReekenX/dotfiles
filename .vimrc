@@ -26,6 +26,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'Khouba/indent-detector.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
+Plug 'posva/vim-vue'
 
 call plug#end()
 " }}}
@@ -132,12 +133,6 @@ set virtualedit=all
 
 " Allow backspace on everything in insert mode
 set backspace=indent,eol,start
-
-" Easily resize windows with +/-
-if bufwinnr(1)
-    map + <C-W>+
-    map - <C-W>-
-endif
 
 " No annoying beeping
 set noeb vb t_vb=
