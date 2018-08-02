@@ -23,7 +23,6 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
-Plug 'Khouba/indent-detector.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
 Plug 'posva/vim-vue'
@@ -49,14 +48,14 @@ set termencoding=utf-8
 " Don't update the display while executing macros
 set lazyredraw
 
-" Always visible status line
-set laststatus=2
+" Always hidden status line
+set laststatus=0
 
 " Don't force to write when switching to other file
 set hidden
 
 " Keep commands history longer (by default keeps only 20 commands)
-set history=1000
+set history=100
 
 " GUI settings
 set title
@@ -267,12 +266,14 @@ autocmd Bufenter *.coffee set syntax=coffee
 autocmd Bufenter *.mqh set syntax=mql4
 autocmd Bufenter *.mq4 set syntax=mql4
 autocmd Bufenter *.coffee set syntax=coffee
+autocmd Bufenter *.vue set syntax=vue
 
 " Defaults for languages
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype scss setlocal ts=2 sts=2 sw=2
 autocmd Filetype sass setlocal ts=2 sts=2 sw=2
 autocmd Filetype coffee setlocal ts=2 sts=2 sw=2
+autocmd Filetype vue setlocal ts=2 sts=2 sw=2
 
 " When in git commit message - set cursor to the first line
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, strlen(getline(1))+1, 0])
@@ -344,11 +345,6 @@ endif
 
 " Nerd commenter plugin settings {{{
 let NERDSpaceDelims=1
-" }}}
-
-" VIM indent plugin settings {{{
-let g:indent_detector_echolevel_enter=0
-let g:indent_detector_echolevel_write=0
 " }}}
 
 " VIM airline plugin settings {{{
