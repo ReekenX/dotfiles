@@ -33,7 +33,7 @@ call plug#end()
 syntax on
 set t_Co=256
 set t_md=
-colorscheme desert_modified
+colorscheme delek
 " }}}
 
 " VIM behaviour {{{
@@ -88,8 +88,9 @@ set foldlevelstart=0
 " For these commands open folding by default
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 
-" Disable poor HTML underline feature
-hi link htmlLink NONE
+" Disable poor HTML rendering - not really compatible with HTML5 or
+" any frontend JavaScript frameworks
+let html_no_rendering = 1
 " }}}
 
 " Edit behaviour {{{
@@ -100,7 +101,7 @@ let mapleader=","
 set fileformat="unix,dos,mac"
 
 " Mark line where my cursor are
-set cursorline
+" set cursorline
 
 " Set tab to 4 spaces
 set tabstop=4
