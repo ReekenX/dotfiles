@@ -2,4 +2,7 @@ set ignore-space = yes
 set show-changes = yes
 set diff-context = 10
 set ignore-case = yes
+
 bind diff d !git diff %(commit)^ %(commit)
+bind status P !git push
+
