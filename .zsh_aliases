@@ -1,19 +1,27 @@
+# Quick folder jumps
 alias '..'='cd ..'
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 alias -g ......='../../../../..'
-alias -g .......='../../../../../..'
+
+# Common pipiline actions
 alias -g G='| grep -i'
 alias -g L='| less'
 alias -g C='| wc -l'
-alias o='xdg-open'
-alias ll='ls -Flh --group-directories-first --color=auto'
-alias cp="/bin/cp -R"
-alias scp="/usr/bin/scp -r"
+alias -g S='| sort'
+alias -g U='| sort | uniq'
+
+# When you are too tired to recognize shell from VIM
 alias :e="vim"
 alias :q="exit"
+
+# Enable verbose mode for common commands
+alias ls='ls -FlhG'
 alias rm="/bin/rm -rvf"
+alias mv="/bin/mv -v"
+alias cp="/bin/cp -Rv"
+alias scp="/usr/bin/scp -rv"
 alias json="python -m json.tool | pygmentize -l json"
 
 # Git time savers
@@ -29,7 +37,14 @@ alias gr="git reset HEAD~1"
 alias gc="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias gs="git status --ignore-submodules -sb"
 
-# Super fancy and quick search
+# Rails time servers
+alias rs="bundle exec rails server -b 127.0.0.1"
+alias rc="bundle exec rails console"
+alias rg="bundle exec rails generate"
+alias rr="bundle exec rails routes"
+alias rd="bundle exec rails db:migrate"
+
+# Super fancy and quick search - will put colored results in 'less' if needed
 function s() {
     output=$(ag --nocolor -i "$1" --ignore="*.min.js" --ignore="*.min.css" --ignore="*.po" | cut -c 1-$(tput cols) | GREP_COLOR='01;36' egrep -i --color=always '^[^:]*:|$' | GREP_COLOR='01;31' egrep -i --color=always "$1"'|$')
     if [ $(tput lines) -lt $(echo $output | wc -l) ]
