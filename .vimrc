@@ -45,7 +45,7 @@ scriptencoding utf-8
 set termencoding=utf-8
 
 " Don't update the display while executing macros
-set lazyredraw
+"set lazyredraw
 
 " Always hidden status line
 set laststatus=0
@@ -362,4 +362,10 @@ let g:bufExplorerSortBy='mru'
 
 " VIM Surround plugin settings {{{
 let g:surround_{char2nr('„')} = "„\r“"
+" }}}
+
+" VIM Vue plugin settings {{{
+let g:vue_disable_pre_processors=1
+autocmd FileType vue syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
 " }}}
