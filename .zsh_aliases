@@ -42,7 +42,7 @@ alias rs="bundle exec rails server -b 127.0.0.1"
 alias rc="bundle exec rails console"
 alias rg="bundle exec rails generate"
 alias rr="bundle exec rails routes"
-alias rd="bundle exec rails db:migrate"
+alias rdm="bundle exec rails db:migrate"
 
 # Super fancy and quick search - will put colored results in 'less' if needed
 function s() {
