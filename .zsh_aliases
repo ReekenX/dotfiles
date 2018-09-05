@@ -21,7 +21,7 @@ alias ls='ls -FlhG'
 alias rm="/bin/rm -rvf"
 alias mv="/bin/mv -v"
 alias cp="/bin/cp -Rv"
-alias scp="/usr/bin/scp -rv"
+alias scp="/usr/bin/scp -r"
 alias json="python -m json.tool | pygmentize -l json"
 
 # Git time savers
