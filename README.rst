@@ -3,18 +3,20 @@ Personal dotfiles
 
 Reusable configuration files for geeks like me.
 
-Already tested on Gentoo, Ubuntu and Debian servers. Works out of the box. Or inside the box.
+Already tested on Gentoo, Ubuntu, Fedora, Debian servers.
+
+It also work on rich people computers having Macos.
+
+Works out of the box. Or inside the box.
 
 Does not have dependencies!
 
 Install
 -------
 
-Put all files to your home directory.
+Get it into your home directory::
 
-For g33ks this should sound better::
-
-    git clone --bare https://github.com/ReekenX/dotfiles-home ~/.git
+    git clone --bare https://github.com/ReekenX/dotfiles ~/.git
     git config core.bare false
     git checkout -f master
 
