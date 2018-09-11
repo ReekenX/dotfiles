@@ -4,5 +4,7 @@ set diff-context = 10
 set ignore-case = yes
 
 bind diff d !git diff %(commit)^ %(commit)
-bind status P !git push
+bind main U !git pull
+bind main P !git push
+bind status P !git add --patch %(file)
 
