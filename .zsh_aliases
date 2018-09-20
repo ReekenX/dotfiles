@@ -44,9 +44,15 @@ alias rg="bundle exec rails generate"
 alias rr="bundle exec rails routes"
 alias rdm="bundle exec rails db:migrate"
 
-# Super fancy and quick search - will put colored results in 'less' if needed
+# Super fancy search - will put colored results in 'less' if they do not fit your terminal window.
+# Does it hurt performance? Yes, because plain 'ag' command will start showing results immediately,
+# and this implementation depends on having all results first before doing magic with 'less'. That
+# means results are shown once everything has been found.
+#
+# Usage: s KEYWORD [DIRECTORY]
+# Examples: "s col-xs-12" or "s container-fluid templates"
 function s() {
-    output=$(ag --nocolor -i "$1" --ignore="*.min.js" --ignore="*.min.css" --ignore="*.po" | cut -c 1-$(tput cols) | GREP_COLOR='01;36' egrep -i --color=always '^[^:]*:|$' | GREP_COLOR='01;31' egrep -i --color=always "$1"'|$')
+    output=$(ag --nocolor -i "$1" "${2:-.}" --ignore="*.min.js" --ignore="*.min.css" --ignore="*.po" | cut -c 1-$(tput cols) | GREP_COLOR='01;36' egrep -i --color=always '^[^:]*:|$' | GREP_COLOR='01;31' egrep -i --color=always "$1"'|$')
     if [ $(tput lines) -lt $(echo $output | wc -l) ]
     then
         echo $output | less -R
