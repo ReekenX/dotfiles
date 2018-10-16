@@ -3,7 +3,6 @@ set nocompatible
 " Load plugins {{{
 call plug#begin('~/.vim/plugged')
 
-"Plug 'jlanzarotta/bufexplorer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Raimondi/vimoutliner'
 Plug 'tmhedberg/matchit'
@@ -15,7 +14,8 @@ Plug 'terryma/vim-smooth-scroll'
 Plug 'kchmck/vim-coffee-script'
 Plug 'matze/vim-move'
 Plug 'vobornik/vim-mql4'
-Plug 'kien/ctrlp.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'osyo-manga/vim-brightest'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'cakebaker/scss-syntax.vim'
@@ -213,7 +213,6 @@ nmap ,p :bp<CR>
 nmap ,n :bn<CR>
 
 "  to enter currently editing files list
-map <leader>b :CtrlPBuffer<CR>
 map <leader>e :Ex<CR>
 
 " MUST HAVE EVERYONE!
@@ -319,30 +318,17 @@ set scrolloff=3
 let g:move_key_modifier = 'C'
 " }}}
 
-" CTRL-P plugin settings {{{
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'a'
-let g:ctrlp_lazy_update = 100
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_max_files = 0
+" FZF plugin settings {{{
+delm! | delm A-Z0-9
+map <leader>b :Buffers<CR>
+map <leader>f :GFiles<CR>
+map <leader>m :Marks<CR>
 
-" Fixing "broken" VIM regexp
-nnoremap // :CtrlPLine %<cr>
+" Fixing "broken" VIM regexp search
 cnoremap %s/ %s/\v
 
-" Speed up files completion
-let g:ctrlp_use_caching = 0
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-else
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-  let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
-    \ }
-endif
+" Advanced search
+nnoremap // :Ag<cr>
 " }}}
 
 " Nerd commenter plugin settings {{{
