@@ -26,6 +26,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
 Plug 'posva/vim-vue'
 Plug 'w0rp/ale'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 " }}}
@@ -359,4 +360,11 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.
 
 " Emmet plugin settings {{{
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" }}}
+
+" VIM Gutter settings {{{
+nmap ]c <Plug>GitGutterNextHunk
+nmap [c <Plug>GitGutterPrevHunk
+nmap <Leader>hs <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterUndoHunk
 " }}}
