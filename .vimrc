@@ -25,6 +25,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
 Plug 'posva/vim-vue'
+Plug 'w0rp/ale'
 
 call plug#end()
 " }}}
