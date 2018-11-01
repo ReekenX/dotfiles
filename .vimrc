@@ -359,6 +359,6 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.
 
 " Emmet plugin settings {{{
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,vue.html.javascript.css.less.pug EmmetInstall
+autocmd FileType html,css,scss,vue.html.javascript.css.less.pug EmmetInstall
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " }}}
