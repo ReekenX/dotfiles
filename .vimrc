@@ -26,6 +26,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'godlygeek/tabular'
 Plug 'posva/vim-vue'
 Plug 'w0rp/ale'
+Plug 'elixir-editors/vim-elixir'
 
 call plug#end()
 " }}}
