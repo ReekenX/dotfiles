@@ -19,7 +19,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'osyo-manga/vim-brightest'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
 Plug 'terryma/vim-expand-region'
@@ -27,6 +26,7 @@ Plug 'godlygeek/tabular'
 Plug 'posva/vim-vue'
 Plug 'w0rp/ale'
 Plug 'elixir-editors/vim-elixir'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 " }}}
@@ -354,10 +354,4 @@ let g:surround_{char2nr('„')} = "„\r“"
 let g:vue_disable_pre_processors=1
 autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
-" }}}
-
-" Emmet plugin settings {{{
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,scss,vue.html.javascript.css.less.pug EmmetInstall
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 " }}}
