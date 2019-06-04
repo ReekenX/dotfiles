@@ -27,6 +27,9 @@ Plug 'posva/vim-vue'
 Plug 'w0rp/ale'
 Plug 'elixir-editors/vim-elixir'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'andreyorst/SimpleSnippets.vim'
+Plug 'andreyorst/SimpleSnippets-snippets'
+Plug 'webdevel/tabulous'
 
 call plug#end()
 " }}}

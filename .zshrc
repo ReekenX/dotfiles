@@ -34,16 +34,18 @@ zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
 # Oh my zsh configuration
 source $ZSH/oh-my-zsh.sh
 
-# Add RVM to PATH for scripting
-if [ -d $HOME/.rvm/bin ]
-then
-    export PATH="$PATH:$HOME/.rvm/bin"
-    source $HOME/.rvm/scripts/rvm
-fi
-
 # Always start work session with tmux so that no work is lost when closing apps
 [ -z "$TMUX" ] && { tmux attach -u || tmuxinator start base }
 
 # Force UTF8 (a must for MacOS)
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/private/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/private/tmp/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/private/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/private/tmp/google-cloud-sdk/completion.zsh.inc'; fi
