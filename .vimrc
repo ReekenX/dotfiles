@@ -358,3 +358,11 @@ let g:vue_disable_pre_processors=1
 autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
 " }}}
+
+" Repeat very last command in the next tmux window for quick command lines testing {{{
+nnoremap <Leader>r :call <SID>TmuxRepeat()<CR>
+function! s:TmuxRepeat()
+    silent! exec "!clear && tmux select-pane -l && tmux send up enter && tmux select-pane -l"
+    redraw!
+endfunction
+" }}}
