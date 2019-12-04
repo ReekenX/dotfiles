@@ -28,7 +28,7 @@ alias json="python -m json.tool | pygmentize -l json"
 alias ga="git add . -N"
 alias gap="git add -p"
 alias gb="git branch -a"
-alias gbs="git branch -a | grep"
+alias gbs="git checkout \$(git branch | cut -c 3- | fzy)"
 alias gf='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff'
 alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
 alias gp="git push || git pull"
@@ -37,31 +37,11 @@ alias gr="git reset HEAD~1"
 alias gc="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
 alias gs="git status --ignore-submodules -sb"
 
-# Rails time servers
-alias rs="bundle exec rails server -b 127.0.0.1"
-alias rc="bundle exec rails console"
-alias rg="bundle exec rails generate"
-alias rr="bundle exec rails routes"
-alias rdm="bundle exec rails db:migrate"
-
-# Super fancy search - will put colored results in 'less' if they do not fit your terminal window.
-# Does it hurt performance? Yes, because plain 'ag' command will start showing results immediately,
-# and this implementation depends on having all results first before doing magic with 'less'. That
-# means results are shown once everything has been found.
-#
-# Usage: s KEYWORD [DIRECTORY]
-# Examples: "s col-xs-12" or "s container-fluid templates"
-function s() {
-    output=$(ag --nocolor -i "$1" "${2:-.}" --ignore="*.min.js" --ignore="*.min.css" --ignore="*.po" | cut -c 1-$(tput cols) | GREP_COLOR='01;36' egrep -i --color=always '^[^:]*:|$' | GREP_COLOR='01;31' egrep -i --color=always "$1"'|$')
-    if [ $(tput lines) -lt $(echo $output | wc -l) ]
-    then
-        echo $output | less -R
-    else
-        echo $output
-    fi
-}
-
 # Start tmux session for current folder with custom configuration
 function workon() {
     tmuxinator start $(basename $(pwd))
 }
+
+alias ctags="/usr/local/bin/ctags -R --exclude=.git --exclude=node_modules --exclude=test --exclude=\*.json"
+alias vim="/usr/local/bin/nvim"
+alias vi="/usr/local/bin/nvim"
