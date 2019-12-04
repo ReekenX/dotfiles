@@ -35,7 +35,7 @@ zstyle ':completion:*:(all-|)files' ignored-patterns '*.swp'
 source $ZSH/oh-my-zsh.sh
 
 # Always start work session with tmux so that no work is lost when closing apps
-[ -z "$TMUX" ] && { tmux attach -u || tmuxinator start base }
+[ -z "$TMUX" ] && { tmux attach -u || /Users/remigijus/.rvm/gems/ruby-2.6.0/bin/tmuxinator start base }
 
 # Force UTF8 (a must for MacOS)
 export LC_ALL=en_US.UTF-8
@@ -45,7 +45,7 @@ export LANG=en_US.UTF-8
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/private/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/private/tmp/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f ~remigijus/google-cloud-sdk/path.zsh.inc ]; then . ~remigijus/google-cloud-sdk/path.zsh.inc; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/private/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/private/tmp/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f ~remigijus/google-cloud-sdk/completion.zsh.inc ]; then . ~remigijus/google-cloud-sdk/completion.zsh.inc; fi
