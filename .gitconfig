@@ -11,3 +11,5 @@
     name = Remigijus Jarmalavičius
     email = remigijus@jarmalavicius.lt
 
+[diff]
+	noprefix = true
