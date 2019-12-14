@@ -19,3 +19,4 @@ alias logs="docker logs --since 3h -f \$(status | awk 'NR != 1 {print \$2}' | fz
 alias restart="docker restart \$(status | awk 'NR != 1 {print \$2}' | fzy)"
 alias stop="docker stop \$(status | awk 'NR != 1 {print \$2}' | fzy)"
 alias start="docker start \$(status | awk 'NR != 1 {print \$2}' | fzy)"
+alias go='cd "$(find ~ -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -type d -maxdepth 2 | fzy)"'
