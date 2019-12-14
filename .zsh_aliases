@@ -28,13 +28,13 @@ alias json="python -m json.tool | pygmentize -l json"
 alias ga="git add . -N"
 alias gap="git add -p"
 alias gb="git branch -a"
-alias gbs="git checkout \$(git branch | cut -c 3- | fzy)"
+alias gbs="git checkout \$(git branch | cut -c 3- | fzy); git pull; gc"
 alias gf='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff'
 alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
 alias gp="git push || git pull"
 alias gm="git merge --squash --no-commit"
 alias gr="git reset HEAD~1"
-alias gc="git branch --merged | egrep -v '(^\*|master)' | xargs git branch -d"
+alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs git branch -d"
 alias gs="git status --ignore-submodules -sb"
 
 # Start tmux session for current folder with custom configuration
@@ -42,6 +42,7 @@ function workon() {
     tmuxinator start $(basename $(pwd))
 }
 
-alias ctags="/usr/local/bin/ctags -R --exclude=.git --exclude=node_modules --exclude=test --exclude=\*.json"
 alias vim="/usr/local/bin/nvim"
 alias vi="/usr/local/bin/nvim"
+alias rg="rg -g '!*node_modules*'"
+alias go='cd "$(find ~/Work ~/Dropbox ~/Downloads -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -type d -maxdepth 2 | fzy)"'
