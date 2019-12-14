@@ -12,6 +12,12 @@ set listchars=tab:»»,trail:·,extends:#,nbsp:·
 " Disable poor HTML rendering - not really compatible with HTML5 or
 " any frontend JavaScript frameworks
 let html_no_rendering = 1
+
+" Theme customization
+hi Comment term=underline ctermfg=8
+hi Folded term=underline ctermfg=8
+hi Pmenu ctermfg=0 ctermbg=White guibg=LightBlue
+hi LineNr ctermfg=8
 " }}}
 
 " Edit behaviour {{{
@@ -68,6 +74,7 @@ set smartcase
 
 " Advanced search
 nnoremap // :Rg <CR>
+nnoremap <leader>. :nohl<CR>
 " }}}
 
 " Backups and swap {{{
@@ -92,7 +99,7 @@ set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 " Autosave {{{
 set updatetime=1000
 
-function AutoSave()
+function! AutoSave()
   if expand('%:p') != ''
     silent update
   endif
@@ -113,18 +120,6 @@ augroup BWCCreateDir
     autocmd!
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
-" }}}
-
-" Automatic Ctags {{{
-" Force to look for ctags file in your project .git/tags
-function! GetProjectFolderPath()
- let result = system('git rev-parse --show-toplevel')
- return substitute(result, "\n", "", "")
-endfunction
-
-let ctagsfolderpath = GetProjectFolderPath()
-let &tag = GetProjectFolderPath() . '/.git/tags'
-let g:autotagTagsFile = &tag
 " }}}
 
 " Keyboard mappings {{{
@@ -246,8 +241,6 @@ Plug 'terryma/vim-smooth-scroll'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/auto-pairs-gentle'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'andreyorst/SimpleSnippets.vim'
-Plug 'andreyorst/SimpleSnippets-snippets'
 Plug 'webdevel/tabulous'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'posva/vim-vue'
@@ -257,8 +250,24 @@ Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'honza/vim-snippets'
 
 call plug#end()
+" }}}
+
+" Ctags && Vim Gutentags plugin settings {{{
+" Force to look for ctags file in your project .git/tags
+function! GetProjectFolderPath()
+let result = system('git rev-parse --show-toplevel')
+return substitute(result, "\n", "", "")
+endfunction
+
+let ctagsfolderpath = GetProjectFolderPath()
+let &tag = GetProjectFolderPath() . '/.git/tags'
+let g:gutentags_ctags_tagfile = GetProjectFolderPath() . '/.git/tags'
+let g:gutentags_file_list_command = 'rg --files'
+let g:gutentags_ctags_extra_args = ['--tag-relative=no']
 " }}}
 
 " VIM Outliner plugin settings {{{
@@ -295,8 +304,26 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.
 " }}}
 
 " VIM Picker plugin settings {{{
-nmap <unique> <leader>f <Plug>(PickerEdit)
-nmap <unique> <leader>F <Plug>(PickerTabedit)
-nmap <unique> <leader>b <Plug>(PickerBuffer)
-nmap <unique> <leader>t <Plug>(PickerTag)
+nmap <leader>f <Plug>(PickerEdit)
+nmap <leader>F <Plug>(PickerTabedit)
+nmap <leader>b <Plug>(PickerBuffer)
+nmap <leader>t <Plug>(PickerTag)
 " }}}
+
+" VIM COC Snippets plugin settings {{{
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+" }}}
+
