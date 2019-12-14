@@ -39,5 +39,5 @@ startup_message off
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 
 # Shell configuration
-shell /bin/zsh
-shelltitle 'zsh'
+shell /bin/bash
+shelltitle 'shell'
