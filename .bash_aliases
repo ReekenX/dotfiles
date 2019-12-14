@@ -1,26 +1,21 @@
 # History file will be with date information on every entry (useful feature)
 export HISTTIMEFORMAT="%Y-%m-%d %T "
-export HISTFILE=~/.shell_history
+export HISTFILE=~/.bash_history
 export HISTSIZE=100000000
-export HISTFILESIZE=999999999
-export HISTIGNORE="mysqldump:mysql"
+export HISTFILESIZE=100000000
 export HISTCONTROL=""
 
-# No colors for `ls` command
-alias ls='ls --color=auto'
-
-# List files in "smart" way
-alias ll='ls -Flh --color=auto --group-directories-first'
-
+# Colorize some commands by default
+alias ll='ls -FlhG'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias i="sudo apt-get install -y"
-alias s="sudo apt-cache search"
-alias u="sudo apt-get update"
-
-alias mr="/etc/init.d/mysql restart"
-alias pr="/etc/init.d/postgresql restart"
-alias ar="/etc/init.d/apache2 restart"
-alias bzr="LC_ALL=C /usr/bin/bzr"
+# Docker helpers (used on servers only)
+alias down="docker-compose down"
+alias up="docker-compose up -d"
+alias status="docker ps -a | awk -F\ \ \ \* '{printf(\"%-15s %-40s%s\n\", \$1, \$7 == \"\" ? \$6 : \$7, \$5)}'"
+alias logs="docker logs --since 3h -f \$(status | awk 'NR != 1 {print \$2}' | fzy)"
+alias restart="docker restart \$(status | awk 'NR != 1 {print \$2}' | fzy)"
+alias stop="docker stop \$(status | awk 'NR != 1 {print \$2}' | fzy)"
+alias start="docker start \$(status | awk 'NR != 1 {print \$2}' | fzy)"
