@@ -242,7 +242,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/auto-pairs-gentle'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'webdevel/tabulous'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if executable('node')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 Plug 'posva/vim-vue'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'leafgarland/typescript-vim'
