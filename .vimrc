@@ -252,7 +252,9 @@ Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
-Plug 'ludovicchabant/vim-gutentags'
+if executable('ctags')
+  Plug 'ludovicchabant/vim-gutentags'
+endif
 Plug 'honza/vim-snippets'
 
 call plug#end()
