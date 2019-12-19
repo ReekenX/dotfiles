@@ -263,15 +263,17 @@ call plug#end()
 " Ctags && Vim Gutentags plugin settings {{{
 " Force to look for ctags file in your project .git/tags
 function! GetProjectFolderPath()
-let result = system('git rev-parse --show-toplevel')
-return substitute(result, "\n", "", "")
+  let result = system('git rev-parse --show-toplevel')
+  return substitute(result, "\n", "", "")
 endfunction
 
 let ctagsfolderpath = GetProjectFolderPath()
 let &tag = GetProjectFolderPath() . '/.git/tags'
 let g:gutentags_ctags_tagfile = GetProjectFolderPath() . '/.git/tags'
-let g:gutentags_file_list_command = 'rg --files'
 let g:gutentags_ctags_extra_args = ['--tag-relative=no']
+if executable('rg')
+  let g:gutentags_file_list_command = 'rg --files'
+endif
 " }}}
 
 " VIM Outliner plugin settings {{{
