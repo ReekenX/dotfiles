@@ -242,9 +242,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/auto-pairs-gentle'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'webdevel/tabulous'
-if executable('node')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
 Plug 'posva/vim-vue'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'leafgarland/typescript-vim'
@@ -252,10 +249,15 @@ Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
+Plug 'vimwiki/vimwiki'
+Plug 'honza/vim-snippets'
+Plug 'djoshea/vim-autoread'
+if executable('node')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 if executable('ctags')
   Plug 'ludovicchabant/vim-gutentags'
 endif
-Plug 'honza/vim-snippets'
 
 call plug#end()
 " }}}
@@ -333,3 +335,6 @@ let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 " }}}
 
+" VIM Wiki plugin settings {{{
+let g:vimwiki_list = [{'path': '~/Work/asmeniniai/wiki/', 'syntax': 'markdown', 'ext': '.md'}]
+" }}}
