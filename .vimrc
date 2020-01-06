@@ -217,19 +217,6 @@ vnoremap <silent> S' xi''<esc>P
 vnoremap <silent> S" xi""<esc>P
 " }}}
 
-" Highlight the word under cursor {{{
-highlight WordUnderCursor cterm=underline gui=underline
-autocmd CursorHold * call HighlightCursorWord()
-function! HighlightCursorWord()
-    " if hlsearch is active, don't overwrite it! is
-    let search = getreg('/')
-    let cword = expand('<cword>')
-    if match(cword, search) == -1
-        exe printf('match WordUnderCursor /\V\<%s\>/', escape(cword, '/\'))
-    endif
-endfunction
-" }}}
-
 " Load plugins {{{
 call plug#begin('~/.vim/plugged')
 
