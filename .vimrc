@@ -75,6 +75,9 @@ set smartcase
 " Advanced search
 nnoremap // :Rg <CR>
 nnoremap <leader>. :nohl<CR>
+
+" Fix for `Rg` command including file name in search options
+command! -bang -nargs=* Rg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " }}}
 
 " Backups and swap {{{
