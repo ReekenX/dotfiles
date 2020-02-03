@@ -36,6 +36,7 @@ alias gm="git merge --squash --no-commit"
 alias gr="git reset HEAD~1"
 alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs git branch -d"
 alias gs="git status --ignore-submodules -sb"
+alias gff="git flow feature start"
 
 # Start tmux session for current folder with custom configuration
 function workon() {
