@@ -239,7 +239,6 @@ Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
-Plug 'vimwiki/vimwiki'
 Plug 'honza/vim-snippets'
 Plug 'djoshea/vim-autoread'
 if executable('node')
@@ -323,8 +322,4 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
-" }}}
-
-" VIM Wiki plugin settings {{{
-let g:vimwiki_list = [{'path': '~/Work/asmeniniai/wiki/', 'syntax': 'markdown', 'ext': '.md'}]
 " }}}
