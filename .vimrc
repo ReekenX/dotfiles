@@ -1,6 +1,5 @@
 " Theme {{{
 syntax on
-colorscheme delek
 
 " Show line numbers in editor
 set number
