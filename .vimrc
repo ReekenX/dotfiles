@@ -72,7 +72,8 @@ set incsearch
 set smartcase
 
 " Advanced search
-nnoremap // :Rg <CR>
+nnoremap <leader>/ :Rg <CR>
+nnoremap // :BLines <CR>
 nnoremap <leader>. :nohl<CR>
 
 " Fix for `Rg` command including file name in search options
