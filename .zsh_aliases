@@ -45,5 +45,5 @@ function workon() {
 
 alias vim="/usr/local/bin/nvim"
 alias vi="/usr/local/bin/nvim"
-alias rg="rg -g '!*node_modules*'"
+alias rg="rg -i -g '!*node_modules*'"
 alias go='cd "$(find ~ -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -type d -maxdepth 3 | fzy)"'
