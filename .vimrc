@@ -268,15 +268,16 @@ endif
 " }}}
 
 " VIM Outliner plugin settings {{{
-autocmd BufEnter *.otl set foldlevel=0
-autocmd BufEnter *.otl set textwidth=80
-autocmd BufEnter *.otl set wrap
-autocmd BufEnter *.otl set foldenable
+autocmd BufEnter *.otl setlocal foldlevel=0
+autocmd BufEnter *.otl setlocal textwidth=80
+autocmd BufEnter *.otl setlocal wrap
+autocmd BufEnter *.otl setlocal foldenable
 
 autocmd! BufRead,BufNewFile *.otl setfiletype vo_base
-autocmd BufRead,BufNewFile *.otl colorscheme vo_dark
 autocmd BufRead,BufNewFile *.otl filetype plugin indent on
-autocmd BufRead,BufNewFile *.otl set nolist
+autocmd BufRead,BufNewFile *.otl setlocal nolist
+
+nmap <leader>ww :tabnew ~/Work/asmeniniai/project-management/index.otl<CR>
 " }}}
 
 " VIM Smooth Scroll plugin settings {{{
