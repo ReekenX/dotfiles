@@ -7,4 +7,4 @@ bind diff d !git diff %(commit)^ %(commit)
 bind main U !git pull
 bind main P !git push
 bind status P !git add --patch %(file)
-
+bind status C !git cz -n
