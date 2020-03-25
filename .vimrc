@@ -158,9 +158,6 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap B ^
 nnoremap E $
 
-" <SHIFT + t> - trim whitespace and restore to original cursor position
-map <s-t> :mark a<CR>:%s/ +$//g<CR>'a'
-
 " By default, ' jumps to the marked line, ` jumps to the marked line and
 " column, so swap them
 nnoremap ' `
@@ -229,7 +226,6 @@ Plug 'tmhedberg/matchit'
 Plug 'ReekenX/vim-rename2'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-scripts/auto-pairs-gentle'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'webdevel/tabulous'
 Plug 'posva/vim-vue'
@@ -239,32 +235,33 @@ Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
-Plug 'honza/vim-snippets'
 Plug 'djoshea/vim-autoread'
+Plug 'dense-analysis/ale'
 if executable('node')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 if executable('ctags')
-  Plug 'ludovicchabant/vim-gutentags'
+  " Plug 'ludovicchabant/vim-gutentags'
 endif
 
 call plug#end()
 " }}}
 
-" Ctags && Vim Gutentags plugin settings {{{
-" Force to look for ctags file in your project .git/tags
+" Ctags settings {{{
 function! GetProjectFolderPath()
   let result = system('git rev-parse --show-toplevel')
   return substitute(result, "\n", "", "")
 endfunction
 
-let ctagsfolderpath = GetProjectFolderPath()
-let &tag = GetProjectFolderPath() . '/.git/tags'
-let g:gutentags_ctags_tagfile = GetProjectFolderPath() . '/.git/tags'
-let g:gutentags_ctags_extra_args = ['--tag-relative=no']
-if executable('rg')
-  let g:gutentags_file_list_command = 'rg --files'
-endif
+" Force to look for ctags file in your project .git/tags
+let ctags_path = GetProjectFolderPath() . '/.git/tags'
+let &tag = ctags_path
+set notagrelative
+" }}}
+
+" Custom project VIM setup settings {{{
+" Project specific settings VIM tries to load from .git/project.vim
+exec "silent! source " GetProjectFolderPath() . "/project.vim"
 " }}}
 
 " VIM Outliner plugin settings {{{
@@ -323,4 +320,40 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \]
+
+" Use TAB for autocompletion
+" Note: Edit snippets for current file with - CocCommand snippets.editSnippets
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+let g:coc_snippet_next = '<tab>'
+" }}}
+
+" VIM ALE plugin settings {{{
+" Show nice customer marking for errors
+let g:ale_sign_error = "◉"
+let g:ale_sign_warning = "◉"
+highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
+highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
+
+" Only filetypes that should be linted automatically on save
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint', 'prettier'],
+\   'ruby': ['rubocop'],
+\}
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
 " }}}
