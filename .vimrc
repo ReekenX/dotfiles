@@ -244,28 +244,8 @@ Plug 'peitalin/vim-jsx-typescript'
 if executable('node')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
-if executable('ctags')
-  " Plug 'ludovicchabant/vim-gutentags'
-endif
 
 call plug#end()
-" }}}
-
-" Ctags settings {{{
-function! GetProjectFolderPath()
-  let result = system('git rev-parse --show-toplevel')
-  return substitute(result, "\n", "", "")
-endfunction
-
-" Force to look for ctags file in your project .git/tags
-let ctags_path = GetProjectFolderPath() . '/.git/tags'
-let &tag = ctags_path
-set notagrelative
-" }}}
-
-" Custom project VIM setup settings {{{
-" Project specific settings VIM tries to load from .git/project.vim
-exec "silent! source " GetProjectFolderPath() . "/project.vim"
 " }}}
 
 " VIM Outliner plugin settings {{{
