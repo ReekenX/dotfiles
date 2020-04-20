@@ -101,7 +101,7 @@ set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 " }}}
 
 " Autosave {{{
-set updatetime=1000
+set updatetime=300
 
 function! AutoSave()
   if expand('%:p') != ''
@@ -238,6 +238,9 @@ Plug 'junegunn/fzf.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'djoshea/vim-autoread'
 Plug 'dense-analysis/ale'
+Plug 'honza/vim-snippets'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 if executable('node')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
@@ -294,9 +297,9 @@ let g:surround_{char2nr('„')} = "„\r“"
 " }}}
 
 " VIM Vue plugin settings {{{
-let g:vue_disable_pre_processors=1
+let g:vue_pre_processors = ['scss']
 autocmd FileType vue syntax sync fromstart
-autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.less.pug
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
 " }}}
 
 " VIM Picker plugin settings {{{
@@ -306,28 +309,7 @@ nmap <leader>b <Plug>(PickerBuffer)
 nmap <leader>t <Plug>(PickerTag)
 " }}}
 
-" VIM COC Snippets plugin settings {{{
-" Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-j> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-j>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-pairs',
-  \ 'coc-tsserver',
-  \]
-
+" VIM COC plugin settings {{{
 " Use TAB for autocompletion
 " Note: Edit snippets for current file with - CocCommand snippets.editSnippets
 inoremap <silent><expr> <TAB>
@@ -340,6 +322,59 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 let g:coc_snippet_next = '<tab>'
+
+set hidden
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Mappings using CoCList:
+" Show all diagnostics.
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " }}}
 
 " VIM ALE plugin settings {{{
@@ -357,4 +392,21 @@ let g:ale_fixers = {
 \}
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
+" }}}
+
+" VIM ALE plugin settings {{{
+" Resolve file extensions when requred when on filename pressing `gf`
+augroup suffixes
+  autocmd!
+
+  let associations = [
+    \ ["javascript", ".js,.json"],
+    \ ["python", ".py"],
+    \ ["ruby", ".rb"]
+  \ ]
+
+  for ft in associations
+    execute "autocmd FileType " . ft[0] . " setlocal suffixesadd=" . ft[1]
+  endfor
+augroup END
 " }}}
