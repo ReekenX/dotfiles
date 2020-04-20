@@ -164,8 +164,8 @@ nnoremap E $
 nnoremap ' `
 nnoremap ` '
 
-" Quickly get out of insert mode without your fingers having to leave the home row
-inoremap jj <Esc>
+" Save without :w quickly
+inoremap jj <ESC>:update<CR>
 
 " Enter currently editing files list
 map <leader>e :Ex<CR>
