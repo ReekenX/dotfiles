@@ -17,6 +17,7 @@ hi Comment term=underline ctermfg=8
 hi Folded term=underline ctermfg=8
 hi Pmenu ctermfg=0 ctermbg=White guibg=LightBlue
 hi LineNr ctermfg=8
+hi ColorColumn ctermbg=none
 " }}}
 
 " Edit behaviour {{{
