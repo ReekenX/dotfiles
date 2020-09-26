@@ -1,11 +1,42 @@
+" Load plugins {{{
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdcommenter'
+Plug 'Raimondi/vimoutliner'
+Plug 'tmhedberg/matchit'
+Plug 'ReekenX/vim-rename2'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'webdevel/tabulous'
+Plug 'posva/vim-vue'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'srstevenson/vim-picker'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'djoshea/vim-autoread'
+Plug 'dense-analysis/ale'
+Plug 'honza/vim-snippets'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'preservim/nerdtree'
+if executable('node')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+Plug 'joshdick/onedark.vim'
+
+call plug#end()
+" }}}
+"
 " Theme {{{
 syntax on
 
 " Show line numbers in editor
 set number
 
-" Display not printable characters
-set list
+" Display not printable characters set list
 set listchars=tab:»»,trail:·,extends:#,nbsp:·
 
 " Disable poor HTML rendering - not really compatible with HTML5 or
@@ -17,7 +48,8 @@ hi Comment term=underline ctermfg=8
 hi Folded term=underline ctermfg=8
 hi Pmenu ctermfg=0 ctermbg=White guibg=LightBlue
 hi LineNr ctermfg=8
-hi ColorColumn ctermbg=none
+hi ColorColumn ctermbg=237
+colorscheme onedark
 " }}}
 
 " Edit behaviour {{{
@@ -101,14 +133,8 @@ set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
 " }}}
 
 " Autosave {{{
-set updatetime=300
-
-function! AutoSave()
-  if expand('%:p') != ''
-    silent update
-  endif
-endfunction
-autocmd CursorHold,CursorHoldI * call AutoSave()
+set updatetime=5000
+autocmd InsertLeave * :w!
 " }}}
 
 " Auto create directories on save if not exists {{{
@@ -147,7 +173,6 @@ vnorem // y/<c-r>"<cr>
 
 " Fixing "broken" VIM regexp - all characters now should be escaped
 nnoremap / /\v
-cnoremap %s/ %s/\v
 
 " Don't press the SHIFT in normal mode
 nnoremap ; :
@@ -166,6 +191,9 @@ nnoremap ` '
 
 " Save without :w quickly
 inoremap jj <ESC>:update<CR>
+
+" Close buffer
+nnoremap <c-x> :bd<CR>
 
 " Enter currently editing files list
 map <leader>e :Ex<CR>
@@ -218,34 +246,34 @@ vnoremap <silent> S' xi''<esc>P
 vnoremap <silent> S" xi""<esc>P
 " }}}
 
-" Load plugins {{{
-call plug#begin('~/.vim/plugged')
+" Smarter files opening {{{
+" Resolve file extensions when requred when on filename pressing `gf`
+augroup suffixes
+  autocmd!
 
-Plug 'scrooloose/nerdcommenter'
-Plug 'Raimondi/vimoutliner'
-Plug 'tmhedberg/matchit'
-Plug 'ReekenX/vim-rename2'
-Plug 'terryma/vim-smooth-scroll'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'webdevel/tabulous'
-Plug 'posva/vim-vue'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'srstevenson/vim-picker'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf.vim'
-Plug '/usr/local/opt/fzf'
-Plug 'djoshea/vim-autoread'
-Plug 'dense-analysis/ale'
-Plug 'honza/vim-snippets'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-if executable('node')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
+  let associations = [
+    \ ["javascript", ".js,.json"],
+    \ ["python", ".py"],
+    \ ["ruby", ".rb"]
+  \ ]
 
-call plug#end()
+  for ft in associations
+    execute "autocmd FileType " . ft[0] . " setlocal suffixesadd=" . ft[1]
+  endfor
+augroup END
+" }}}
+
+" Status bar {{{
+set statusline=
+set statusline+=%#PmenuSel#
+set statusline+=\%f
+set statusline+=%=
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ \|
+set statusline+=\ %{&fileformat}
+set statusline+=\ \|
+set statusline+=\ %l:%c
+set statusline+=\ 
 " }}}
 
 " VIM Outliner plugin settings {{{
@@ -267,7 +295,7 @@ nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
 set scrolloff=3
 " }}}
 
-" Nerd commenter plugin settings {{{
+" VIM Nerd commenter plugin settings {{{
 let g:NERDSpaceDelims=1
 let g:NERDDefaultAlign = 'left'
 " }}}
@@ -304,7 +332,6 @@ endfunction
 let g:coc_snippet_next = '<tab>'
 
 set hidden
-set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -374,19 +401,7 @@ let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 " }}}
 
-" VIM ALE plugin settings {{{
-" Resolve file extensions when requred when on filename pressing `gf`
-augroup suffixes
-  autocmd!
-
-  let associations = [
-    \ ["javascript", ".js,.json"],
-    \ ["python", ".py"],
-    \ ["ruby", ".rb"]
-  \ ]
-
-  for ft in associations
-    execute "autocmd FileType " . ft[0] . " setlocal suffixesadd=" . ft[1]
-  endfor
-augroup END
+" VIM NERDTree plugin settings {{{
+nmap ,n :NERDTreeFind<CR>
+nmap ,m :NERDTreeToggle<CR>
 " }}}
