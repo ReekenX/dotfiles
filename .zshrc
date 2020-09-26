@@ -49,3 +49,11 @@ if [ -f ~remigijus/google-cloud-sdk/path.zsh.inc ]; then . ~remigijus/google-clo
 
 # The next line enables shell command completion for gcloud.
 if [ -f ~remigijus/google-cloud-sdk/completion.zsh.inc ]; then . ~remigijus/google-cloud-sdk/completion.zsh.inc; fi
+
+# ZSH theme
+export PURE_PROMPT_SYMBOL="$"
+autoload -U promptinit; promptinit
+prompt pure
+
+# Syntax highlighting when typing commands
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
