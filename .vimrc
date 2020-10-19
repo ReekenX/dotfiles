@@ -2,7 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdcommenter'
-Plug 'Raimondi/vimoutliner'
+Plug 'vimoutliner/vimoutliner'
 Plug 'tmhedberg/matchit'
 Plug 'ReekenX/vim-rename2'
 Plug 'terryma/vim-smooth-scroll'
@@ -22,6 +22,7 @@ Plug 'honza/vim-snippets'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'preservim/nerdtree'
+Plug 'itchyny/lightline.vim'
 if executable('node')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
@@ -44,12 +45,12 @@ set listchars=tab:»»,trail:·,extends:#,nbsp:·
 let html_no_rendering = 1
 
 " Theme customization
+colorscheme onedark
 hi Comment term=underline ctermfg=8
 hi Folded term=underline ctermfg=8
 hi Pmenu ctermfg=0 ctermbg=White guibg=LightBlue
 hi LineNr ctermfg=8
 hi ColorColumn ctermbg=237
-colorscheme onedark
 " }}}
 
 " Edit behaviour {{{
@@ -86,6 +87,10 @@ set virtualedit=all
 
 " Share keyboard with OS
 set clipboard+=unnamed
+
+" Include dash to split words (useful for CSS classes autocompletion for names
+" having dash symbol "-")
+set iskeyword=@,48-57,_,192-255,-
 
 " When in git commit message - set cursor to the first line
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, strlen(getline(1))+1, 0])
@@ -130,11 +135,6 @@ set foldlevelstart=0
 
 " For these commands open folding by default
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-" }}}
-
-" Autosave {{{
-set updatetime=5000
-autocmd InsertLeave * :w!
 " }}}
 
 " Auto create directories on save if not exists {{{
@@ -190,7 +190,8 @@ nnoremap ' `
 nnoremap ` '
 
 " Save without :w quickly
-inoremap jj <ESC>:update<CR>
+inoremap jj <ESC>
+nmap ww <ESC>:write<CR>
 
 " Close buffer
 nnoremap <c-x> :bd<CR>
@@ -264,16 +265,16 @@ augroup END
 " }}}
 
 " Status bar {{{
-set statusline=
-set statusline+=%#PmenuSel#
-set statusline+=\%f
-set statusline+=%=
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\ \|
-set statusline+=\ %{&fileformat}
-set statusline+=\ \|
-set statusline+=\ %l:%c
-set statusline+=\ 
+" set statusline=
+" set statusline+=%#PmenuSel#
+" set statusline+=\%f
+" set statusline+=%=
+" set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+" set statusline+=\ \|
+" set statusline+=\ %{&fileformat}
+" set statusline+=\ \|
+" set statusline+=\ %l:%c
+" set statusline+=\
 " }}}
 
 " VIM Outliner plugin settings {{{
@@ -404,4 +405,10 @@ let g:ale_fix_on_save = 1
 " VIM NERDTree plugin settings {{{
 nmap ,n :NERDTreeFind<CR>
 nmap ,m :NERDTreeToggle<CR>
+" }}}
+
+" VIM onedark.vim plugin settings {{{
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 " }}}
