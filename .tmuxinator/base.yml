@@ -1,0 +1,7 @@
+name: base
+root: <%= ENV["HOME"] %>
+
+windows:
+  - timesheets:
+    - cd ~/Work/asmeniniai/toggl-to-kevin-team-sync
+  - random:

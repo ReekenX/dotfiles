@@ -1,0 +1,9 @@
+name: <%= File.basename(ENV["PWD"]).gsub('.', '-') %>
+root: <%= ENV["PWD"] %>
+
+startup_window: webserver
+
+windows:
+  - editor: vim Readme.md
+  - repository: tig
+  - webserver: make run
