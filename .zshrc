@@ -9,7 +9,7 @@ export ZSH_THEME="reekenx"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent-multiuser)
+plugins=(ssh-agent-multiuser zsh-autosuggestions)
 
 # We will share same history file under bash and zsh
 HISTFILE=~/.shell_history
@@ -54,6 +54,3 @@ if [ -f ~remigijus/google-cloud-sdk/completion.zsh.inc ]; then . ~remigijus/goog
 export PURE_PROMPT_SYMBOL="$"
 autoload -U promptinit; promptinit
 prompt pure
-
-# Syntax highlighting when typing commands
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
