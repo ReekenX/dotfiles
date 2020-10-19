@@ -46,8 +46,8 @@ function workon() {
   tmuxinator start project
 }
 
-alias vim="/usr/local/bin/nvim"
-alias vi="/usr/local/bin/nvim"
+alias vim="`which nvim`"
+alias vi="`which nvim`"
 alias rg="rg -i -g '!*node_modules*'"
 alias go='cd "$(find ~ -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -not -path '"'"'*/Library/*'"'"' -type d -maxdepth 3 | fzy)"'
 
