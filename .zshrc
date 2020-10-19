@@ -45,10 +45,10 @@ unsetopt correct_all
 export PATH="$PATH:$HOME/.rvm/bin"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f ~remigijus/google-cloud-sdk/path.zsh.inc ]; then . ~remigijus/google-cloud-sdk/path.zsh.inc; fi
+if [ -f $HOME/google-cloud-sdk/path.zsh.inc ]; then . $HOME/google-cloud-sdk/path.zsh.inc; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f ~remigijus/google-cloud-sdk/completion.zsh.inc ]; then . ~remigijus/google-cloud-sdk/completion.zsh.inc; fi
+if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then . $HOME/google-cloud-sdk/completion.zsh.inc; fi
 
 # ZSH theme
 export PURE_PROMPT_SYMBOL="$"
