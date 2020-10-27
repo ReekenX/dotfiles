@@ -51,6 +51,7 @@ if [ -f $HOME/google-cloud-sdk/path.zsh.inc ]; then . $HOME/google-cloud-sdk/pat
 if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then . $HOME/google-cloud-sdk/completion.zsh.inc; fi
 
 # ZSH theme
+fpath+=$HOME/.zsh/pure
 export PURE_PROMPT_SYMBOL="$"
 autoload -U promptinit; promptinit
 prompt pure
