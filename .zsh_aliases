@@ -49,7 +49,7 @@ function workon() {
 alias vim="`which nvim`"
 alias vi="`which nvim`"
 alias rg="rg -i -g '!*node_modules*'"
-alias go='cd "$(find ~ -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -not -path '"'"'*/Library/*'"'"' -type d -maxdepth 3 | fzy)"'
+alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -not -path '"'"'*/Library/*'"'"' | fzy)"'
 
 # NVM is too slow to be added to every zsh session, so it could be loaded any time needed
 function load_nvm() {
