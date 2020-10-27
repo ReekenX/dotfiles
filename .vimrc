@@ -12,16 +12,16 @@ Plug 'webdevel/tabulous'
 Plug 'posva/vim-vue'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'srstevenson/vim-picker'
 Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf.vim'
-Plug '/usr/local/opt/fzf'
 Plug 'djoshea/vim-autoread'
 Plug 'dense-analysis/ale'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
+Plug 'frazrepo/vim-rainbow'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 if executable('node')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
@@ -108,13 +108,8 @@ set incsearch
 " Smart search: if lowercase ignore case of matches, if not case-sensitive search
 set smartcase
 
-" Advanced search
-nnoremap <leader>/ :Rg <CR>
-nnoremap // :BLines <CR>
+" Clean highlight when requested
 nnoremap <leader>. :nohl<CR>
-
-" Fix for `Rg` command including file name in search options
-command! -bang -nargs=* Rg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " }}}
 
 " Backups and swap {{{
@@ -276,6 +271,18 @@ augroup END
 " set statusline+=\
 " }}}
 
+" Ctags support {{{
+function! GetProjectFolderPath()
+  let result = system('git rev-parse --show-toplevel')
+  return substitute(result, "\n", "", "")
+endfunction
+
+" Force to look for ctags file in your project .git/tags
+let ctags_path = GetProjectFolderPath() . '/.git/tags'
+let &tag = ctags_path
+set notagrelative
+" }}}
+
 " VIM Outliner plugin settings {{{
 autocmd BufEnter *.otl setlocal foldlevel=0
 autocmd BufEnter *.otl setlocal textwidth=80
@@ -308,13 +315,6 @@ let g:surround_{char2nr('„')} = "„\r“"
 let g:vue_pre_processors = ['scss']
 autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
-" }}}
-
-" VIM Picker plugin settings {{{
-nmap <leader>f <Plug>(PickerEdit)
-nmap <leader>F <Plug>(PickerTabedit)
-nmap <leader>b <Plug>(PickerBuffer)
-nmap <leader>t <Plug>(PickerTag)
 " }}}
 
 " VIM COC plugin settings {{{
@@ -410,4 +410,22 @@ nmap ,m :NERDTreeToggle<CR>
 let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ }
+" }}}
+
+" VIM Ranbow plugin settings {{{
+au FileType javascript call rainbow#load()
+" }}}
+
+" VIM FZF plugin settings {{{
+let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_preview_window = []
+
+nnoremap <leader>/ :Rg <CR>
+nnoremap // :BLines <CR>
+map <leader>b :Buffers<CR>
+map <leader>f :GFiles<CR>
+map <leader>m :Marks<CR>
+
+" Fix for `Rg` command including file name in search options
+command! -bang -nargs=* Rg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 " }}}
