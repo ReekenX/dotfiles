@@ -4,6 +4,7 @@ root: <%= ENV["PWD"] %>
 startup_window: webserver
 
 windows:
-  - editor: vim Readme.md
-  - repository: tig
-  - webserver: make run
+  - edit: vim Readme.md
+  - test: make test
+  - commit: tig
+  - run: make run

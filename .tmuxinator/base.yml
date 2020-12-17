@@ -3,5 +3,5 @@ root: <%= ENV["HOME"] %>
 
 windows:
   - timesheets:
-    - cd ~/Work/asmeniniai/toggl-to-kevin-team-sync
+    - cd ~/Work/tweak-things/toggl-to-kevin-team-sync
   - random:
