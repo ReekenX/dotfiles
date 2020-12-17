@@ -17,9 +17,7 @@ Plug 'djoshea/vim-autoread'
 Plug 'dense-analysis/ale'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
-Plug 'frazrepo/vim-rainbow'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 if executable('node')
@@ -49,7 +47,7 @@ hi Comment term=underline ctermfg=8
 hi Folded term=underline ctermfg=8
 hi Pmenu ctermfg=0 ctermbg=White guibg=LightBlue
 hi LineNr ctermfg=8
-hi ColorColumn ctermbg=237
+hi ColorColumn ctermbg=235
 " }}}
 
 " Edit behaviour {{{
@@ -114,11 +112,11 @@ nnoremap <leader>. :nohl<CR>
 
 " Backups and swap {{{
 set backup
-silent execute '!mkdir -p /tmp/.vim-backup-$USER'
-set backupdir=/tmp/.vim-backup-$USER
+silent execute '!mkdir -p /tmp/.vim-backup'
+set backupdir=/tmp/.vim-backup
 
 set noswapfile
-:au BufWritePre * let &bex = '-' . strftime("%Y-%m-%d_%H:%M") . '~'
+:au BufWritePre * let &bex = '-' . strftime("%Y-%m-%d_%H:%M")
 " }}}
 
 " Folding rules {{{
@@ -401,29 +399,22 @@ let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 " }}}
 
-" VIM NERDTree plugin settings {{{
-nmap ,n :NERDTreeFind<CR>
-nmap ,m :NERDTreeToggle<CR>
-" }}}
-
 " VIM onedark.vim plugin settings {{{
 let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ }
 " }}}
 
-" VIM Ranbow plugin settings {{{
-au FileType javascript call rainbow#load()
-" }}}
-
 " VIM FZF plugin settings {{{
-let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'down': '~30%' }
 let g:fzf_preview_window = []
 
 nnoremap <leader>/ :Rg <CR>
 nnoremap // :BLines <CR>
-map <leader>b :Buffers<CR>
+
 map <leader>f :GFiles<CR>
+map <leader>F :Files<CR>
+map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
 
 " Fix for `Rg` command including file name in search options
