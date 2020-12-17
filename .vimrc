@@ -48,6 +48,13 @@ hi Folded term=underline ctermfg=8
 hi Pmenu ctermfg=0 ctermbg=White guibg=LightBlue
 hi LineNr ctermfg=8
 hi ColorColumn ctermbg=235
+hi Normal ctermbg=none
+
+" No status line
+set laststatus=0
+
+" No welcome screen
+set shortmess=I
 " }}}
 
 " Edit behaviour {{{
@@ -254,19 +261,6 @@ augroup suffixes
     execute "autocmd FileType " . ft[0] . " setlocal suffixesadd=" . ft[1]
   endfor
 augroup END
-" }}}
-
-" Status bar {{{
-" set statusline=
-" set statusline+=%#PmenuSel#
-" set statusline+=\%f
-" set statusline+=%=
-" set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-" set statusline+=\ \|
-" set statusline+=\ %{&fileformat}
-" set statusline+=\ \|
-" set statusline+=\ %l:%c
-" set statusline+=\
 " }}}
 
 " Ctags support {{{
