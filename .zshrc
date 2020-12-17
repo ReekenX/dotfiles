@@ -41,17 +41,9 @@ export LANG=en_US.UTF-8
 # Disable autocorrect
 unsetopt correct_all
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# Custom prompt
+PROMPT='%F{blue}%2~
+\$%f '
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f $HOME/google-cloud-sdk/path.zsh.inc ]; then . $HOME/google-cloud-sdk/path.zsh.inc; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f $HOME/google-cloud-sdk/completion.zsh.inc ]; then . $HOME/google-cloud-sdk/completion.zsh.inc; fi
-
-# ZSH theme
-fpath+=$HOME/.zsh/pure
-export PURE_PROMPT_SYMBOL="$"
-autoload -U promptinit; promptinit
-prompt pure
+# Dev related settings based on machine
+source ~/.zsh_local
