@@ -3,8 +3,10 @@ set show-changes = yes
 set diff-context = 10
 set ignore-case = yes
 
-bind diff d !git diff %(commit)^ %(commit)
-bind main U !git pull
-bind main P !git push
-bind status P !git add --patch %(file)
-bind status C !git commit
+bind main u !git pull
+bind main p !git push
+bind status d !git checkout %(file)
+bind status p !git add --patch %(file)
+bind status c !git commit
+bind diff d !git checkout %(file)
+bind diff p !git add --patch %(file)
