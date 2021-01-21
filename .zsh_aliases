@@ -22,8 +22,8 @@ alias ls='ls -FlhG'
 alias rm="/bin/rm -rvf"
 alias mv="/bin/mv -v"
 alias cp="/bin/cp -Rv"
-alias scp="/usr/bin/scp -r"
-alias json="python -m json.tool | pygmentize -l json"
+alias scp="/usr/bin/scp -rv"
+alias rsync="/usr/bin/rsync -Pav"
 
 # Git time savers
 alias ga="git add . -N"
@@ -43,23 +43,11 @@ alias gi="git commit"
 alias gl="git log --graph --topo-order --abbrev-commit --date=short --decorate --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset%C(yellow)%d%Creset %s %Cblue[%cn]%Creset' "
 alias glc="git rev-parse --short HEAD | tr -d '\n' | pbcopy || git rev-parse --short HEAD"
 
-# Start tmux session for current folder with custom configuration
-function workon() {
-  tmuxinator start project
-}
-
 alias vim="`which nvim`"
 alias vi="`which nvim`"
 alias rg="rg -i -g '!*node_modules*'"
+alias ii="yarn install"
 alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -not -path '"'"'*/Library/*'"'"' | fzy)"'
-
-# NVM is too slow to be added to every zsh session, so it could be loaded any time needed
-function load_nvm() {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  nvm use v10.21.0
-}
 
 # Useful alert for tmux to notify about some finished command in other window/pane
 alias bell="echo -e '\a'"
