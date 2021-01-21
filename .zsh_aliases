@@ -11,6 +11,7 @@ alias -g L='| less'
 alias -g C='| wc -l'
 alias -g S='| sort'
 alias -g U='| sort | uniq'
+alias -g N='| sort | uniq -c | sort -rn'
 
 # When you are too tired to recognize shell from VIM
 alias :e="vim"
@@ -26,7 +27,8 @@ alias json="python -m json.tool | pygmentize -l json"
 
 # Git time savers
 alias ga="git add . -N"
-alias gap="git add -p"
+alias gaa="git add ."
+alias gap="clear && git add -p"
 alias gb="git branch -a"
 alias gbs="git checkout \$(git branch | cut -c 3- | fzy); git pull; gc"
 alias gf='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff'
@@ -58,3 +60,6 @@ function load_nvm() {
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   nvm use v10.21.0
 }
+
+# Useful alert for tmux to notify about some finished command in other window/pane
+alias bell="echo -e '\a'"
