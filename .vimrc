@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
 Plug 'vimoutliner/vimoutliner'
 Plug 'tmhedberg/matchit'
-Plug 'ReekenX/vim-rename2'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
@@ -20,6 +19,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
 if executable('node')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
@@ -47,7 +47,7 @@ hi Comment term=underline ctermfg=8
 hi Folded term=underline ctermfg=8
 hi Pmenu ctermfg=0 ctermbg=White guibg=LightBlue
 hi LineNr ctermfg=8
-hi ColorColumn ctermbg=235
+hi ColorColumn ctermbg=none
 hi Normal ctermbg=none
 
 " No status line
