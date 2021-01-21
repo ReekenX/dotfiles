@@ -47,3 +47,5 @@ PROMPT='%F{blue}%2~
 
 # Dev related settings based on machine
 source ~/.zsh_local
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

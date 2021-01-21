@@ -108,3 +108,5 @@ export PGHOST="localhost"
 # Force UTF8 (a must for MacOS)
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
