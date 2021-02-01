@@ -22,8 +22,9 @@ alias ls='ls -FlhG'
 alias rm="/bin/rm -rvf"
 alias mv="/bin/mv -v"
 alias cp="/bin/cp -Rv"
-alias scp="/usr/bin/scp -rv"
+alias scp="/usr/bin/scp -r"
 alias rsync="/usr/bin/rsync -Pav"
+alias tig="/usr/bin/tig status"
 
 # Git time savers
 alias ga="git add . -N"
@@ -36,12 +37,12 @@ alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
 alias gp="git push || (git pull && git push)"
 alias gm="git merge"
 alias gr="git reset HEAD~1"
-alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs git branch -d"
+alias gc="if [ $(git branch --merged | egrep -v '(^\*|master|develop)') ]; then git branch --merged | egrep -v '(^\*|master|develop)' | xargs git branch -d; fi"
 alias gs="git status --ignore-submodules -sb"
 alias gco="git checkout -f"
 alias gi="git commit"
 alias gl="git log --graph --topo-order --abbrev-commit --date=short --decorate --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset%C(yellow)%d%Creset %s %Cblue[%cn]%Creset' "
-alias glc="git rev-parse --short HEAD | tr -d '\n' | pbcopy || git rev-parse --short HEAD"
+alias glc="git rev-parse --short HEAD"
 
 alias vim="`which nvim`"
 alias vi="`which nvim`"
