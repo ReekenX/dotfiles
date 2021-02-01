@@ -10,16 +10,14 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'webdevel/tabulous'
 Plug 'posva/vim-vue'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'leafgarland/typescript-vim'
 Plug 'tpope/vim-surround'
 Plug 'djoshea/vim-autoread'
 Plug 'dense-analysis/ale'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 if executable('node')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
@@ -52,9 +50,6 @@ hi Normal ctermbg=none
 
 " No status line
 set laststatus=0
-
-" No welcome screen
-set shortmess=I
 " }}}
 
 " Edit behaviour {{{
@@ -101,6 +96,10 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, strlen
 
 " Allow backspace on everything in insert mode
 set backspace=indent,eol,start
+
+" No welcome screen
+set shortmess=fmnrwx
+set cmdheight=2
 " }}}
 
 " Search {{{
@@ -123,7 +122,7 @@ silent execute '!mkdir -p /tmp/.vim-backup'
 set backupdir=/tmp/.vim-backup
 
 set noswapfile
-:au BufWritePre * let &bex = '-' . strftime("%Y-%m-%d_%H:%M")
+autocmd BufWritePre * let &bex = '-' . strftime("%Y-%m-%d_%H:%M")
 " }}}
 
 " Folding rules {{{
@@ -134,21 +133,6 @@ set foldlevelstart=0
 
 " For these commands open folding by default
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
-" }}}
-
-" Auto create directories on save if not exists {{{
-function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
-endfunction
-augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
 " }}}
 
 " Keyboard mappings {{{
@@ -190,7 +174,7 @@ nnoremap ` '
 
 " Save without :w quickly
 inoremap jj <ESC>
-nmap ww <ESC>:write<CR>
+nmap ww <ESC>:write!<CR>
 
 " Close buffer
 nnoremap <c-x> :bd<CR>
@@ -325,9 +309,6 @@ let g:coc_snippet_next = '<tab>'
 
 set hidden
 
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
-
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
@@ -353,9 +334,6 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
 
 " Mappings using CoCList:
 " Show all diagnostics.
@@ -390,7 +368,7 @@ let g:ale_fixers = {
 \   'ruby': ['rubocop'],
 \}
 let g:ale_linters_explicit = 1
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 " }}}
 
 " VIM onedark.vim plugin settings {{{
@@ -413,4 +391,12 @@ map <leader>m :Marks<CR>
 
 " Fix for `Rg` command including file name in search options
 command! -bang -nargs=* Rg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" }}}
+
+" VIM Prettier plugin settings {{{
+let g:prettier#exec_cmd_async = 1
+let g:prettier#quickfix_enabled = 1
+let g:prettier#quickfix_auto_focus = 0
+
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 " }}}
