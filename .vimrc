@@ -18,10 +18,16 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-if executable('node')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-endif
 Plug 'joshdick/onedark.vim'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 " }}}
@@ -98,8 +104,12 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, strlen
 set backspace=indent,eol,start
 
 " No welcome screen
-set shortmess=fmnrwx
+set shortmess=Fmnrwx
 set cmdheight=2
+
+" Autocomplete navigation without arrow keys
+inoremap <expr> <c-j> ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> <c-k> ((pumvisible())?("\<C-p>"):("k"))
 " }}}
 
 " Search {{{
@@ -174,7 +184,7 @@ nnoremap ` '
 
 " Save without :w quickly
 inoremap jj <ESC>
-nmap ww <ESC>:write!<CR>
+nmap ww <ESC>:nohl<CR><ESC>:write!<CR>
 
 " Close buffer
 nnoremap <c-x> :bd<CR>
@@ -293,82 +303,31 @@ autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
 " }}}
 
-" VIM COC plugin settings {{{
-" Use TAB for autocompletion
-" Note: Edit snippets for current file with - CocCommand snippets.editSnippets
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-let g:coc_snippet_next = '<tab>'
-
-set hidden
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Mappings using CoCList:
-" Show all diagnostics.
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-" }}}
-
 " VIM ALE plugin settings {{{
 " Show nice customer marking for errors
 let g:ale_sign_error = "◉"
 let g:ale_sign_warning = "◉"
-highlight ALEErrorSign ctermfg=9 ctermbg=15 guifg=#C30500 guibg=#F5F5F5
-highlight ALEWarningSign ctermfg=11 ctermbg=15 guifg=#ED6237 guibg=#F5F5F5
+highlight ALEErrorSign ctermfg=9 ctermbg=none
+highlight ALEWarningSign ctermfg=11 ctermbg=none
 
 " Only filetypes that should be linted automatically on save
+" let g:ale_fixers = {
+" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+" \}
+" let g:ale_linters_explicit = 0
+" let g:ale_fix_on_save = 0
+
 let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint', 'prettier'],
-\   'ruby': ['rubocop'],
+\  'javascript': ['prettier'],
+\  'json': ['prettier'],
+\  'css': ['prettier'],
+\  'scss': ['prettier'],
+\  'html': ['prettier'],
+\  'xml': ['prettier'],
 \}
-let g:ale_linters_explicit = 1
-let g:ale_fix_on_save = 0
+
+let g:ale_fix_on_save = 1
+
 " }}}
 
 " VIM onedark.vim plugin settings {{{
@@ -390,7 +349,16 @@ map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
 
 " Fix for `Rg` command including file name in search options
-command! -bang -nargs=* Rg call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" let rg_command = 'rg --column --line-number --no-heading --color=always --smart-case '.l:rg_additional_arg.' '.shellescape(<q-args>).' '.l:rg_path_args
+" command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), {'options': '--delimiter : --nth 4.. --no-sort'}, <bang>0)
+" command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.(<q-args>), {'options': '--delimiter : --nth 4.. --no-sort'}, <bang>0)
+
+" if executable('rg')
+"     let $FZF_DEFAULT_COMMAND = 'rg --asfafasd --files --hidden --follow --glob "!.git/*" --glob "!*.acss"'
+" endif
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --glob '!*.lock' --glob '!*.log' --glob '!*.css' ".shellescape(<q-args>), 1, <bang>0)
+
+
 " }}}
 
 " VIM Prettier plugin settings {{{
@@ -398,5 +366,6 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 1
 let g:prettier#quickfix_auto_focus = 0
 
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+
 " }}}
