@@ -31,6 +31,7 @@ alias ga="git add . -N"
 alias gaa="git add ."
 alias gap="clear && git add -p"
 alias gb="git branch -a"
+alias gbl="git branch"
 alias gbs="git checkout \$(git branch | cut -c 3- | fzy); git pull; gc"
 alias gf='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff'
 alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
@@ -48,6 +49,7 @@ alias vim="`which nvim`"
 alias vi="`which nvim`"
 alias rg="rg -i -g '!*node_modules*'"
 alias ii="yarn install"
+alias uu="yarn upgrade-interactive"
 alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -not -path '"'"'*/Library/*'"'"' | fzy)"'
 
 # Useful alert for tmux to notify about some finished command in other window/pane
