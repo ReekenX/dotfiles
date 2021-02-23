@@ -5,7 +5,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'vimoutliner/vimoutliner'
 Plug 'tmhedberg/matchit'
 Plug 'terryma/vim-smooth-scroll'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'webdevel/tabulous'
 Plug 'posva/vim-vue'
@@ -19,15 +19,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'joshdick/onedark.vim'
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet.vim'
 
 call plug#end()
 " }}}
@@ -337,27 +330,18 @@ let g:lightline = {
 " }}}
 
 " VIM FZF plugin settings {{{
-let g:fzf_layout = { 'down': '~30%' }
+let g:fzf_layout = { 'down': '~35%' }
 let g:fzf_preview_window = []
 
-nnoremap <leader>/ :Rg <CR>
-nnoremap // :BLines <CR>
-
+map <leader>/ :Rg <CR>
+map // :BLines <CR>
 map <leader>f :GFiles<CR>
 map <leader>F :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
 
 " Fix for `Rg` command including file name in search options
-" let rg_command = 'rg --column --line-number --no-heading --color=always --smart-case '.l:rg_additional_arg.' '.shellescape(<q-args>).' '.l:rg_path_args
-" command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), {'options': '--delimiter : --nth 4.. --no-sort'}, <bang>0)
-" command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case '.(<q-args>), {'options': '--delimiter : --nth 4.. --no-sort'}, <bang>0)
-
-" if executable('rg')
-"     let $FZF_DEFAULT_COMMAND = 'rg --asfafasd --files --hidden --follow --glob "!.git/*" --glob "!*.acss"'
-" endif
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --glob '!*.lock' --glob '!*.log' --glob '!*.css' ".shellescape(<q-args>), 1, <bang>0)
-
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --glob '!*.lock' --glob '!*.log' --glob '!*.css' --glob '!.json' ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " }}}
 
@@ -365,7 +349,22 @@ command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-hea
 let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 1
 let g:prettier#quickfix_auto_focus = 0
+" }}}
 
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" VIM Deoplete plugin settings {{{
+let g:deoplete#enable_at_startup = 1
 
+" Snippets automcompletion
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+let g:neosnippet#snippets_directory = "~/.vim-snippets"
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}
+let g:neosnippet#enable_snipmate_compatibility = 0
+" }}}
+
+" VIM Visual Multi plugin settings {{{
+map <M-Up>   <Plug>(VM-Add-Cursor-Up)
+map <M-Down> <Plug>(VM-Add-Cursor-Down)
 " }}}
