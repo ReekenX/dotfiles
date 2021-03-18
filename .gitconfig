@@ -6,7 +6,9 @@
     path = ~/.gitconfig.d/rebase.ini
     path = ~/.gitconfig.d/pull.ini
     path = ~/.gitconfig.d/verbosity.ini
+    path = ~/.gitconfig.d/gpg.ini
 
 [user]
     name = Remigijus Jarmalavičius
     email = remigijus@jarmalavicius.lt
+    signingKey = remigijus@jarmalavicius.lt
