@@ -1,0 +1,32 @@
+snippet $t
+abbr    {{ $t('Text') }}
+options word
+  {{ $t('${1:#:message}') }}
+
+snippet script
+abbr    <script vue>
+options word
+  <script>
+  export default {
+    $1
+  }
+  </script>
+
+snippet methods
+abbr    methods: {}
+options word
+  methods: {
+    $1
+  },
+
+snippet {
+abbr    {},
+options word
+  {
+    $1
+  },
+
+snippet import
+abbr    import mapGetters
+options word
+  import { mapGetters } from 'vuex'
