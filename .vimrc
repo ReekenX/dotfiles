@@ -21,6 +21,9 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'joshdick/onedark.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'plasticboy/vim-markdown'
+Plug 'jamessan/vim-gnupg', {'branch': 'main'}
 
 call plug#end()
 " }}}
@@ -234,7 +237,7 @@ vnoremap <silent> S" xi""<esc>P
 " }}}
 
 " Smarter files opening {{{
-" Resolve file extensions when requred when on filename pressing `gf`
+" Resolve file extensions when required when on filename pressing `gf`
 augroup suffixes
   autocmd!
 
@@ -247,6 +250,9 @@ augroup suffixes
   for ft in associations
     execute "autocmd FileType " . ft[0] . " setlocal suffixesadd=" . ft[1]
   endfor
+
+  " For Javascript replace `@` to src which is most common
+  set includeexpr=substitute(v:fname,'^.','src/','g')
 augroup END
 " }}}
 
@@ -260,6 +266,14 @@ endfunction
 let ctags_path = GetProjectFolderPath() . '/.git/tags'
 let &tag = ctags_path
 set notagrelative
+
+" Quick jump into code
+nnoremap go <C-]>zt
+" }}}
+
+" Common file types {{{
+autocmd BufRead,BufNewFile .czrc setfiletype json
+autocmd BufRead,BufNewFile .huskyrc setfiletype json
 " }}}
 
 " VIM Outliner plugin settings {{{
@@ -339,6 +353,7 @@ map <leader>f :GFiles<CR>
 map <leader>F :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
+map <leader>t :Tags<CR>
 
 " Fix for `Rg` command including file name in search options
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --glob '!*.lock' --glob '!*.log' --glob '!*.css' --glob '!.json' ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
@@ -355,11 +370,11 @@ let g:prettier#quickfix_auto_focus = 0
 let g:deoplete#enable_at_startup = 1
 
 " Snippets automcompletion
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
-let g:neosnippet#snippets_directory = "~/.vim-snippets"
+let g:neosnippet#snippets_directory = "~/.vim/snippets"
 let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 let g:neosnippet#enable_snipmate_compatibility = 0
 " }}}
@@ -367,4 +382,9 @@ let g:neosnippet#enable_snipmate_compatibility = 0
 " VIM Visual Multi plugin settings {{{
 map <M-Up>   <Plug>(VM-Add-Cursor-Up)
 map <M-Down> <Plug>(VM-Add-Cursor-Down)
+" }}}
+
+" VIM Easy Motion plugin settings {{{
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+map <Leader><Leader> <Plug>(easymotion-bd-w)
 " }}}

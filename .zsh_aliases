@@ -38,10 +38,10 @@ alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
 alias gp="git push || (git pull && git push)"
 alias gm="git merge"
 alias gr="git reset HEAD~1"
-alias gc="if [ \"$(git branch --merged | egrep -v '(^\*|master|develop)')\" ]; then git branch --merged | egrep -v '(^\*|master|develop)' | xargs git branch -d; fi"
+alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs git branch -d"
 alias gs="git status --ignore-submodules -sb"
 alias gco="git checkout -f"
-alias gi="git cz"
+alias gi="npx cz"
 alias gl="git log --graph --topo-order --abbrev-commit --date=short --decorate --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset%C(yellow)%d%Creset %s %Cblue[%cn]%Creset' "
 alias glc="git rev-parse --short HEAD"
 

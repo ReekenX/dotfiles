@@ -1,11 +1,7 @@
 # Ignore all hidden folders and files
 
-!.vim
-.vim/backup/
-.vim/swap/
-.vim/plugged/
-.todo/Storage
-*.pyc
-.tags
-.tags_sorted_by_file
-.zsh_local
+/!.vim
+/.vim/backup/
+/.vim/swap/
+/.vim/plugged/
+/.zsh_local
