@@ -13,6 +13,12 @@ plugins=(ssh-agent-multiuser zsh-autosuggestions)
 
 # We will share same history file under bash and zsh
 HISTFILE=~/.shell_history
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 
 # COMPLETION SETTINGS
 # add custom completion scripts

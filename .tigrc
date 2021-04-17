@@ -1,7 +1,7 @@
 set ignore-space = yes
+set ignore-case = yes
 set show-changes = yes
 set diff-context = 10
-set ignore-case = yes
 
 bind main u !git pull
 bind main U !git pull
@@ -12,6 +12,8 @@ bind status p !git add --patch %(file)
 bind status P !git add --patch %(file)
 bind status c !git cz
 bind status C !git cz
+bind status A !git add -N %(file)
+bind status a !git add -N %(file)
 
 bind diff p !git add --patch %(file)
 bind diff P !git add --patch %(file)

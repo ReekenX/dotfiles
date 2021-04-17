@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
 Plug 'vimoutliner/vimoutliner'
 Plug 'tmhedberg/matchit'
-Plug 'terryma/vim-smooth-scroll'
+Plug 'yuttie/comfortable-motion.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'webdevel/tabulous'
@@ -19,7 +19,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'joshdick/onedark.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'Shougo/neosnippet.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'plasticboy/vim-markdown'
@@ -50,8 +56,8 @@ hi LineNr ctermfg=8
 hi ColorColumn ctermbg=none
 hi Normal ctermbg=none
 
-" No status line
-set laststatus=0
+" Show status line always
+set laststatus=2
 " }}}
 
 " Edit behaviour {{{
@@ -101,7 +107,7 @@ set backspace=indent,eol,start
 
 " No welcome screen
 set shortmess=Fmnrwx
-set cmdheight=2
+set cmdheight=1
 
 " Autocomplete navigation without arrow keys
 inoremap <expr> <c-j> ((pumvisible())?("\<C-n>"):("j"))
@@ -135,7 +141,7 @@ autocmd BufWritePre * let &bex = '-' . strftime("%Y-%m-%d_%H:%M")
 set foldenable
 set foldcolumn=0
 set foldmethod=marker
-set foldlevelstart=0
+set foldlevel=1
 
 " For these commands open folding by default
 set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
@@ -290,8 +296,8 @@ nmap <leader>ww :tabnew ~/Work/asmeniniai/project-management/index.otl<CR>
 " }}}
 
 " VIM Smooth Scroll plugin settings {{{
-nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
-nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
+" nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
+" nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
 set scrolloff=3
 " }}}
 
@@ -337,10 +343,51 @@ let g:ale_fix_on_save = 1
 
 " }}}
 
-" VIM onedark.vim plugin settings {{{
+" VIM Lightline plugin settings {{{
+function! LightlineFilename()
+  return expand("%:f")
+endfunction
+
+" Simplify output in status bar
 let g:lightline = {
   \ 'colorscheme': 'onedark',
-  \ }
+  \ 'active': {
+  \   'left': [['readonly', 'filename', 'modified']],
+  \   'right': [['lineinfo']]
+  \ },
+  \ 'component_function': {
+  \   'filename': 'LightlineFilename',
+  \ },
+\ }
+
+" Drop close button from tabs bar
+let g:lightline.tabline = {
+  \ 'left': [ [ 'tabs' ] ],
+  \ 'right': [],
+\ }
+
+" Don't show --INSERT-- in VIM default status bar
+set noshowmode
+
+" Drop black background from the toolbar
+autocmd VimEnter * call SetupLightlineColors()
+function SetupLightlineColors() abort
+  " transparent background in statusbar
+  let l:palette = lightline#palette()
+
+  " let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
+  " let l:palette.inactive.middle = l:palette.normal.middle
+  " let l:palette.tabline.middle = l:palette.normal.middle
+  " let l:palette.tabline.tabsel = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ] 
+  " let l:palette.tabline.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
+  " let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
+
+  let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
+  let l:palette.inactive.middle = l:palette.normal.middle
+  let l:palette.tabline.middle = l:palette.normal.middle
+
+  call lightline#colorscheme()
+endfunction
 " }}}
 
 " VIM FZF plugin settings {{{
@@ -380,11 +427,16 @@ let g:neosnippet#enable_snipmate_compatibility = 0
 " }}}
 
 " VIM Visual Multi plugin settings {{{
-map <M-Up>   <Plug>(VM-Add-Cursor-Up)
-map <M-Down> <Plug>(VM-Add-Cursor-Down)
+nmap <M-Down> :<C-u>call vm#commands#add_cursor_down(0, v:count1)<cr>
+nmap <M-Up> :<C-u>call vm#commands#add_cursor_up(0, v:count1)<cr>
 " }}}
 
 " VIM Easy Motion plugin settings {{{
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
-map <Leader><Leader> <Plug>(easymotion-bd-w)
+map <Space><Space> <Plug>(easymotion-bd-w)
 " }}}
+
+" VIM Confortable Motion plugin settings {{{
+let g:comfortable_motion_scroll_down_key = "\<C-e>j"
+let g:comfortable_motion_scroll_up_key = "\<C-y>k"
+" }}} 
