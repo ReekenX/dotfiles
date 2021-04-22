@@ -36,7 +36,7 @@ alias gbs="git checkout \$(git branch | cut -c 3- | fzy); git pull; gc"
 alias gf='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff'
 alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
 alias gp="git push || (git pull && git push)"
-alias gm="git merge"
+alias gm="git merge --no-commit"
 alias gr="git reset HEAD~1"
 alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs --no-run-if-empty git branch -d"
 alias gs="git status --ignore-submodules -sb"
