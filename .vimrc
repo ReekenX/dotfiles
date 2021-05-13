@@ -19,17 +19,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'joshdick/onedark.vim'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'Shougo/neosnippet.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'plasticboy/vim-markdown'
 Plug 'jamessan/vim-gnupg', {'branch': 'main'}
+Plug 'tpope/vim-liquid'
+if has('nvim')
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'honza/vim-snippets'
+endif
 
 call plug#end()
 " }}}
@@ -413,18 +410,18 @@ let g:prettier#quickfix_enabled = 1
 let g:prettier#quickfix_auto_focus = 0
 " }}}
 
-" VIM Deoplete plugin settings {{{
-let g:deoplete#enable_at_startup = 1
-
-" Snippets automcompletion
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-let g:neosnippet#snippets_directory = "~/.vim/snippets"
-let g:neosnippet#disable_runtime_snippets = {'_' : 1}
-let g:neosnippet#enable_snipmate_compatibility = 0
-" }}}
+" " VIM Deoplete plugin settings {{{
+" let g:deoplete#enable_at_startup = 1
+" 
+" " Snippets automcompletion
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+" smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k> <Plug>(neosnippet_expand_target)
+" 
+" let g:neosnippet#snippets_directory = "~/.vim/snippets"
+" let g:neosnippet#disable_runtime_snippets = {'_' : 1}
+" let g:neosnippet#enable_snipmate_compatibility = 0
+" " }}}
 
 " VIM Visual Multi plugin settings {{{
 nmap <M-Down> :<C-u>call vm#commands#add_cursor_down(0, v:count1)<cr>
@@ -440,3 +437,18 @@ map <Space><Space> <Plug>(easymotion-bd-w)
 let g:comfortable_motion_scroll_down_key = "\<C-e>j"
 let g:comfortable_motion_scroll_up_key = "\<C-y>k"
 " }}} 
+
+" VIM COC plugin settings {{{
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+" }}}
