@@ -36,7 +36,6 @@ alias gbs="git checkout \$(git branch | cut -c 3- | fzy); git pull; gc"
 alias gf='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff'
 alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
 alias gp="git push || (git pull && git push)"
-alias gm="git merge --no-commit"
 alias gr="git reset HEAD~1"
 alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs --no-run-if-empty git branch -d"
 alias gs="git status --ignore-submodules -sb"
@@ -53,3 +52,11 @@ alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path
 
 # Useful alert for tmux to notify about some finished command in other window/pane
 alias bell="echo -e '\a'"
+
+function gm() {
+  git merge --no-commit $1
+  if git status | grep -q U
+  then
+    git commit -am ":twisted_rightwards_arrows: merge $1 branch"
+  fi
+}
