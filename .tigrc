@@ -10,8 +10,8 @@ bind main P !git push
 
 bind status p !git add --patch %(file)
 bind status P !git add --patch %(file)
-bind status c !git cz
-bind status C !git cz
+bind status c !git commit
+bind status C !git commit
 bind status A !git add -N %(file)
 bind status a !git add -N %(file)
 
