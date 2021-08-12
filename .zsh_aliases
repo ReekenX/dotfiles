@@ -11,7 +11,7 @@ alias -g L='| less'
 alias -g C='| wc -l'
 alias -g S='| sort'
 alias -g U='| sort | uniq'
-alias -g N='| sort | uniq -c | sort -rn'
+alias -g TOP='| sort | uniq -c | sort -rn'
 
 # When you are too tired to recognize shell from VIM
 alias :e="vim"
@@ -40,7 +40,7 @@ alias gr="git reset HEAD~1"
 alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs --no-run-if-empty git branch -d"
 alias gs="git status --ignore-submodules -sb"
 alias gco="git checkout -f"
-alias gi="npx cz"
+alias gi="git commit -m"
 alias gl="git log --graph --topo-order --abbrev-commit --date=short --decorate --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset%C(yellow)%d%Creset %s %Cblue[%cn]%Creset' "
 alias gln="git log --name-only"
 alias glc="git rev-parse --short HEAD"
@@ -52,11 +52,3 @@ alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path
 
 # Useful alert for tmux to notify about some finished command in other window/pane
 alias bell="echo -e '\a'"
-
-function gm() {
-  git merge --no-commit $1
-  if git status | grep -q U
-  then
-    git commit -am ":twisted_rightwards_arrows: merge $1 branch"
-  fi
-}
