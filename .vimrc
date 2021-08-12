@@ -304,8 +304,6 @@ nmap <leader>ww :tabnew ~/Work/asmeniniai/project-management/index.otl<CR>
 " }}}
 
 " VIM Smooth Scroll plugin settings {{{
-" nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 2)<CR>
-" nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 2)<CR>
 set scrolloff=3
 " }}}
 
@@ -331,14 +329,14 @@ let g:ale_sign_warning = "◉"
 highlight ALEErrorSign ctermfg=9 ctermbg=none
 highlight ALEWarningSign ctermfg=11 ctermbg=none
 
-" Only filetypes that should be linted automatically on save
-" let g:ale_fixers = {
-" \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-" \}
-" let g:ale_linters_explicit = 0
-" let g:ale_fix_on_save = 0
+" Vim COC plugin integration
+let g:ale_disable_lsp = 1
+
+" Only linters listed below are allowed to work
+let g:ale_linters_explicit = 1
 
 let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \  'javascript': ['prettier'],
 \  'json': ['prettier'],
 \  'css': ['prettier'],
@@ -347,8 +345,8 @@ let g:ale_fixers = {
 \  'xml': ['prettier'],
 \}
 
+" Attempt to fix files on save (sometimes annoying)
 let g:ale_fix_on_save = 1
-
 " }}}
 
 " VIM Lightline plugin settings {{{
@@ -386,7 +384,7 @@ function SetupLightlineColors() abort
   " let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
   " let l:palette.inactive.middle = l:palette.normal.middle
   " let l:palette.tabline.middle = l:palette.normal.middle
-  " let l:palette.tabline.tabsel = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ] 
+  " let l:palette.tabline.tabsel = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
   " let l:palette.tabline.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
   " let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
 
@@ -423,12 +421,12 @@ let g:prettier#quickfix_auto_focus = 0
 
 " " VIM Deoplete plugin settings {{{
 " let g:deoplete#enable_at_startup = 1
-" 
+"
 " " Snippets automcompletion
 " imap <C-k> <Plug>(neosnippet_expand_or_jump)
 " smap <C-k> <Plug>(neosnippet_expand_or_jump)
 " xmap <C-k> <Plug>(neosnippet_expand_target)
-" 
+"
 " let g:neosnippet#snippets_directory = "~/.vim/snippets"
 " let g:neosnippet#disable_runtime_snippets = {'_' : 1}
 " let g:neosnippet#enable_snipmate_compatibility = 0
@@ -444,11 +442,6 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 map <Space><Space> <Plug>(easymotion-bd-w)
 " }}}
 
-" VIM Confortable Motion plugin settings {{{
-let g:comfortable_motion_scroll_down_key = "\<C-e>j"
-let g:comfortable_motion_scroll_up_key = "\<C-y>k"
-" }}} 
-
 " VIM COC plugin settings {{{
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -462,4 +455,10 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+" }}}
+
+" VIM Slime plugin settings {{{
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
+let g:slime_dont_ask_default = 1
 " }}}
