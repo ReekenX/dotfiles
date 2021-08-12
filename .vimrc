@@ -18,11 +18,13 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim', {'branch': 'main'}
 Plug 'easymotion/vim-easymotion'
 Plug 'plasticboy/vim-markdown'
 Plug 'jamessan/vim-gnupg', {'branch': 'main'}
-Plug 'tpope/vim-liquid'
+Plug 'jpalardy/vim-slime', {'branch': 'main'}
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'kchmck/vim-coffee-script'
 if has('nvim')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'honza/vim-snippets'
