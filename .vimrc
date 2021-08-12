@@ -127,13 +127,22 @@ set smartcase
 nnoremap <leader>. :nohl<CR>
 " }}}
 
-" Backups and swap {{{
-set backup
-silent execute '!mkdir -p /tmp/.vim-backup'
-set backupdir=/tmp/.vim-backup
+" Backups and swap file {{{
+" Create folders which will be auto removed after OS restart
+silent execute '!mkdir -p /tmp/.vim/backup'
+silent execute '!mkdir -p /tmp/.vim/undo'
 
-set noswapfile
+" Setup backups and files prefixing with date
+set backup
+set backupdir=/tmp/.vim/backup
 autocmd BufWritePre * let &bex = '-' . strftime("%Y-%m-%d_%H:%M")
+
+" Swap files are trashing every folder/project
+set noswapfile
+
+" Store undo history so it can be restored after VIM is closed
+set undofile
+set undodir=/tmp/.vim/undo
 " }}}
 
 " Folding rules {{{
