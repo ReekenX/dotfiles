@@ -417,7 +417,7 @@ map <leader>t :Tags<CR>
 
 " Fix for `Rg` command including file name in search options
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --glob '!*.lock' --glob '!*.log' --glob '!*.css' --glob '!.json' ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-
+command! GFiles call fzf#run(fzf#wrap({'source': 'git ls-files -- . ":!:*.png" ":!:*.jpg" ":!:*.zip" ":!:*.svg"'}))
 " }}}
 
 " VIM Prettier plugin settings {{{
