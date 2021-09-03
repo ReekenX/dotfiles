@@ -49,6 +49,7 @@ alias rg="rg -i -g '!*node_modules*'"
 alias ii="yarn install"
 alias uu="yarn upgrade-interactive"
 alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -not -path '"'"'*/Library/*'"'"' | fzy)"'
+alias ts="tmuxinator start"
 
 # Useful alert for tmux to notify about some finished command in other window/pane
 alias bell="echo -e '\a'"
