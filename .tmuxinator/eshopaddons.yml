@@ -8,7 +8,6 @@ pre_window: source ~/.rvm/scripts/rvm && rvm use ruby-3.0.2
 startup_window: editor
 
 windows:
-  - planning: vim README.md
   - editor: vim .
   - shell:
   - repository: tig
