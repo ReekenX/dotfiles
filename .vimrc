@@ -468,4 +468,12 @@ let g:coc_snippet_next = '<tab>'
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
 let g:slime_dont_ask_default = 1
+nnoremap <c-c><c-c> :SlimeSendCurrentLine<CR>
+" }}}
+
+" VIM Markdown plugin settings {{{
+let g:vim_markdown_frontmatter = 1
+autocmd BufEnter *.markdown setlocal foldlevel=1
+autocmd BufEnter *.markdown setlocal textwidth=80
+autocmd BufEnter *.markdown setlocal wrap
 " }}}
