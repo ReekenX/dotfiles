@@ -20,6 +20,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'joshdick/onedark.vim', {'branch': 'main'}
 Plug 'easymotion/vim-easymotion'
+Plug 'godlygeek/tabular' " Dependency of `vim-markdown`
 Plug 'plasticboy/vim-markdown'
 Plug 'jamessan/vim-gnupg', {'branch': 'main'}
 Plug 'jpalardy/vim-slime', {'branch': 'main'}
@@ -36,8 +37,15 @@ call plug#end()
 " Theme {{{
 syntax on
 
-" Show line numbers in editor
-set number
+" Allow to quickly show numbers - but usually that is not needed
+set nonumber
+noremap <leader>n :set invnumber<CR>
+
+" Hide any other info
+set noruler
+set shortmess=F
+set noshowcmd
+set noshowmode
 
 " Display not printable characters set list
 set listchars=tab:»»,trail:·,extends:#,nbsp:·
