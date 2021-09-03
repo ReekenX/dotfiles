@@ -311,8 +311,6 @@ autocmd BufEnter *.otl setlocal foldenable
 autocmd! BufRead,BufNewFile *.otl setfiletype vo_base
 autocmd BufRead,BufNewFile *.otl filetype plugin indent on
 autocmd BufRead,BufNewFile *.otl setlocal nolist
-
-nmap <leader>ww :tabnew ~/Work/asmeniniai/project-management/index.otl<CR>
 " }}}
 
 " VIM Smooth Scroll plugin settings {{{
