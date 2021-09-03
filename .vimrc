@@ -382,12 +382,9 @@ let g:lightline.tabline = {
   \ 'right': [],
 \ }
 
-" Don't show --INSERT-- in VIM default status bar
-set noshowmode
-
 " Drop black background from the toolbar
 autocmd VimEnter * call SetupLightlineColors()
-function SetupLightlineColors() abort
+function! SetupLightlineColors() abort
   " transparent background in statusbar
   let l:palette = lightline#palette()
 
