@@ -276,6 +276,10 @@ augroup suffixes
   " For Javascript replace `@` to src which is most common
   set includeexpr=substitute(v:fname,'^.','src/','g')
 augroup END
+
+" When `gf` is used for relative files (for example navigating to
+" /another/path/b.txt from /some/path/a.txt
+set path+=**
 " }}}
 
 " Ctags support {{{
