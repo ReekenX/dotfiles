@@ -291,7 +291,7 @@ endfunction
 " Force to look for ctags file in your project .git/tags
 let ctags_path = GetProjectFolderPath() . '/.git/tags'
 let &tag = ctags_path
-set notagrelative
+" set notagrelative
 
 " Quick jump into code
 nnoremap go <C-]>zt
@@ -388,13 +388,6 @@ function! SetupLightlineColors() abort
   " transparent background in statusbar
   let l:palette = lightline#palette()
 
-  " let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
-  " let l:palette.inactive.middle = l:palette.normal.middle
-  " let l:palette.tabline.middle = l:palette.normal.middle
-  " let l:palette.tabline.tabsel = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
-  " let l:palette.tabline.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
-  " let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
-
   let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
   let l:palette.inactive.middle = l:palette.normal.middle
   let l:palette.tabline.middle = l:palette.normal.middle
@@ -406,18 +399,14 @@ endfunction
 " VIM FZF plugin settings {{{
 let g:fzf_layout = { 'down': '~35%' }
 let g:fzf_preview_window = []
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
 
 map <leader>/ :Rg <CR>
 map // :BLines <CR>
-map <leader>f :GFiles<CR>
-map <leader>F :Files<CR>
+map <leader>f :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
 map <leader>t :Tags<CR>
-
-" Fix for `Rg` command including file name in search options
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --glob '!*.lock' --glob '!*.log' --glob '!*.css' --glob '!.json' ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
-command! GFiles call fzf#run(fzf#wrap({'source': 'git ls-files -- . ":!:*.png" ":!:*.jpg" ":!:*.zip" ":!:*.svg"'}))
 " }}}
 
 " VIM Prettier plugin settings {{{
