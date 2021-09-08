@@ -1,17 +1,17 @@
--f .git/tags
 -R
+-f .git/tags
 --exclude=.git
 --exclude=log
 --exclude=tmp
 --exclude=node_modules
 --exclude=dist
---tag-relative=no
+--exclude=public
+--exclude=vendor
+--tag-relative=yes
 
 --langmap=javascript:.js.es6.es.jsx.mjs
 --javascript-kinds=-c-f-m-p-v
-
 --regex-javascript=/^[ \t]*class[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\)/\1/C,Class,Classes/b
-
 --regex-javascript=/^[ \t]*export[ \t]\{1,\}const[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\).*=>/\1/E,Export,Exports/b
 --regex-javascript=/^[ \t]*export[ \t]\{1,\}function[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\)/\1/E,Export,Exports/b
 --regex-javascript=/^[ \t]*export[ \t]\{1,\}async[ \t]\{1,\}function[ \t]\{1,\}\([A-Za-z0-9_$]\{1,\}\)/\1/E,Export,Exports/b
