@@ -1,0 +1,16 @@
+name: jarmalavicius
+root: ~/Work/tweak-things/www.jarmalavicius.lt/
+
+startup_window: webserver
+
+pre_window: source ~/.rvm/scripts/rvm && rvm use ruby-2.5.9
+
+startup_window: editor
+
+windows:
+  - editor: vim .
+  - shell:
+  - repository: tig
+  - webserver:
+    - cd src
+    - make run
