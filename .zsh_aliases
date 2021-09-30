@@ -56,3 +56,8 @@ alias ts="tmuxinator start"
 
 # Useful alert for tmux to notify about some finished command in other window/pane
 alias bell="echo -e '\a'"
+
+# Quick search function which ignores node_modules folder and gives search results in colored `less`
+function s() {
+  rg -p -g '!node_modules' -C 5 $@ | less -R
+}
