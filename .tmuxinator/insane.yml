@@ -1,0 +1,12 @@
+name: insane
+root: ~/Work/insane/insanecoaching.com/
+
+startup_window: webserver
+
+startup_window: editor
+
+windows:
+  - editor: vim .
+  - shell:
+  - repository: tig
+  - webserver: make run

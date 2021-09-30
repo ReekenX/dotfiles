@@ -1,0 +1,12 @@
+name: weld
+root: ~/Work/eleoras/weld.lt/
+
+startup_window: webserver
+
+startup_window: editor
+
+windows:
+  - editor: vim README.md
+  - shell:
+  - repository: tig
+  - webserver: make run

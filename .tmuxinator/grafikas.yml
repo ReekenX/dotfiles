@@ -1,0 +1,12 @@
+name: grafikas
+root: ~/Work/vaikulinija/grafikas.vaikulinija.lt/
+
+startup_window: webserver
+
+startup_window: editor
+
+windows:
+  - editor: vim Readme.md
+  - shell:
+  - repository: tig
+  - webserver: make run
