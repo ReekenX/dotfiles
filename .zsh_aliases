@@ -23,8 +23,9 @@ alias rm="/bin/rm -rvf"
 alias mv="/bin/mv -v"
 alias cp="/bin/cp -Rv"
 alias scp="/usr/bin/scp -r"
-alias rsync="/usr/bin/rsync -Pav"
+alias rsync="/usr/bin/rsync -Pa"
 alias tig="/usr/bin/tig status"
+alias skill="kill -s SIGKILL"
 
 # Git time savers
 alias ga="git add . -N"
