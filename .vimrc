@@ -30,6 +30,7 @@ if has('nvim')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'honza/vim-snippets'
 endif
+Plug 'rlue/vim-fold-rspec'
 
 call plug#end()
 " }}}
