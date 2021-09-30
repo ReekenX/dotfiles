@@ -407,6 +407,14 @@ map <leader>f :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
 map <leader>t :Tags<CR>
+
+" Search for word under
+command! -bang -nargs=* RgExact
+  \ call fzf#vim#grep(
+  \   'rg -F --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+nmap <Leader>w :execute 'RgExact ' . expand('<cword>') <Cr>
 " }}}
 
 " VIM Prettier plugin settings {{{
@@ -414,19 +422,6 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_enabled = 1
 let g:prettier#quickfix_auto_focus = 0
 " }}}
-
-" " VIM Deoplete plugin settings {{{
-" let g:deoplete#enable_at_startup = 1
-"
-" " Snippets automcompletion
-" imap <C-k> <Plug>(neosnippet_expand_or_jump)
-" smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k> <Plug>(neosnippet_expand_target)
-"
-" let g:neosnippet#snippets_directory = "~/.vim/snippets"
-" let g:neosnippet#disable_runtime_snippets = {'_' : 1}
-" let g:neosnippet#enable_snipmate_compatibility = 0
-" " }}}
 
 " VIM Visual Multi plugin settings {{{
 nmap <M-Down> :<C-u>call vm#commands#add_cursor_down(0, v:count1)<cr>
