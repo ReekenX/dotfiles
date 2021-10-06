@@ -26,6 +26,7 @@ alias scp="/usr/bin/scp -r"
 alias rsync="/usr/bin/rsync -Pa"
 alias tig="/usr/bin/tig status"
 alias skill="kill -s SIGKILL"
+alias htop="/usr/bin/htop -u $USER"
 
 # Git time savers
 alias ga="git add . -N"
