@@ -1,40 +1,45 @@
 " Load plugins {{{
 call plug#begin('~/.vim/plugged')
 
+" Plug 'vimoutliner/vimoutliner'
+" Plug 'editorconfig/editorconfig-vim'
+" Plug 'webdevel/tabulous'
+" Plug 'posva/vim-vue'
+" Plug 'cakebaker/scss-syntax.vim'
+" Plug 'dense-analysis/ale'
+" Plug 'itchyny/lightline.vim'
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" if has('nvim')
+"   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"   Plug 'honza/vim-snippets'
+" endif
+" Plug 'rlue/vim-fold-rspec'
+
 Plug 'scrooloose/nerdcommenter'
-Plug 'vimoutliner/vimoutliner'
 Plug 'tmhedberg/matchit'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'editorconfig/editorconfig-vim'
-Plug 'webdevel/tabulous'
-Plug 'posva/vim-vue'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'tpope/vim-surround'
-Plug 'djoshea/vim-autoread'
-Plug 'dense-analysis/ale'
-Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-eunuch'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'joshdick/onedark.vim', {'branch': 'main'}
 Plug 'easymotion/vim-easymotion'
-Plug 'godlygeek/tabular' " Dependency of `vim-markdown`
-Plug 'plasticboy/vim-markdown'
 Plug 'jamessan/vim-gnupg', {'branch': 'main'}
 Plug 'jpalardy/vim-slime', {'branch': 'main'}
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'kchmck/vim-coffee-script'
-if has('nvim')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'honza/vim-snippets'
-endif
-Plug 'rlue/vim-fold-rspec'
+Plug 'godlygeek/tabular' " Dependency of `vim-markdown`
+Plug 'plasticboy/vim-markdown'
+Plug 'djoshea/vim-autoread'
+Plug 'tpope/vim-surround'
+Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee script
+
+Plug 'neovim/nvim-lspconfig' " Language Server
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter highlighting
+Plug 'hrsh7th/nvim-compe'
 
 call plug#end()
 " }}}
-"
+
 " Theme {{{
 syntax on
 
@@ -44,7 +49,7 @@ noremap <leader>n :set invnumber<CR>
 
 " Hide any other info
 set noruler
-set shortmess=F
+" set shortmess=F
 set noshowcmd
 set noshowmode
 
@@ -117,9 +122,8 @@ set backspace=indent,eol,start
 set shortmess=Fmnrwx
 set cmdheight=1
 
-" Autocomplete navigation without arrow keys
-inoremap <expr> <c-j> ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> <c-k> ((pumvisible())?("\<C-p>"):("k"))
+" When using :term - start in insert mode
+autocmd TermOpen * startinsert
 " }}}
 
 " Search {{{
@@ -155,13 +159,11 @@ set undodir=/tmp/.vim/undo
 " }}}
 
 " Folding rules {{{
-set foldenable
+set nofoldenable
 set foldcolumn=0
-set foldmethod=marker
-set foldlevel=1
-
-" For these commands open folding by default
-set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+set foldlevel=2
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 " }}}
 
 " Keyboard mappings {{{
@@ -233,21 +235,11 @@ set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~,*.zip,*.gz,*.tar
 set wildignore+=virtual/,.virtualenv/,upload/,uploads/,node_modules/
 " }}}
 
-" Omnicomplete plugin settings {{{
-autocmd FileType ruby set omnifunc=rubycomplete#Complete
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-
-set completeopt=menuone,longest
-" }}}
-
 " Repeat very last command in the next tmux window for quick command lines testing {{{
 nnoremap <Leader>r :call <SID>TmuxRepeat()<CR>
 function! s:TmuxRepeat()
-    silent! exec "!clear && tmux select-pane -l && tmux send up enter && tmux select-pane -l"
-    redraw!
+  silent! exec "!clear && tmux select-pane -l && tmux send up enter && tmux select-pane -l"
+  redraw!
 endfunction
 " }}}
 
@@ -301,6 +293,11 @@ nnoremap go <C-]>zt
 " Common file types {{{
 autocmd BufRead,BufNewFile .czrc setfiletype json
 autocmd BufRead,BufNewFile .huskyrc setfiletype json
+autocmd BufRead,BufNewFile *.rabl set filetype ruby
+" }}}
+
+" LSP Configuration {{{
+luafile ~/.vim/lsp_config.lua
 " }}}
 
 " VIM Outliner plugin settings {{{
@@ -365,41 +362,9 @@ function! LightlineFilename()
   return expand("%:f")
 endfunction
 
-" Simplify output in status bar
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ 'active': {
-  \   'left': [['readonly', 'filename', 'modified']],
-  \   'right': [['lineinfo']]
-  \ },
-  \ 'component_function': {
-  \   'filename': 'LightlineFilename',
-  \ },
-\ }
-
-" Drop close button from tabs bar
-let g:lightline.tabline = {
-  \ 'left': [ [ 'tabs' ] ],
-  \ 'right': [],
-\ }
-
-" Drop black background from the toolbar
-autocmd VimEnter * call SetupLightlineColors()
-function! SetupLightlineColors() abort
-  " transparent background in statusbar
-  let l:palette = lightline#palette()
-
-  let l:palette.normal.middle = [ [ 'NONE', 'NONE', 'NONE', 'NONE' ] ]
-  let l:palette.inactive.middle = l:palette.normal.middle
-  let l:palette.tabline.middle = l:palette.normal.middle
-
-  call lightline#colorscheme()
-endfunction
-" }}}
-
 " VIM FZF plugin settings {{{
 let g:fzf_layout = { 'down': '~35%' }
-let g:fzf_preview_window = []
+" let g:fzf_preview_window = []
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
 
 map <leader>/ :Rg <CR>
@@ -418,12 +383,6 @@ command! -bang -nargs=* RgExact
 nmap <Leader>w :execute 'RgExact ' . expand('<cword>') <Cr>
 " }}}
 
-" VIM Prettier plugin settings {{{
-let g:prettier#exec_cmd_async = 1
-let g:prettier#quickfix_enabled = 1
-let g:prettier#quickfix_auto_focus = 0
-" }}}
-
 " VIM Visual Multi plugin settings {{{
 nmap <M-Down> :<C-u>call vm#commands#add_cursor_down(0, v:count1)<cr>
 nmap <M-Up> :<C-u>call vm#commands#add_cursor_up(0, v:count1)<cr>
@@ -432,21 +391,6 @@ nmap <M-Up> :<C-u>call vm#commands#add_cursor_up(0, v:count1)<cr>
 " VIM Easy Motion plugin settings {{{
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 map <Space><Space> <Plug>(easymotion-bd-w)
-" }}}
-
-" VIM COC plugin settings {{{
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
 " }}}
 
 " VIM Slime plugin settings {{{
