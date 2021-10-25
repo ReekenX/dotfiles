@@ -12,3 +12,4 @@ windows:
   - shell:
   - repository: tig
   - webserver: make run
+  - images: while true; do make images; sleep 1s; done;
