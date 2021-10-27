@@ -14,8 +14,12 @@ alias -g U='| sort | uniq'
 alias -g TOP='| sort | uniq -c | sort -rn'
 
 # When you are too tired to recognize shell from VIM
-alias :e="vim"
+alias :e="nvim"
 alias :q="exit"
+
+# Edit with nvim instead of vim
+alias vim="nvim"
+alias vi="nvim"
 
 # Enable verbose mode for common commands
 alias ls='ls -FlhG'
@@ -24,9 +28,9 @@ alias mv="/bin/mv -v"
 alias cp="/bin/cp -Rv"
 alias scp="/usr/bin/scp -r"
 alias rsync="/usr/bin/rsync -Pa"
-alias tig="/usr/bin/tig status"
+alias tig="/usr/local/bin/tig status"
 alias skill="kill -s SIGKILL"
-alias htop="/usr/bin/htop -u $USER"
+alias htop="/usr/local/bin/htop -u $USER"
 
 # Git time savers
 alias ga="git add . -N"
@@ -54,6 +58,8 @@ alias ii="yarn install"
 alias uu="yarn upgrade-interactive"
 alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -not -path '"'"'*/Library/*'"'"' | fzy)"'
 alias ts="tmuxinator start"
+alias bi="bundle install"
+alias bu="bundle update"
 
 # Useful alert for tmux to notify about some finished command in other window/pane
 alias bell="echo -e '\a'"
