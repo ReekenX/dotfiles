@@ -39,7 +39,7 @@ alias gf='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff'
 alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
 alias gp="git push || (git pull && git push)"
 alias gr="git reset HEAD~1"
-alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs --no-run-if-empty git branch -d"
+alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs git branch -d"
 alias gs="git status --ignore-submodules -sb"
 alias gco="git checkout -f"
 alias gi="git commit -m"
