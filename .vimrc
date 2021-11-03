@@ -1,20 +1,6 @@
 " Load plugins {{{
 call plug#begin('~/.vim/plugged')
 
-" Plug 'vimoutliner/vimoutliner'
-" Plug 'editorconfig/editorconfig-vim'
-" Plug 'webdevel/tabulous'
-" Plug 'posva/vim-vue'
-" Plug 'cakebaker/scss-syntax.vim'
-" Plug 'dense-analysis/ale'
-" Plug 'itchyny/lightline.vim'
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-" if has('nvim')
-"   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"   Plug 'honza/vim-snippets'
-" endif
-" Plug 'rlue/vim-fold-rspec'
-
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/matchit'
 Plug 'yuttie/comfortable-motion.vim'
@@ -22,7 +8,6 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'joshdick/onedark.vim', {'branch': 'main'}
 Plug 'easymotion/vim-easymotion'
 Plug 'jamessan/vim-gnupg', {'branch': 'main'}
 Plug 'jpalardy/vim-slime', {'branch': 'main'}
@@ -31,12 +16,12 @@ Plug 'godlygeek/tabular' " Dependency of `vim-markdown`
 Plug 'plasticboy/vim-markdown'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-surround'
-Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee script
-
 Plug 'neovim/nvim-lspconfig' " Language Server
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter highlighting
+Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee script
 Plug 'hrsh7th/nvim-compe'
 Plug 'altercation/vim-colors-solarized'
+Plug 'ddrscott/vim-side-search'
 
 call plug#end()
 " }}}
@@ -400,4 +385,8 @@ let g:vim_markdown_frontmatter = 1
 autocmd BufEnter *.markdown setlocal foldlevel=1
 autocmd BufEnter *.markdown setlocal textwidth=80
 autocmd BufEnter *.markdown setlocal wrap
+" }}}
+
+" VIM Side Search plugin setting {{{
+command! -complete=file -nargs=+ S execute 'SideSearch <args>'
 " }}}
