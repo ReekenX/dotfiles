@@ -22,7 +22,7 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'joshdick/onedark.vim', {'branch': 'main'}
+" Plug 'joshdick/onedark.vim', {'branch': 'main'}
 Plug 'easymotion/vim-easymotion'
 Plug 'jamessan/vim-gnupg', {'branch': 'main'}
 Plug 'jpalardy/vim-slime', {'branch': 'main'}
@@ -36,6 +36,7 @@ Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee scr
 Plug 'neovim/nvim-lspconfig' " Language Server
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter highlighting
 Plug 'hrsh7th/nvim-compe'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 " }}}
@@ -60,14 +61,8 @@ set listchars=tab:»»,trail:·,extends:#,nbsp:·
 " any frontend JavaScript frameworks
 let html_no_rendering = 1
 
-" Theme customization
-colorscheme onedark
-hi Comment term=underline ctermfg=8
-hi Folded term=underline ctermfg=8
-hi Pmenu ctermfg=0 ctermbg=White guibg=LightBlue
-hi LineNr ctermfg=8
-hi ColorColumn ctermbg=none
-hi Normal ctermbg=none
+" Theme
+colorscheme solarized
 
 " Show status line always
 set laststatus=2
