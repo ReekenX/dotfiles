@@ -47,7 +47,7 @@ set listchars=tab:»»,trail:·,extends:#,nbsp:·
 let html_no_rendering = 1
 
 " Theme
-colorscheme solarized
+colorscheme zellner
 
 " Show status line always
 set laststatus=2
