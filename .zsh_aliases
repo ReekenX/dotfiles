@@ -70,3 +70,9 @@ alias bell="echo -e '\a'"
 function s() {
   rg -p -g '!node_modules' -C 5 $@ | less -R
 }
+
+# Commit with ticket number from the branch name
+function gt() {
+  branch_name=$(git rev-parse --abbrev-ref HEAD | grep -o '[a-zA-Z]\{1,\}-[0-9]\{2,\}')
+  gi "$branch_name: $@"
+}
