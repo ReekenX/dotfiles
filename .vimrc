@@ -16,12 +16,15 @@ Plug 'godlygeek/tabular' " Dependency of `vim-markdown`
 Plug 'plasticboy/vim-markdown'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-surround'
-Plug 'neovim/nvim-lspconfig' " Language Server
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter highlighting
 Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee script
-Plug 'hrsh7th/nvim-compe'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
+
+if has('nvim')
+  Plug 'hrsh7th/nvim-compe'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter highlighting
+  Plug 'neovim/nvim-lspconfig' " Language Server
+endif
 
 call plug#end()
 " }}}
@@ -103,7 +106,9 @@ set shortmess=Fmnrwx
 set cmdheight=1
 
 " When using :term - start in insert mode
-autocmd TermOpen * startinsert
+if has('nvim')
+  autocmd TermOpen * startinsert
+endif
 " }}}
 
 " Search {{{
@@ -277,7 +282,9 @@ autocmd BufRead,BufNewFile *.rabl set filetype ruby
 " }}}
 
 " LSP Configuration {{{
-luafile ~/.vim/lsp_config.lua
+if has('nvim')
+  luafile ~/.vim/lsp_config.lua
+endif
 " }}}
 
 " VIM Outliner plugin settings {{{
