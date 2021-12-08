@@ -19,6 +19,7 @@ Plug 'tpope/vim-surround'
 Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee script
 Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
+Plug 'joshdick/onedark.vim', {'branch': 'main'} 
 
 if has('nvim')
   Plug 'hrsh7th/nvim-compe'
@@ -50,7 +51,8 @@ set listchars=tab:»»,trail:·,extends:#,nbsp:·
 let html_no_rendering = 1
 
 " Theme
-colorscheme zellner
+let g:onedark_termcolors=16
+colorscheme onedark
 
 " Show status line always
 set laststatus=2
