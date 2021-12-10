@@ -20,6 +20,7 @@ Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee scr
 Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
+Plug 'preservim/nerdtree'
 
 if has('nvim')
   Plug 'hrsh7th/nvim-compe'
@@ -199,6 +200,9 @@ nnoremap <c-x> :bd<CR>
 
 " Enter currently editing files list
 map <leader>e :Ex<CR>
+
+" Copy filename to the clipboard
+nmap ,cs :let @*=expand("%")<CR>
 " }}}
 
 " Spell Checker {{{
@@ -361,7 +365,6 @@ map // :BLines <CR>
 map <leader>f :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
-map <leader>t :Tags<CR>
 
 " Search for word under
 command! -bang -nargs=* RgExact
@@ -396,6 +399,12 @@ autocmd BufEnter *.markdown setlocal textwidth=80
 autocmd BufEnter *.markdown setlocal wrap
 " }}}
 
-" VIM Side Search plugin setting {{{
+" VIM Side Search plugin settings {{{
 command! -complete=file -nargs=+ S execute 'SideSearch <args>'
+" }}}
+
+" VIM NERDTree plugin settings {{{
+map <leader>t :NERDTreeToggleVCS<CR>
+let g:NERDTreeRespectWildIgnore = 1
+let g:NERDTreeIgnore = ['_site', 'node_modules', '\.lock', '\.jpg', '\.png', '\.gif', 'cache', 'tmp']
 " }}}
