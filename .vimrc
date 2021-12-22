@@ -36,13 +36,6 @@ syntax on
 
 " Allow to quickly show numbers - but usually that is not needed
 set nonumber
-noremap <leader>n :set invnumber<CR>
-
-" Hide any other info
-set noruler
-" set shortmess=F
-set noshowcmd
-set noshowmode
 
 " Display not printable characters set list
 set listchars=tab:»»,trail:·,extends:#,nbsp:·
@@ -55,8 +48,11 @@ let html_no_rendering = 1
 let g:onedark_termcolors=16
 colorscheme onedark
 
-" Show status line always
-set laststatus=2
+" Hide status bar
+set noruler
+set noshowcmd
+set noshowmode
+set laststatus=0
 " }}}
 
 " Edit behaviour {{{
@@ -248,7 +244,7 @@ augroup suffixes
   autocmd!
 
   let associations = [
-    \ ["javascript", ".js,.json"],
+    \ ["javascript", ".js"],
     \ ["python", ".py"],
     \ ["ruby", ".rb"]
   \ ]
@@ -260,10 +256,6 @@ augroup suffixes
   " For Javascript replace `@` to src which is most common
   set includeexpr=substitute(v:fname,'^.','src/','g')
 augroup END
-
-" When `gf` is used for relative files (for example navigating to
-" /another/path/b.txt from /some/path/a.txt
-set path+=**
 " }}}
 
 " Ctags support {{{
@@ -275,7 +267,6 @@ endfunction
 " Force to look for ctags file in your project .git/tags
 let ctags_path = GetProjectFolderPath() . '/.git/tags'
 let &tag = ctags_path
-" set notagrelative
 
 " Quick jump into code
 nnoremap go <C-]>zt
@@ -284,7 +275,7 @@ nnoremap go <C-]>zt
 " Common file types {{{
 autocmd BufRead,BufNewFile .czrc setfiletype json
 autocmd BufRead,BufNewFile .huskyrc setfiletype json
-autocmd BufRead,BufNewFile *.rabl set filetype ruby
+autocmd BufRead,BufNewFile *.rabl setfiletype ruby
 " }}}
 
 " LSP Configuration {{{
