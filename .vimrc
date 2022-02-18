@@ -21,8 +21,13 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'hoschi/yode-nvim'
+
 if has('nvim')
   Plug 'hrsh7th/nvim-compe'
+  Plug 'SirVer/ultisnips'
+  Plug 'honza/vim-snippets'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter highlighting
   Plug 'neovim/nvim-lspconfig' " Language Server
 endif
@@ -185,6 +190,9 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap B ^
 nnoremap E $
 
+" Fix copying of lines
+nmap Y yy
+
 " By default, ' jumps to the marked line, ` jumps to the marked line and
 " column, so swap them
 nnoremap ' `
@@ -197,7 +205,7 @@ nmap ww <ESC>:nohl<CR><ESC>:write!<CR>
 " Close buffer
 nnoremap <c-x> :bd<CR>
 
-" Enter currently editing files list
+" Enter current folder files list
 map <leader>e :Ex<CR>
 " }}}
 
@@ -398,4 +406,20 @@ autocmd BufEnter *.markdown setlocal wrap
 
 " VIM Side Search plugin setting {{{
 command! -complete=file -nargs=+ S execute 'SideSearch <args>'
+" }}}
+
+" VIM UltiSnips plugin setting {{{
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsEditSplit="vertical"
+" }}}
+
+" VIM Yode plugin setting {{{
+lua require('yode-nvim').setup({})
+
+map <Leader>yc :YodeCreateSeditorReplace<CR>
+nmap <Leader>bd :YodeBufferDelete<cr>
+
+set showtabline=2
 " }}}
