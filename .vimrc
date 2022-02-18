@@ -20,7 +20,6 @@ Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee scr
 Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
-
 Plug 'nvim-lua/plenary.nvim'
 Plug 'hoschi/yode-nvim'
 
@@ -40,13 +39,6 @@ syntax on
 
 " Allow to quickly show numbers - but usually that is not needed
 set nonumber
-noremap <leader>n :set invnumber<CR>
-
-" Hide any other info
-set noruler
-" set shortmess=F
-set noshowcmd
-set noshowmode
 
 " Display not printable characters set list
 set listchars=tab:»»,trail:·,extends:#,nbsp:·
@@ -59,8 +51,11 @@ let html_no_rendering = 1
 let g:onedark_termcolors=16
 colorscheme onedark
 
-" Show status line always
-set laststatus=2
+" Hide status bar
+set noruler
+set noshowcmd
+set noshowmode
+set laststatus=0
 " }}}
 
 " Edit behaviour {{{
@@ -207,6 +202,9 @@ nnoremap <c-x> :bd<CR>
 
 " Enter current folder files list
 map <leader>e :Ex<CR>
+
+" Copy filename to the clipboard
+nmap ,cs :let @*=expand("%")<CR>
 " }}}
 
 " Spell Checker {{{
@@ -252,7 +250,7 @@ augroup suffixes
   autocmd!
 
   let associations = [
-    \ ["javascript", ".js,.json"],
+    \ ["javascript", ".js"],
     \ ["python", ".py"],
     \ ["ruby", ".rb"]
   \ ]
@@ -264,10 +262,6 @@ augroup suffixes
   " For Javascript replace `@` to src which is most common
   set includeexpr=substitute(v:fname,'^.','src/','g')
 augroup END
-
-" When `gf` is used for relative files (for example navigating to
-" /another/path/b.txt from /some/path/a.txt
-set path+=**
 " }}}
 
 " Ctags support {{{
@@ -279,7 +273,6 @@ endfunction
 " Force to look for ctags file in your project .git/tags
 let ctags_path = GetProjectFolderPath() . '/.git/tags'
 let &tag = ctags_path
-" set notagrelative
 
 " Quick jump into code
 nnoremap go <C-]>zt
@@ -288,7 +281,7 @@ nnoremap go <C-]>zt
 " Common file types {{{
 autocmd BufRead,BufNewFile .czrc setfiletype json
 autocmd BufRead,BufNewFile .huskyrc setfiletype json
-autocmd BufRead,BufNewFile *.rabl set filetype ruby
+autocmd BufRead,BufNewFile *.rabl setfiletype ruby
 " }}}
 
 " LSP Configuration {{{
@@ -369,7 +362,6 @@ map // :BLines <CR>
 map <leader>f :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
-map <leader>t :Tags<CR>
 
 " Search for word under
 command! -bang -nargs=* RgExact
@@ -404,7 +396,7 @@ autocmd BufEnter *.markdown setlocal textwidth=80
 autocmd BufEnter *.markdown setlocal wrap
 " }}}
 
-" VIM Side Search plugin setting {{{
+" VIM Side Search plugin settings {{{
 command! -complete=file -nargs=+ S execute 'SideSearch <args>'
 " }}}
 
