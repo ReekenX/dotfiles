@@ -40,7 +40,7 @@ require'compe'.setup {
   enabled = true;
   autocomplete = true;
   debug = false;
-  min_length = 1;
+  min_length = 2;
   preselect = 'enable';
   throttle_time = 80;
   source_timeout = 200;
@@ -64,8 +64,8 @@ require'compe'.setup {
     calc = true;
     nvim_lsp = true;
     nvim_lua = true;
-    vsnip = true;
-    ultisnips = true;
+    vsnip = false;
+    ultisnips = false;
     luasnip = false;
   };
 }
