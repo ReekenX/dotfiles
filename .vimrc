@@ -49,6 +49,10 @@ let html_no_rendering = 1
 
 " Theme
 let g:onedark_termcolors=16
+let g:onedark_color_overrides = {
+\ "background": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
+\ "purple": { "gui": "#C678DF", "cterm": "170", "cterm16": "5" }
+\}
 colorscheme onedark
 
 " Hide status bar
@@ -353,8 +357,7 @@ function! LightlineFilename()
 endfunction
 
 " VIM FZF plugin settings {{{
-let g:fzf_layout = { 'down': '~35%' }
-" let g:fzf_preview_window = []
+let g:fzf_layout = { 'window': 'enew' }
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
 
 map <leader>/ :Rg <CR>
@@ -415,3 +418,32 @@ nmap <Leader>bd :YodeBufferDelete<cr>
 
 set showtabline=2
 " }}}
+
+set tabline=%!TabLine()
+
+function! TabLine()
+    let line = ''
+    for i in range(tabpagenr('$'))
+        let line .= (i+1 == tabpagenr()) ? '%#TabLineSel#' : '%#TabLine#'
+        let line .= '%' . (i + 1) . 'T'
+        let line .= TabLabel(i + 1)
+    endfor
+    let line .= '%#TabLineFill#%T'
+    return line
+endfunction
+
+function! TabLabel(n)
+    " Return list of buffer numbers for each window pane open in tab.
+    let panelist = tabpagebuflist(a:n)
+    " See :help setting-tabline then search MyTabLabel if you want to
+    " use use the active window. I use the topmost pane, which let's
+    " me rename the tab just by putting a window from a different
+    " directory in the first position.
+    let filepath = bufname(panelist[0])
+    let filename = fnamemodify(filepath, ':t')
+    let dirname = fnamemodify(filepath, ':p:h:t')
+    return ' ' . dirname. '/' . filename . ' '
+endfunction
+
+" Open all buffers in a new tab
+au BufAdd,BufNewFile * nested tab sball
