@@ -48,14 +48,8 @@ export LANG=en_US.UTF-8
 unsetopt correct_all
 
 # Custom prompt
-PROMPT='%F{blue}%2~
+PROMPT='%F{blue}%1/
 \$%f '
 
 # Dev related settings based on machine
 source ~/.zsh_local
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
