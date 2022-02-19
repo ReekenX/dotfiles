@@ -1,4 +1,3 @@
-# ZSH Theme - Preview: http://dl.dropbox.com/u/4109351/pics/gnzh-zsh-theme.png
 # Based on gnzh theme
 
 # load some modules
