@@ -117,6 +117,34 @@ if has('nvim')
 endif
 " }}}
 
+" Tabs displays 1 level folder and filename {{{
+set tabline=%!TabLine()
+
+function! TabLine()
+    let line = ''
+    for i in range(tabpagenr('$'))
+        let line .= (i+1 == tabpagenr()) ? '%#TabLineSel#' : '%#TabLine#'
+        let line .= '%' . (i + 1) . 'T'
+        let line .= TabLabel(i + 1)
+    endfor
+    let line .= '%#TabLineFill#%T'
+    return line
+endfunction
+
+function! TabLabel(n)
+    " Return list of buffer numbers for each window pane open in tab.
+    let panelist = tabpagebuflist(a:n)
+    " See :help setting-tabline then search MyTabLabel if you want to
+    " use use the active window. I use the topmost pane, which let's
+    " me rename the tab just by putting a window from a different
+    " directory in the first position.
+    let filepath = bufname(panelist[0])
+    let filename = fnamemodify(filepath, ':t')
+    let dirname = fnamemodify(filepath, ':p:h:t')
+    return ' ' . dirname. '/' . filename . ' '
+endfunction
+" }}}
+
 " Search {{{
 " Ignore case in search and replace
 set ignorecase
@@ -358,6 +386,7 @@ endfunction
 
 " VIM FZF plugin settings {{{
 let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_preview_window = ['up:60%']
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
 
 map <leader>/ :Rg <CR>
@@ -409,41 +438,3 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
 " }}}
-
-" VIM Yode plugin setting {{{
-lua require('yode-nvim').setup({})
-
-map <Leader>yc :YodeCreateSeditorReplace<CR>
-nmap <Leader>bd :YodeBufferDelete<cr>
-
-set showtabline=2
-" }}}
-
-set tabline=%!TabLine()
-
-function! TabLine()
-    let line = ''
-    for i in range(tabpagenr('$'))
-        let line .= (i+1 == tabpagenr()) ? '%#TabLineSel#' : '%#TabLine#'
-        let line .= '%' . (i + 1) . 'T'
-        let line .= TabLabel(i + 1)
-    endfor
-    let line .= '%#TabLineFill#%T'
-    return line
-endfunction
-
-function! TabLabel(n)
-    " Return list of buffer numbers for each window pane open in tab.
-    let panelist = tabpagebuflist(a:n)
-    " See :help setting-tabline then search MyTabLabel if you want to
-    " use use the active window. I use the topmost pane, which let's
-    " me rename the tab just by putting a window from a different
-    " directory in the first position.
-    let filepath = bufname(panelist[0])
-    let filename = fnamemodify(filepath, ':t')
-    let dirname = fnamemodify(filepath, ':p:h:t')
-    return ' ' . dirname. '/' . filename . ' '
-endfunction
-
-" Open all buffers in a new tab
-au BufAdd,BufNewFile * nested tab sball
