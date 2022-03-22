@@ -229,7 +229,7 @@ set wildmenu
 set wildchar=<tab>
 set wildmode=list:full
 set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~,*.zip,*.gz,*.tar
-set wildignore+=virtual/,.virtualenv/,upload/,uploads/,node_modules/
+set wildignore+=virtual/,.virtualenv/,upload/,uploads/,node_modules/,tmp/,_site/,cache/
 " }}}
 
 " Repeat very last command in the next tmux window for quick command lines testing {{{
@@ -358,6 +358,7 @@ endfunction
 
 " VIM FZF plugin settings {{{
 let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_preview_window = ['up:60%']
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
 
 map <leader>/ :Rg <CR>
@@ -419,6 +420,7 @@ nmap <Leader>bd :YodeBufferDelete<cr>
 set showtabline=2
 " }}}
 
+" Display folder and filename in tabs {{{
 set tabline=%!TabLine()
 
 function! TabLine()
@@ -444,6 +446,4 @@ function! TabLabel(n)
     let dirname = fnamemodify(filepath, ':p:h:t')
     return ' ' . dirname. '/' . filename . ' '
 endfunction
-
-" Open all buffers in a new tab
-au BufAdd,BufNewFile * nested tab sball
+" }}}
