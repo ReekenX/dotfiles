@@ -20,8 +20,6 @@ Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee scr
 Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'hoschi/yode-nvim'
 
 if has('nvim')
   Plug 'hrsh7th/nvim-compe'
@@ -115,6 +113,34 @@ set cmdheight=1
 if has('nvim')
   autocmd TermOpen * startinsert
 endif
+" }}}
+
+" Tabs displays 1 level folder and filename {{{
+set tabline=%!TabLine()
+
+function! TabLine()
+    let line = ''
+    for i in range(tabpagenr('$'))
+        let line .= (i+1 == tabpagenr()) ? '%#TabLineSel#' : '%#TabLine#'
+        let line .= '%' . (i + 1) . 'T'
+        let line .= TabLabel(i + 1)
+    endfor
+    let line .= '%#TabLineFill#%T'
+    return line
+endfunction
+
+function! TabLabel(n)
+    " Return list of buffer numbers for each window pane open in tab.
+    let panelist = tabpagebuflist(a:n)
+    " See :help setting-tabline then search MyTabLabel if you want to
+    " use use the active window. I use the topmost pane, which let's
+    " me rename the tab just by putting a window from a different
+    " directory in the first position.
+    let filepath = bufname(panelist[0])
+    let filename = fnamemodify(filepath, ':t')
+    let dirname = fnamemodify(filepath, ':p:h:t')
+    return ' ' . dirname. '/' . filename . ' '
+endfunction
 " }}}
 
 " Search {{{
@@ -409,15 +435,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsEditSplit="vertical"
-" }}}
-
-" VIM Yode plugin setting {{{
-lua require('yode-nvim').setup({})
-
-map <Leader>yc :YodeCreateSeditorReplace<CR>
-nmap <Leader>bd :YodeBufferDelete<cr>
-
-set showtabline=2
 " }}}
 
 " Display folder and filename in tabs {{{
