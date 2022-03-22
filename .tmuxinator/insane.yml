@@ -1,5 +1,5 @@
 name: insane
-root: ~/Work/insane/insanecoaching.com/
+root: ~/Work/insane/app.insanecoaching.com/
 
 startup_window: webserver
 
