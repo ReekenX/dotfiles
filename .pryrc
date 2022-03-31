@@ -1,8 +1,10 @@
-Pry::Commands.command /^$/, "repeat last command" do
+# vi: filetype=ruby
+
+Pry::Commands.command /^$/, "repeat last command on ENTER" do
   _pry_.run_command Pry.history.to_a.last
 end
 
-Pry::Commands.block_command "trace", "Filter the caller backtrace" do
+Pry::Commands.block_command "trace", "Make clean traceback" do
   output = caller.reject! { |line| line["rubies"] || line["gems"] }
   puts "\e[31m#{output.join("\n").gsub(Rails.root.to_s, Rails.root.basename.to_s)}\e[0m"
 end
