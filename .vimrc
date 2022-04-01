@@ -30,6 +30,7 @@ if has('nvim')
   Plug 'hrsh7th/nvim-cmp'
   Plug 'SirVer/ultisnips'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+  Plug 'honza/vim-snippets'
 
   " Plug 'SirVer/ultisnips'
   " Plug 'honza/vim-snippets'
@@ -314,7 +315,7 @@ endfunction
 let ctags_path = GetProjectFolderPath() . '/.git/tags'
 let &tag = ctags_path
 
-" Quick jump into code
+" Quick jump into code (using ctags)
 nnoremap go <C-]>zt
 " }}}
 
@@ -438,13 +439,6 @@ autocmd BufEnter *.markdown setlocal wrap
 
 " VIM Side Search plugin settings {{{
 command! -complete=file -nargs=+ S execute 'SideSearch <args>'
-" }}}
-
-" VIM UltiSnips plugin setting {{{
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsEditSplit="vertical"
 " }}}
 
 " Display folder and filename in tabs {{{
