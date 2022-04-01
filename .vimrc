@@ -22,11 +22,18 @@ Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
 
 if has('nvim')
-  Plug 'hrsh7th/nvim-compe'
-  Plug 'SirVer/ultisnips'
-  Plug 'honza/vim-snippets'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter highlighting
   Plug 'neovim/nvim-lspconfig' " Language Server
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'SirVer/ultisnips'
+  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
+  " Plug 'SirVer/ultisnips'
+  " Plug 'honza/vim-snippets'
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter highlighting
 endif
 
 call plug#end()
@@ -113,6 +120,9 @@ set cmdheight=1
 if has('nvim')
   autocmd TermOpen * startinsert
 endif
+
+" LSP autocompletion (filled by LSP config LUA file below)
+set completeopt=menu,menuone,noselect
 " }}}
 
 " Tabs displays 1 level folder and filename {{{
@@ -316,7 +326,7 @@ autocmd BufRead,BufNewFile *.rabl setfiletype ruby
 
 " LSP Configuration {{{
 if has('nvim')
-  luafile ~/.vim/lsp_config.lua
+  luafile ~/.vim/lsp_config_new.lua
 endif
 " }}}
 
