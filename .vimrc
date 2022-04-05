@@ -323,6 +323,7 @@ nnoremap go <C-]>zt
 autocmd BufRead,BufNewFile .czrc setfiletype json
 autocmd BufRead,BufNewFile .huskyrc setfiletype json
 autocmd BufRead,BufNewFile *.rabl setfiletype ruby
+autocmd BufRead,BufNewFile *.njk setfiletype html
 " }}}
 
 " LSP Configuration {{{
