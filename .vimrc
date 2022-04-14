@@ -22,15 +22,15 @@ Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
 
 if has('nvim')
-  Plug 'neovim/nvim-lspconfig' " LSP support
-  Plug 'hrsh7th/cmp-nvim-lsp'  " LSP source support
-  Plug 'hrsh7th/cmp-buffer'    " Autocompletion for words from buffers
-  Plug 'hrsh7th/cmp-path'
-  Plug 'hrsh7th/cmp-cmdline'
-  Plug 'hrsh7th/nvim-cmp'
-  Plug 'SirVer/ultisnips'
-  Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-  Plug 'honza/vim-snippets'
+  Plug 'neovim/nvim-lspconfig'                  " LSP support
+  Plug 'hrsh7th/cmp-nvim-lsp'                   " LSP source support
+  Plug 'hrsh7th/cmp-buffer'                     " Autocompletion for words from buffers
+  Plug 'hrsh7th/cmp-path'                       " Autocompletion for filepaths
+  Plug 'hrsh7th/nvim-cmp'                       " Autocompletion plugin
+  Plug 'SirVer/ultisnips'                       " Snippets engine
+  Plug 'honza/vim-snippets'                     " Snippet files
+  Plug 'quangnguyen30192/cmp-nvim-ultisnips'    " Autocompletion for snippets
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
 call plug#end()
