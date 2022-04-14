@@ -22,19 +22,15 @@ Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
 
 if has('nvim')
-  Plug 'neovim/nvim-lspconfig' " Language Server
-  Plug 'hrsh7th/cmp-nvim-lsp'
-  Plug 'hrsh7th/cmp-buffer'
+  Plug 'neovim/nvim-lspconfig' " LSP support
+  Plug 'hrsh7th/cmp-nvim-lsp'  " LSP source support
+  Plug 'hrsh7th/cmp-buffer'    " Autocompletion for words from buffers
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'SirVer/ultisnips'
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'
   Plug 'honza/vim-snippets'
-
-  " Plug 'SirVer/ultisnips'
-  " Plug 'honza/vim-snippets'
-  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} " Treesitter highlighting
 endif
 
 call plug#end()
@@ -305,31 +301,11 @@ augroup suffixes
 augroup END
 " }}}
 
-" Ctags support {{{
-function! GetProjectFolderPath()
-  let result = system('git rev-parse --show-toplevel')
-  return substitute(result, "\n", "", "")
-endfunction
-
-" Force to look for ctags file in your project .git/tags
-let ctags_path = GetProjectFolderPath() . '/.git/tags'
-let &tag = ctags_path
-
-" Quick jump into code (using ctags)
-nnoremap go <C-]>zt
-" }}}
-
 " Common file types {{{
 autocmd BufRead,BufNewFile .czrc setfiletype json
 autocmd BufRead,BufNewFile .huskyrc setfiletype json
 autocmd BufRead,BufNewFile *.rabl setfiletype ruby
 autocmd BufRead,BufNewFile *.njk setfiletype html
-" }}}
-
-" LSP Configuration {{{
-if has('nvim')
-  luafile ~/.vim/lsp_config_new.lua
-endif
 " }}}
 
 " VIM Outliner plugin settings {{{
@@ -440,6 +416,12 @@ autocmd BufEnter *.markdown setlocal wrap
 
 " VIM Side Search plugin settings {{{
 command! -complete=file -nargs=+ S execute 'SideSearch <args>'
+" }}}
+
+" LSP {{{
+if has('nvim')
+  luafile ~/.vim/lsp.lua
+endif
 " }}}
 
 " Display folder and filename in tabs {{{
