@@ -185,7 +185,7 @@ set undodir=/tmp/.vim/undo
 " Folding rules {{{
 set foldenable
 set foldcolumn=0
-set foldlevel=2
+set foldlevel=9999
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 " }}}
