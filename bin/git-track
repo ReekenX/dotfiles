@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Sets up auto-tracking of a remote branch with same base name.
+# Can set up "git track" so it feels built-in:
+# git config --global --add alias.track '!git-track' 
+#
+branch=$(git branch 2>/dev/null | grep ^\*)
+[ x$1 != x ] && tracking=$1 || tracking=${branch/* /}
+
+git config branch.$tracking.remote origin 
+git config branch.$tracking.merge refs/heads/$tracking
+
+echo "tracking origin/$tracking"
