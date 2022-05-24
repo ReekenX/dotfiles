@@ -1,7 +1,7 @@
 " Load plugins {{{
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdcommenter'
+" Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/matchit'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -30,6 +30,7 @@ if has('nvim')
   Plug 'SirVer/ultisnips'                       " Snippets engine
   Plug 'honza/vim-snippets'                     " Snippet files
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'    " Autocompletion for snippets
+  Plug 'numToStr/Comment.nvim'                  " Commenting pluggin
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 endif
 
