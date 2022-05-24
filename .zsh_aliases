@@ -61,7 +61,8 @@ alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path
 alias ts="tmuxinator start"
 alias bi="bundle install"
 alias bu="bundle update"
-alias rc="rails console"
+alias rc="RUBYOPT=-W0 rails console"
+alias rdb="rails db:migrate"
 alias ii="yarn install"
 
 # Useful alert for tmux to notify about some finished command in other window/pane
