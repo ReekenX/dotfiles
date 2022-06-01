@@ -32,6 +32,10 @@ if has('nvim')
   Plug 'quangnguyen30192/cmp-nvim-ultisnips'    " Autocompletion for snippets
   Plug 'numToStr/Comment.nvim'                  " Commenting pluggin
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-neo-tree/neo-tree.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'MunifTanjim/nui.nvim'
 endif
 
 call plug#end()
