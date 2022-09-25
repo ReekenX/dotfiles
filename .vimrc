@@ -1,3 +1,4 @@
+.vimrc
 " Load plugins {{{
 call plug#begin('~/.vim/plugged')
 
@@ -36,6 +37,8 @@ if has('nvim')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'MunifTanjim/nui.nvim'
+  Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
 endif
 
 call plug#end()
@@ -266,8 +269,7 @@ nnoremap <silent> <Leader>sp :call ToggleSpellCheck()<CR>
 set wildmenu
 set wildchar=<tab>
 set wildmode=list:full
-set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~,*.zip,*.gz,*.tar
-set wildignore+=virtual/,.virtualenv/,upload/,uploads/,node_modules/,tmp/,_site/,cache/
+set wildignore+=*.swp,*.bak,*.pyc,*.pyo,*.so,*~,*.zip,*.gz,*.tar,*.png,*.webp,node_modules/,tmp/,_site/,cache/
 " }}}
 
 " Repeat very last command in the next tmux window for quick command lines testing {{{
@@ -378,7 +380,7 @@ endfunction
 " VIM FZF plugin settings {{{
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_preview_window = ['up:60%']
-let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.pyc' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
 
 map <leader>/ :Rg <CR>
 map // :BLines <CR>
@@ -477,4 +479,8 @@ function! s:getVisualSelection()
     return join(lines, "\n")
 endfunction
 vnoremap <silent><leader>f <Esc>:FZF -q <C-R>=<SID>getVisualSelection()<CR><CR>
+" }}}
+
+" VIM Nvim Tree Plugin Settings {{{
+map <leader>t :NvimTreeFindFile<CR>
 " }}}
