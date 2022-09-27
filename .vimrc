@@ -1,4 +1,3 @@
-.vimrc
 " Load plugins {{{
 call plug#begin('~/.vim/plugged')
 
