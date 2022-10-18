@@ -344,38 +344,6 @@ autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
 " }}}
 
-" VIM ALE plugin settings {{{
-" Show nice customer marking for errors
-let g:ale_sign_error = "◉"
-let g:ale_sign_warning = "◉"
-highlight ALEErrorSign ctermfg=9 ctermbg=none
-highlight ALEWarningSign ctermfg=11 ctermbg=none
-
-" Vim COC plugin integration
-let g:ale_disable_lsp = 1
-
-" Only linters listed below are allowed to work
-let g:ale_linters_explicit = 1
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\  'javascript': ['prettier'],
-\  'json': ['prettier'],
-\  'css': ['prettier'],
-\  'scss': ['prettier'],
-\  'html': ['prettier'],
-\  'xml': ['prettier'],
-\}
-
-" Attempt to fix files on save (sometimes annoying)
-let g:ale_fix_on_save = 1
-" }}}
-
-" VIM Lightline plugin settings {{{
-function! LightlineFilename()
-  return expand("%:f")
-endfunction
-
 " VIM FZF plugin settings {{{
 let g:fzf_layout = { 'window': 'enew' }
 let g:fzf_preview_window = ['up:60%']
@@ -387,7 +355,7 @@ map <leader>f :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
 
-" Search for word under
+" Search for word under cursor
 command! -bang -nargs=* RgExact
   \ call fzf#vim#grep(
   \   'rg -F --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
@@ -424,9 +392,9 @@ autocmd BufEnter *.markdown setlocal wrap
 command! -complete=file -nargs=+ S execute 'SideSearch <args>'
 " }}}
 
-" LSP {{{
+" Load LSP and other Lua configs {{{
 if has('nvim')
-  luafile ~/.vim/lsp.lua
+  luafile ~/.vim/init.lua
 endif
 " }}}
 

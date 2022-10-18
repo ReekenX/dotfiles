@@ -81,6 +81,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- Language parser
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
   ensure_installed = { "bash", "css", "dockerfile", "html", "javascript", "json", "lua", "markdown", "python", "toml", "yaml", "make", "rst", "scss", "tsx", "vim", "vue" },
@@ -98,28 +99,5 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-
-vim.g.loaded = 1
-vim.g.loaded_netrwPlugin = 1
-
--- empty setup using defaults
+-- Sidebar with file tree
 require("nvim-tree").setup()
-
--- OR setup with some options
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    adaptive_size = true,
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-})
