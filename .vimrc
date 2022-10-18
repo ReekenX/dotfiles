@@ -394,7 +394,7 @@ command! -complete=file -nargs=+ S execute 'SideSearch <args>'
 
 " Load LSP and other Lua configs {{{
 if has('nvim')
-  luafile ~/.vim/init.lua
+  luafile ~/.vim/lsp.lua
 endif
 " }}}
 
