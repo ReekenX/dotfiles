@@ -49,18 +49,17 @@ syntax on
 " Allow to quickly show numbers - but usually that is not needed
 set nonumber
 
-" Display not printable characters set list
-set listchars=tab:»»,trail:·,extends:#,nbsp:·
+" Display not printable characters set list		
+set list listchars=tab:»»,trail:¶
 
 " Disable poor HTML rendering - not really compatible with HTML5 or
 " any frontend JavaScript frameworks
 let html_no_rendering = 1
 
 " Theme
-let g:onedark_termcolors=16
+let g:onedark_termcolors=256
 let g:onedark_color_overrides = {
-\ "background": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
-\ "purple": { "gui": "#C678DF", "cterm": "170", "cterm16": "5" }
+\ "background": { "gui": "#2F343F", "cterm": "0", "cterm16": "0" },
 \}
 colorscheme onedark
 
@@ -395,6 +394,9 @@ command! -complete=file -nargs=+ S execute 'SideSearch <args>'
 " Load LSP and other Lua configs {{{
 if has('nvim')
   luafile ~/.vim/lsp.lua
+
+  " Open definition in the new tab with `gJ`, while `gj` configured to open in the same window
+  nnoremap gJ <cmd>tab split \| lua vim.lsp.buf.definition()<cr>
 endif
 " }}}
 
