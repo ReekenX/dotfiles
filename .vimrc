@@ -221,6 +221,9 @@ nnoremap / /\v
 " Don't press the SHIFT in normal mode
 nnoremap ; :
 
+" Copy filename to clipboard
+nnor ,cf :let @*=expand("%")<CR>
+
 " Expand %% to full file directory (without filename!)
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
