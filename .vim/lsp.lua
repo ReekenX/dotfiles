@@ -75,9 +75,6 @@ for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = {
-      solargraph = { diagnostics = false }
-    }
   }
 end
 
