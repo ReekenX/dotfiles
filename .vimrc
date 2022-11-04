@@ -35,8 +35,10 @@ if has('nvim')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'MunifTanjim/nui.nvim'
-  Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
-  Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'kyazdani42/nvim-web-devicons'           " NvimTree dependency for icons
+  Plug 'kyazdani42/nvim-tree.lua'               " File manager, sidebar
+  Plug 'folke/noice.nvim'
+  Plug 'MunifTanjim/nui.nvim'
 endif
 
 call plug#end()
@@ -454,4 +456,8 @@ vnoremap <silent><leader>f <Esc>:FZF -q <C-R>=<SID>getVisualSelection()<CR><CR>
 
 " VIM Nvim Tree Plugin Settings {{{
 map <leader>t :NvimTreeFindFile<CR>
+" }}}
+
+" VIM Noice Plugin Settings {{{
+lua require("noice").setup()
 " }}}
