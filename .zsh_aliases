@@ -46,7 +46,7 @@ alias gc="git branch --merged | egrep -v '(^\*|master|develop)' | xargs git bran
 alias gs="git status --ignore-submodules -sb"
 alias gco="git checkout -f"
 alias gi="git commit -m"
-alias gl="git log --graph --topo-order --abbrev-commit --date=short --decorate --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset%C(yellow)%d%Creset %s %Cblue[%cn]%Creset' "
+alias gl="git log --topo-order --abbrev-commit --date=short --decorate --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset%C(yellow)%d%Creset %s %Cblue[%cn]%Creset' "
 alias gln="git log --name-only"
 alias glc="git rev-parse --short HEAD"
 alias gw="gl master..HEAD"
