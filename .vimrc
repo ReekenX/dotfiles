@@ -6,8 +6,6 @@ Plug 'tmhedberg/matchit'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'tpope/vim-eunuch'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'jamessan/vim-gnupg', {'branch': 'main'}
 Plug 'jpalardy/vim-slime', {'branch': 'main'}
@@ -20,6 +18,8 @@ Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee scr
 Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
+Plug 'nvim-lua/plenary.nvim'                               " Telescope dependency
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }   " File, bufer and other stuff manager
 
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'                  " LSP support
@@ -347,26 +347,6 @@ autocmd FileType vue syntax sync fromstart
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript
 " }}}
 
-" VIM FZF plugin settings {{{
-let g:fzf_layout = { 'window': 'enew' }
-let g:fzf_preview_window = ['up:60%']
-let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.pyc' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
-
-map <leader>/ :Rg <CR>
-map // :BLines <CR>
-map <leader>f :Files<CR>
-map <leader>b :Buffers<CR>
-map <leader>m :Marks<CR>
-
-" Search for word under cursor
-command! -bang -nargs=* RgExact
-  \ call fzf#vim#grep(
-  \   'rg -F --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-nmap <Leader>w :execute 'RgExact ' . expand('<cword>') <Cr>
-" }}}
-
 " VIM Visual Multi plugin settings {{{
 nmap <M-Down> :<C-u>call vm#commands#add_cursor_down(0, v:count1)<cr>
 nmap <M-Up> :<C-u>call vm#commands#add_cursor_up(0, v:count1)<cr>
@@ -437,6 +417,7 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 " }}}
 
 " Automatically search file name from selection with fuzzy search {{{
+" TODO: backport this method to Telscope plugin
 function! s:getVisualSelection()
     let [line_start, column_start] = getpos("'<")[1:2]
     let [line_end, column_end] = getpos("'>")[1:2]
@@ -460,4 +441,12 @@ map <leader>t :NvimTreeFindFile<CR>
 
 " VIM Noice Plugin Settings {{{
 lua require("noice").setup()
+" }}}
+
+" VIM Telescope Plugin Settings {{{
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>s <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>F :execute 'Telescope find_files default_text=' . "'" . expand('<cword>')<cr>
+nnoremap <leader>w :execute 'Telescope live_grep default_text=' . expand('<cword>')<cr>
 " }}}
