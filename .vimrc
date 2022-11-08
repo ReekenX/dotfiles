@@ -18,8 +18,9 @@ Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee scr
 Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
-Plug 'nvim-lua/plenary.nvim'                               " Telescope dependency
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }   " File, bufer and other stuff manager
+Plug 'nvim-lua/plenary.nvim'                                       " Telescope dependency
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }           " File, bufer and other stuff manager
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }  " Regex search in Telescope
 
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'                  " LSP support
@@ -448,7 +449,8 @@ nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>s <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>F :execute 'Telescope find_files default_text=' . "'" . expand('<cword>')<cr>
-nnoremap <leader>w :execute 'Telescope live_grep default_text=' . expand('<cword>')<cr>
+nnoremap <leader>w :execute 'Telescope grep_string default_text=' . expand('<cword>')<cr>
+nnoremap <leader>s :execute 'Telescope grep_string grep_open_files=true string= '<cr>
 " }}}
 
 " Show word count when typing markdown {{{
