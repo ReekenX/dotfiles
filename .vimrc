@@ -21,6 +21,7 @@ Plug 'joshdick/onedark.vim', {'branch': 'main'}
 Plug 'nvim-lua/plenary.nvim'                                       " Telescope dependency
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }           " File, bufer and other stuff manager
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }  " Regex search in Telescope
+Plug 'ruanyl/vim-gh-line'                                          " Open file in Github, so that link can be shared
 
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'                  " LSP support
