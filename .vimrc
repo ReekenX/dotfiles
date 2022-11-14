@@ -430,8 +430,15 @@ lua require("noice").setup()
 nnoremap <leader>f <cmd>Telescope git_files<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>s <cmd>Telescope grep_string grep_open_files=true<cr>
+
+" Move cursor on word, hit shortcut and Telescope will search entire codbase for this word
 nnoremap <leader>w :execute 'Telescope grep_string default_text=' . expand('<cword>')<cr>
+
+" Select word and hit shortcut to search word opened files
 vnoremap <leader>s "zy:Telescope grep_string grep_open_files=true default_text=<C-r>z<cr>
+
+" Select word/path and hit shortcut to search filename in entire project
 vnoremap <leader>f "zy:Telescope git_files default_text=<C-r>z<cr>
 " }}}
 
