@@ -463,3 +463,16 @@ endfunction
 autocmd FileType markdown setlocal statusline=%=%{WordCount()}\ words\
 autocmd FileType markdown setlocal laststatus=2
 " }}}
+
+" VIM Copilot Plugin Settings {{{
+let g:copilot_filetypes = {
+    \ '*': v:false,
+    \ 'javascript': v:true,
+    \ 'typescript': v:true,
+    \ 'python': v:true,
+    \ 'ruby': v:true,
+    \ 'vue': v:true,
+    \ 'lua': v:true,
+    \ 'html': v:true
+    \ }
+" }}}
