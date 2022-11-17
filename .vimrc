@@ -19,7 +19,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
 Plug 'joshdick/onedark.vim', {'branch': 'main'} 
 Plug 'nvim-lua/plenary.nvim'                                       " Telescope dependency
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }           " File, bufer and other stuff manager
+Plug 'nvim-telescope/telescope.nvim', { 'branch': 'master' } " { 'tag': '0.1.0' }            File, bufer and other stuff manager
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }  " Regex search in Telescope
 Plug 'ruanyl/vim-gh-line'                                          " Open file in Github, so that link can be shared
 
@@ -430,7 +430,7 @@ lua require("noice").setup()
 nnoremap <leader>f <cmd>Telescope git_files<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
-nnoremap <leader>s <cmd>Telescope grep_string grep_open_files=true<cr>
+nnoremap <leader>s <cmd>Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case<cr>
 
 " Move cursor on word, hit shortcut and Telescope will search entire codbase for this word
 nnoremap <leader>w :execute 'Telescope grep_string default_text=' . expand('<cword>')<cr>
