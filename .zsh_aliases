@@ -69,7 +69,7 @@ alias bell="echo -e '\a'"
 
 # Quick search function which ignores node_modules folder and gives search results in colored `less`
 function s() {
-  rg -p -g '!node_modules' -C 5 $@ | less -R
+  rg --smart-case --pretty --glob '!node_modules' --context 5 $@ | less -R
 }
 
 # Commit with ticket number from the branch name
