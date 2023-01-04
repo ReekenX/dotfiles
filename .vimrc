@@ -429,7 +429,7 @@ lua require("noice").setup()
 " VIM Telescope Plugin Settings {{{
 nnoremap <leader>f <cmd>Telescope git_files<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
-nnoremap <leader>g <cmd>Telescope live_grep<cr>
+nnoremap <leader>g <cmd>Telescope live_grep shorten_path=true word_match="-w" search="" only_sort_text=true<cr>
 nnoremap <leader>s <cmd>Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case<cr>
 
 " Move cursor on word, hit shortcut and Telescope will search entire codbase for this word
