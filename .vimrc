@@ -10,18 +10,17 @@ Plug 'easymotion/vim-easymotion'
 Plug 'jamessan/vim-gnupg', {'branch': 'main'}
 Plug 'jpalardy/vim-slime', {'branch': 'main'}
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'godlygeek/tabular' " Dependency of `vim-markdown`
+Plug 'godlygeek/tabular'                          " Dependency of `vim-markdown` below
 Plug 'plasticboy/vim-markdown'
 Plug 'djoshea/vim-autoread'
 Plug 'tpope/vim-surround'
-Plug 'kchmck/vim-coffee-script' " No treesitter configuration yet for coffee script
+Plug 'kchmck/vim-coffee-script'                   " No treesitter configuration yet for coffee script
 Plug 'altercation/vim-colors-solarized'
 Plug 'ddrscott/vim-side-search'
-Plug 'joshdick/onedark.vim', {'branch': 'main'} 
-Plug 'nvim-lua/plenary.nvim'                                       " Telescope dependency
-Plug 'nvim-telescope/telescope.nvim', { 'branch': 'master' } " { 'tag': '0.1.0' }            File, bufer and other stuff manager
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }  " Regex search in Telescope
-Plug 'ruanyl/vim-gh-line'                                          " Open file in Github, so that link can be shared
+Plug 'joshdick/onedark.vim', {'branch': 'main'}
+Plug 'ruanyl/vim-gh-line'                         " Open file in Github, so that link can be shared
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'                  " LSP support
@@ -426,22 +425,6 @@ map <leader>t :NvimTreeFindFile<CR>
 lua require("noice").setup()
 " }}}
 
-" VIM Telescope Plugin Settings {{{
-nnoremap <leader>f <cmd>Telescope git_files<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
-nnoremap <leader>g <cmd>Telescope live_grep shorten_path=true word_match="-w" search="" only_sort_text=true<cr>
-nnoremap <leader>s <cmd>Telescope current_buffer_fuzzy_find fuzzy=false case_mode=ignore_case<cr>
-
-" Move cursor on word, hit shortcut and Telescope will search entire codbase for this word
-nnoremap <leader>w :execute 'Telescope grep_string default_text=' . expand('<cword>')<cr>
-
-" Select word and hit shortcut to search word opened files
-vnoremap <leader>s "zy:Telescope grep_string grep_open_files=true default_text=<C-r>z<cr>
-
-" Select word/path and hit shortcut to search filename in entire project
-vnoremap <leader>f "zy:Telescope git_files default_text=<C-r>z<cr>
-" }}}
-
 " Show word count when typing markdown {{{
 function! WordCount()
   let s:old_status = v:statusmsg
@@ -475,4 +458,40 @@ let g:copilot_filetypes = {
     \ 'lua': v:true,
     \ 'html': v:true
     \ }
+" }}}
+
+" VIM FZF plugin settings {{{
+let g:fzf_layout = { 'down': '100%' }
+let g:fzf_preview_window = ['up:60%']
+let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.pyc' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
+
+map <leader>/ :Rg <CR>
+map // :BLines <CR>
+map <leader>f :Files<CR>
+map <leader>b :Buffers<CR>
+map <leader>m :Marks<CR>
+
+" Search for word under cursor
+command! -bang -nargs=* RgExact
+  \ call fzf#vim#grep(
+  \   'rg -F --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+nmap <Leader>w :execute 'RgExact ' . expand('<cword>') <Cr>
+" }}}
+
+" Automatically search file name from selection with fuzzy search {{{
+" TODO: backport this method to Telscope plugin
+function! s:getVisualSelection()
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ""
+    endif
+    let lines[-1] = lines[-1][:column_end - (&selection == "inclusive" ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
+vnoremap <silent><leader>f <Esc>:FZF -q <C-R>=<SID>getVisualSelection()<CR><CR>
 " }}}
