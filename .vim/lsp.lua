@@ -95,11 +95,3 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
-
--- Sidebar with file tree
-require("nvim-tree").setup({
-  view = {
-    adaptive_size = true,
-    hide_root_folder = true,
-  }
-})

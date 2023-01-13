@@ -36,8 +36,6 @@ if has('nvim')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'MunifTanjim/nui.nvim'
-  Plug 'kyazdani42/nvim-web-devicons'           " NvimTree dependency for icons
-  Plug 'kyazdani42/nvim-tree.lua'               " File manager, sidebar
   Plug 'folke/noice.nvim'
   Plug 'MunifTanjim/nui.nvim'
 endif
@@ -461,7 +459,7 @@ let g:copilot_filetypes = {
 " }}}
 
 " VIM FZF plugin settings {{{
-let g:fzf_layout = { 'down': '100%' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9, 'relative': v:true } }
 let g:fzf_preview_window = ['up:60%']
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.pyc' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
 
