@@ -95,3 +95,15 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
   },
 }
+
+require'sad'.setup({
+  debug = false, -- print debug info
+  diff = 'diff', -- you can use `less`, `diff-so-fancy`
+  ls_file = 'git ls-files', -- also git ls-files
+  exact = true, -- exact match
+  vsplit = false, -- split sad window the screen vertically, when set to number
+  -- it is a threadhold when window is larger than the threshold sad will split vertically,
+  height_ratio = 0.6, -- height ratio of sad window when split horizontally
+  width_ratio = 0.6, -- height ratio of sad window when split vertically
+
+})

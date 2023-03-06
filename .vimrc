@@ -21,6 +21,8 @@ Plug 'joshdick/onedark.vim', {'branch': 'main'}
 Plug 'ruanyl/vim-gh-line'                         " Open file in Github, so that link can be shared
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+Plug 'ray-x/sad.nvim'
 
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'                  " LSP support
