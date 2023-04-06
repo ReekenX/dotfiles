@@ -23,6 +23,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 Plug 'ray-x/sad.nvim'
+Plug 'tpope/vim-haml'
 
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'                  " LSP support
