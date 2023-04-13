@@ -21,8 +21,6 @@ Plug 'joshdick/onedark.vim', {'branch': 'main'}
 Plug 'ruanyl/vim-gh-line'                         " Open file in Github, so that link can be shared
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
-Plug 'ray-x/sad.nvim'
 Plug 'tpope/vim-haml'
 
 if has('nvim')
@@ -41,6 +39,8 @@ if has('nvim')
   Plug 'MunifTanjim/nui.nvim'
   Plug 'folke/noice.nvim'
   Plug 'MunifTanjim/nui.nvim'
+  Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' } # Dependency for mass replace utility below
+  Plug 'ray-x/sad.nvim'                                  # Mass replace utility
 endif
 
 call plug#end()
@@ -395,7 +395,9 @@ map <leader>t :NvimTreeFindFile<CR>
 " }}}
 
 " VIM Noice Plugin Settings {{{
-lua require("noice").setup()
+if has('nvim')
+  lua require("noice").setup()
+endif
 " }}}
 
 " Show word count when typing markdown {{{
