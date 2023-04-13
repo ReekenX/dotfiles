@@ -39,8 +39,8 @@ if has('nvim')
   Plug 'MunifTanjim/nui.nvim'
   Plug 'folke/noice.nvim'
   Plug 'MunifTanjim/nui.nvim'
-  Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' } # Dependency for mass replace utility below
-  Plug 'ray-x/sad.nvim'                                  # Mass replace utility
+  Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' } " Dependency for mass replace utility below
+  Plug 'ray-x/sad.nvim'                                  " Mass replace utility
 endif
 
 call plug#end()
