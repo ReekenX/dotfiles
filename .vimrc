@@ -1,7 +1,6 @@
 " Load plugins {{{
 call plug#begin('~/.vim/plugged')
 
-" Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/matchit'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -37,6 +36,7 @@ if has('nvim')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'MunifTanjim/nui.nvim'
+  Plug 'rcarriga/nvim-notify'
   Plug 'folke/noice.nvim'
   Plug 'MunifTanjim/nui.nvim'
   Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' } " Dependency for mass replace utility below
