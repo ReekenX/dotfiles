@@ -77,3 +77,7 @@ function gt() {
   branch_name=$(git rev-parse --abbrev-ref HEAD | grep -o '[a-zA-Z]\{1,\}-[0-9]\{2,\}')
   gi "$branch_name: $@"
 }
+
+# Quick alias to test if GPG agent works
+alias gpg-test="echo test | gpg --clearsign"
+
