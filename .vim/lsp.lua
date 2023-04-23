@@ -81,7 +81,7 @@ end
 -- Language parser
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "bash", "css", "dockerfile", "html", "javascript", "json", "lua", "markdown", "python", "toml", "yaml", "make", "rst", "scss", "tsx", "vim", "vue" },
+  ensure_installed = { "bash", "css", "dockerfile", "html", "javascript", "json", "lua", "markdown", "python", "toml", "yaml", "make", "rst", "scss", "tsx", "vim", "vue", "regex", "markdown_inline" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,
