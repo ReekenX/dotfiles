@@ -394,12 +394,6 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 map <leader>t :NvimTreeFindFile<CR>
 " }}}
 
-" VIM Noice Plugin Settings {{{
-if has('nvim')
-  lua require("noice").setup()
-endif
-" }}}
-
 " Show word count when typing markdown {{{
 function! WordCount()
   let s:old_status = v:statusmsg

@@ -107,3 +107,5 @@ require'sad'.setup({
   width_ratio = 0.6, -- height ratio of sad window when split vertically
 
 })
+
+require("noice").setup({ })
