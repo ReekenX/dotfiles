@@ -49,8 +49,8 @@ call plug#end()
 " Theme {{{
 syntax on
 
-" Allow to quickly show numbers - but usually that is not needed
-set nonumber
+" Show line numbers
+set number
 
 " Display not printable characters set list		
 set list listchars=tab:»»,trail:¶
