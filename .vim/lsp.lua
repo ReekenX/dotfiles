@@ -96,4 +96,8 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+require('notify').setup({
+  top_down = false
+})
+
 require("noice").setup({ })
