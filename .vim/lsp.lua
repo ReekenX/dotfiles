@@ -97,7 +97,8 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require('notify').setup({
-  top_down = false
+  top_down = false,
+  background_colour = "#21252b"
 })
 
 require("noice").setup({ })

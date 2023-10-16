@@ -60,8 +60,10 @@ let html_no_rendering = 1
 " Theme
 let g:onedark_termcolors=256
 let g:onedark_color_overrides = {
-\ "background": { "gui": "#2F343F", "cterm": "0", "cterm16": "0" },
+\ "background": { "gui": "#21252b", "cterm": "0", "cterm16": "0" },
 \}
+set background=dark
+set termguicolors
 colorscheme onedark
 
 " Hide status bar
