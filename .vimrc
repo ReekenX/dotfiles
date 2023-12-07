@@ -39,6 +39,8 @@ if has('nvim')
   Plug 'rcarriga/nvim-notify'
   Plug 'folke/noice.nvim'
   Plug 'MunifTanjim/nui.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'           " NvimTree dependency for icons
+  Plug 'kyazdani42/nvim-tree.lua'               " File manager, sidebar
 endif
 
 call plug#end()
