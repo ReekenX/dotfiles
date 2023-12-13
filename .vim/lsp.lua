@@ -106,29 +106,18 @@ require("noice").setup({ })
 -- Requirement for nvim-tree
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
-
--- empty setup using defaults
-require("nvim-tree").setup()
-
--- OR setup with some options
 require("nvim-tree").setup({
-  sort = {
-    sorter = "case_sensitive",
-  },
-  view = {
-    width = 30,
-  },
-  renderer = {
-    group_empty = true,
+  reload_on_bufenter = true,
+  -- when navigating file - dynamically locate file in sidebar
+  update_focused_file = {
+    enable = true
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   },
+  -- add ability to remove files from sidebar
+  trash = {
+    cmd = "rm",
+  }
 })
