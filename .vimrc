@@ -349,6 +349,15 @@ autocmd BufEnter *.markdown setlocal wrap
 
 " VIM Side Search plugin settings {{{
 command! -complete=file -nargs=+ S execute 'SideSearch <args>'
+
+" Disable "smart" mode of this plugin and search only from dir VIM has been started
+function! FindRootDirectory()
+  return getcwd()
+endfunction
+
+" Default command uses --word-regexp which misses a lot results!, so
+" overriding to fix that and adding smart case handling
+let g:side_search_prg = 'rg --heading --stats -C 2 --smart-case --line-number'
 " }}}
 
 " Load LSP and other Lua configs {{{
