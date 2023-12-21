@@ -41,6 +41,7 @@ if has('nvim')
   Plug 'MunifTanjim/nui.nvim'
   Plug 'kyazdani42/nvim-web-devicons'           " NvimTree dependency for icons
   Plug 'kyazdani42/nvim-tree.lua'               " File manager, sidebar
+  Plug 'thmsmlr/gpt.nvim'                       " ChatGPT power
 endif
 
 call plug#end()
@@ -439,7 +440,6 @@ nmap <Leader>w :execute 'RgExact ' . expand('<cword>') <Cr>
 " }}}
 
 " Automatically search file name from selection with fuzzy search {{{
-" TODO: backport this method to Telscope plugin
 function! s:getVisualSelection()
     let [line_start, column_start] = getpos("'<")[1:2]
     let [line_end, column_end] = getpos("'>")[1:2]
