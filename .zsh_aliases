@@ -82,3 +82,13 @@ function gt() {
 # Quick alias to test if GPG agent works
 alias gpg-test="echo test | gpg --clearsign"
 
+# Nice beeper after something gets done
+function beep() {
+  for i in {1..3}; do osascript -e 'beep 1'; sleep 0.2; done
+}
+
+# Beep, but only after some time
+function sbeep() {
+  sleep $((60 * $1))
+  beep
+}
