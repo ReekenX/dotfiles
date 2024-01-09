@@ -83,12 +83,23 @@ function gt() {
 alias gpg-test="echo test | gpg --clearsign"
 
 # Nice beeper after something gets done
-function beep() {
-  for i in {1..3}; do osascript -e 'beep 1'; sleep 0.2; done
+function beeper() {
+  for i in {1..5}
+  do
+    afplay /System/Library/Sounds/Submarine.aiff -v 2
+  done
 }
 
 # Beep, but only after some time
-function sbeep() {
-  sleep $((60 * $1))
-  beep
+function timer() {
+  if [[ $1 == *"s" ]]; then
+    sleep ${1::-1}
+    beeper
+  elif [[ $1 == *"m" ]]; then
+    sleep $((60 * ${1::-1}))
+    beeper
+  else
+    echo "Bad expression, use: timer [NUMBER][s | m]"
+    exit 1
+  fi
 }
