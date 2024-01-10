@@ -86,7 +86,7 @@ alias gpg-test="echo test | gpg --clearsign"
 function beeper() {
   for i in {1..5}
   do
-    afplay /System/Library/Sounds/Submarine.aiff -v 2
+    afplay /System/Library/Sounds/Glass.aiff -v 2
   done
 }
 
