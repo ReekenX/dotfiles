@@ -3,7 +3,7 @@ return {
     "folke/flash.nvim",
     keys = {
       {
-        "<leader>ss",
+        "<leader><leader>",
         function()
           require("flash").jump({
             search = {
