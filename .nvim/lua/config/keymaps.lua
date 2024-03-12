@@ -10,3 +10,13 @@ vim.keymap.set({ "n" }, "<leader>cf", '<cmd>:let @*=expand("%")<CR>', { desc = "
 
 -- Quick shortcut to restart LSP server
 vim.keymap.set({ "n" }, "<leader>R", "<cmd>:LspRestart<CR>", { desc = "Restart LSP Server" })
+
+-- Execute previously executed tmux command in other pane
+-- (useful when you have tests in other pane and want manually control when you want to
+-- execute them - instead of "yarn test:watch" or similar)
+vim.keymap.set(
+  { "n" },
+  "<leader>r",
+  "<cmd>exe \"!tmux send -t 1 'UP'\" | exe \"!tmux send -t 1 'ENTER'\"<CR>",
+  { desc = "Repeat command in next tmux pane" }
+)
