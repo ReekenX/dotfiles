@@ -3,7 +3,7 @@ return {
     "thmsmlr/gpt.nvim",
     config = function()
       require("gpt").setup({
-        api_key = os.getenv("OPENAI_API_KEY"),
+        api_key = os.getenv("OPENAI_PRIVATE_API_KEY"),
       })
       opts = { silent = true, noremap = true }
       vim.keymap.set("v", "<leader>gr", require("gpt").replace, {
