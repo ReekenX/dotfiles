@@ -5,3 +5,4 @@
 /.vim/swap/
 /.vim/plugged/
 /.zsh_local
+/.nvim/lazyvim.json
