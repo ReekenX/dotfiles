@@ -20,3 +20,7 @@ vim.keymap.set(
   "<cmd>exe \"!tmux send -t 1 'UP'\" | exe \"!tmux send -t 1 'ENTER'\"<CR>",
   { desc = "Repeat command in next tmux pane" }
 )
+
+-- Remap <leader>E to show VIM native file explorer
+vim.keymap.del("n", "<leader>E")
+vim.keymap.set({ "n" }, "<leader>E", "<cmd>:Explore<CR>", { desc = "Native File Explorer" })
