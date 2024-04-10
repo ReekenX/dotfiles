@@ -22,5 +22,4 @@ vim.keymap.set(
 )
 
 -- Remap <leader>E to show VIM native file explorer
-vim.keymap.del("n", "<leader>E")
 vim.keymap.set({ "n" }, "<leader>E", "<cmd>:Explore<CR>", { desc = "Native File Explorer" })
