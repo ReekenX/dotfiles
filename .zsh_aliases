@@ -46,6 +46,7 @@ alias gc="git branch --merged | egrep -v '(^\*|master|main|develop)' | xargs git
 alias gs="git status --ignore-submodules -sb"
 alias gsu="git status --ignore-submodules -sb | grep '^U'"
 alias gco="git checkout -f"
+alias gi="git commit"
 alias gl="git log --topo-order --abbrev-commit --date=short --decorate --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset%C(yellow)%d%Creset %s %Cblue[%cn]%Creset' "
 alias gln="git log --name-only"
 alias glc="git rev-parse --short HEAD"
@@ -66,16 +67,6 @@ alias ii="yarn install"
 
 # Useful alert for tmux to notify about some finished command in other window/pane
 alias bell="echo -e '\a'"
-
-# Quick commit
-function gi() {
-  if [ -z "$1" ]
-  then
-    git commit
-  else
-    git commit -m $@
-  fi
-}
 
 # Quick search function which ignores node_modules folder and gives search results in colored `less`
 function s() {
