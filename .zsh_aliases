@@ -8,6 +8,8 @@ alias -g ......='../../../../..'
 # Common pipiline actions
 alias -g G='| grep -i'
 alias -g L='| less'
+alias -g H='| head'
+alias -g T='| tail'
 alias -g C='| wc -l'
 alias -g S='| sort'
 alias -g U='| sort | uniq'
