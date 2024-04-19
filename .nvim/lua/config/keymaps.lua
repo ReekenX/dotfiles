@@ -3,7 +3,6 @@
 
 -- Custom save keymap – ww in normal mode
 vim.keymap.set({ "n" }, "ww", "<cmd>w<cr><esc>", { desc = "Save File" })
-vim.keymap.del("n", "<C-s>")
 
 -- Copy filename to clipboard
 vim.keymap.set({ "n" }, "<leader>cf", '<cmd>:let @*=expand("%")<CR>', { desc = "Filename to Clipboard" })

@@ -6,23 +6,34 @@ return {
     branch = "v3.x",
     cmd = "Neotree",
     keys = function()
+      -- Disable NVIM to change directory randomly https://github.com/LazyVim/LazyVim/discussions/2150
+      vim.g.root_spec = { "cwd" }
+
       -- Override defaults to drop <leader>E which I want to remap for native :Explorer
       return {
         {
-          "<leader>fe",
+          "<leader>e",
           function()
             require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
           end,
           desc = "Explorer NeoTree (Root Dir)",
         },
-        {
-          "<leader>fE",
-          function()
-            require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
-          end,
-          desc = "Explorer NeoTree (cwd)",
-        },
-        { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
+        -- {
+        --   "<leader>fe",
+        --   function()
+        --     require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
+        --   end,
+        --   desc = "Explorer NeoTree (Root Dir)",
+        -- },
+        -- {
+        --   "<leader>fE",
+        --   function()
+        --     require("neo-tree.command").execute({ toggle = true, dir = vim.uv.cwd() })
+        --   end,
+        --   desc = "Explorer NeoTree (cwd)",
+        -- },
+        -- { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
+        -- { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
         {
           "<leader>ge",
           function()
