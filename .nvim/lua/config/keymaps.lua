@@ -22,3 +22,7 @@ vim.keymap.set(
 
 -- Remap <leader>E to show VIM native file explorer
 vim.keymap.set({ "n" }, "<leader>E", "<cmd>:Explore<CR>", { desc = "Native File Explorer" })
+
+-- Find references to selected symbol/call
+vim.keymap.set({ "n", "v" }, "<leader>gr", "<cmd>Telescope lsp_references<cr>", { desc = "References" })
+vim.keymap.set({ "n", "v" }, "<leader>gi", "<cmd>Telescope lsp_incoming_calls<cr>", { desc = "Incoming Calls" })

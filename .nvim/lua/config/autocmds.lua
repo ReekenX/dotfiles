@@ -15,3 +15,17 @@ vim.api.nvim_create_autocmd("VimEnter", {
     })
   end,
 })
+
+-- LspRestart eslint on saving package.json
+local ts_grp = vim.api.nvim_create_augroup("TSAutocmds", {})
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "package.json" },
+  command = "LspRestart eslint",
+  group = ts_grp,
+})
+-- EsLintAutoFix on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+  command = "silent! EslintFixAll",
+  group = ts_grp,
+})
