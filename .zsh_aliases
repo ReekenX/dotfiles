@@ -40,8 +40,8 @@ alias gaa="git add ."
 alias gap="clear && git add -p"
 alias gb="git branch -a"
 alias gbs="git checkout \$(git branch | cut -c 3- | fzy); git pull -q; gc"
-alias gf='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff'
-alias gfc='PATH=$PATH:~/.gitconfig.d/bin/icdiff git icdiff --cached'
+alias gf='git icdiff'
+alias gfc='git icdiff --cached'
 alias gp="git push || (git pull && git push)"
 alias gr="git reset HEAD~1"
 alias gc="git branch --merged | egrep -v '(^\*|master|main)' | xargs git branch -d"
