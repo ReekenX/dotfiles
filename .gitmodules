@@ -1,3 +1,0 @@
-[submodule ".gitconfig.d/bin/icdiff"]
-	path = .gitconfig.d/bin/icdiff
-	url = https://github.com/jeffkaufman/icdiff
