@@ -12,3 +12,5 @@
     name = Remigijus Jarmalavičius
     email = remigijus@jarmalavicius.lt
     signingKey = remigijus@jarmalavicius.lt
+[gpg]
+	program = /usr/local/bin/gpg
