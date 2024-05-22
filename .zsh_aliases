@@ -91,3 +91,6 @@ alias gpg-test="echo test | gpg --clearsign"
 function beep() {
   afplay /System/Library/Sounds/Glass.aiff -v 10
 }
+
+# When sourcing Python virtual env - do not prepend it to PROMPT
+export VIRTUAL_ENV_DISABLE_PROMPT=1
