@@ -29,3 +29,7 @@ vim.keymap.set({ "n", "v" }, "<leader>gi", "<cmd>Telescope lsp_incoming_calls<cr
 
 -- Different keymap to show signature
 vim.keymap.set({ "n" }, "<leader>gk", vim.lsp.buf.signature_help, { desc = "Signature" })
+
+-- Drop ALT+j and ALT+k moving lines as they cause ESC+j and ESC+k to do the same
+vim.keymap.del("n", "<A-j>")
+vim.keymap.del("n", "<A-k>")
