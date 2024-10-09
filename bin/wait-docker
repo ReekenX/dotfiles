@@ -1,0 +1,3 @@
+#!/bin/bash
+
+while ! docker ps; do sleep 0.1; done
