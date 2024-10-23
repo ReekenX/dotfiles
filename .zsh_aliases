@@ -85,7 +85,7 @@ function gi() {
 }
 
 # Quick alias to test if GPG agent works
-alias gpg-test="echo test | gpg --clearsign"
+alias gpg-add="echo test | gpg --clearsign"
 
 # Nice beeper after something gets done
 function beep() {
