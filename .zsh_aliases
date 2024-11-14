@@ -59,7 +59,6 @@ alias rg="rg -i -g '!*node_modules*'"
 alias ii="yarn install"
 alias uu="yarn upgrade-interactive"
 alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -not -path '"'"'*/Library/*'"'"' | fzy)"'
-alias ts="tmuxinator start"
 alias bi="bundle install"
 alias bu="bundle update"
 alias rc="RUBYOPT=-W0 rails console"
@@ -72,6 +71,11 @@ alias bell="echo -e '\a'"
 # Quick search function which ignores node_modules folder and gives search results in colored `less`
 function s() {
   rg --smart-case --pretty --glob '!node_modules' --context 5 $@ | less -R
+}
+
+# Quickly start tmux project
+function ts() {
+  tmuxinator start $(basename $(pwd))
 }
 
 # Quick commit
