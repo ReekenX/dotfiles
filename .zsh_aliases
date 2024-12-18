@@ -75,7 +75,7 @@ function s() {
 
 # Quickly start tmux project
 function ts() {
-  tmuxinator start $(basename $(pwd))
+  [ -f .tmuxinator.yml ] && tmuxinator start || tmuxinator start $(basename $(pwd))
 }
 
 # Quick commit
