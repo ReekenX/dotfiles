@@ -55,6 +55,7 @@ alias glc="git rev-parse --short HEAD"
 alias gw="gl $(git branch -l main master --format '%(refname:short)')..HEAD"
 alias gww="gf $(git branch -l main master --format '%(refname:short)')..HEAD"
 alias gt="~/bin/git-track"
+alias gu="git pull --all"
 
 alias rg="rg -i -g '!*node_modules*'"
 alias ii="yarn install"
