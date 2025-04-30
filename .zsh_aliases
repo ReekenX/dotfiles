@@ -40,7 +40,7 @@ alias ga="git add . -N"
 alias gaa="git add ."
 alias gap="clear && git add -p"
 alias gb="git checkout -b"
-alias gbs="git checkout \$(git branch | cut -c 3- | fzy); git pull -q; gc"
+alias gbs="git checkout \$(git branch -a | cut -c 3- | sed 's/remotes\/origin\///' | sort | uniq | grep -v '^HEAD' | fzf); gu"
 alias gf='git icdiff'
 alias gfc='git icdiff --cached'
 alias gp="git push || (git pull && git push)"
@@ -77,7 +77,7 @@ function s() {
 
 # Quickly start tmux project
 function ts() {
-  [ -f .tmuxinator.yml ] && tmuxinator start || tmuxinator start $(basename $(pwd))
+  [ -f .tmuxinator.yml ] && tmuxinator start --suppress-tmux-version-warning=SUPPRESS-TMUX-VERSION-WARNING || tmuxinator start --suppress-tmux-version-warning=SUPPRESS-TMUX-VERSION-WARNING $(basename $(pwd))
 }
 
 # Quick commit
