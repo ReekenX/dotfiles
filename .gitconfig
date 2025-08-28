@@ -1,3 +1,5 @@
+[init]
+	defaultBranch = main
 [include]
     path = ~/.gitconfig.d/base.ini
     path = ~/.gitconfig.d/aliases.ini
