@@ -14,7 +14,7 @@ alias -g C='| wc -l'
 alias -g S='| sort'
 alias -g U='| sort | uniq'
 alias -g TOP='| sort | uniq -c | sort -rn'
-alias -g D='; say -v Samantha "Task completed"'
+alias -g D='; say "Task completed"'
 
 # When you are too tired to recognize shell from VIM
 alias :e="nvim"
