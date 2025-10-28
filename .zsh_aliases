@@ -77,7 +77,7 @@ function s() {
 
 # Quickly start tmux project
 function ts() {
-  [ -f .tmuxinator.yml ] && tmuxinator start --suppress-tmux-version-warning=SUPPRESS-TMUX-VERSION-WARNING || tmuxinator start --suppress-tmux-version-warning=SUPPRESS-TMUX-VERSION-WARNING $(basename $(pwd))
+  [ -f .tmuxinator.yml ] && tmuxinator start --suppress-tmux-version-warning=SUPPRESS-TMUX-VERSION-WARNING || tmuxinator start --suppress-tmux-version-warning=SUPPRESS-TMUX-VERSION-WARNING "$(basename $(pwd))"
 }
 
 # Quick commit
