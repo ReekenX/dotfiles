@@ -60,7 +60,6 @@ alias gu="git pull"
 alias rg="rg -i -g '!*node_modules*'"
 alias ii="yarn install"
 alias uu="yarn upgrade-interactive"
-alias go='cd "$(find ~ -maxdepth 3 -type d -not -path '"'"'*/\.*'"'"' -not -path '"'"'*/media/*'"'"' -not -path '"'"'*/assets/*'"'"' -not -path '"'"'*/static/*'"'"' -not -path '"'"'*/Library/*'"'"' | fzy)"'
 alias bi="bundle install"
 alias bu="bundle update"
 alias rc="RUBYOPT=-W0 rails console"
