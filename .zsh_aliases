@@ -26,7 +26,7 @@ alias vi="nvim"
 
 # Enable verbose mode for common commands
 alias ls='ls -FlhG'
-alias rm="/bin/rm -rvf"
+alias rm="trash"
 alias mv="/bin/mv -v"
 alias cp="/bin/cp -Rv"
 alias scp="/usr/bin/scp -r"
