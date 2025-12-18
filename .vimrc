@@ -85,7 +85,6 @@ set fileformat=unix
 
 " Encoding
 scriptencoding utf-8
-set termencoding=utf-8
 
 " Set tab to 2 spaces
 set tabstop=2
