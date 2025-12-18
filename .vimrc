@@ -23,14 +23,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-haml'
 
 if has('nvim')
-  Plug 'neovim/nvim-lspconfig'                  " LSP support
-  Plug 'hrsh7th/cmp-nvim-lsp'                   " LSP source support
-  Plug 'hrsh7th/cmp-buffer'                     " Autocompletion for words from buffers
-  Plug 'hrsh7th/cmp-path'                       " Autocompletion for filepaths
-  Plug 'hrsh7th/nvim-cmp'                       " Autocompletion plugin
-  Plug 'SirVer/ultisnips'                       " Snippets engine
-  Plug 'honza/vim-snippets'                     " Snippet files
-  Plug 'quangnguyen30192/cmp-nvim-ultisnips'    " Autocompletion for snippets
   Plug 'numToStr/Comment.nvim'                  " Commenting pluggin
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/plenary.nvim'
@@ -41,7 +33,6 @@ if has('nvim')
   Plug 'MunifTanjim/nui.nvim'
   Plug 'kyazdani42/nvim-web-devicons'           " NvimTree dependency for icons
   Plug 'kyazdani42/nvim-tree.lua'               " File manager, sidebar
-  Plug 'thmsmlr/gpt.nvim'                       " ChatGPT power
 endif
 
 call plug#end()
@@ -403,19 +394,6 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 
 " VIM Nvim Tree Plugin Settings {{{
 map <leader>t :NvimTreeFindFile<CR>
-" }}}
-
-" VIM Copilot Plugin Settings {{{
-let g:copilot_filetypes = {
-    \ '*': v:false,
-    \ 'javascript': v:true,
-    \ 'typescript': v:true,
-    \ 'python': v:true,
-    \ 'ruby': v:true,
-    \ 'vue': v:true,
-    \ 'lua': v:true,
-    \ 'html': v:true
-    \ }
 " }}}
 
 " VIM FZF plugin settings {{{
