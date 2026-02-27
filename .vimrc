@@ -69,7 +69,7 @@ set laststatus=0
 
 " Edit behaviour {{{
 " Mapleader from \ to ,
-let mapleader=","
+let mapleader=" "
 
 " Prefered file format
 set fileformat=unix
