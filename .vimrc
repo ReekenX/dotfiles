@@ -26,13 +26,17 @@ if has('nvim')
   Plug 'numToStr/Comment.nvim'                  " Commenting pluggin
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'kyazdani42/nvim-web-devicons'
   Plug 'MunifTanjim/nui.nvim'
   Plug 'rcarriga/nvim-notify'
   Plug 'folke/noice.nvim'
-  Plug 'MunifTanjim/nui.nvim'
-  Plug 'kyazdani42/nvim-web-devicons'           " NvimTree dependency for icons
+  Plug 'kyazdani42/nvimnvim_treesitter-web-devicons'           " NvimTree dependency for icons
   Plug 'kyazdani42/nvim-tree.lua'               " File manager, sidebar
+
+  " Folding based on language
+  set foldexpr=nvim_treesitter#foldexpr()
+
+  " Live preview of replacements with (eg. s/old/new)
+  set inccommand=split
 endif
 
 call plug#end()
@@ -140,12 +144,12 @@ nnoremap <leader>. :nohl<CR>
 
 " Backups and swap file {{{
 " Create folders which will be auto removed after OS restart
-silent execute '!mkdir -p /tmp/.vim/backup'
-silent execute '!mkdir -p /tmp/.vim/undo'
+silent execute '!mkdir -p ~/.vim/backup'
+silent execute '!mkdir -p ~/.vim/undo'
 
 " Setup backups and files prefixing with date
 set backup
-set backupdir=/tmp/.vim/backup
+set backupdir=~.vim/backup
 autocmd BufWritePre * let &bex = '-' . strftime("%Y-%m-%d_%H:%M")
 
 " Swap files are trashing every folder/project
@@ -153,7 +157,7 @@ set noswapfile
 
 " Store undo history so it can be restored after VIM is closed
 set undofile
-set undodir=/tmp/.vim/undo
+set undodir=~.vim/undo
 " }}}
 
 " Folding rules {{{
@@ -161,7 +165,6 @@ set foldenable
 set foldcolumn=0
 set foldlevel=9999
 set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
 " }}}
 
 " Keyboard mappings {{{
@@ -190,7 +193,7 @@ nnoremap / /\v
 nnoremap ; :
 
 " Copy filename to clipboard
-nnor ,cf :let @*=expand("%")<CR>
+nnor <leader>cf :let @*=expand("%")<CR>
 
 " Expand %% to full file directory (without filename!)
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
@@ -210,6 +213,10 @@ nnoremap ` '
 " Save without :w quickly
 inoremap jj <ESC>
 nmap ww <ESC>:nohl<CR><ESC>:write!<CR>
+
+" Autosave
+set updatetime=1000
+autocmd CursorHold,CursorHoldI * silent! update
 
 " Close buffer
 nnoremap <c-x> :bd<CR>
@@ -296,7 +303,7 @@ autocmd BufRead,BufNewFile *.otl setlocal nolist
 " }}}
 
 " VIM Smooth Scroll plugin settings {{{
-set scrolloff=3
+set scrolloff=8
 " }}}
 
 " VIM Nerd commenter plugin settings {{{
@@ -390,6 +397,11 @@ endfunction
 
 " Native VIM grep should use rg command {{{
 set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+" }}}
+
+" Load project-local .nvimrc files {{{
+set exrc
+set secure
 " }}}
 
 " VIM Nvim Tree Plugin Settings {{{
