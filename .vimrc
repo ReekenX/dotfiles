@@ -149,7 +149,7 @@ silent execute '!mkdir -p ~/.vim/undo'
 
 " Setup backups and files prefixing with date
 set backup
-set backupdir=~.vim/backup
+set backupdir=~/.vim/backup
 autocmd BufWritePre * let &bex = '-' . strftime("%Y-%m-%d_%H:%M")
 
 " Swap files are trashing every folder/project
@@ -157,7 +157,7 @@ set noswapfile
 
 " Store undo history so it can be restored after VIM is closed
 set undofile
-set undodir=~.vim/undo
+set undodir=~/.vim/undo
 " }}}
 
 " Folding rules {{{
