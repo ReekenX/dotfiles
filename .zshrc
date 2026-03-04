@@ -9,7 +9,7 @@ export ZSH_THEME="reekenx"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ssh-agent-multiuser zsh-autosuggestions)
+plugins=(zsh-autosuggestions)
 
 # We will share same history file under bash and zsh
 HISTFILE=~/.shell_history
