@@ -16,3 +16,5 @@
     signingKey = remigijus@jarmalavicius.lt
 [gpg]
 	program = /usr/local/bin/gpg
+[push]
+	autoSetupRemote = true
