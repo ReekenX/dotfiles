@@ -37,6 +37,8 @@ require("nvim-tree").setup({
   },
   filters = {
     dotfiles = false,
+    git_ignored = true,
+    exclude = { ".claude" },
   },
   -- add ability to remove files from sidebar
   trash = {
