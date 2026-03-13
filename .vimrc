@@ -29,7 +29,6 @@ if has('nvim')
   Plug 'MunifTanjim/nui.nvim'
   Plug 'rcarriga/nvim-notify'
   Plug 'folke/noice.nvim'
-  Plug 'kyazdani42/nvimnvim_treesitter-web-devicons'           " NvimTree dependency for icons
   Plug 'kyazdani42/nvim-tree.lua'               " File manager, sidebar
 
   " Folding based on language
