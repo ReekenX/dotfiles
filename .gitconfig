@@ -1,5 +1,8 @@
-[init]
-	defaultBranch = main
+[user]
+    name = Remigijus Jarmalavičius
+    email = remigijus@jarmalavicius.lt
+    signingKey = remigijus@jarmalavicius.lt
+
 [include]
     path = ~/.gitconfig.d/base.ini
     path = ~/.gitconfig.d/aliases.ini
@@ -9,12 +12,3 @@
     path = ~/.gitconfig.d/pull.ini
     path = ~/.gitconfig.d/verbosity.ini
     path = ~/.gitconfig.d/gpg.ini
-
-[user]
-    name = Remigijus Jarmalavičius
-    email = remigijus@jarmalavicius.lt
-    signingKey = remigijus@jarmalavicius.lt
-[gpg]
-	program = /usr/local/bin/gpg
-[push]
-	autoSetupRemote = true
