@@ -30,17 +30,29 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 require("nvim-tree").setup({
-  reload_on_bufenter = true,
-  -- when navigating file - dynamically locate file in sidebar
-  update_focused_file = {
-    enable = true
+  sort = {
+    sorter = "case_sensitive",
+  },
+  view = {
+    width = 30,
+  },
+  renderer = {
+    group_empty = true,
+    icons = {
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        git = false
+      }
+    }
   },
   filters = {
-    dotfiles = false,
     git_ignored = true,
+    dotfiles = true,
+    custom = { "__pycache__" },
     exclude = { ".claude" },
   },
-  -- add ability to remove files from sidebar
   trash = {
     cmd = "rm",
   }
