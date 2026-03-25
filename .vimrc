@@ -30,6 +30,7 @@ if has('nvim')
   Plug 'rcarriga/nvim-notify'
   Plug 'folke/noice.nvim'
   Plug 'kyazdani42/nvim-tree.lua'               " File manager, sidebar
+  Plug 'lewis6991/gitsigns.nvim'
 
   " Folding based on language
   set foldexpr=nvim_treesitter#foldexpr()
@@ -408,7 +409,7 @@ map <leader>t :NvimTreeFindFile<CR>
 " }}}
 
 " VIM FZF plugin settings {{{
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9, 'relative': v:true } }
+let g:fzf_layout = { "window": "silent botright enew" }
 let g:fzf_preview_window = ['up:60%']
 let $FZF_DEFAULT_COMMAND="rg --files --hidden --no-ignore --glob '!.git' --glob '!*.gpg' --glob '!*.png' --glob '!*.svg' --glob '!*.pyc' --glob '!*.jpg' --glob '!*.jpeg' --glob '!*.zip' --glob '!node_modules' --glob '!_site' --glob '!.jekyll-cache'"
 
@@ -417,6 +418,7 @@ map // :BLines <CR>
 map <leader>f :Files<CR>
 map <leader>b :Buffers<CR>
 map <leader>m :Marks<CR>
+map <leader>g :GFiles?<CR>
 
 " Search for word under cursor
 command! -bang -nargs=* RgExact
