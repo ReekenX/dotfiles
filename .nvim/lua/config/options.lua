@@ -4,3 +4,6 @@
 
 vim.opt.laststatus = 0
 vim.opt.conceallevel = 0
+
+-- Always use cwd as root, prevent LazyVim from changing working directory
+vim.g.root_spec = { "cwd" }
