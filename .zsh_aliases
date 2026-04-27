@@ -39,7 +39,6 @@ alias htop="/usr/local/bin/htop -u $USER"
 alias ga="git add . -N"
 alias gaa="git add ."
 alias gap="clear && git add -p"
-alias gb="git checkout -b"
 alias gbs="git checkout \$(git branch -a | cut -c 3- | sed 's/remotes\/origin\///' | sort | uniq | grep -v '^HEAD' | fzf); gu"
 alias gf='git icdiff'
 alias gfc='git icdiff --cached'
@@ -68,6 +67,12 @@ alias ii="yarn install"
 
 # Useful alert for tmux to notify about some finished command in other window/pane
 alias bell="echo -e '\a'"
+
+# Quick branch creation and slugification (usually from Jira ticket)
+gb() {
+  local branch=$(echo "$*" | tr '[:upper:]' '[:lower:]' | tr -cs '[:alnum:]-/' '-' | sed 's/-$//' | sed 's/it2-/IT2-/g')
+  git checkout -b "$branch"
+}
 
 # Quick search function which ignores node_modules folder and gives search results in colored `less`
 function s() {
