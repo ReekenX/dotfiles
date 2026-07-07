@@ -31,7 +31,6 @@ alias mv="/bin/mv -v"
 alias cp="/bin/cp -Rv"
 alias scp="/usr/bin/scp -r"
 alias rsync="/usr/bin/rsync -Pa"
-alias tig="/usr/local/bin/tig status"
 alias skill="kill -s SIGKILL"
 alias htop="/usr/local/bin/htop -u $USER"
 
