@@ -1,13 +1,33 @@
+-- Markdown linting comes from two places in this config:
+--   1. lazyvim.plugins.extras.lang.markdown -> nvim-lint  linters_by_ft.markdown
+--   2. lazyvim.plugins.extras.lang.markdown -> none-ls    diagnostics.markdownlint_cli2
+-- Both must be turned off, otherwise markdownlint diagnostics keep showing up.
 return {
   {
     "mfussenegger/nvim-lint",
     opts = {
+      linters_by_ft = {
+        markdown = {},
+        ["markdown.mdx"] = {},
+      },
       linters = {
-        -- This stops _all_ linting from running on markdown.
+        -- Safety net: never run even if something re-adds it to a filetype.
         ["markdownlint-cli2"] = {
-          args = { "--config", "~/.markdownlint-cli2.yaml", "--" },
+          condition = function()
+            return false
+          end,
         },
       },
     },
+  },
+
+  {
+    "nvimtools/none-ls.nvim",
+    optional = true,
+    opts = function(_, opts)
+      opts.sources = vim.tbl_filter(function(source)
+        return source.name ~= "markdownlint-cli2"
+      end, opts.sources or {})
+    end,
   },
 }
