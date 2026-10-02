@@ -56,13 +56,7 @@ alias gt="~/bin/git-track"
 alias gu="git pull"
 
 alias rg="rg -i -g '!*node_modules*'"
-alias ii="yarn install"
-alias uu="yarn upgrade-interactive"
-alias bi="bundle install"
-alias bu="bundle update"
-alias rc="RUBYOPT=-W0 rails console"
-alias rdb="rails db:migrate"
-alias ii="yarn install"
+alias cc="claude --dangerously-skip-permissions --chrome"
 
 # Useful alert for tmux to notify about some finished command in other window/pane
 alias bell="echo -e '\a'"
