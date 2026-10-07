@@ -104,3 +104,96 @@ function beep() {
 
 # When sourcing Python virtual env - do not prepend it to PROMPT
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# Resume a claude session per open PR worktree, after removing worktrees whose PR got merged
+function resume-prs() {
+  emulate -L zsh
+  setopt extended_glob
+
+  if [[ -z "$TMUX" ]]; then
+    echo "resume-prs: run this inside tmux" >&2
+    return 1
+  fi
+  git rev-parse --git-dir > /dev/null 2>&1 || { echo "resume-prs: not in a git repo" >&2; return 1 }
+
+  local main_dir session dir branch ticket state target windows
+  local -a dirs branches
+  main_dir=$(git worktree list --porcelain | head -1)
+  main_dir=${main_dir#worktree }
+  session=$(tmux display-message -p '#S')
+
+  # Sync: add worktrees for my open PRs whose branch isn't checked out here yet
+  local -a pr_branches
+  local checked_out
+  pr_branches=(${(f)"$(cd "$main_dir" && gh pr list --author @me --state open \
+    --json headRefName,isCrossRepository \
+    --jq '.[] | select(.isCrossRepository | not) | .headRefName' 2>/dev/null)"})
+  if (( ${#pr_branches} )); then
+    git -C "$main_dir" fetch --quiet origin || echo "resume-prs: fetch failed, syncing from stale refs" >&2
+    checked_out=$(git -C "$main_dir" worktree list --porcelain)
+    for branch in $pr_branches; do
+      print -r -- "$checked_out" | grep -qxF "branch refs/heads/$branch" && continue
+      dir="$main_dir/.worktrees/$branch"
+      if git -C "$main_dir" show-ref --quiet --verify "refs/heads/$branch"; then
+        git -C "$main_dir" worktree add --quiet "$dir" "$branch" || { echo "resume-prs: could not add $dir, skipping" >&2; continue }
+        git -C "$dir" merge --quiet --ff-only "origin/$branch" 2>/dev/null \
+          || echo "resume-prs: $branch diverged from origin, left as is" >&2
+      else
+        git -C "$main_dir" worktree add --quiet --track -b "$branch" "$dir" "origin/$branch" \
+          || { echo "resume-prs: could not add $dir, skipping" >&2; continue }
+      fi
+      echo "synced: $branch -> $dir"
+    done
+  fi
+
+  # Collect linked worktrees (skip the main checkout)
+  local line cur_dir=""
+  while IFS= read -r line; do
+    case $line in
+      worktree\ *) cur_dir=${line#worktree } ;;
+      branch\ *)
+        [[ $cur_dir == $main_dir ]] && continue
+        dirs+=$cur_dir
+        branches+=${line#branch refs/heads/}
+        ;;
+    esac
+  done < <(git worktree list --porcelain)
+
+  # Integrity check: drop worktrees whose PR is merged
+  local -a open_dirs open_tickets
+  local i
+  for (( i = 1; i <= ${#dirs}; i++ )); do
+    dir=$dirs[i]
+    branch=$branches[i]
+    state=$(cd "$main_dir" && gh pr list --head "$branch" --state merged --json number --jq 'length' 2>/dev/null)
+    if [[ $state == <1-> ]]; then
+      echo "merged: $branch -> removing $dir"
+      git -C "$main_dir" worktree remove "$dir" || echo "resume-prs: could not remove $dir (dirty?), skipping" >&2
+      continue
+    fi
+    # Jira key (IT2-123) or Trello card number prefix (85-add-...)
+    ticket=$(echo "$branch" | grep -oE '[A-Za-z]+[0-9]*-[0-9]+' | head -1 | tr '[:lower:]' '[:upper:]')
+    [[ -z $ticket ]] && ticket=$(echo "$branch" | grep -oE '^[0-9]+')
+    if [[ -z $ticket ]]; then
+      echo "resume-prs: no ticket id in $branch, skipping" >&2
+      continue
+    fi
+    open_dirs+=$dir
+    open_tickets+=$ticket
+  done
+
+  # Open a window per remaining worktree, starting at position 4.
+  # Each worktree is its own claude project, so --continue picks up its latest session.
+  windows=$(tmux list-windows -t "$session" -F '#W')
+  target="$session:3"
+  for (( i = 1; i <= ${#open_dirs}; i++ )); do
+    ticket=$open_tickets[i]
+    if print -r -- "$windows" | grep -qx "claude-$ticket"; then
+      echo "exists: claude-$ticket"
+      continue
+    fi
+    target=$(tmux new-window -d -a -t "$target" -n "claude-$ticket" -c "$open_dirs[i]" -P -F '#{session_name}:#{window_index}')
+    tmux send-keys -t "$target" "claude --dangerously-skip-permissions --chrome --continue && git worktree remove . && exit" Enter
+    echo "opened: claude-$ticket at $target"
+  done
+}
