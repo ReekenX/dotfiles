@@ -104,3 +104,32 @@ function beep() {
 
 # When sourcing Python virtual env - do not prepend it to PROMPT
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# New worktree for a ticket off latest main, with Claude in a tmux window at position 4
+function worktree() {
+  emulate -L zsh
+
+  if [[ -z "$1" ]]; then
+    echo "usage: worktree <ticket>" >&2
+    return 1
+  fi
+  if [[ -z "$TMUX" ]]; then
+    echo "worktree: run this inside tmux" >&2
+    return 1
+  fi
+  git rev-parse --git-dir > /dev/null 2>&1 || { echo "worktree: not in a git repo" >&2; return 1 }
+
+  local main_dir dir session
+  main_dir=$(git worktree list --porcelain | head -1)
+  main_dir=${main_dir#worktree }
+  dir="$main_dir/.worktrees/$1"
+  session=$(tmux display-message -p '#S')
+
+  git -C "$main_dir" fetch --quiet origin main || { echo "worktree: fetch failed" >&2; return 1 }
+  git -C "$main_dir" branch --no-track "$1" origin/main || return 1
+  git -C "$main_dir" worktree add "$dir" "$1" || return 1
+
+  local target
+  target=$(tmux new-window -a -t "$session:3" -n "claude-${(U)1}" -c "$dir" -P -F '#{session_name}:#{window_index}')
+  tmux send-keys -t "$target" "claude --dangerously-skip-permissions --chrome --name $1" Enter
+}
