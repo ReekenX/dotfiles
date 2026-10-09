@@ -106,7 +106,7 @@ function beep() {
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 # Resume a claude session per open PR worktree, after removing worktrees whose PR got merged
-function resume-prs() {
+function wresume() {
   emulate -L zsh
   setopt extended_glob
 
@@ -199,7 +199,7 @@ function resume-prs() {
 }
 
 # New worktree for a ticket off latest main, with Claude in a tmux window at position 4
-function worktree() {
+function wnew() {
   emulate -L zsh
 
   if [[ -z "$1" ]]; then
