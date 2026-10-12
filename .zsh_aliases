@@ -224,5 +224,5 @@ function wnew() {
 
   local target
   target=$(tmux new-window -a -t "$session:3" -n "claude-${(U)1}" -c "$dir" -P -F '#{session_name}:#{window_index}')
-  tmux send-keys -t "$target" "claude --dangerously-skip-permissions --chrome --name $1" Enter
+  tmux send-keys -t "$target" "claude --dangerously-skip-permissions --chrome --name $1 && git worktree remove . && exit" Enter
 }
