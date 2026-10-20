@@ -139,3 +139,8 @@ function start() {
   target=$(tmux new-window -a -t "$session:3" -n "claude-$slug" -c "$dir" -P -F '#{session_name}:#{window_index}')
   tmux send-keys -t "$target" "claude --dangerously-skip-permissions --chrome --name ${(q)title} && git worktree remove . && exit" Enter
 }
+
+# Display in nice markdown Trello card
+function trello-markdown() {
+  trello card:get-by-id --id $1 | sed 's/^Name: /# /' | sed 's/^URL: /\n/' | grep -v '^\(ID\|Due\|Labels\|Members\):' | sed 's/Description: /\n/' | sed '/^```/d' | bat --language markdown
+}
