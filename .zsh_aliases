@@ -94,6 +94,11 @@ function gi() {
   fi
 }
 
+# Resume or create a new Claude instance
+function claude-resume {
+  claude --dangerously-skip-permissions --chrome --name "$1" || claude --dangerously-skip-permissions --chrome --resume "$1"
+}
+
 # Quick alias to test if GPG agent works
 alias gpg-add="echo | gpg --clearsign"
 
