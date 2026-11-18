@@ -94,9 +94,20 @@ function gi() {
   fi
 }
 
-# Resume or create a new Claude instance
+# Resume the Claude session named "$1 (<project folder>)", or start it if none exists.
+# Session names must be unique across every running Claude, so the folder keeps
+# "AI PM <date>" in one repo from colliding with the same name in another
+# (a collision makes Claude append a random suffix like "-graceful-rain").
 function claude-resume {
-  claude --dangerously-skip-permissions --chrome --name "$1" "$2" || claude --dangerously-skip-permissions --chrome --resume "$1" "$2"
+  local name="$1 (${PWD:t})"
+  local dir=~/.claude/projects/${PWD//[^a-zA-Z0-9]/-}
+  local file=$(grep -lF -m1 "\"customTitle\":\"$name\"" $dir/*.jsonl(N.om) 2>/dev/null | head -1)
+
+  if [[ -n $file ]]; then
+    claude --dangerously-skip-permissions --chrome --resume "${file:t:r}" "$2"
+  else
+    claude --dangerously-skip-permissions --chrome --name "$name" "$2"
+  fi
 }
 
 # Quick alias to test if GPG agent works
