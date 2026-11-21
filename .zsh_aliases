@@ -104,9 +104,9 @@ function claude-resume {
   local file=$(grep -lF -m1 "\"customTitle\":\"$name\"" $dir/*.jsonl(N.om) 2>/dev/null | head -1)
 
   if [[ -n $file ]]; then
-    claude --dangerously-skip-permissions --chrome --resume "${file:t:r}" "$2"
+    claude --dangerously-skip-permissions --chrome --remote-control --resume "${file:t:r}"
   else
-    claude --dangerously-skip-permissions --chrome --name "$name" "$2"
+    claude --dangerously-skip-permissions --chrome --remote-control --name "$name" "$2"
   fi
 }
 
