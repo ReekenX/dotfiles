@@ -99,7 +99,7 @@ function gi() {
 # "AI PM <date>" in one repo from colliding with the same name in another
 # (a collision makes Claude append a random suffix like "-graceful-rain").
 function claude-resume {
-  local name="$1 (${PWD:t})"
+  local name="$1"
   local dir=~/.claude/projects/${PWD//[^a-zA-Z0-9]/-}
   local file=$(grep -lF -m1 "\"customTitle\":\"$name\"" $dir/*.jsonl(N.om) 2>/dev/null | head -1)
 
